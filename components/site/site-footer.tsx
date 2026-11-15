@@ -6,13 +6,13 @@ export function SiteFooter() {
   return (
     <footer className="border-t">
       <div className="page-container grid gap-10 py-14 md:py-16 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[10.5rem]">
-        <p className="text-[0.8125rem] text-muted">{site.copyright}</p>
+        <p className="type-supporting text-muted">{site.copyright}</p>
         <div className="grid gap-10 sm:grid-cols-2">
           <nav aria-labelledby="footer-pages">
-            <h2 id="footer-pages" className="font-mono text-xs uppercase tracking-widest text-muted">
+            <h2 id="footer-pages" className="type-eyebrow text-muted">
               Pages
             </h2>
-            <ul className="mt-4 flex flex-col gap-2.5 text-sm">
+            <ul className="type-supporting mt-4 flex flex-col gap-2.5">
               {site.pages.map((page) => (
                 <li key={page.href}>
                   <Link href={page.href} className="transition-colors hover:text-muted">
@@ -23,8 +23,8 @@ export function SiteFooter() {
             </ul>
           </nav>
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Contact</h2>
-            <ul className="mt-4 flex flex-col gap-2.5 text-sm">
+            <h2 className="type-eyebrow text-muted">Contact</h2>
+            <ul className="type-supporting mt-4 flex flex-col gap-2.5">
               {site.contact.map((item) => (
                 <li key={item.label} className="flex items-center gap-3">
                   {item.href ? (

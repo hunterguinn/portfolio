@@ -8,7 +8,7 @@ export function Hero() {
     <SectionShell bordered={false} label={home.currently}>
       <div className="flex flex-col gap-8 pt-2 md:pt-6">
         <Avatar name="Hunter Guinn" src={profileImage} size={64} alt="Portrait of Hunter Guinn" />
-        <h1 className="max-w-3xl text-[1.75rem] font-normal leading-[1.14] tracking-[-0.025em] text-balance md:text-4xl lg:text-[2.75rem]">
+        <h1 className="type-display max-w-3xl text-balance">
           {home.headline}
         </h1>
       </div>

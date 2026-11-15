@@ -20,8 +20,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         </CurtainCover>
         <div className="grid gap-8 xl:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{project.meta}</p>
-            <h3 className="text-xl font-normal tracking-[-0.02em] text-balance md:text-2xl">
+            <p className="type-eyebrow text-muted">{project.meta}</p>
+            <h3 className="type-project-title text-balance">
               <Link
                 href={project.href}
                 className="inline-flex items-start gap-2 after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
@@ -33,7 +33,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
                 />
               </Link>
             </h3>
-            <p className="text-[0.9375rem] leading-[1.7] text-muted text-pretty">{project.description}</p>
+            <p className="type-body type-measure text-muted text-pretty">{project.description}</p>
           </div>
           <div className="flex flex-col gap-6">
             <dl className="grid grid-cols-2 gap-6">
@@ -42,8 +42,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               ))}
             </dl>
             <div className="card-surface rounded-lg border p-4">
-              <p className="text-[0.8125rem] font-medium">{project.highlight.title}</p>
-              <p className="mt-1 text-[0.8125rem] leading-relaxed text-muted text-pretty">{project.highlight.body}</p>
+              <p className="type-supporting type-strong">{project.highlight.title}</p>
+              <p className="mt-1 type-supporting text-muted text-pretty">{project.highlight.body}</p>
             </div>
           </div>
         </div>

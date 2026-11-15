@@ -3,20 +3,20 @@ type Row = { category: string; trigger: string; reason: string; decision: "Sales
 export function DecisionMatrix({ rows }: { rows: Row[] }) {
   return (
     <div className="card-surface overflow-x-auto rounded-lg border">
-      <table className="w-full min-w-[44rem] text-left text-sm">
+      <table className="type-supporting w-full min-w-[44rem] text-left">
         <caption className="sr-only">Conditions that route an applicant to Sales or stop the digital application</caption>
-        <thead className="border-b bg-surface font-mono text-[0.625rem] uppercase tracking-widest text-muted">
+        <thead className="border-b bg-surface type-eyebrow text-muted">
           <tr>
-            <th scope="col" className="px-4 py-3 font-normal">
+            <th scope="col" className="px-4 py-3">
               Category
             </th>
-            <th scope="col" className="px-4 py-3 font-normal">
+            <th scope="col" className="px-4 py-3">
               Trigger
             </th>
-            <th scope="col" className="px-4 py-3 font-normal">
+            <th scope="col" className="px-4 py-3">
               Why
             </th>
-            <th scope="col" className="px-4 py-3 font-normal">
+            <th scope="col" className="px-4 py-3">
               Decision
             </th>
           </tr>
@@ -24,14 +24,14 @@ export function DecisionMatrix({ rows }: { rows: Row[] }) {
         <tbody className="divide-y align-top">
           {rows.map((row) => (
             <tr key={`${row.category}-${row.trigger}`}>
-              <th scope="row" className="px-4 py-4 font-medium">
+              <th scope="row" className="px-4 py-4 type-strong">
                 {row.category}
               </th>
               <td className="px-4 py-4">{row.trigger}</td>
               <td className="px-4 py-4 text-muted">{row.reason}</td>
               <td className="px-4 py-4">
                 <span
-                  className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-0.5 font-mono text-[0.6875rem] uppercase tracking-wider ${
+                  className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-0.5 type-eyebrow ${
                     row.decision === "Sales" ? "text-positive" : "text-negative"
                   }`}
                 >

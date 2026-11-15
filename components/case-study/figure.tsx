@@ -29,8 +29,8 @@ export function FigureFrame({
     <figure className="flex flex-col gap-4">
       {children}
       {showCaption ? (
-        <figcaption className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm">
-          {meta.number ? <span className="font-mono text-xs uppercase tracking-wider text-muted">{meta.number}</span> : null}
+        <figcaption className="type-supporting flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          {meta.number ? <span className="type-eyebrow text-muted">{meta.number}</span> : null}
           {captionText ? <span className="text-foreground">{captionText}</span> : null}
           {showPending ? <span className="text-muted italic">Caption pending</span> : null}
         </figcaption>
@@ -88,8 +88,8 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
       style={style}
     >
       <Icon className="size-5 text-muted" aria-hidden="true" />
-      <span className="max-w-[18rem] text-xs leading-relaxed text-muted text-pretty">{slot.placeholder}</span>
-      <span className="font-mono text-[0.625rem] uppercase tracking-widest text-muted/70">
+      <span className="type-supporting max-w-[18rem] text-muted text-pretty">{slot.placeholder}</span>
+      <span className="type-eyebrow text-muted">
         {slot.kind === "video" ? "Video pending" : "Asset pending"}
       </span>
     </div>
@@ -103,7 +103,7 @@ export function Figure({ figure }: { figure: FigureData }) {
       {figure.slots.map((slot) => (
         <div key={slot.placeholder} className="flex flex-col gap-2.5">
           <MediaSlot slot={slot} />
-          {slot.label ? <p className="font-mono text-xs uppercase tracking-wider text-muted">{slot.label}</p> : null}
+          {slot.label ? <p className="type-eyebrow text-muted">{slot.label}</p> : null}
         </div>
       ))}
     </div>
@@ -111,7 +111,7 @@ export function Figure({ figure }: { figure: FigureData }) {
 
   return (
     <FigureFrame meta={figure} hasSlotLabels={hasSlotLabels}>
-      {figure.title ? <h3 className="text-base font-medium">{figure.title}</h3> : null}
+      {figure.title ? <h3 className="type-body type-strong">{figure.title}</h3> : null}
       {figure.reveal ? <Reveal>{grid}</Reveal> : grid}
     </FigureFrame>
   )

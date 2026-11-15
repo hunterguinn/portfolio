@@ -11,7 +11,7 @@ export function AiSection() {
     <SectionShell id="experience" label={ai.label}>
       <div className="flex flex-col gap-8 md:gap-10">
         <SectionTitle id="experience">{ai.title}</SectionTitle>
-        <div className="flex flex-col gap-4 text-[0.9375rem] leading-[1.7] text-muted text-pretty">
+        <div className="flex flex-col gap-4 type-body type-measure text-muted text-pretty">
           {ai.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
@@ -23,17 +23,17 @@ export function AiSection() {
                 <dl>
                   <MetricStat metric={item.metric} />
                 </dl>
-                <p className="text-[0.8125rem] leading-relaxed text-muted text-pretty">{item.body}</p>
+                <p className="type-supporting text-muted text-pretty">{item.body}</p>
               </li>
             ))}
           </ul>
         </Reveal>
         <div className="flex flex-col gap-3">
-          <h3 className="font-mono text-xs uppercase tracking-widest text-muted">{ai.stack.title}</h3>
+          <h3 className="type-eyebrow text-muted">{ai.stack.title}</h3>
           {ai.stack.items.length > 0 ? (
             <ul className="flex flex-wrap gap-2">
               {ai.stack.items.map((item) => (
-                <li key={item.title} className="rounded-full border px-3 py-1 text-sm">
+                <li key={item.title} className="type-supporting rounded-full border px-3 py-1">
                   {item.title}
                 </li>
               ))}

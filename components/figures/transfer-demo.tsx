@@ -62,26 +62,26 @@ export function TransferDemo({
   return (
     <div className="flex flex-col gap-4">
       <div className="card-surface overflow-x-auto rounded-lg border">
-        <table className="w-full min-w-[34rem] text-left text-sm">
+        <table className="type-supporting w-full min-w-[34rem] text-left">
           <caption className="sr-only">
             {synchronized
               ? "Securities with a selection checkbox synchronized to an amount field"
               : "Securities where the amount field alone determines what transfers"}
           </caption>
-          <thead className="border-b bg-surface font-mono text-[0.625rem] uppercase tracking-widest text-muted">
+          <thead className="border-b bg-surface type-eyebrow text-muted">
             <tr>
               {synchronized ? (
-                <th scope="col" className="w-12 px-4 py-3 font-normal">
+                <th scope="col" className="w-12 px-4 py-3">
                   <span className="sr-only">Select</span>
                 </th>
               ) : null}
-              <th scope="col" className="px-4 py-3 font-normal">
+              <th scope="col" className="px-4 py-3">
                 Security
               </th>
-              <th scope="col" className="px-4 py-3 text-right font-normal">
+              <th scope="col" className="px-4 py-3 text-right">
                 Shares
               </th>
-              <th scope="col" className="px-4 py-3 text-right font-normal">
+              <th scope="col" className="px-4 py-3 text-right">
                 Amount to transfer
               </th>
             </tr>
@@ -104,9 +104,9 @@ export function TransferDemo({
                       />
                     </td>
                   ) : null}
-                  <th scope="row" className="px-4 py-3 font-normal">
-                    <span className="block font-medium">{row.symbol}</span>
-                    <span className="block text-xs text-muted">{row.name}</span>
+                  <th scope="row" className="px-4 py-3">
+                    <span className="block type-strong">{row.symbol}</span>
+                    <span className="block type-supporting text-muted">{row.name}</span>
                   </th>
                   <td className="px-4 py-3 text-right tabular-nums text-muted">{row.shares}</td>
                   <td className="px-4 py-3 text-right">
@@ -127,7 +127,7 @@ export function TransferDemo({
                         className="w-full bg-transparent px-2 py-2 text-right tabular-nums outline-none"
                       />
                     </div>
-                    <p className="mt-1 text-xs text-muted">
+                    <p className="mt-1 type-supporting text-muted">
                       {needsAmount ? <span className="text-negative">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
                     </p>
                   </td>
@@ -138,7 +138,7 @@ export function TransferDemo({
         </table>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p role="status" aria-live="polite" className="text-sm text-muted">
+        <p role="status" aria-live="polite" className="type-supporting text-muted">
           {status}
         </p>
         <button
@@ -147,7 +147,7 @@ export function TransferDemo({
             setState(initialState(rows))
             setTouched(false)
           }}
-          className="rounded-full border px-4 py-1.5 text-xs transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="type-supporting rounded-full border px-4 py-1.5 transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           Reset
         </button>

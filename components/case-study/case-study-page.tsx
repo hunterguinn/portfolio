@@ -8,9 +8,9 @@ import { Blocks } from "./block-renderer"
 function MetaList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <dt className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{title}</dt>
+      <dt className="type-eyebrow text-muted">{title}</dt>
       <dd className="mt-2.5">
-        <ul className="flex flex-col gap-1 text-[0.8125rem] leading-snug">
+        <ul className="type-supporting flex flex-col gap-1">
           {items.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -35,10 +35,10 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
           </dl>
         }
       >
-        <h1 className="text-3xl font-normal leading-[1.08] tracking-[-0.03em] text-balance md:text-[2.75rem]">
+        <h1 className="type-display text-balance">
           {study.title}
         </h1>
-        <p className="mt-6 text-base leading-relaxed text-muted text-pretty md:text-[1.0625rem]">{study.intro}</p>
+        <p className="type-body type-measure mt-6 text-muted text-pretty">{study.intro}</p>
         <dl className="mt-10 grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
           <MetaList title="The Team" items={study.team} />
           <MetaList title="The Timeline" items={study.timeline} />
@@ -59,10 +59,10 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
           href={next.href}
           className="group inline-flex flex-col gap-3 focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-foreground"
         >
-          <span id="next-project-title" className="text-2xl font-normal tracking-[-0.02em] text-balance md:text-[1.875rem]">
+          <span id="next-project-title" className="type-project-title text-balance">
             {next.title}
           </span>
-          <span className="inline-flex items-center gap-2 text-[0.8125rem] text-muted transition-colors group-hover:text-foreground">
+          <span className="inline-flex items-center gap-2 type-supporting text-muted transition-colors group-hover:text-foreground">
             View project
             <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>

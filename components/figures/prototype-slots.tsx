@@ -12,7 +12,7 @@ export function PrototypeSlots({
 }) {
   return (
     <div className="flex flex-col gap-5">
-      <h3 className="text-base font-medium">{title}</h3>
+      <h3 className="type-body type-strong">{title}</h3>
       <div className="flex flex-col items-start gap-6 md:flex-row md:items-end">
         {slots.map((slot) => (
           <div
@@ -27,7 +27,7 @@ export function PrototypeSlots({
                 aspect: slot.aspect,
               }}
             />
-            <p className="font-mono text-xs uppercase tracking-wider text-muted">{slot.device}</p>
+            <p className="type-eyebrow text-muted">{slot.device}</p>
           </div>
         ))}
       </div>
