@@ -46,7 +46,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
     const contain = slot.fit === "contain"
     return (
       <div
-        className={`relative overflow-hidden rounded-lg border ${contain ? "bg-[#ecebe7]" : "bg-surface"}`}
+        className={`relative overflow-hidden rounded-lg ${contain ? "bg-[#ecebe7]" : "bg-surface"}`}
         style={style}
       >
         <Image
@@ -69,7 +69,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
         playsInline
         preload="metadata"
         aria-label={slot.alt}
-        className="w-full rounded-lg border bg-surface object-cover"
+        className="w-full rounded-lg bg-surface object-cover"
         style={style}
       />
     )
@@ -84,7 +84,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
     <div
       role="img"
       aria-label={`Placeholder for ${slot.kind}: ${slot.placeholder}`}
-      className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg border border-dashed p-4 text-center"
+      className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center"
       style={style}
     >
       <Icon className="size-5 text-muted" aria-hidden="true" />

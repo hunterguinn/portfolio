@@ -6,10 +6,10 @@ function Chip({ children }: { children: React.ReactNode }) {
 
 function Stage({ label, title, children }: { label: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="card-surface flex flex-col gap-4 rounded-lg border p-5">
-      <div>
+    <div className="card-surface flex flex-col gap-4 rounded-lg p-5">
+      <div className="flex flex-col gap-1">
         <p className="type-eyebrow text-muted">{label}</p>
-        <h3 className="mt-1 type-body type-strong">{title}</h3>
+        <h3 className="type-body type-strong">{title}</h3>
       </div>
       {children}
     </div>
@@ -17,7 +17,7 @@ function Stage({ label, title, children }: { label: string; title: string; child
 }
 
 function Connector() {
-  return <div aria-hidden="true" className="mx-auto h-6 w-px bg-border" />
+  return <div aria-hidden="true" className="h-6 w-px self-center bg-border" />
 }
 
 export function ApplicationFlow({
@@ -44,7 +44,7 @@ export function ApplicationFlow({
       <Stage label={selection.label} title={selection.title}>
         <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {selection.products.map((product) => (
-            <li key={product.name} className="flex items-center justify-between gap-3 card-surface rounded-md border px-3 py-2 type-supporting">
+            <li key={product.name} className="flex items-center justify-between gap-3 rounded-md bg-background px-3 py-2 type-supporting">
               {product.name}
               <span className="type-supporting text-muted tabular-nums">{product.count}</span>
             </li>
@@ -54,17 +54,17 @@ export function ApplicationFlow({
       <Connector />
       <div className="grid gap-4 lg:grid-cols-3">
         {paths.map((path) => (
-          <div key={path.label} className="flex flex-col gap-4 card-surface rounded-lg border border-dashed p-5">
-            <div>
+          <div key={path.label} className="flex flex-col gap-4 card-surface rounded-lg p-5">
+            <div className="flex flex-col gap-1">
               <p className="type-eyebrow text-muted">Product path</p>
-              <h3 className="mt-1 type-body type-strong">{path.label}</h3>
+              <h3 className="type-body type-strong">{path.label}</h3>
             </div>
             <ul className="flex flex-wrap gap-2">
               {path.items.map((item) => (
                 <Chip key={item}>{item}</Chip>
               ))}
             </ul>
-            <p className="mt-auto type-supporting text-muted">Applies to: {path.appliesTo.join(", ")}</p>
+            <p className="flex flex-1 items-end type-supporting text-muted">Applies to: {path.appliesTo.join(", ")}</p>
           </div>
         ))}
       </div>

@@ -96,9 +96,9 @@
  * line height and letter spacing. Do not add one-off text-* / tracking-* / leading-*
  * classes to text; add or reuse a role instead.
  *
- *   type-display        hero statement, case-study page titles  (34 -> 48px, 500)
- *   type-section-title  "Selected Works", major headings, big metrics (24 -> 30px, 500)
+ *   type-display        hero, page and section titles, big metrics (36px, 500)
  *   type-project-title  project titles, pull quotes             (20 -> 24px, 500)
+ *   type-quote          testimonial quotes                      (20px, 400)
  *   type-body           descriptions and case-study prose       (16px, 400)
  *   type-supporting     labels, callouts, captions, nav         (14px, 400)
  *   type-eyebrow        short uppercase labels and badges       (12px, 500)
@@ -108,16 +108,16 @@
  */
 @layer components {
   .type-display {
-    font-size: clamp(2.125rem, 1.728rem + 1.697vw, 3rem);
+    font-size: 2.25rem;
     font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.035em;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
   }
-  .type-section-title {
-    font-size: clamp(1.5rem, 1.329rem + 0.727vw, 1.875rem);
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+  .type-quote {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
   }
   .type-project-title {
     font-size: clamp(1.25rem, 1.136rem + 0.485vw, 1.5rem);
@@ -152,10 +152,16 @@
   }
 }
 
-/* Page container: content is exactly 1200px wide; gutters sit outside it. */
+/*
+ * Page container: content is exactly 1200px wide; gutters sit outside it.
+ * No margins anywhere: a .page-band parent centres the capped container.
+ */
+.page-band {
+  display: grid;
+  justify-items: center;
+}
 .page-container {
   width: 100%;
-  margin-inline: auto;
   padding-inline: 1.25rem;
   max-width: calc(1200px + 2.5rem);
 }
@@ -176,15 +182,52 @@
   }
 }
 
-/* Cards: fill with their own border colour at 2%, rising to 8% on hover. */
+/* Cards have no borders: they sit on the surface colour and step up to surface-strong on hover. */
 .card-surface {
-  --card-border: var(--border);
-  border-color: var(--card-border);
-  background-color: color-mix(in srgb, var(--card-border) 2%, transparent);
+  background-color: var(--surface);
   transition: background-color 280ms ease;
 }
-.card-surface:hover {
-  background-color: color-mix(in srgb, var(--card-border) 8%, transparent);
+.card-surface:hover,
+[data-cursor="view-project"]:hover .card-surface {
+  background-color: var(--surface-strong);
+}
+
+/* Project cover gradients (per project, per theme). */
+.cover-gradient {
+  background-color: var(--cover-base);
+  background-image:
+    radial-gradient(110% 80% at 0% 55%, var(--cover-a) 0%, transparent 60%),
+    radial-gradient(80% 60% at 15% 100%, var(--cover-b) 0%, transparent 65%);
+}
+.cover-gradient[data-project="merrill"] {
+  --cover-base: #0c1511;
+  --cover-a: #2a8f62;
+  --cover-b: #c9a63c;
+}
+.cover-gradient[data-project="pos"] {
+  --cover-base: #170e0f;
+  --cover-a: #c8423f;
+  --cover-b: #e08a3c;
+}
+.cover-gradient[data-project="unified"] {
+  --cover-base: #0c1220;
+  --cover-a: #3b6fd6;
+  --cover-b: #7a5ad6;
+}
+.light .cover-gradient[data-project="merrill"] {
+  --cover-base: #e4efe9;
+  --cover-a: #8fd1b0;
+  --cover-b: #ecd98f;
+}
+.light .cover-gradient[data-project="pos"] {
+  --cover-base: #f3e5e3;
+  --cover-a: #f0a7a2;
+  --cover-b: #f3cf9c;
+}
+.light .cover-gradient[data-project="unified"] {
+  --cover-base: #e3e9f6;
+  --cover-a: #9db8ef;
+  --cover-b: #c5b4ef;
 }
 
 /* Curtain reveal for text blocks: only hidden once JS has confirmed it can reveal it again. */

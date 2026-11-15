@@ -12,11 +12,11 @@ export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
     <form
       action="#"
       aria-label="Citizenship step example"
-      className="flex max-w-xl flex-col gap-6 card-surface rounded-lg border p-6 md:p-8"
+      className="flex max-w-xl flex-col gap-6 card-surface rounded-lg p-6 md:p-8"
     >
-      <div>
+      <div className="flex flex-col gap-1">
         <h3 className="type-project-title">{copy.heading}</h3>
-        <p className="mt-1 type-supporting text-muted">{copy.required}</p>
+        <p className="type-supporting text-muted">{copy.required}</p>
       </div>
 
       <div className="flex flex-col gap-1.5">
@@ -38,7 +38,7 @@ export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
           <summary className="w-fit cursor-pointer underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground">
             {copy.statusHelpLabel}
           </summary>
-          <p className="mt-2 max-w-md">{copy.statusHelp}</p>
+          <p className="max-w-md pt-2">{copy.statusHelp}</p>
         </details>
       </div>
 

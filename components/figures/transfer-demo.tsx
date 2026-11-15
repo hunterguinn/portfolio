@@ -61,7 +61,7 @@ export function TransferDemo({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="card-surface overflow-x-auto rounded-lg border">
+      <div className="card-surface overflow-x-auto rounded-lg">
         <table className="type-supporting w-full min-w-[34rem] text-left">
           <caption className="sr-only">
             {synchronized
@@ -110,26 +110,28 @@ export function TransferDemo({
                   </th>
                   <td className="px-4 py-3 text-right tabular-nums text-muted">{row.shares}</td>
                   <td className="px-4 py-3 text-right">
-                    <label htmlFor={amountId} className="sr-only">
-                      Amount to transfer for {row.name}
-                    </label>
-                    <div className="ml-auto flex w-36 items-center rounded-md border bg-background focus-within:outline-2 focus-within:outline-foreground">
-                      <span aria-hidden="true" className="pl-3 text-muted">
-                        $
-                      </span>
-                      <input
-                        id={amountId}
-                        inputMode="decimal"
-                        value={current.amount}
-                        onChange={(event) => onAmountChange(index, event.target.value)}
-                        aria-invalid={needsAmount}
-                        placeholder="0"
-                        className="w-full bg-transparent px-2 py-2 text-right tabular-nums outline-none"
-                      />
+                    <div className="flex flex-col items-end gap-1">
+                      <label htmlFor={amountId} className="sr-only">
+                        Amount to transfer for {row.name}
+                      </label>
+                      <div className="flex w-36 items-center rounded-md border bg-background focus-within:outline-2 focus-within:outline-foreground">
+                        <span aria-hidden="true" className="pl-3 text-muted">
+                          $
+                        </span>
+                        <input
+                          id={amountId}
+                          inputMode="decimal"
+                          value={current.amount}
+                          onChange={(event) => onAmountChange(index, event.target.value)}
+                          aria-invalid={needsAmount}
+                          placeholder="0"
+                          className="w-full bg-transparent px-2 py-2 text-right tabular-nums outline-none"
+                        />
+                      </div>
+                      <p className="type-supporting text-muted">
+                        {needsAmount ? <span className="text-negative">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
+                      </p>
                     </div>
-                    <p className="mt-1 type-supporting text-muted">
-                      {needsAmount ? <span className="text-negative">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
-                    </p>
                   </td>
                 </tr>
               )

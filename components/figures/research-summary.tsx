@@ -7,7 +7,7 @@ export function ResearchSummary({
 }) {
   return (
     <div className="grid gap-3 lg:grid-cols-2">
-      <section className="card-surface flex flex-col gap-5 rounded-lg border p-6" aria-labelledby="research-questions">
+      <section className="card-surface flex flex-col gap-5 rounded-lg p-6" aria-labelledby="research-questions">
         <h3 id="research-questions" className="type-body type-strong">
           {questions.title}
         </h3>
@@ -22,7 +22,7 @@ export function ResearchSummary({
           ))}
         </ul>
       </section>
-      <section className="card-surface flex flex-col gap-5 rounded-lg border p-6" aria-labelledby="research-findings">
+      <section className="card-surface flex flex-col gap-5 rounded-lg p-6" aria-labelledby="research-findings">
         <h3 id="research-findings" className="type-body type-strong">
           {findings.title}
         </h3>

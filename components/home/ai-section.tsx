@@ -19,7 +19,7 @@ export function AiSection() {
         <Reveal>
           <ul className="grid gap-3 md:grid-cols-3">
             {ai.metrics.map((item) => (
-              <li key={item.metric.label} className="card-surface flex flex-col gap-4 rounded-lg border p-5 md:p-6">
+              <li key={item.metric.label} className="card-surface flex flex-col gap-4 rounded-lg p-5 md:p-6">
                 <dl>
                   <MetricStat metric={item.metric} />
                 </dl>
@@ -33,7 +33,7 @@ export function AiSection() {
           {ai.stack.items.length > 0 ? (
             <ul className="flex flex-wrap gap-2">
               {ai.stack.items.map((item) => (
-                <li key={item.title} className="type-supporting rounded-full border px-3 py-1">
+                <li key={item.title} className="type-supporting rounded-full bg-surface px-3 py-1">
                   {item.title}
                 </li>
               ))}

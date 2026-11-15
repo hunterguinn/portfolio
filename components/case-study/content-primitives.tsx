@@ -70,13 +70,8 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
         return (
           <li
             key={card.title}
-            style={
-              {
-                "--tone": tone.color,
-                "--card-border": "color-mix(in oklab, var(--tone) 24%, var(--border))",
-              } as React.CSSProperties
-            }
-            className="card-surface flex flex-col gap-4 rounded-lg border p-5"
+            style={{ "--tone": tone.color } as React.CSSProperties}
+            className="card-surface flex flex-col gap-4 rounded-lg p-5"
           >
             <div className="flex items-center justify-between gap-3">
               {Icon ? (
@@ -109,9 +104,9 @@ export function Callout({ text }: { text: string }) {
 
 export function TestimonialQuote({ testimonial, compact = false }: { testimonial: Testimonial; compact?: boolean }) {
   return (
-    <figure className={`flex h-full flex-col justify-between gap-6 card-surface rounded-lg border ${compact ? "p-5" : "p-5 md:p-8"}`}>
+    <figure className={`flex h-full flex-col justify-between gap-6 card-surface rounded-lg ${compact ? "p-5" : "p-5 md:p-8"}`}>
       <blockquote>
-        <p className={"type-body text-pretty"}>
+        <p className={`${compact ? "type-quote" : "type-body"} text-pretty`}>
           {`“${testimonial.quote}”`}
         </p>
       </blockquote>
@@ -127,7 +122,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
 }
 
 export function MetricValue({ metric, size = "lg" }: { metric: Metric; size?: "lg" | "md" }) {
-  const sizeClass = size === "lg" ? "type-section-title" : "type-project-title"
+  const sizeClass = size === "lg" ? "type-display" : "type-project-title"
   if (metric.value === null) {
     return (
       <span className={`${sizeClass} text-muted/50`}>
@@ -143,7 +138,7 @@ export function Metrics({ metrics }: { metrics: Metric[] }) {
   return (
     <dl className="grid gap-3 sm:grid-cols-2">
       {metrics.map((metric) => (
-        <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg border p-5 md:p-6">
+        <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
           <dt className="flex flex-wrap items-center gap-2 type-supporting text-muted">
             {metric.label}
             {metric.value === null ? (

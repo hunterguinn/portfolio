@@ -1,52 +1,113 @@
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ChevronRight, Database, Workflow } from "lucide-react"
 import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
-import { SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionTitle } from "@/components/site/section-shell"
+import { Pending } from "@/components/site/pending"
 import { Reveal } from "@/components/site/reveal"
 import { MediaSlot } from "@/components/case-study/figure"
-import { MetricStat } from "./metric-stat"
 import { CurtainCover } from "./curtain-cover"
 
+function IconBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="flex size-12 items-center justify-center rounded-full bg-surface-strong" aria-hidden="true">
+      {children}
+    </span>
+  )
+}
+
+function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
+  if (cover.src && cover.kind === "image") {
+    return (
+      <div className="relative min-h-64 flex-1 overflow-hidden rounded-2xl bg-[#ecebe7]">
+        <Image
+          src={cover.src}
+          alt={cover.alt}
+          fill
+          sizes="(min-width: 1024px) 45vw, 100vw"
+          className="object-contain p-6 md:p-10"
+        />
+      </div>
+    )
+  }
+  return (
+    <div className="flex min-h-64 flex-1 flex-col">
+      <MediaSlot slot={cover} />
+    </div>
+  )
+}
+
 function ProjectCard({ project }: { project: ProjectSummary }) {
+  const [format, year] = project.meta.split(" · ")
+
   return (
     <Reveal>
-      <article
-        data-cursor="view-project"
-        className="group relative flex flex-col gap-6 border-t pt-10 first:border-t-0 first:pt-0"
-      >
+      <article data-cursor="view-project" className="group relative">
         <CurtainCover>
-          <MediaSlot slot={project.cover} />
-        </CurtainCover>
-        <div className="grid gap-8 xl:grid-cols-2">
-          <div className="flex flex-col gap-3">
-            <p className="type-eyebrow text-muted">{project.meta}</p>
-            <h3 className="type-project-title text-balance">
-              <Link
-                href={project.href}
-                className="inline-flex items-start gap-2 after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
-              >
-                {project.title}
-                <ArrowUpRight
-                  className="mt-1 size-4 shrink-0 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
-            </h3>
-            <p className="type-body type-measure text-muted text-pretty">{project.description}</p>
-          </div>
-          <div className="flex flex-col gap-6">
-            <dl className="grid grid-cols-2 gap-6">
-              {project.metrics.map((metric) => (
-                <MetricStat key={metric.label} metric={metric} />
-              ))}
-            </dl>
-            <div className="card-surface rounded-lg border p-4">
-              <p className="type-supporting type-strong">{project.highlight.title}</p>
-              <p className="mt-1 type-supporting text-muted text-pretty">{project.highlight.body}</p>
+          <div className="grid gap-3 lg:grid-cols-[1.45fr_1fr_1fr]">
+            <div
+              data-project={project.slug}
+              className="cover-gradient flex min-h-[28rem] flex-col gap-6 rounded-3xl p-3 pb-5 text-white lg:min-h-[34rem]"
+            >
+              <CoverMedia cover={project.cover} />
+              <div className="flex flex-col gap-1 px-2">
+                <h3 className="type-project-title text-balance">{project.title}</h3>
+                <p className="flex items-baseline justify-between gap-4 type-body">
+                  <span>{format}</span>
+                  <span className="tabular-nums">{year}</span>
+                </p>
+              </div>
             </div>
+
+            <div className="card-surface flex flex-col gap-8 rounded-3xl p-3">
+              <p className="type-body rounded-2xl bg-background p-6 text-pretty">{project.description}</p>
+              <div className="flex flex-1 flex-col justify-between gap-8 px-3 pb-2">
+                <div className="flex flex-col gap-1">
+                  <p className="type-body type-strong">The Team:</p>
+                  {project.team.map((member) => (
+                    <p key={member.role} className="type-body text-muted">
+                      {member.role} &bull; {member.name}
+                    </p>
+                  ))}
+                </div>
+                <Link
+                  href={project.href}
+                  className="flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-4 font-mono text-sm text-background after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
+                >
+                  View project
+                  <ChevronRight className="size-4" aria-hidden="true" />
+                  <span className="sr-only">: {project.title}</span>
+                </Link>
+              </div>
+            </div>
+
+            <dl className="flex flex-col gap-3">
+              {project.metrics.map((metric) => (
+                <div key={metric.label} className="card-surface flex flex-1 flex-col justify-between gap-6 rounded-3xl p-6">
+                  <IconBadge>
+                    <Database className="size-4" />
+                  </IconBadge>
+                  <div className="flex flex-col gap-1">
+                    <dd className="type-display tabular-nums">
+                      {metric.value ?? <Pending>Metric pending</Pending>}
+                    </dd>
+                    <dt className="type-body text-muted">{metric.label}</dt>
+                  </div>
+                </div>
+              ))}
+              <div className="card-surface flex flex-1 flex-col justify-between gap-6 rounded-3xl p-6">
+                <IconBadge>
+                  <Workflow className="size-4" />
+                </IconBadge>
+                <div className="flex flex-col gap-1">
+                  <dd className="type-project-title text-balance">{project.highlight.title}</dd>
+                  <dt className="type-body text-muted text-pretty">{project.highlight.body}</dt>
+                </div>
+              </div>
+            </dl>
           </div>
-        </div>
+        </CurtainCover>
       </article>
     </Reveal>
   )
@@ -54,15 +115,18 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 
 export function WorkSection() {
   return (
-    <SectionShell id="work" label={home.work.label}>
-      <div className="flex flex-col gap-10 md:gap-14">
-        <SectionTitle id="work">{home.work.title}</SectionTitle>
-        <div className="flex flex-col gap-14 md:gap-20">
+    <section id="work" aria-labelledby="work-title" className="page-band border-t">
+      <div className="page-container flex flex-col gap-10 py-14 md:gap-14 md:py-20">
+        <div className="grid gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[10.5rem]">
+          <p className="type-eyebrow text-muted">{home.work.label}</p>
+          <SectionTitle id="work">{home.work.title}</SectionTitle>
+        </div>
+        <div className="flex flex-col gap-10 md:gap-14">
           {home.work.projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </div>
-    </SectionShell>
+    </section>
   )
 }

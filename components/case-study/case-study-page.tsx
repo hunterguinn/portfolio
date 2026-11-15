@@ -7,9 +7,9 @@ import { Blocks } from "./block-renderer"
 
 function MetaList({ title, items }: { title: string; items: string[] }) {
   return (
-    <div>
+    <div className="flex flex-col gap-2.5">
       <dt className="type-eyebrow text-muted">{title}</dt>
-      <dd className="mt-2.5">
+      <dd>
         <ul className="type-supporting flex flex-col gap-1">
           {items.map((item) => (
             <li key={item}>{item}</li>
@@ -29,20 +29,22 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         bordered={false}
         label={study.eyebrow}
         aside={
-          <dl className="mt-10 hidden gap-7 lg:grid">
+          <dl className="hidden gap-7 lg:grid">
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>
         }
       >
-        <h1 className="type-display text-balance">
-          {study.title}
-        </h1>
-        <p className="type-body type-measure mt-6 text-muted text-pretty">{study.intro}</p>
-        <dl className="mt-10 grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
-          <MetaList title="The Team" items={study.team} />
-          <MetaList title="The Timeline" items={study.timeline} />
-        </dl>
+        <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
+            <h1 className="type-display text-balance">{study.title}</h1>
+            <p className="type-body type-measure text-muted text-pretty">{study.intro}</p>
+          </div>
+          <dl className="grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
+            <MetaList title="The Team" items={study.team} />
+            <MetaList title="The Timeline" items={study.timeline} />
+          </dl>
+        </div>
       </SectionShell>
 
       {study.sections.map((section) => (

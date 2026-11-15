@@ -16,7 +16,7 @@ export function OrderScreen({ aspect }: { aspect: string }) {
     <div
       role="img"
       aria-label="Coded stand-in for the redesigned Order screen: three item rows with quantity counters and a visible subtotal"
-      className="flex flex-col card-surface overflow-hidden rounded-lg border"
+      className="flex flex-col card-surface overflow-hidden rounded-lg"
       style={{ aspectRatio: aspect }}
     >
       <div className="flex items-center justify-between border-b px-4 py-3">

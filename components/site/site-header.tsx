@@ -5,7 +5,7 @@ import { ThemeToggle } from "./theme-toggle"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur-md">
+    <header className="page-band sticky top-0 z-40 border-b bg-background/85 backdrop-blur-md">
       <div className="page-container flex h-14 items-center justify-between gap-6">
         <Link href="/" className="type-supporting type-strong">
           {site.name}
