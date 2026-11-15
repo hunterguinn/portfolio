@@ -61,7 +61,7 @@ export function TransferDemo({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="overflow-x-auto rounded-lg border">
+      <div className="card-surface overflow-x-auto rounded-lg border">
         <table className="w-full min-w-[34rem] text-left text-sm">
           <caption className="sr-only">
             {synchronized

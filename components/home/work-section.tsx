@@ -6,12 +6,18 @@ import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { Reveal } from "@/components/site/reveal"
 import { MediaSlot } from "@/components/case-study/figure"
 import { MetricStat } from "./metric-stat"
+import { CurtainCover } from "./curtain-cover"
 
 function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <Reveal>
-      <article className="group relative flex flex-col gap-6 border-t pt-10 first:border-t-0 first:pt-0">
-        <MediaSlot slot={project.cover} />
+      <article
+        data-cursor="view-project"
+        className="group relative flex flex-col gap-6 border-t pt-10 first:border-t-0 first:pt-0"
+      >
+        <CurtainCover>
+          <MediaSlot slot={project.cover} />
+        </CurtainCover>
         <div className="grid gap-8 xl:grid-cols-2">
           <div className="flex flex-col gap-3">
             <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{project.meta}</p>
@@ -35,7 +41,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
                 <MetricStat key={metric.label} metric={metric} />
               ))}
             </dl>
-            <div className="rounded-lg border bg-surface p-4">
+            <div className="card-surface rounded-lg border p-4">
               <p className="text-[0.8125rem] font-medium">{project.highlight.title}</p>
               <p className="mt-1 text-[0.8125rem] leading-relaxed text-muted text-pretty">{project.highlight.body}</p>
             </div>

@@ -5,7 +5,7 @@ import { Pending } from "./pending"
 export function SiteFooter() {
   return (
     <footer className="border-t">
-      <div className="mx-auto grid max-w-[78rem] gap-10 px-5 py-14 md:px-10 md:py-16 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-14">
+      <div className="page-container grid gap-10 py-14 md:py-16 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[10.5rem]">
         <p className="text-[0.8125rem] text-muted">{site.copyright}</p>
         <div className="grid gap-10 sm:grid-cols-2">
           <nav aria-labelledby="footer-pages">

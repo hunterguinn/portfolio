@@ -5,7 +5,7 @@ export function DeliveryTimeline({ periods, lanes }: { periods: string[]; lanes:
   const columns = { gridTemplateColumns: `6rem repeat(${periods.length}, minmax(0, 1fr))` }
 
   return (
-    <div className="overflow-x-auto rounded-lg border">
+    <div className="card-surface overflow-x-auto rounded-lg border">
       <div className="min-w-[44rem]">
         <div className="grid border-b bg-surface" style={columns} aria-hidden="true">
           <span />

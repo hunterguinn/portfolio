@@ -6,7 +6,7 @@ function Chip({ children }: { children: React.ReactNode }) {
 
 function Stage({ label, title, children }: { label: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-4 rounded-lg border bg-surface p-5">
+    <div className="card-surface flex flex-col gap-4 rounded-lg border p-5">
       <div>
         <p className="font-mono text-[0.625rem] uppercase tracking-widest text-muted">{label}</p>
         <h3 className="mt-1 text-base font-medium">{title}</h3>
@@ -44,7 +44,7 @@ export function ApplicationFlow({
       <Stage label={selection.label} title={selection.title}>
         <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {selection.products.map((product) => (
-            <li key={product.name} className="flex items-center justify-between gap-3 rounded-md border bg-background px-3 py-2 text-sm">
+            <li key={product.name} className="flex items-center justify-between gap-3 card-surface rounded-md border px-3 py-2 text-sm">
               {product.name}
               <span className="font-mono text-xs text-muted">{product.count}</span>
             </li>
@@ -54,7 +54,7 @@ export function ApplicationFlow({
       <Connector />
       <div className="grid gap-4 lg:grid-cols-3">
         {paths.map((path) => (
-          <div key={path.label} className="flex flex-col gap-4 rounded-lg border border-dashed p-5">
+          <div key={path.label} className="flex flex-col gap-4 card-surface rounded-lg border border-dashed p-5">
             <div>
               <p className="font-mono text-[0.625rem] uppercase tracking-widest text-muted">Product path</p>
               <h3 className="mt-1 text-base font-medium">{path.label}</h3>

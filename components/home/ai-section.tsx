@@ -17,9 +17,9 @@ export function AiSection() {
           ))}
         </div>
         <Reveal>
-          <ul className="grid gap-px overflow-hidden rounded-lg border bg-border md:grid-cols-3">
+          <ul className="grid gap-3 md:grid-cols-3">
             {ai.metrics.map((item) => (
-              <li key={item.metric.label} className="flex flex-col gap-4 bg-background p-5 md:p-6">
+              <li key={item.metric.label} className="card-surface flex flex-col gap-4 rounded-lg border p-5 md:p-6">
                 <dl>
                   <MetricStat metric={item.metric} />
                 </dl>

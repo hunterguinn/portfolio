@@ -6,8 +6,8 @@ export function ResearchSummary({
   findings: { title: string; items: { text: string; status: "Confirmed" | "Unconfirmed" }[] }
 }) {
   return (
-    <div className="grid gap-px overflow-hidden rounded-lg border bg-border lg:grid-cols-2">
-      <section className="flex flex-col gap-5 bg-background p-6" aria-labelledby="research-questions">
+    <div className="grid gap-3 lg:grid-cols-2">
+      <section className="card-surface flex flex-col gap-5 rounded-lg border p-6" aria-labelledby="research-questions">
         <h3 id="research-questions" className="text-base font-medium">
           {questions.title}
         </h3>
@@ -22,7 +22,7 @@ export function ResearchSummary({
           ))}
         </ul>
       </section>
-      <section className="flex flex-col gap-5 bg-background p-6" aria-labelledby="research-findings">
+      <section className="card-surface flex flex-col gap-5 rounded-lg border p-6" aria-labelledby="research-findings">
         <h3 id="research-findings" className="text-base font-medium">
           {findings.title}
         </h3>
@@ -31,7 +31,7 @@ export function ResearchSummary({
             <li key={item.text} className="flex flex-col items-start gap-2">
               <span
                 className={`rounded-full border px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-wider ${
-                  item.status === "Confirmed" ? "text-positive" : "border-dashed text-muted"
+                  item.status === "Confirmed" ? "text-positive" : "border-dashed text-yellow"
                 }`}
               >
                 {item.status}

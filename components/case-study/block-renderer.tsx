@@ -39,9 +39,9 @@ function BlockView({ block }: { block: Block }) {
       return <Figure figure={block.figure} />
     case "pair":
       return (
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
+        <div className="flex min-w-0 flex-col gap-8 md:gap-10">
           <Blocks blocks={block.main} />
-          <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
+          <div className="min-w-0">
             <Blocks blocks={block.aside} />
           </div>
         </div>

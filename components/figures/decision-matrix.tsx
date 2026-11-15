@@ -2,7 +2,7 @@ type Row = { category: string; trigger: string; reason: string; decision: "Sales
 
 export function DecisionMatrix({ rows }: { rows: Row[] }) {
   return (
-    <div className="overflow-x-auto rounded-lg border">
+    <div className="card-surface overflow-x-auto rounded-lg border">
       <table className="w-full min-w-[44rem] text-left text-sm">
         <caption className="sr-only">Conditions that route an applicant to Sales or stop the digital application</caption>
         <thead className="border-b bg-surface font-mono text-[0.625rem] uppercase tracking-widest text-muted">

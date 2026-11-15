@@ -70,12 +70,17 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
         return (
           <li
             key={card.title}
-            style={{ "--tone": tone.color } as React.CSSProperties}
-            className="flex flex-col gap-4 rounded-lg border border-[color-mix(in_oklab,var(--tone)_24%,var(--border))] bg-[color-mix(in_oklab,var(--tone)_6%,var(--background))] p-5"
+            style={
+              {
+                "--tone": tone.color,
+                "--card-border": "color-mix(in oklab, var(--tone) 24%, var(--border))",
+              } as React.CSSProperties
+            }
+            className="card-surface flex flex-col gap-4 rounded-lg border p-5"
           >
             <div className="flex items-center justify-between gap-3">
               {Icon ? (
-                <span className="inline-flex size-8 items-center justify-center rounded-md bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)]">
+                <span className="inline-flex size-8 items-center justify-center rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)]">
                   <Icon className="size-4" aria-hidden="true" />
                 </span>
               ) : null}
@@ -104,7 +109,7 @@ export function Callout({ text }: { text: string }) {
 
 export function TestimonialQuote({ testimonial, compact = false }: { testimonial: Testimonial; compact?: boolean }) {
   return (
-    <figure className={`flex h-full flex-col justify-between gap-6 rounded-lg border bg-surface ${compact ? "p-5" : "p-5 md:p-8"}`}>
+    <figure className={`flex h-full flex-col justify-between gap-6 card-surface rounded-lg border ${compact ? "p-5" : "p-5 md:p-8"}`}>
       <blockquote>
         <p className={`leading-relaxed text-pretty ${compact ? "text-[0.9375rem]" : "text-base md:text-[1.0625rem]"}`}>
           {`“${testimonial.quote}”`}
@@ -136,9 +141,9 @@ export function MetricValue({ metric, size = "lg" }: { metric: Metric; size?: "l
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {
   return (
-    <dl className="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2">
+    <dl className="grid gap-3 sm:grid-cols-2">
       {metrics.map((metric) => (
-        <div key={metric.label} className="flex flex-col-reverse gap-3 bg-background p-5 md:p-6">
+        <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg border p-5 md:p-6">
           <dt className="flex flex-wrap items-center gap-2 text-[0.8125rem] text-muted">
             {metric.label}
             {metric.value === null ? (
