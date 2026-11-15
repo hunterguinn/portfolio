@@ -36,14 +36,20 @@ export const merrill: CaseStudy = {
           cards: [
             {
               title: "Account Eligibility",
+              icon: "shield-check",
+              tone: "problem",
               body: "Clients need to select corresponding account types, such as Roth IRA to Roth IRA, rather than choose an ineligible account from the start.",
             },
             {
               title: "Incomplete Data",
+              icon: "unplug",
+              tone: "problem",
               body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
             },
             {
               title: "Asset Selection",
+              icon: "list-checks",
+              tone: "problem",
               body: "Clients needed to specify what to transfer and how much to transfer, which could vary from very small to very large transfers.",
             },
           ],
@@ -175,14 +181,20 @@ export const merrill: CaseStudy = {
           cards: [
             {
               title: "Adding an Interstitial",
+              icon: "message",
+              tone: "solution",
               body: "While I explored other design solution, a radio question fulfilled the requirement without requiring the clients to understand underlying rules and complexity.",
             },
             {
               title: "Two Paths",
+              icon: "split",
+              tone: "solution",
               body: "An asset counter made the selection limit visible, while contextual messaging explained when clients needed to change their selections and why.",
             },
             {
               title: "Tailored Asset Selection",
+              icon: "sliders",
+              tone: "solution",
               body: "Choose a full transfer would take clients right to the last screen, while a partial transfer would allow clients to choose up to 50 securities.",
             },
           ],

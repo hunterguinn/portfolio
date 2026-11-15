@@ -25,14 +25,20 @@ export const unified: CaseStudy = {
           cards: [
             {
               title: "Digital-First Needs",
+              icon: "smartphone",
+              tone: "problem",
               body: "Fintechs like Toast and Square made getting started feel fast and straightforward, setting expectations for how quickly businesses could access financial services.",
             },
             {
               title: "Associate-Led Process",
+              icon: "users",
+              tone: "problem",
               body: "Each application depended on sales associate review, even when some could be approved digitally, which accounted for the most friction.",
             },
             {
               title: "Disconnected Journeys",
+              icon: "unlink",
+              tone: "problem",
               body: "Each product had its own application, questions, and requirements – there was no shared process.",
             },
           ],
@@ -68,14 +74,20 @@ export const unified: CaseStudy = {
           cards: [
             {
               title: "Enable Self-Service",
+              icon: "pointer",
+              tone: "approach",
               body: "Allow eligible clients to complete the application independently, phile preserving a path to sales support when additional review is needed.",
             },
             {
               title: "Adapt to Each Client",
+              icon: "sliders",
+              tone: "approach",
               body: "Use product selections and business information to determine which questions and setup steps appear.",
             },
             {
               title: "Preserve Product Rules",
+              icon: "shield-check",
+              tone: "approach",
               body: "Maintain each product's eligibility criteria and risk requirements within a shared architecture.",
             },
           ],
@@ -329,14 +341,20 @@ export const unified: CaseStudy = {
           cards: [
             {
               title: "Self-Service After Submission",
+              icon: "user-check",
+              tone: "solution",
               body: "Clients could complete outstanding actions without waiting for an associate to contact them, helping eligible applications progress faster.",
             },
             {
               title: "Status & Visibility",
+              icon: "activity",
+              tone: "solution",
               body: "Clients could see the status of each product they applied for, making progress and outstanding requirements easier to understand.",
             },
             {
               title: "Support If Needed",
+              icon: "life-buoy",
+              tone: "solution",
               body: "Clients could contact a Merchant Associate with questions, preserving human support for situations that needed guidance or additional review.",
             },
           ],

@@ -5,25 +5,31 @@
 :root,
 .dark {
   --background: #000000;
-  --foreground: #f1efe9;
-  --muted: #8d8c86;
-  --surface: #0c0c0c;
-  --surface-strong: #151515;
-  --border: #242424;
+  --foreground: #ededea;
+  --muted: #8a8a85;
+  --surface: #090909;
+  --surface-strong: #121212;
+  --border: #1f1f1f;
   --positive: #93d1a0;
   --negative: #ff9180;
+  --tone-problem: #ff8f7a;
+  --tone-approach: #86b4ff;
+  --tone-solution: #86d6a0;
   color-scheme: dark;
 }
 
 .light {
-  --background: #f4f3ef;
+  --background: #f6f5f1;
   --foreground: #0b0b0b;
   --muted: #5c5b56;
-  --surface: #ebe9e3;
-  --surface-strong: #e1dfd8;
-  --border: #d3d1ca;
+  --surface: #eeede8;
+  --surface-strong: #e4e2db;
+  --border: #d9d7d0;
   --positive: #2a6a37;
   --negative: #a4321f;
+  --tone-problem: #b23a25;
+  --tone-approach: #2457b8;
+  --tone-solution: #26703a;
   color-scheme: light;
 }
 
@@ -47,6 +53,7 @@
   html {
     background: var(--background);
     color: var(--foreground);
+    font-size: 15px;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;

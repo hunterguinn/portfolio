@@ -43,14 +43,20 @@ export const pos: CaseStudy = {
           cards: [
             {
               title: "Business Risk",
+              icon: "shield-alert",
+              tone: "problem",
               body: "Losing the existing point-of-sale solution threatened payment processing for small businesses and put thousands of client relationships at risk.",
             },
             {
               title: "Aggressive Timeline",
+              icon: "timer",
+              tone: "problem",
               body: "The fast transition left us with very little time to define requirements, evaluate design options, and improve the existing experience.",
             },
             {
               title: "Sprawling Design Scope",
+              icon: "layers",
+              tone: "problem",
               body: "Hundreds of screens made it difficult to understand which features were available and how the acquired software worked.",
             },
           ],
@@ -112,14 +118,20 @@ export const pos: CaseStudy = {
           cards: [
             {
               title: "Understand Behaviors",
+              icon: "eye",
+              tone: "approach",
               body: "Confirm what each screen does, what action lead where, and what functionality was necessary.",
             },
             {
               title: "Repeat Where Possible",
+              icon: "repeat",
+              tone: "approach",
               body: "Reuse page templates and design patterns so technology has less net-new development and the experience becomes predicable.",
             },
             {
               title: "Targeted Improvements",
+              icon: "target",
+              tone: "approach",
               body: "Prioritize practical changes that simplify tasks, clarify actions, and improve consistency without adding complexity.",
             },
           ],
@@ -175,14 +187,20 @@ export const pos: CaseStudy = {
               cards: [
                 {
                   title: "Clearer Actions",
+                  icon: "pointer",
+                  tone: "solution",
                   body: "Removed redundant controls and unnecessary item details, making the interface easier to scan while keeping essential functionality accessible.",
                 },
                 {
                   title: "Less Visual Clutter",
+                  icon: "minimize",
+                  tone: "solution",
                   body: "Removed item thumbnails, since merchants rarely uploaded any, and decimal quantities, since items were always sold in whole numbers",
                 },
                 {
                   title: "Fewer Steps",
+                  icon: "route",
+                  tone: "solution",
                   body: "Merchants could add items and adjust quantities on the screen, eliminating unnecessary navigation and keeping key actions in reach.",
                 },
               ],

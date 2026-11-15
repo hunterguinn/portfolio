@@ -43,9 +43,19 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
   const style = { aspectRatio: slot.aspect }
 
   if (slot.src && slot.kind === "image") {
+    const contain = slot.fit === "contain"
     return (
-      <div className="relative overflow-hidden rounded-lg border bg-surface" style={style}>
-        <Image src={slot.src} alt={slot.alt} fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
+      <div
+        className={`relative overflow-hidden rounded-lg border ${contain ? "bg-[#ecebe7]" : "bg-surface"}`}
+        style={style}
+      >
+        <Image
+          src={slot.src}
+          alt={slot.alt}
+          fill
+          sizes="(min-width: 1024px) 60vw, 100vw"
+          className={contain ? "object-contain p-5 md:p-8" : "object-cover object-top"}
+        />
       </div>
     )
   }

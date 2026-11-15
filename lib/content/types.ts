@@ -18,6 +18,8 @@ export type MediaSlot = {
   aspect: string
   /** Sub-label shown under the slot (device, breakpoint, or annotation). */
   label?: string
+  /** "contain" shows the whole image on a light panel (device mockups); default is "cover". */
+  fit?: "contain" | "cover"
   /** Coded stand-in rendered when no `src` is supplied. */
   fallback?: "order-screen"
 }
@@ -36,7 +38,32 @@ export type FigureData = {
 
 export type FigureMeta = Pick<FigureData, "number" | "title" | "caption">
 
-export type Card = { title: string; body: string }
+export type CardTone = "problem" | "approach" | "solution"
+
+export type CardIcon =
+  | "shield-check"
+  | "shield-alert"
+  | "unplug"
+  | "list-checks"
+  | "split"
+  | "sliders"
+  | "message"
+  | "timer"
+  | "layers"
+  | "eye"
+  | "repeat"
+  | "target"
+  | "pointer"
+  | "minimize"
+  | "route"
+  | "smartphone"
+  | "users"
+  | "unlink"
+  | "user-check"
+  | "activity"
+  | "life-buoy"
+
+export type Card = { title: string; body: string; icon?: CardIcon; tone?: CardTone }
 
 export type Metric = {
   /** Null renders a muted "Metric pending" placeholder. */

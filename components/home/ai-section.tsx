@@ -9,9 +9,9 @@ export function AiSection() {
 
   return (
     <SectionShell id="experience" label={ai.label}>
-      <div className="flex flex-col gap-10 md:gap-12">
+      <div className="flex flex-col gap-8 md:gap-10">
         <SectionTitle id="experience">{ai.title}</SectionTitle>
-        <div className="flex max-w-2xl flex-col gap-4 text-lg leading-relaxed text-muted text-pretty">
+        <div className="flex flex-col gap-4 text-[0.9375rem] leading-[1.7] text-muted text-pretty">
           {ai.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
@@ -19,11 +19,11 @@ export function AiSection() {
         <Reveal>
           <ul className="grid gap-px overflow-hidden rounded-lg border bg-border md:grid-cols-3">
             {ai.metrics.map((item) => (
-              <li key={item.metric.label} className="flex flex-col gap-4 bg-background p-6">
+              <li key={item.metric.label} className="flex flex-col gap-4 bg-background p-5 md:p-6">
                 <dl>
                   <MetricStat metric={item.metric} />
                 </dl>
-                <p className="text-sm text-muted text-pretty">{item.body}</p>
+                <p className="text-[0.8125rem] leading-relaxed text-muted text-pretty">{item.body}</p>
               </li>
             ))}
           </ul>

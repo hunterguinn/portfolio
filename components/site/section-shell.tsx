@@ -1,4 +1,4 @@
-/** Two-column section: sticky label/metadata column on the left, content on the right. */
+/** Two-column section: sticky label/metadata column on the left, content filling the remaining width on the right. */
 export function SectionShell({
   id,
   label,
@@ -18,9 +18,9 @@ export function SectionShell({
       aria-labelledby={id ? `${id}-title` : undefined}
       className={bordered ? "border-t" : undefined}
     >
-      <div className="mx-auto grid max-w-[88rem] gap-8 px-5 py-20 md:px-10 md:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:gap-16 lg:py-36">
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          {label ? <p className="font-mono text-xs uppercase tracking-widest text-muted">{label}</p> : null}
+      <div className="mx-auto grid max-w-[78rem] gap-6 px-5 py-14 md:px-10 md:py-20 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-14">
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          {label ? <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{label}</p> : null}
           {aside}
         </div>
         <div className="min-w-0">{children}</div>
@@ -33,7 +33,7 @@ export function SectionTitle({ id, children }: { id?: string; children: React.Re
   return (
     <h2
       id={id ? `${id}-title` : undefined}
-      className="max-w-3xl text-3xl font-medium leading-tight tracking-tight text-balance md:text-4xl lg:text-5xl"
+      className="text-2xl font-normal leading-[1.15] tracking-[-0.02em] text-balance md:text-[1.875rem]"
     >
       {children}
     </h2>

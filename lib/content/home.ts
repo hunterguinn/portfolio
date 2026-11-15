@@ -30,7 +30,9 @@ export const home = {
         },
         cover: {
           kind: "image",
-          alt: "Merrill Edge Asset Transfer project cover",
+          src: "/images/home/merrill-cover.webp",
+          fit: "contain",
+          alt: "Three phone screens from the Merrill Edge asset transfer flow: choosing a financial institution, selecting assets, and reviewing the transfer",
           placeholder: "Merrill · Project cover",
           aspect: "16 / 10",
         },
@@ -53,7 +55,9 @@ export const home = {
         },
         cover: {
           kind: "image",
-          alt: "Point-of-Sale Software project cover",
+          src: "/images/home/pos-cover.webp",
+          fit: "contain",
+          alt: "Three PAX point-of-sale terminals running the Bank of America payment software",
           placeholder: "POS · Project cover",
           aspect: "16 / 10",
         },
@@ -76,7 +80,9 @@ export const home = {
         },
         cover: {
           kind: "image",
-          alt: "Unified Client Application project cover",
+          src: "/images/home/unified-cover.webp",
+          fit: "contain",
+          alt: "Business Advantage application flow showing the select products step with credit card options",
           placeholder: "Unified · Project cover",
           aspect: "16 / 10",
         },

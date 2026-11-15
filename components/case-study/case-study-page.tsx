@@ -8,9 +8,9 @@ import { Blocks } from "./block-renderer"
 function MetaList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <dt className="font-mono text-xs uppercase tracking-widest text-muted">{title}</dt>
-      <dd className="mt-3">
-        <ul className="flex flex-col gap-1.5 text-sm">
+      <dt className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">{title}</dt>
+      <dd className="mt-2.5">
+        <ul className="flex flex-col gap-1 text-[0.8125rem] leading-snug">
           {items.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -29,17 +29,17 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         bordered={false}
         label={study.eyebrow}
         aside={
-          <dl className="mt-10 hidden gap-8 lg:grid">
+          <dl className="mt-10 hidden gap-7 lg:grid">
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>
         }
       >
-        <h1 className="max-w-4xl text-4xl font-medium leading-[1.05] tracking-tight text-balance md:text-6xl lg:text-7xl">
+        <h1 className="text-3xl font-normal leading-[1.08] tracking-[-0.03em] text-balance md:text-[2.75rem]">
           {study.title}
         </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted text-pretty md:text-xl">{study.intro}</p>
-        <dl className="mt-12 grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
+        <p className="mt-6 text-base leading-relaxed text-muted text-pretty md:text-[1.0625rem]">{study.intro}</p>
+        <dl className="mt-10 grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
           <MetaList title="The Team" items={study.team} />
           <MetaList title="The Timeline" items={study.timeline} />
         </dl>
@@ -47,7 +47,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
       {study.sections.map((section) => (
         <SectionShell key={section.id} id={section.id} label={section.label}>
-          <div className="flex flex-col gap-10 md:gap-12">
+          <div className="flex flex-col gap-8 md:gap-10">
             <SectionTitle id={section.id}>{section.title}</SectionTitle>
             <Blocks blocks={section.blocks} />
           </div>
@@ -57,14 +57,14 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
       <SectionShell id="next-project" label="00 – Next Project">
         <Link
           href={next.href}
-          className="group inline-flex flex-col gap-4 focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-foreground"
+          className="group inline-flex flex-col gap-3 focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-foreground"
         >
-          <span id="next-project-title" className="text-3xl font-medium tracking-tight text-balance md:text-5xl">
+          <span id="next-project-title" className="text-2xl font-normal tracking-[-0.02em] text-balance md:text-[1.875rem]">
             {next.title}
           </span>
-          <span className="inline-flex items-center gap-2 text-sm text-muted transition-colors group-hover:text-foreground">
+          <span className="inline-flex items-center gap-2 text-[0.8125rem] text-muted transition-colors group-hover:text-foreground">
             View project
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>
         </Link>
       </SectionShell>

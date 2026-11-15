@@ -13,7 +13,7 @@ import { PrototypeSlots } from "@/components/figures/prototype-slots"
 
 export function Blocks({ blocks }: { blocks: Block[] }) {
   return (
-    <div className="flex flex-col gap-10 md:gap-12">
+    <div className="flex min-w-0 flex-col gap-8 md:gap-10">
       {blocks.map((block, index) => (
         <BlockView key={index} block={block} />
       ))}
@@ -39,9 +39,9 @@ function BlockView({ block }: { block: Block }) {
       return <Figure figure={block.figure} />
     case "pair":
       return (
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-10">
           <Blocks blocks={block.main} />
-          <div className="lg:sticky lg:top-28 lg:self-start">
+          <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
             <Blocks blocks={block.aside} />
           </div>
         </div>
