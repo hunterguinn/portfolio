@@ -256,7 +256,7 @@
   color: var(--foreground);
 }
 .js main p.section-eyebrow {
-  opacity: 0.4;
+  opacity: 0.6;
   transition: opacity 250ms ease;
 }
 .js main p.section-eyebrow[data-active="true"] {
