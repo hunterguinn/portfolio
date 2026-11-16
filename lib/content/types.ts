@@ -191,8 +191,6 @@ export type ProjectSummary = {
   title: string
   meta: string
   description: string
-  team: { role: string; name: string }[]
   metrics: Metric[]
-  highlight: { title: string; body: string }
   cover: MediaSlot
 }

@@ -98,6 +98,23 @@ export function Callout({ text }: { text: string }) {
 }
 
 export function TestimonialQuote({ testimonial, compact = false }: { testimonial: Testimonial; compact?: boolean }) {
+  if (compact) {
+    return (
+      <figure className="flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-6">
+        <figcaption className="flex items-center gap-3">
+          <Avatar name={testimonial.name} size={40} />
+          <span className="flex flex-col">
+            <span className="type-supporting type-strong">{testimonial.name}</span>
+            <span className="type-caption block text-muted">{testimonial.role}</span>
+          </span>
+        </figcaption>
+        <blockquote>
+          <p className="type-quote italic text-pretty">{testimonial.quote}</p>
+        </blockquote>
+      </figure>
+    )
+  }
+
   return (
     <figure
       className={`flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-6" : "rounded-lg p-5 md:p-8"}`}

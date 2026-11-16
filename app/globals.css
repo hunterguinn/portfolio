@@ -8,7 +8,7 @@
   --foreground: #f0f0f0;
   --muted: #8a8a8a;
   --surface: #1a1a1a;
-  --surface-strong: #2a2a2a;
+  --surface-strong: #252525;
   --border: #303030;
   --blue: #66b3ff;
   --red: #ff6961;
@@ -276,6 +276,9 @@
   display: flex;
   width: max-content;
   animation: ticker 22s linear infinite;
+}
+.ticker-reverse .ticker-track {
+  animation-direction: reverse;
 }
 @keyframes ticker {
   to {

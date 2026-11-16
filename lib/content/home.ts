@@ -1,10 +1,5 @@
 import type { ExperienceMetric, GalleryItem, ProjectSummary, StackTool, Testimonial } from "./types"
 
-const team = [
-  { role: "Product Designer", name: "Me" },
-  { role: "Digital Leadership", name: "Richard Hattaway Malivika" },
-]
-
 export const home = {
   headline: "Designing financial experiences that create clarity, build trust, and scale",
   welcome: "Welcome",
@@ -31,15 +26,10 @@ export const home = {
         meta: "Native app · 2027",
         description:
           "I designed a faster, responsive asset transfer experience that leveraged an open finance API to prep-populate data from the client's external brokerage, rethinking how clients connect external accounts, select assets, and move investments into Merrill.",
-        team,
         metrics: [
           { value: null, label: "Net assets transferred annually", sourceValue: "$0 billion" },
           { value: null, label: "Investment accounts supported", sourceValue: "0 million+" },
         ],
-        highlight: {
-          title: "Data to Design",
-          body: "I worked through imperfect API data and different client account types to support faster, better transfers.",
-        },
         cover: {
           kind: "image",
           src: "/images/home/merrill-cover.webp",
@@ -56,15 +46,10 @@ export const home = {
         meta: "Android responsive · 2026",
         description:
           "I helped bring a critical platform in-house following a vendor exit, providing point-of-sale continuity for small business clients and their customers.",
-        team,
         metrics: [
           { value: null, label: "Annual transactions", sourceValue: "$0 billion+" },
           { value: null, label: "Merchant locations worldwide", sourceValue: "0k+" },
         ],
-        highlight: {
-          title: "Building 1 to n",
-          body: "I established reusable components and patterns that enabled consistent implementation across terminals, devices, and web experiences.",
-        },
         cover: {
           kind: "image",
           src: "/images/home/pos-cover.webp",
@@ -81,15 +66,10 @@ export const home = {
         meta: "Web responsive · 2026",
         description:
           "I helped build a multi-product application that transformed how clients apply for banking services, balancing digital efficiency with the bank's eligibility and risk criteria.",
-        team,
         metrics: [
           { value: null, label: "Net assets transferred annually", sourceValue: "$0 billion" },
           { value: null, label: "Investment accounts supported", sourceValue: "0 million+" },
         ],
-        highlight: {
-          title: "xFN Collaboration",
-          body: "Aligned product, business, and technology on rules and edge cases, creating a seamless experience.",
-        },
         cover: {
           kind: "image",
           src: "/images/home/unified-cover.webp",
@@ -133,6 +113,8 @@ export const home = {
     ] satisfies ExperienceMetric[],
   },
   testimonials: {
+    label: "Testimonials",
+    title: "What others say",
     items: [
       {
         quote:

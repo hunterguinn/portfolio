@@ -1,10 +1,10 @@
+import Image from "next/image"
 import { GraduationCap, Sparkles, Users, type LucideIcon } from "lucide-react"
 import { home } from "@/lib/content/home"
 import type { ExperienceMetric } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { IconBadge } from "@/components/site/icon-badge"
 import { CountUp } from "@/components/site/count-up"
-import { TestimonialQuote } from "@/components/case-study/content-primitives"
 
 const metricIcons: Record<ExperienceMetric["icon"], LucideIcon> = {
   users: Users,
@@ -13,7 +13,7 @@ const metricIcons: Record<ExperienceMetric["icon"], LucideIcon> = {
 }
 
 export function AiSection() {
-  const { ai, testimonials } = home
+  const { ai, stack } = home
 
   return (
     <SectionShell id="experience" label={ai.label}>
@@ -26,6 +26,20 @@ export function AiSection() {
             ))}
           </div>
         </div>
+        <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-3">
+          {stack.map((tool) => (
+            <li key={tool.name}>
+              <Image
+                src={tool.src}
+                alt={tool.name}
+                title={tool.name}
+                width={40}
+                height={40}
+                className="size-10 rounded-[8px] opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              />
+            </li>
+          ))}
+        </ul>
         <ul className="grid gap-3 md:grid-cols-3">
           {ai.metrics.map((item, index) => {
             const Icon = metricIcons[item.icon]
@@ -38,26 +52,13 @@ export function AiSection() {
                   <p className="type-display">
                     <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
                   </p>
-                  <h3 className="type-project-title text-balance">{item.title}</h3>
+                  <h3 className="type-body font-medium text-balance">{item.title}</h3>
                   <p className="type-body text-muted text-pretty">{item.body}</p>
                 </div>
               </li>
             )
           })}
         </ul>
-        <div className="ticker fade-item">
-          <div className="ticker-track">
-            {[false, true].map((duplicate) => (
-              <ul key={String(duplicate)} className="flex shrink-0" aria-hidden={duplicate || undefined}>
-                {testimonials.items.map((item) => (
-                  <li key={item.name} className="w-[21rem] shrink-0 pr-3 md:w-[24rem]">
-                    <TestimonialQuote testimonial={item} compact />
-                  </li>
-                ))}
-              </ul>
-            ))}
-          </div>
-        </div>
       </div>
     </SectionShell>
   )

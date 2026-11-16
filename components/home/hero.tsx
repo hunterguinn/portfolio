@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { home } from "@/lib/content/home"
 import { profileImage } from "@/lib/content/avatars"
 import { SectionShell } from "@/components/site/section-shell"
@@ -22,20 +21,6 @@ export function Hero() {
           <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
           <p className="type-body max-w-2xl text-muted text-pretty">{home.intro}</p>
         </div>
-        <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-3">
-          {home.stack.map((tool) => (
-            <li key={tool.name}>
-              <Image
-                src={tool.src}
-                alt={tool.name}
-                title={tool.name}
-                width={32}
-                height={32}
-                className="size-8 rounded-lg opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-              />
-            </li>
-          ))}
-        </ul>
       </div>
     </SectionShell>
   )
