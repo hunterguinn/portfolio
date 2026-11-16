@@ -8,12 +8,12 @@ export const home = {
   greeting: "Hey, I'm Hunter 👋",
   stack: [
     { name: "Figma", src: "/images/stack/figma.png" },
-    { name: "Framer", src: "/images/stack/framer.png" },
+    { name: "Codex", src: "/images/stack/codex.png" },
     { name: "Sketch", src: "/images/stack/sketch.png" },
     { name: "Adobe", src: "/images/stack/adobe.png" },
     { name: "Jira", src: "/images/stack/jira.png" },
     { name: "Vercel", src: "/images/stack/vercel.png" },
-    { name: "Codex", src: "/images/stack/codex.png" },
+    { name: "Framer", src: "/images/stack/framer.png" },
   ] satisfies StackTool[],
   work: {
     title: "Selected Works",

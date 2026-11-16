@@ -26,16 +26,16 @@ export function AiSection() {
             ))}
           </div>
         </div>
-        <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-3">
+        <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
           {stack.map((tool) => (
             <li key={tool.name}>
               <Image
                 src={tool.src}
                 alt={tool.name}
                 title={tool.name}
-                width={40}
-                height={40}
-                className="size-10 rounded-[8px] opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                width={36}
+                height={36}
+                className="size-9 rounded-[8px] opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
               />
             </li>
           ))}

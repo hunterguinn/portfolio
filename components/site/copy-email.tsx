@@ -38,7 +38,7 @@ export function CopyEmailLink({ className }: { className?: string }) {
   )
 }
 
-/** Primary button that flips to a "Copied!" state for two seconds after copying. */
+/** Button that confirms a successful copy for two seconds. */
 export function CopyEmailButton({ className }: { className?: string }) {
   const [copied, setCopied] = useState(false)
   const timer = useRef<number>(0)
@@ -53,18 +53,12 @@ export function CopyEmailButton({ className }: { className?: string }) {
     timer.current = window.setTimeout(() => setCopied(false), 2000)
   }
 
+  const Icon = copied ? Check : Copy
+
   return (
-    <button type="button" onClick={onClick} className={`flip-button ${className ?? ""}`} data-copied={copied}>
-      <span className="flip-inner">
-        <span className="flip-face" aria-hidden={copied}>
-          <Copy className="size-4" aria-hidden="true" />
-          Copy email
-        </span>
-        <span className="flip-face flip-face-back" aria-hidden={!copied}>
-          <Check className="size-4" aria-hidden="true" />
-          Copied!
-        </span>
-      </span>
+    <button type="button" onClick={onClick} className={className}>
+      <Icon className="size-4" aria-hidden="true" />
+      {copied ? "Copied!" : "Copy email"}
     </button>
   )
 }
