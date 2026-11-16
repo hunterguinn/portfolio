@@ -31,7 +31,7 @@ export function ResearchSummary({
             <li key={item.text} className="flex flex-col items-start gap-2">
               <span
                 className={`rounded-full border px-2 py-0.5 type-eyebrow ${
-                  item.status === "Confirmed" ? "text-positive" : "border-dashed text-yellow"
+                  item.status === "Confirmed" ? "text-green" : "border-dashed text-yellow"
                 }`}
               >
                 {item.status}

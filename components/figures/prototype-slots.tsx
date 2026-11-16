@@ -13,11 +13,11 @@ export function PrototypeSlots({
   return (
     <div className="flex flex-col gap-5">
       <h3 className="type-body type-strong">{title}</h3>
-      <div className="flex flex-col items-start gap-6 md:flex-row md:items-end">
+      <div className="flex flex-col items-start gap-6">
         {slots.map((slot) => (
           <div
             key={slot.device}
-            className={`flex w-full flex-col gap-2.5 ${slot.device === "Mobile" ? "max-w-[15rem] shrink-0" : "flex-1"}`}
+            className={`flex w-full flex-col gap-2.5 ${slot.device === "Mobile" ? "max-w-[15rem]" : ""}`}
           >
             <MediaSlot
               slot={{

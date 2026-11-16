@@ -4,11 +4,10 @@ import type { FigureData, FigureMeta, MediaSlot as MediaSlotData } from "@/lib/c
 import { Reveal } from "@/components/site/reveal"
 import { OrderScreen } from "@/components/figures/order-screen"
 
-const columnClass: Record<NonNullable<FigureData["columns"]>, string> = {
-  1: "",
-  2: "sm:grid-cols-2",
-  3: "sm:grid-cols-3",
-  5: "sm:grid-cols-3 lg:grid-cols-5",
+/** Portrait slots (phones, tall screens) are capped in width so a stacked figure never becomes enormous. */
+function isPortrait(aspect: string) {
+  const [width, height] = aspect.split("/").map((part) => Number.parseFloat(part))
+  return Boolean(width && height && width < height)
 }
 
 /** Frame shared by image, video, and coded figures, with a figcaption below. */
@@ -99,9 +98,9 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
 export function Figure({ figure }: { figure: FigureData }) {
   const hasSlotLabels = figure.slots.some((slot) => slot.label)
   const grid = (
-    <div className={`grid items-end gap-4 ${columnClass[figure.columns ?? 1]}`}>
+    <div className="flex flex-col gap-4">
       {figure.slots.map((slot) => (
-        <div key={slot.placeholder} className="flex flex-col gap-2.5">
+        <div key={slot.placeholder} className={`flex w-full flex-col gap-2.5 ${isPortrait(slot.aspect) ? "max-w-sm" : ""}`}>
           <MediaSlot slot={slot} />
           {slot.label ? <p className="type-eyebrow text-muted">{slot.label}</p> : null}
         </div>

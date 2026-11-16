@@ -32,7 +32,7 @@ export function DecisionMatrix({ rows }: { rows: Row[] }) {
               <td className="px-4 py-4">
                 <span
                   className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-0.5 type-eyebrow ${
-                    row.decision === "Sales" ? "text-positive" : "text-negative"
+                    row.decision === "Sales" ? "text-green" : "text-red"
                   }`}
                 >
                   <span aria-hidden="true" className="size-1.5 rounded-full bg-current" />

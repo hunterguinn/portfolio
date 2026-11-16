@@ -156,7 +156,6 @@ export const merrill: CaseStudy = {
         {
           type: "figure",
           figure: {
-            columns: 2,
             reveal: true,
             slots: [
               {
@@ -295,7 +294,6 @@ export const merrill: CaseStudy = {
           figure: {
             number,
             title,
-            columns: 2 as const,
             reveal: true,
             slots: [
               {

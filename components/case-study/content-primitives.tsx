@@ -50,10 +50,10 @@ const cardIcons: Record<CardIcon, LucideIcon> = {
   "life-buoy": LifeBuoy,
 }
 
-const toneStyles: Record<CardTone, { label: string; color: string }> = {
-  problem: { label: "Challenge", color: "var(--tone-problem)" },
-  approach: { label: "Approach", color: "var(--tone-approach)" },
-  solution: { label: "Solution", color: "var(--tone-solution)" },
+const toneColors: Record<CardTone, string> = {
+  problem: "var(--red)",
+  approach: "var(--blue)",
+  solution: "var(--green)",
 }
 
 export function Paragraph({ children }: { children: React.ReactNode }) {
@@ -61,32 +61,25 @@ export function Paragraph({ children }: { children: React.ReactNode }) {
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
-  const grid = columns === 3 ? "md:grid-cols-3" : "sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2"
+  const grid = columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
   return (
     <ul className={`grid gap-3 ${grid}`}>
       {cards.map((card) => {
-        const tone = toneStyles[card.tone ?? "approach"]
+        const tone = toneColors[card.tone ?? "approach"]
         const Icon = card.icon ? cardIcons[card.icon] : null
         return (
           <li
             key={card.title}
-            style={{ "--tone": tone.color } as React.CSSProperties}
-            className="card-surface flex flex-col gap-4 rounded-lg p-5"
+            style={{ "--tone": tone } as React.CSSProperties}
+            className="card-surface flex flex-col gap-3 rounded-lg p-5 md:gap-1.5"
           >
-            <div className="flex items-center justify-between gap-3">
-              {Icon ? (
-                <span className="inline-flex size-8 items-center justify-center rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)]">
-                  <Icon className="size-4" aria-hidden="true" />
-                </span>
-              ) : null}
-              <span className="type-eyebrow text-[var(--tone)]">
-                {tone.label}
+            {Icon ? (
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)] md:mb-6">
+                <Icon className="size-4" aria-hidden="true" />
               </span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <h3 className="type-body type-strong">{card.title}</h3>
-              <p className="type-supporting text-muted text-pretty">{card.body}</p>
-            </div>
+            ) : null}
+            <h3 className="type-body type-strong">{card.title}</h3>
+            <p className="type-supporting text-muted text-pretty">{card.body}</p>
           </li>
         )
       })}

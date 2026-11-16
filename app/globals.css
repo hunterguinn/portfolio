@@ -4,21 +4,16 @@
 
 :root,
 .dark {
-  --background: #121214;
-  --foreground: #f5f5f7;
+  --background: #0a0a0a;
+  --foreground: #f0f0f0;
   --muted: #a1a1a6;
-  --surface: #1c1c1e;
-  --surface-strong: #2c2c2e;
-  --border: #38383a;
+  --surface: #1a1a1a;
+  --surface-strong: #2a2a2a;
+  --border: #303030;
   --blue: #66b3ff;
   --red: #ff6961;
   --yellow: #ffd60a;
   --green: #5ddb7d;
-  --positive: var(--green);
-  --negative: var(--red);
-  --tone-problem: var(--red);
-  --tone-approach: var(--blue);
-  --tone-solution: var(--green);
   color-scheme: dark;
 }
 
@@ -47,8 +42,7 @@
   --color-red: var(--red);
   --color-yellow: var(--yellow);
   --color-green: var(--green);
-  --color-positive: var(--positive);
-  --color-negative: var(--negative);
+  --color-white: #fafafa;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --radius-md: 0.75rem;

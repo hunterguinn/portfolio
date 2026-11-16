@@ -31,9 +31,17 @@ export type FigureData = {
   /** Source caption. When both title and caption are missing, "Caption pending" renders. */
   caption?: string
   slots: MediaSlot[]
-  /** Grid columns for the slots at wide sizes. */
-  columns?: 1 | 2 | 3 | 5
   reveal?: boolean
+}
+
+/** One photo in the About Me bento grid. Set `src` (under /public/images/home/about) to replace the placeholder. */
+export type GalleryItem = {
+  src?: string
+  alt: string
+  /** Expected asset label shown while the asset is missing. */
+  placeholder: string
+  /** Minimum CSS aspect-ratio for the photo; the card grows to fill its column. */
+  aspect: string
 }
 
 export type FigureMeta = Pick<FigureData, "number" | "title" | "caption">

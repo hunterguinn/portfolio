@@ -129,7 +129,7 @@ export function TransferDemo({
                         />
                       </div>
                       <p className="type-supporting text-muted">
-                        {needsAmount ? <span className="text-negative">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
+                        {needsAmount ? <span className="text-red">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
                       </p>
                     </div>
                   </td>

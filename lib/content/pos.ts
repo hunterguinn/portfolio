@@ -139,7 +139,6 @@ export const pos: CaseStudy = {
         {
           type: "figure",
           figure: {
-            columns: 2,
             reveal: true,
             slots: [
               {
@@ -210,7 +209,6 @@ export const pos: CaseStudy = {
             {
               type: "figure",
               figure: {
-                columns: 2,
                 reveal: true,
                 slots: [
                   {
@@ -400,7 +398,6 @@ export const pos: CaseStudy = {
           type: "figure",
           figure: {
             number: "Figure 5.0",
-            columns: 3,
             reveal: true,
             slots: [
               {
@@ -431,7 +428,6 @@ export const pos: CaseStudy = {
           type: "figure",
           figure: {
             number: "Figure 5.0",
-            columns: 2,
             reveal: true,
             slots: [
               {
@@ -471,7 +467,6 @@ export const pos: CaseStudy = {
           figure: {
             number: "Figure 6.0",
             title: "Order KDS Screen in Horizontal and Vertical Layouts",
-            columns: 2,
             reveal: true,
             slots: [
               {
@@ -494,7 +489,6 @@ export const pos: CaseStudy = {
         {
           type: "figure",
           figure: {
-            columns: 2,
             reveal: true,
             slots: [
               {

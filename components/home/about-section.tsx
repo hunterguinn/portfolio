@@ -1,6 +1,7 @@
 import { home } from "@/lib/content/home"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { Pending } from "@/components/site/pending"
+import { AboutGallery } from "./about-gallery"
 
 const buttonClass =
   "inline-flex items-center gap-3 rounded-full border type-supporting px-4 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
@@ -29,6 +30,7 @@ export function AboutSection() {
             </li>
           ))}
         </ul>
+        <AboutGallery columns={about.gallery} />
       </div>
     </SectionShell>
   )

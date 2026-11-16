@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ChevronRight, Database, Workflow } from "lucide-react"
 import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
-import { SectionTitle } from "@/components/site/section-shell"
+import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { Pending } from "@/components/site/pending"
 import { Reveal } from "@/components/site/reveal"
 import { MediaSlot } from "@/components/case-study/figure"
@@ -45,10 +45,10 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
     <Reveal>
       <article data-cursor="view-project" className="group relative">
         <CurtainCover>
-          <div className="grid gap-3 lg:grid-cols-[1.45fr_1fr_1fr]">
+          <div className="grid gap-3 lg:grid-cols-2">
             <div
               data-project={project.slug}
-              className="cover-gradient flex min-h-[28rem] flex-col gap-6 rounded-3xl p-3 pb-5 text-white lg:min-h-[34rem]"
+              className="cover-gradient flex min-h-[28rem] flex-col gap-6 rounded-3xl p-3 pb-5 text-white lg:col-span-2 lg:min-h-[30rem]"
             >
               <CoverMedia cover={project.cover} />
               <div className="flex flex-col gap-1 px-2">
@@ -115,18 +115,15 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 
 export function WorkSection() {
   return (
-    <section id="work" aria-labelledby="work-title" className="page-band border-t">
-      <div className="page-container flex flex-col gap-10 py-14 md:gap-14 md:py-20">
-        <div className="grid gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[10.5rem]">
-          <p className="type-eyebrow text-muted">{home.work.label}</p>
-          <SectionTitle id="work">{home.work.title}</SectionTitle>
-        </div>
+    <SectionShell id="work" label={home.work.label}>
+      <div className="flex flex-col gap-10 md:gap-14">
+        <SectionTitle id="work">{home.work.title}</SectionTitle>
         <div className="flex flex-col gap-10 md:gap-14">
           {home.work.projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }

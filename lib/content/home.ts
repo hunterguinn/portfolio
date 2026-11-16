@@ -1,4 +1,4 @@
-import type { Card, Metric, ProjectSummary, Testimonial } from "./types"
+import type { Card, GalleryItem, Metric, ProjectSummary, Testimonial } from "./types"
 
 const team = [
   { role: "Product Designer", name: "Me" },
@@ -141,7 +141,26 @@ export const home = {
     body: "I play tennis, pickleball, and go out on 50 mile rides on my road bike when the weather is nice. I also love having a trip on the calendar, whether it's a weekend getaway or a longer vacation.",
     actions: [
       { label: "Contact me", href: null as string | null },
-      { label: "Download CV", href: null as string | null },
-    ],
+  { label: "Download CV", href: null as string | null },
+  ],
+  /** Four bento columns, each stacking two photos. Add `src` to a photo to replace its placeholder. */
+  gallery: [
+  [
+  { alt: "Hunter standing at a railing above Lake Como", placeholder: "Lake Como", aspect: "7 / 10" },
+  { alt: "Boston skyline across the harbor at sunset", placeholder: "Boston skyline", aspect: "7 / 5" },
+  ],
+  [
+  { alt: "Hunter sitting by the Beverly Hills sign", placeholder: "Beverly Hills", aspect: "1 / 1" },
+  { alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", aspect: "2 / 3" },
+  ],
+  [
+  { alt: "Hunter in front of Hogwarts castle", placeholder: "Hogwarts", aspect: "2 / 3" },
+  { alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", aspect: "1 / 1" },
+  ],
+  [
+  { alt: "The Colosseum arena in Rome", placeholder: "Colosseum", aspect: "4 / 5" },
+  { alt: "The Trevi Fountain in Rome", placeholder: "Trevi Fountain", aspect: "4 / 5" },
+  ],
+  ] as GalleryItem[][],
   },
 }
