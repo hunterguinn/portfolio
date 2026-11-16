@@ -22,28 +22,38 @@ function MetaList({ title, items }: { title: string; items: string[] }) {
 
 export function CaseStudyPage({ study }: { study: CaseStudy }) {
   const next = nextProject[study.slug]
+  const jumpLinks = study.sections.reduce<{ id: string; name: string }[]>((links, section) => {
+    const name = section.label.replace(/^\d+\s*[–-]\s*/, "")
+    if (!links.some((link) => link.name === name)) links.push({ id: section.id, name })
+    return links
+  }, [])
 
   return (
     <article>
-      <SectionShell
-        bordered={false}
-        label={study.eyebrow}
-        aside={
-          <dl className="hidden gap-7 lg:grid">
-            <MetaList title="The Team" items={study.team} />
-            <MetaList title="The Timeline" items={study.timeline} />
-          </dl>
-        }
-      >
-        <div className="flex flex-col gap-10">
+      <SectionShell bordered={false} label={study.eyebrow}>
+        <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4 md:gap-6">
             <h1 className="type-display text-balance">{study.title}</h1>
             <p className="type-body text-muted text-pretty">{study.intro}</p>
           </div>
-          <dl className="grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
+          <dl className="grid grid-cols-2 gap-8">
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>
+          <nav aria-label="Jump to section">
+            <ul className="flex flex-wrap gap-3">
+              {jumpLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className="inline-flex items-center rounded-full border type-supporting px-4 py-2 transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </SectionShell>
 

@@ -2,7 +2,7 @@ export const site = {
   name: "Hunter Guinn",
   copyright: "© 2026 Hunter Guinn",
   nav: [
-    { label: "Work", href: "/#work" },
+    { label: "Projects", href: "/#work" },
     { label: "Experience", href: "/#experience" },
     { label: "About", href: "/#about" },
   ],

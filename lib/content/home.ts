@@ -1,4 +1,4 @@
-import type { Card, GalleryItem, Metric, ProjectSummary, Testimonial } from "./types"
+import type { ExperienceMetric, GalleryItem, ProjectSummary, StackTool, Testimonial } from "./types"
 
 const team = [
   { role: "Product Designer", name: "Me" },
@@ -11,6 +11,15 @@ export const home = {
   intro:
     "I'm building products across native and web platforms that empower consumers and wealth management clients at Bank of America.",
   greeting: "Hey, I'm Hunter 👋",
+  stack: [
+    { name: "Figma", src: "/images/stack/figma.png" },
+    { name: "Framer", src: "/images/stack/framer.png" },
+    { name: "Sketch", src: "/images/stack/sketch.png" },
+    { name: "Adobe", src: "/images/stack/adobe.png" },
+    { name: "Jira", src: "/images/stack/jira.png" },
+    { name: "Vercel", src: "/images/stack/vercel.png" },
+    { name: "Codex", src: "/images/stack/codex.png" },
+  ] satisfies StackTool[],
   work: {
     title: "Selected Works",
     label: "Projects",
@@ -101,19 +110,27 @@ export const home = {
     ],
     metrics: [
       {
-        metric: { value: null, label: "Designers empowered", sourceValue: "0" } satisfies Metric,
+        icon: "users",
+        count: 92,
+        suffix: "+",
+        title: "Designers empowered",
         body: "Mentored and supported in their professional growth.",
       },
       {
-        metric: { value: null, label: "Learning sessions", sourceValue: "0" } satisfies Metric,
+        icon: "graduation-cap",
+        count: 10,
+        suffix: "",
+        title: "Learning sessions",
         body: "Advancing design capabilities and AI adoption across the organization.",
       },
       {
-        metric: { value: null, label: "AI experiences built", sourceValue: "0" } satisfies Metric,
+        icon: "sparkles",
+        count: 3,
+        suffix: "+",
+        title: "AI experiences built",
         body: "Using AI to improve design demos and build plugins that improve workflow automation",
       },
-    ],
-    stack: { title: "Stack", items: [] as Card[], pending: "Stack list pending" },
+    ] satisfies ExperienceMetric[],
   },
   testimonials: {
     items: [
@@ -121,7 +138,7 @@ export const home = {
         quote:
           "Hunter is an exceptional design leader and educator. His learning and development sessions have raised design skills across the organization.",
         name: "Natasha McMichael",
-        role: "Digital Exectuive @ Bank of America",
+        role: "Digital Executive @ Bank of America",
       },
       {
         quote:
@@ -139,7 +156,7 @@ export const home = {
   },
   about: {
     title: "When I'm not at my desk",
-    label: "About Me",
+    label: "About",
     body: "I play tennis, pickleball, and go out on 50 mile rides on my road bike when the weather is nice. I also love having a trip on the calendar, whether it's a weekend getaway or a longer vacation.",
   /** Four bento columns, each stacking two photos. Add `src` to a photo to replace its placeholder. */
   gallery: [

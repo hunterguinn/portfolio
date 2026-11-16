@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Download } from "lucide-react"
 import { site } from "@/lib/content/site"
 import { CopyEmailLink } from "./copy-email"
 
@@ -32,9 +33,10 @@ export function SiteFooter() {
                 <a
                   href={site.resume.href}
                   download={site.resume.filename}
-                  className="transition-colors hover:text-muted"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-muted"
                 >
                   Resume
+                  <Download className="size-3.5" aria-hidden="true" />
                 </a>
               </li>
               <li>

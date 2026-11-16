@@ -83,6 +83,16 @@ export type Metric = {
 
 export type Testimonial = { quote: string; name: string; role: string }
 
+export type StackTool = { name: string; src: string }
+
+export type ExperienceMetric = {
+  icon: "users" | "graduation-cap" | "sparkles"
+  count: number
+  suffix: string
+  title: string
+  body: string
+}
+
 export type TransferRow = { symbol: string; name: string; shares: number; amount: number }
 
 export type Block =

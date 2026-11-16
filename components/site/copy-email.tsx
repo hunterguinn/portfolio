@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { Check, Copy } from "lucide-react"
 import { site } from "@/lib/content/site"
 import { showToast } from "./toast"
 
@@ -31,8 +32,9 @@ async function copyEmail() {
 /** Footer text link that copies the email address. */
 export function CopyEmailLink({ className }: { className?: string }) {
   return (
-    <button type="button" onClick={copyEmail} className={className}>
+    <button type="button" onClick={copyEmail} className={`inline-flex items-center gap-2 ${className ?? ""}`}>
       Email
+      <Copy className="size-3.5" aria-hidden="true" />
     </button>
   )
 }
@@ -56,9 +58,11 @@ export function CopyEmailButton({ className }: { className?: string }) {
     <button type="button" onClick={onClick} className={`flip-button ${className ?? ""}`} data-copied={copied}>
       <span className="flip-inner">
         <span className="flip-face" aria-hidden={copied}>
+          <Copy className="size-4" aria-hidden="true" />
           Copy email
         </span>
         <span className="flip-face flip-face-back" aria-hidden={!copied}>
+          <Check className="size-4" aria-hidden="true" />
           Copied!
         </span>
       </span>

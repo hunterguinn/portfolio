@@ -6,7 +6,7 @@
 .dark {
   --background: #0a0a0a;
   --foreground: #f0f0f0;
-  --muted: #a1a1a6;
+  --muted: #8a8a8a;
   --surface: #1a1a1a;
   --surface-strong: #2a2a2a;
   --border: #303030;
@@ -92,9 +92,10 @@
  *
  *   type-display        hero, page and section titles, big metrics (36px, 500)
  *   type-project-title  project titles, pull quotes             (20 -> 24px, 500)
- *   type-quote          testimonial quotes                      (20px, 400)
+ *   type-quote          testimonial quotes                      (16px, 600)
  *   type-body           descriptions and case-study prose       (16px, 400)
  *   type-supporting     labels, callouts, captions, nav         (14px, 400)
+ *   type-caption        small secondary details, e.g. roles     (12px, 400)
  *   type-eyebrow        short uppercase labels and badges       (12px, 500)
  *
  * Modifier: type-strong (600, short emphasis). Prose always fills its column; never cap its width.
@@ -108,9 +109,9 @@
     letter-spacing: -0.03em;
   }
   .type-quote {
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.4;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.45;
     letter-spacing: -0.01em;
   }
   .type-project-title {
@@ -129,6 +130,12 @@
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.45;
+    letter-spacing: normal;
+  }
+  .type-caption {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.4;
     letter-spacing: normal;
   }
   .type-eyebrow {
@@ -241,7 +248,26 @@
   }
 }
 
-/* Testimonial ticker: slow, endless, no controls. Fades into the page background at both edges. */
+/* Section eyebrows sit at 50% until their section is in view (see SectionEyebrow), then reach full strength. */
+.section-eyebrow {
+  color: rgb(255 255 255 / 0.5);
+}
+.section-eyebrow[data-active="true"] {
+  color: rgb(255 255 255 / 1);
+}
+.light .section-eyebrow {
+  color: rgb(0 0 0 / 0.5);
+}
+.light .section-eyebrow[data-active="true"] {
+  color: rgb(0 0 0 / 1);
+}
+.js main p.section-eyebrow {
+  transition:
+    opacity 600ms ease 200ms,
+    color 400ms ease;
+}
+
+/* Testimonial ticker: steady, endless, no controls. Fades into the page background at both edges. */
 .ticker {
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
@@ -249,7 +275,7 @@
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker 90s linear infinite;
+  animation: ticker 22s linear infinite;
 }
 @keyframes ticker {
   to {
@@ -276,7 +302,12 @@
 }
 .flip-face {
   grid-area: 1 / 1;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .flip-face-back {

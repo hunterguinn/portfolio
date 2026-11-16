@@ -1,3 +1,4 @@
+import { Download } from "lucide-react"
 import { home } from "@/lib/content/home"
 import { site } from "@/lib/content/site"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
@@ -5,7 +6,7 @@ import { CopyEmailButton } from "@/components/site/copy-email"
 import { AboutGallery } from "./about-gallery"
 
 const buttonClass =
-  "inline-flex items-center rounded-full type-supporting px-4 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+  "inline-flex items-center gap-2 rounded-full type-supporting px-4 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
 
 export function AboutSection() {
   const { about } = home
@@ -24,6 +25,7 @@ export function AboutSection() {
             download={site.resume.filename}
             className={`${buttonClass} border hover:bg-foreground hover:text-background`}
           >
+            <Download className="size-4" aria-hidden="true" />
             Download CV
           </a>
         </div>

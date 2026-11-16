@@ -5,15 +5,8 @@ import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { Pending } from "@/components/site/pending"
+import { IconBadge } from "@/components/site/icon-badge"
 import { MediaSlot } from "@/components/case-study/figure"
-
-function IconBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="flex size-12 items-center justify-center rounded-full bg-surface-strong" aria-hidden="true">
-      {children}
-    </span>
-  )
-}
 
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
