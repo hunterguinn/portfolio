@@ -36,9 +36,9 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         }
       >
         <div className="flex flex-col gap-10">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 md:gap-6">
             <h1 className="type-display text-balance">{study.title}</h1>
-            <p className="type-body type-measure text-muted text-pretty">{study.intro}</p>
+            <p className="type-body text-muted text-pretty">{study.intro}</p>
           </div>
           <dl className="grid grid-cols-2 gap-8 border-t pt-8 lg:hidden">
             <MetaList title="The Team" items={study.team} />
@@ -49,7 +49,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
       {study.sections.map((section) => (
         <SectionShell key={section.id} id={section.id} label={section.label}>
-          <div className="flex flex-col gap-8 md:gap-10">
+          <div className="flex flex-col gap-4 md:gap-10">
             <SectionTitle id={section.id}>{section.title}</SectionTitle>
             <Blocks blocks={section.blocks} />
           </div>

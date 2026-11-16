@@ -57,7 +57,7 @@ const toneColors: Record<CardTone, string> = {
 }
 
 export function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="type-body type-measure text-muted text-pretty">{children}</p>
+  return <p className="type-body text-muted text-pretty">{children}</p>
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
@@ -71,15 +71,17 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
           <li
             key={card.title}
             style={{ "--tone": tone } as React.CSSProperties}
-            className="card-surface flex flex-col gap-3 rounded-lg p-5 md:gap-1.5"
+            className="card-surface flex flex-col gap-3 rounded-lg p-5 md:gap-7"
           >
             {Icon ? (
-              <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)] md:mb-6">
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)]">
                 <Icon className="size-4" aria-hidden="true" />
               </span>
             ) : null}
-            <h3 className="type-body type-strong">{card.title}</h3>
-            <p className="type-supporting text-muted text-pretty">{card.body}</p>
+            <div className="flex flex-col gap-0.5 md:gap-1.5">
+              <h3 className="type-body type-strong">{card.title}</h3>
+              <p className="type-supporting text-muted text-pretty">{card.body}</p>
+            </div>
           </li>
         )
       })}

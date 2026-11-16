@@ -4,12 +4,6 @@ import type { FigureData, FigureMeta, MediaSlot as MediaSlotData } from "@/lib/c
 import { Reveal } from "@/components/site/reveal"
 import { OrderScreen } from "@/components/figures/order-screen"
 
-/** Portrait slots (phones, tall screens) are capped in width so a stacked figure never becomes enormous. */
-function isPortrait(aspect: string) {
-  const [width, height] = aspect.split("/").map((part) => Number.parseFloat(part))
-  return Boolean(width && height && width < height)
-}
-
 /** Frame shared by image, video, and coded figures, with a figcaption below. */
 export function FigureFrame({
   meta,
@@ -100,7 +94,7 @@ export function Figure({ figure }: { figure: FigureData }) {
   const grid = (
     <div className="flex flex-col gap-4">
       {figure.slots.map((slot) => (
-        <div key={slot.placeholder} className={`flex w-full flex-col gap-2.5 ${isPortrait(slot.aspect) ? "max-w-sm" : ""}`}>
+        <div key={slot.placeholder} className="flex w-full flex-col gap-2.5">
           <MediaSlot slot={slot} />
           {slot.label ? <p className="type-eyebrow text-muted">{slot.label}</p> : null}
         </div>

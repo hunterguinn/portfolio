@@ -116,7 +116,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 export function WorkSection() {
   return (
     <SectionShell id="work" label={home.work.label}>
-      <div className="flex flex-col gap-10 md:gap-14">
+      <div className="flex flex-col gap-6 md:gap-14">
         <SectionTitle id="work">{home.work.title}</SectionTitle>
         <div className="flex flex-col gap-10 md:gap-14">
           {home.work.projects.map((project) => (

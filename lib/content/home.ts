@@ -146,11 +146,11 @@ export const home = {
   /** Four bento columns, each stacking two photos. Add `src` to a photo to replace its placeholder. */
   gallery: [
   [
-  { alt: "Hunter standing at a railing above Lake Como", placeholder: "Lake Como", aspect: "7 / 10" },
-  { alt: "Boston skyline across the harbor at sunset", placeholder: "Boston skyline", aspect: "7 / 5" },
+  { src: "/images/home/about/img-6173.webp", alt: "Hunter standing at a railing above Lake Como", placeholder: "Lake Como", aspect: "7 / 10" },
+  { src: "/images/home/about/img-1761.webp", alt: "Boston skyline across the harbor at sunset", placeholder: "Boston skyline", aspect: "7 / 5" },
   ],
   [
-  { alt: "Hunter sitting by the Beverly Hills sign", placeholder: "Beverly Hills", aspect: "1 / 1" },
+  { src: "/images/home/about/img-4376.webp", alt: "Hunter sitting by the Beverly Hills sign", placeholder: "Beverly Hills", aspect: "1 / 1" },
   { alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", aspect: "2 / 3" },
   ],
   [
@@ -158,8 +158,8 @@ export const home = {
   { alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", aspect: "1 / 1" },
   ],
   [
-  { alt: "The Colosseum arena in Rome", placeholder: "Colosseum", aspect: "4 / 5" },
-  { alt: "The Trevi Fountain in Rome", placeholder: "Trevi Fountain", aspect: "4 / 5" },
+  { src: "/images/home/about/img-6280.webp", alt: "The Colosseum arena in Rome", placeholder: "Colosseum", aspect: "4 / 5" },
+  { src: "/images/home/about/img-4844.webp", alt: "The Trevi Fountain in Rome", placeholder: "Trevi Fountain", aspect: "4 / 5" },
   ],
   ] as GalleryItem[][],
   },

@@ -10,11 +10,13 @@ export function AiSection() {
   return (
     <SectionShell id="experience" label={ai.label}>
       <div className="flex flex-col gap-8 md:gap-10">
-        <SectionTitle id="experience">{ai.title}</SectionTitle>
-        <div className="flex flex-col gap-4 type-body type-measure text-muted text-pretty">
-          {ai.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <div className="flex flex-col gap-4 md:gap-10">
+          <SectionTitle id="experience">{ai.title}</SectionTitle>
+          <div className="flex flex-col gap-4 type-body text-muted text-pretty">
+            {ai.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
         <Reveal>
           <ul className="grid gap-3 md:grid-cols-3">
