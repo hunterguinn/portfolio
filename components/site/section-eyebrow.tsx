@@ -19,6 +19,7 @@ export function SectionEyebrow({ children }: { children: React.ReactNode }) {
 
   return (
     <p ref={ref} className="type-eyebrow section-eyebrow" data-active={active}>
+      <span className="section-eyebrow-dot" aria-hidden="true" />
       {children}
     </p>
   )

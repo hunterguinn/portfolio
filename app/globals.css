@@ -158,6 +158,9 @@
   display: grid;
   justify-items: center;
 }
+.page-band.border-t {
+  border-color: var(--surface);
+}
 .page-container {
   width: 100%;
   padding-inline: 1.25rem;
@@ -248,7 +251,7 @@
   }
 }
 
-/* Section eyebrows sit at 50% until their section is in view (see SectionEyebrow), then reach full strength. */
+/* Section eyebrows brighten in view; their dots glow and pulse only while active. */
 .section-eyebrow {
   color: rgb(255 255 255 / 0.5);
 }
@@ -261,10 +264,41 @@
 .light .section-eyebrow[data-active="true"] {
   color: rgb(0 0 0 / 1);
 }
+.section-eyebrow-dot {
+  display: inline-block;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-inline-end: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--green);
+  opacity: 0.5;
+  vertical-align: 0.08em;
+}
+.section-eyebrow[data-active="true"] .section-eyebrow-dot {
+  animation: eyebrow-pulse 3s ease-in-out infinite;
+}
+@keyframes eyebrow-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0.25rem color-mix(in srgb, var(--green) 55%, transparent);
+  }
+  50% {
+    opacity: 0.65;
+    box-shadow: 0 0 0.75rem color-mix(in srgb, var(--green) 80%, transparent);
+  }
+}
 .js main p.section-eyebrow {
   transition:
     opacity 600ms ease 200ms,
     color 400ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-eyebrow[data-active="true"] .section-eyebrow-dot {
+    animation: none;
+    opacity: 1;
+    box-shadow: 0 0 0.5rem color-mix(in srgb, var(--green) 70%, transparent);
+  }
 }
 
 /* Testimonial ticker: steady, endless, no controls. Fades into the page background at both edges. */

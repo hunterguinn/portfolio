@@ -9,7 +9,7 @@ import { MediaSlot } from "@/components/case-study/figure"
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
     return (
-      <div className="relative min-h-64 overflow-hidden rounded-2xl bg-[#ecebe7] lg:min-h-[26rem]">
+      <div className="relative min-h-64 overflow-hidden rounded-2xl bg-transparent lg:min-h-[26rem]">
         <Image
           src={cover.src}
           alt={cover.alt}
@@ -34,7 +34,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
     <article data-cursor="view-project" className="group relative">
       <div
         data-project={project.slug}
-        className="cover-gradient grid gap-3 rounded-3xl p-3 text-foreground lg:grid-cols-2"
+        className="grid gap-3 rounded-3xl bg-surface p-3 text-foreground lg:grid-cols-2"
       >
         <div className="flex flex-col justify-between gap-10 px-3 py-4 md:gap-14 md:p-6">
           <div className="flex flex-col gap-6">
