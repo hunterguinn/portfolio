@@ -2,27 +2,19 @@
 
 import { useEffect, useRef, useState } from "react"
 
-/** Left-side section label: half strength by default, full strength while its section is in view. */
+/** Section label: 40% transparent by default, fully opaque while the label is in view. */
 export function SectionEyebrow({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLParagraphElement>(null)
   const [active, setActive] = useState(false)
 
   useEffect(() => {
-    const section = ref.current?.closest("section")
-    if (!section) return
+    const label = ref.current
+    if (!label) return
     const observer = new IntersectionObserver(
-      () => {
-        const sections = Array.from(document.querySelectorAll("main section"))
-        const triggerY = window.innerHeight * 0.65
-        const activeSection = sections.find((item) => {
-          const bounds = item.getBoundingClientRect()
-          return bounds.top <= triggerY && bounds.bottom > triggerY
-        })
-        setActive(activeSection === section)
-      },
-      { rootMargin: "-60% 0px -30% 0px", threshold: 0 },
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.1 },
     )
-    observer.observe(section)
+    observer.observe(label)
     return () => observer.disconnect()
   }, [])
 
