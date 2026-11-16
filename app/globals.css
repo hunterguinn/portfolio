@@ -93,11 +93,11 @@
  *   type-display        hero, page and section titles, big metrics (36px, 500)
  *   type-project-title  project titles, pull quotes             (20 -> 24px, 500)
  *   type-quote          testimonial quotes                      (20px, 400)
- *   type-body           descriptions and case-study prose       (16px, 400)
+ *   type-body           descriptions and case-study prose       (16px, 300)
  *   type-supporting     labels, callouts, captions, nav         (14px, 400)
  *   type-eyebrow        short uppercase labels and badges       (12px, 500)
  *
- * Modifiers: type-strong (600, short emphasis) and type-measure (caps prose at ~70 characters).
+ * Modifier: type-strong (600, short emphasis). Prose always fills its column; never cap its width.
  * Heading sizes are fluid between a 375px and a 1200px viewport.
  */
 @layer components {
@@ -121,7 +121,7 @@
   }
   .type-body {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.55;
     letter-spacing: normal;
   }
@@ -140,9 +140,6 @@
   }
   .type-strong {
     font-weight: 600;
-  }
-  .type-measure {
-    max-inline-size: 70ch;
   }
 }
 

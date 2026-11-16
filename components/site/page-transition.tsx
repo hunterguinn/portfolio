@@ -19,14 +19,17 @@ export function PageTransition() {
   const currentPath = useRef(pathname)
 
   useEffect(() => {
+    const routeChanged = currentPath.current !== pathname
     currentPath.current = pathname
     const el = curtain.current
     const target = pending.current
+    const hash = target?.hash ?? window.location.hash
+    if (routeChanged && !hash) window.scrollTo({ top: 0, behavior: "instant" })
+
     if (!el || !target || target.path !== pathname) return
     pending.current = null
     window.clearTimeout(failsafe.current)
 
-    if (!target.hash) window.scrollTo({ top: 0, behavior: "instant" })
     el.animate(
       [
         { transform: "translateY(0)", borderRadius: "0" },

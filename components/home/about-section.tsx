@@ -12,8 +12,10 @@ export function AboutSection() {
   return (
     <SectionShell id="about" label={about.label}>
       <div className="flex flex-col gap-8 md:gap-10">
-        <SectionTitle id="about">{about.title}</SectionTitle>
-        <p className="type-body type-measure text-muted text-pretty">{about.body}</p>
+        <div className="flex flex-col gap-4 md:gap-10">
+          <SectionTitle id="about">{about.title}</SectionTitle>
+          <p className="type-body text-muted text-pretty">{about.body}</p>
+        </div>
         <ul className="flex flex-wrap gap-3">
           {about.actions.map((action) => (
             <li key={action.label}>
