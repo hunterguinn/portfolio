@@ -8,7 +8,7 @@
   --foreground: #f0f0f0;
   --muted: #8a8a8a;
   --surface: #1a1a1a;
-  --surface-strong: #2a2a2a;
+  --surface-strong: #252525;
   --border: #303030;
   --blue: #66b3ff;
   --red: #ff6961;
@@ -158,6 +158,9 @@
   display: grid;
   justify-items: center;
 }
+.page-band[class*="border-t-"] {
+  border-top-color: var(--surface);
+}
 .page-container {
   width: 100%;
   padding-inline: 1.25rem;
@@ -248,23 +251,67 @@
   }
 }
 
-/* Section eyebrows sit at 50% until their section is in view (see SectionEyebrow), then reach full strength. */
+/* Section labels dim together outside the active viewport band; white dots pulse softly in view. */
 .section-eyebrow {
-  color: rgb(255 255 255 / 0.5);
-}
-.section-eyebrow[data-active="true"] {
-  color: rgb(255 255 255 / 1);
-}
-.light .section-eyebrow {
-  color: rgb(0 0 0 / 0.5);
-}
-.light .section-eyebrow[data-active="true"] {
-  color: rgb(0 0 0 / 1);
+  color: var(--foreground);
 }
 .js main p.section-eyebrow {
-  transition:
-    opacity 600ms ease 200ms,
-    color 400ms ease;
+  opacity: 0.4;
+  transition: opacity 250ms ease;
+}
+.js main p.section-eyebrow[data-active="true"] {
+  opacity: 1;
+}
+.js main p.section-eyebrow:not([data-active="true"]) {
+  transition-duration: 0ms;
+}
+.section-eyebrow-dot,
+.profile-availability-dot {
+  display: inline-block;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  vertical-align: 0.08em;
+}
+.section-eyebrow-dot {
+  margin-inline-end: 0.5rem;
+  background-color: #fff;
+}
+.section-eyebrow[data-active="true"] .section-eyebrow-dot {
+  animation: eyebrow-glow 1.8s ease-in-out infinite;
+}
+.profile-availability-dot {
+  background-color: var(--green);
+  box-shadow: 0 0 0.3rem color-mix(in srgb, var(--green) 70%, transparent);
+  animation: eyebrow-glow-green 1.8s ease-in-out infinite;
+}
+@keyframes eyebrow-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0.5rem rgb(255 255 255 / 55%);
+  }
+  50% {
+    box-shadow: 0 0 1rem rgb(255 255 255 / 85%);
+  }
+}
+@keyframes eyebrow-glow-green {
+  0%,
+  100% {
+    box-shadow: 0 0 0.5rem color-mix(in srgb, var(--green) 55%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 1rem color-mix(in srgb, var(--green) 85%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-eyebrow[data-active="true"] .section-eyebrow-dot,
+  .profile-availability-dot {
+    animation: none;
+    box-shadow: 0 0 0.5rem rgb(255 255 255 / 70%);
+  }
+  .profile-availability-dot {
+    box-shadow: 0 0 0.5rem color-mix(in srgb, var(--green) 70%, transparent);
+  }
 }
 
 /* Testimonial ticker: steady, endless, no controls. Fades into the page background at both edges. */
@@ -275,7 +322,10 @@
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker 22s linear infinite;
+  animation: ticker 28s linear infinite;
+}
+.ticker-reverse .ticker-track {
+  animation-direction: reverse;
 }
 @keyframes ticker {
   to {
@@ -291,16 +341,16 @@
   }
 }
 
-/* Copy-email button: the label flips on its horizontal axis to a "Copied!" state. */
-.flip-button {
+/* Copy-email confirmation flips vertically without changing the button's footprint. */
+.copy-email-button {
   perspective: 600px;
 }
-.flip-inner {
+.copy-email-flip {
   display: grid;
   transform-style: preserve-3d;
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.flip-face {
+.copy-email-face {
   grid-area: 1 / 1;
   display: flex;
   align-items: center;
@@ -310,14 +360,14 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.flip-face-back {
+.copy-email-face-back {
   transform: rotateX(180deg);
 }
-.flip-button[data-copied="true"] .flip-inner {
+.copy-email-button[data-copied="true"] .copy-email-flip {
   transform: rotateX(180deg);
 }
 @media (prefers-reduced-motion: reduce) {
-  .flip-inner {
+  .copy-email-flip {
     transition: none;
   }
 }
@@ -389,23 +439,24 @@
   transition:
     width 420ms cubic-bezier(0.34, 1.4, 0.5, 1),
     height 420ms cubic-bezier(0.34, 1.4, 0.5, 1),
+    padding 420ms cubic-bezier(0.34, 1.4, 0.5, 1),
     background-color 200ms ease,
-    opacity 150ms ease;
+    opacity 150ms ease,
+    transform 160ms ease;
 }
 .cursor-root[data-mode="view"] .cursor-shape {
-  width: 116px;
-  height: 40px;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
   background: var(--foreground);
 }
 .cursor-root[data-pressed="true"] .cursor-shape {
-  width: 7px;
-  height: 7px;
-}
-.cursor-root[data-pressed="true"][data-mode="view"] .cursor-shape {
-  width: 104px;
-  height: 36px;
+  transform: translate(-50%, -50%) scale(0.9);
 }
 .cursor-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: -0.01em;

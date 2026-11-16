@@ -10,15 +10,25 @@ export function SectionEyebrow({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const section = ref.current?.closest("section")
     if (!section) return
-    const observer = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting), {
-      rootMargin: "-30% 0px -30% 0px",
-    })
+    const observer = new IntersectionObserver(
+      () => {
+        const sections = Array.from(document.querySelectorAll("main section"))
+        const triggerY = window.innerHeight * 0.65
+        const activeSection = sections.find((item) => {
+          const bounds = item.getBoundingClientRect()
+          return bounds.top <= triggerY && bounds.bottom > triggerY
+        })
+        setActive(activeSection === section)
+      },
+      { rootMargin: "-60% 0px -30% 0px", threshold: 0 },
+    )
     observer.observe(section)
     return () => observer.disconnect()
   }, [])
 
   return (
     <p ref={ref} className="type-eyebrow section-eyebrow" data-active={active}>
+      <span className="section-eyebrow-dot" aria-hidden="true" />
       {children}
     </p>
   )

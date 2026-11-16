@@ -18,7 +18,7 @@ export function SectionShell({
     <section
       id={id}
       aria-labelledby={id ? `${id}-title` : undefined}
-      className={`page-band ${bordered ? "border-t" : ""}`}
+      className={`page-band ${bordered ? "border-t-[12px] md:border-t-[24px] lg:border-t-[32px]" : ""}`}
     >
       <div className="page-container grid gap-3 py-14 md:gap-6 md:py-20 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[10.5rem]">
         <div className="flex flex-col gap-10 lg:sticky lg:top-24 lg:self-start">

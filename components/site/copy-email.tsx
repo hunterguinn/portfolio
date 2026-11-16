@@ -25,7 +25,7 @@ async function writeToClipboard(text: string) {
 
 async function copyEmail() {
   const ok = await writeToClipboard(site.email)
-  showToast(ok ? "Email copied to clipboard" : `Copy failed. Email me at ${site.email}`)
+  if (!ok) showToast(`Copy failed. Email me at ${site.email}`)
   return ok
 }
 
@@ -34,12 +34,11 @@ export function CopyEmailLink({ className }: { className?: string }) {
   return (
     <button type="button" onClick={copyEmail} className={`inline-flex items-center gap-2 ${className ?? ""}`}>
       Email
-      <Copy className="size-3.5" aria-hidden="true" />
     </button>
   )
 }
 
-/** Primary button that flips to a "Copied!" state for two seconds after copying. */
+/** Button that confirms a successful copy for two seconds. */
 export function CopyEmailButton({ className }: { className?: string }) {
   const [copied, setCopied] = useState(false)
   const timer = useRef<number>(0)
@@ -55,14 +54,14 @@ export function CopyEmailButton({ className }: { className?: string }) {
   }
 
   return (
-    <button type="button" onClick={onClick} className={`flip-button ${className ?? ""}`} data-copied={copied}>
-      <span className="flip-inner">
-        <span className="flip-face" aria-hidden={copied}>
+    <button type="button" onClick={onClick} className={`copy-email-button ${className ?? ""}`} data-copied={copied}>
+      <span className="copy-email-flip">
+        <span className="copy-email-face" aria-hidden={copied}>
           <Copy className="size-4" aria-hidden="true" />
           Copy email
         </span>
-        <span className="flip-face flip-face-back" aria-hidden={!copied}>
-          <Check className="size-4" aria-hidden="true" />
+        <span className="copy-email-face copy-email-face-back" aria-hidden={!copied}>
+          <Check className="size-4 text-green" aria-hidden="true" />
           Copied!
         </span>
       </span>

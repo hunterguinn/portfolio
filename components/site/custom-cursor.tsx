@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { ArrowRight } from "lucide-react"
 
 const TEXT_ENTRY = 'input, textarea, select, [contenteditable="true"]'
 const VIEW_TARGET = '[data-cursor="view-project"]'
@@ -66,7 +67,10 @@ export function CustomCursor() {
   return (
     <div ref={ref} className="cursor-root" data-hidden="true" data-mode="dot" aria-hidden="true">
       <span className="cursor-shape">
-        <span className="cursor-label">View Project</span>
+        <span className="cursor-label">
+          View
+          <ArrowRight className="size-3.5" aria-hidden="true" />
+        </span>
       </span>
     </div>
   )
