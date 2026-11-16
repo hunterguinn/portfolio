@@ -6,8 +6,11 @@ const team = [
 ]
 
 export const home = {
-  headline: "Designing financial interfaces and experiences that create clarity, build trust, and scale",
-  currently: "Currently at Bank of America",
+  headline: "Designing financial experiences that create clarity, build trust, and scale",
+  welcome: "Welcome",
+  intro:
+    "I'm building products across native and web platforms that empower consumers and wealth management clients at Bank of America.",
+  greeting: "Hey, I'm Hunter 👋",
   work: {
     title: "Selected Works",
     label: "Projects",
@@ -91,7 +94,7 @@ export const home = {
   },
   ai: {
     title: "Scaling design through AI, systems, and people.",
-    label: "AI Experiments",
+    label: "Experience",
     paragraphs: [
       "At Bank of America, I'm leading our Figma AI Enablement training and mentoring other designers on best practices, tooling, and efficiencies.",
       "I'm also building with AI to improve our design handoff, custom plugins, and workflow automation",
@@ -113,7 +116,6 @@ export const home = {
     stack: { title: "Stack", items: [] as Card[], pending: "Stack list pending" },
   },
   testimonials: {
-    title: "Testimonials",
     items: [
       {
         quote:
@@ -139,10 +141,6 @@ export const home = {
     title: "When I'm not at my desk",
     label: "About Me",
     body: "I play tennis, pickleball, and go out on 50 mile rides on my road bike when the weather is nice. I also love having a trip on the calendar, whether it's a weekend getaway or a longer vacation.",
-    actions: [
-      { label: "Contact me", href: null as string | null },
-  { label: "Download CV", href: null as string | null },
-  ],
   /** Four bento columns, each stacking two photos. Add `src` to a photo to replace its placeholder. */
   gallery: [
   [
@@ -151,11 +149,11 @@ export const home = {
   ],
   [
   { src: "/images/home/about/img-4376.webp", alt: "Hunter sitting by the Beverly Hills sign", placeholder: "Beverly Hills", aspect: "1 / 1" },
-  { alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", aspect: "2 / 3" },
+  { src: "/images/home/about/img-4210.webp", alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", aspect: "2 / 3" },
   ],
   [
-  { alt: "Hunter in front of Hogwarts castle", placeholder: "Hogwarts", aspect: "2 / 3" },
-  { alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", aspect: "1 / 1" },
+  { src: "/images/home/about/img-7525.webp", alt: "Hunter in front of Hogwarts castle", placeholder: "Hogwarts", aspect: "2 / 3" },
+  { src: "/images/home/about/img-6203.webp", alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", aspect: "1 / 1" },
   ],
   [
   { src: "/images/home/about/img-6280.webp", alt: "The Colosseum arena in Rome", placeholder: "Colosseum", aspect: "4 / 5" },

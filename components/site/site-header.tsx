@@ -7,11 +7,8 @@ export function SiteHeader() {
   return (
     <header className="page-band sticky top-0 z-40 border-b bg-background/85 backdrop-blur-md">
       <div className="page-container flex h-14 items-center justify-between gap-6">
-        <Link href="/" className="type-supporting type-strong">
-          {site.name}
-        </Link>
-        <nav aria-label="Primary" className="flex items-center gap-5 md:gap-8">
-          <ul className="flex items-center gap-4 type-supporting text-muted md:gap-7">
+        <nav aria-label="Primary">
+          <ul className="flex items-center gap-5 type-supporting text-muted md:gap-7">
             {site.nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-foreground">
@@ -20,9 +17,11 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
+        </nav>
+        <div className="flex items-center gap-5 md:gap-8">
           <HeaderClock />
           <ThemeToggle />
-        </nav>
+        </div>
       </div>
     </header>
   )

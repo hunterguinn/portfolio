@@ -49,7 +49,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
       {study.sections.map((section) => (
         <SectionShell key={section.id} id={section.id} label={section.label}>
-          <div className="flex flex-col gap-4 md:gap-10">
+          <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
             <SectionTitle id={section.id}>{section.title}</SectionTitle>
             <Blocks blocks={section.blocks} />
           </div>

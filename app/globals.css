@@ -93,7 +93,7 @@
  *   type-display        hero, page and section titles, big metrics (36px, 500)
  *   type-project-title  project titles, pull quotes             (20 -> 24px, 500)
  *   type-quote          testimonial quotes                      (20px, 400)
- *   type-body           descriptions and case-study prose       (16px, 300)
+ *   type-body           descriptions and case-study prose       (16px, 400)
  *   type-supporting     labels, callouts, captions, nav         (14px, 400)
  *   type-eyebrow        short uppercase labels and badges       (12px, 500)
  *
@@ -121,7 +121,7 @@
   }
   .type-body {
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.55;
     letter-spacing: normal;
   }
@@ -221,20 +221,87 @@
   --cover-b: #c5b4ef;
 }
 
-/* Curtain reveal for text blocks: only hidden once JS has confirmed it can reveal it again. */
-[data-reveal] {
-  transition: clip-path 650ms cubic-bezier(0.77, 0, 0.18, 1);
+/*
+ * Scroll fade. Titles, text blocks and cards are hidden until ScrollFade marks them with [data-in],
+ * then fade in after a 0.2s delay. Keep this target list in sync with components/site/scroll-fade.tsx.
+ */
+.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item) {
+  opacity: 0;
+  transition:
+    opacity 600ms ease 200ms,
+    background-color 280ms ease;
 }
-.js [data-reveal]:not([data-revealed="true"]) {
-  clip-path: inset(0 0 100% 0);
+.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item)[data-in] {
+  opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
+  .js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item) {
+    opacity: 1;
     transition: none;
   }
-  .js [data-reveal]:not([data-revealed="true"]) {
-    clip-path: none;
+}
+
+/* Testimonial ticker: slow, endless, no controls. Fades into the page background at both edges. */
+.ticker {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 90s linear infinite;
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker {
+    overflow-x: auto;
+  }
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* Copy-email button: the label flips on its horizontal axis to a "Copied!" state. */
+.flip-button {
+  perspective: 600px;
+}
+.flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-face {
+  grid-area: 1 / 1;
+  text-align: center;
+  backface-visibility: hidden;
+}
+.flip-face-back {
+  transform: rotateX(180deg);
+}
+.flip-button[data-copied="true"] .flip-inner {
+  transform: rotateX(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner {
+    transition: none;
+  }
+}
+
+/* Toast */
+.toast {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+.toast[data-visible="true"] {
+  opacity: 1;
+  transform: none;
 }
 
 /* Page transition curtain. */

@@ -11,12 +11,10 @@ export const site = {
     { label: "Enterprise Point-of-Sale Software", href: "/pos" },
     { label: "Unified Client Application", href: "/unified" },
   ],
-  /** Set `href` once a destination is supplied; null renders a "Link pending" tag. */
-  contact: [
-    { label: "Email", href: null as string | null },
-    { label: "Resume", href: null as string | null },
-    { label: "LinkedIn", href: null as string | null },
-  ],
+  email: "hunterg26@icloud.com",
+  /** Lives in public/files; the filename is the one the browser saves. */
+  resume: { href: "/files/Hunter%20Guinn%20-%20Resume.pdf", filename: "Hunter Guinn - Resume.pdf" },
+  linkedin: "https://linkedin.com/in/hunterguinn",
 }
 
 /** Next-project order follows the footer page order. */
