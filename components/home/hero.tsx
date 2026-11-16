@@ -1,7 +1,13 @@
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import { home } from "@/lib/content/home"
 import { profileImage } from "@/lib/content/avatars"
+import { CopyEmailButton } from "@/components/site/copy-email"
 import { SectionShell } from "@/components/site/section-shell"
 import { Avatar } from "@/components/site/avatar"
+
+const buttonClass =
+  "inline-flex items-center gap-2 rounded-full type-supporting px-4 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
 
 export function Hero() {
   return (
@@ -19,6 +25,13 @@ export function Hero() {
         <div className="flex flex-col gap-4 lg:gap-6">
           <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
           <p className="type-body max-w-2xl text-muted text-pretty">{home.intro}</p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="#work" className={`${buttonClass} bg-foreground text-background hover:opacity-90`}>
+              See work
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+            <CopyEmailButton className={`${buttonClass} border hover:bg-foreground hover:text-background`} />
+          </div>
         </div>
       </div>
     </SectionShell>

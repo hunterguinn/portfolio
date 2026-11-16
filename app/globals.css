@@ -341,6 +341,37 @@
   }
 }
 
+/* Copy-email confirmation flips vertically without changing the button's footprint. */
+.copy-email-button {
+  perspective: 600px;
+}
+.copy-email-flip {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.copy-email-face {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.copy-email-face-back {
+  transform: rotateX(180deg);
+}
+.copy-email-button[data-copied="true"] .copy-email-flip {
+  transform: rotateX(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .copy-email-flip {
+    transition: none;
+  }
+}
+
 /* Toast */
 .toast {
   opacity: 0;

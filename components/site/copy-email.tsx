@@ -25,7 +25,7 @@ async function writeToClipboard(text: string) {
 
 async function copyEmail() {
   const ok = await writeToClipboard(site.email)
-  showToast(ok ? "Email copied to clipboard" : `Copy failed. Email me at ${site.email}`)
+  if (!ok) showToast(`Copy failed. Email me at ${site.email}`)
   return ok
 }
 
@@ -53,12 +53,18 @@ export function CopyEmailButton({ className }: { className?: string }) {
     timer.current = window.setTimeout(() => setCopied(false), 2000)
   }
 
-  const Icon = copied ? Check : Copy
-
   return (
-    <button type="button" onClick={onClick} className={className}>
-      <Icon className="size-4" aria-hidden="true" />
-      {copied ? "Copied!" : "Copy email"}
+    <button type="button" onClick={onClick} className={`copy-email-button ${className ?? ""}`} data-copied={copied}>
+      <span className="copy-email-flip">
+        <span className="copy-email-face" aria-hidden={copied}>
+          <Copy className="size-4" aria-hidden="true" />
+          Copy email
+        </span>
+        <span className="copy-email-face copy-email-face-back" aria-hidden={!copied}>
+          <Check className="size-4 text-green" aria-hidden="true" />
+          Copied!
+        </span>
+      </span>
     </button>
   )
 }
