@@ -5,12 +5,16 @@ import { useEffect, useRef, useState } from "react"
 /** Counts from 0 to `to` the first time it scrolls into view, after an optional stagger delay. */
 export function CountUp({
   to,
+  prefix = "",
   suffix = "",
+  decimals = 0,
   delay = 0,
   duration = 1600,
 }: {
   to: number
+  prefix?: string
   suffix?: string
+  decimals?: number
   delay?: number
   duration?: number
 }) {
@@ -33,7 +37,7 @@ export function CountUp({
       const start = performance.now()
       const tick = (now: number) => {
         const progress = Math.min((now - start) / duration, 1)
-        setValue(Math.round(to * (1 - Math.pow(1 - progress, 3))))
+        setValue(Number((to * (1 - Math.pow(1 - progress, 3))).toFixed(decimals)))
         if (progress < 1) frame = requestAnimationFrame(tick)
       }
       frame = requestAnimationFrame(tick)
@@ -54,16 +58,18 @@ export function CountUp({
       window.clearTimeout(timer)
       cancelAnimationFrame(frame)
     }
-  }, [to, delay, duration])
+  }, [to, decimals, delay, duration])
 
   return (
     <span ref={ref} className="tabular-nums">
       <span aria-hidden="true">
-        {value}
+        {prefix}
+        {value.toFixed(decimals)}
         {suffix}
       </span>
       <span className="sr-only">
-        {to}
+        {prefix}
+        {to.toFixed(decimals)}
         {suffix}
       </span>
     </span>

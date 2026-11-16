@@ -27,8 +27,16 @@ export const home = {
         description:
           "I designed a faster, responsive asset transfer experience that leveraged an open finance API to prep-populate data from the client's external brokerage, rethinking how clients connect external accounts, select assets, and move investments into Merrill.",
         metrics: [
-          { value: null, label: "Net assets transferred annually", sourceValue: "$0 billion" },
-          { value: null, label: "Investment accounts supported", sourceValue: "0 million+" },
+          {
+            value: "$19B",
+            label: "Annual net client flows",
+            counter: { to: 19, prefix: "$", suffix: "B" },
+          },
+          {
+            value: "4M+",
+            label: "Accounts supported",
+            counter: { to: 4, suffix: "M+" },
+          },
         ],
         cover: {
           kind: "image",
@@ -47,8 +55,16 @@ export const home = {
         description:
           "I helped bring a critical platform in-house following a vendor exit, providing point-of-sale continuity for small business clients and their customers.",
         metrics: [
-          { value: null, label: "Annual transactions", sourceValue: "$0 billion+" },
-          { value: null, label: "Merchant locations worldwide", sourceValue: "0k+" },
+          {
+            value: "16.6B",
+            label: "Annual payment transactions processed",
+            counter: { to: 16.6, suffix: "B", decimals: 1 },
+          },
+          {
+            value: "700K",
+            label: "Merchant locations served",
+            counter: { to: 700, suffix: "K" },
+          },
         ],
         cover: {
           kind: "image",
@@ -67,8 +83,16 @@ export const home = {
         description:
           "I helped build a multi-product application that transformed how clients apply for banking services, balancing digital efficiency with the bank's eligibility and risk criteria.",
         metrics: [
-          { value: null, label: "Net assets transferred annually", sourceValue: "$0 billion" },
-          { value: null, label: "Investment accounts supported", sourceValue: "0 million+" },
+          {
+            value: "8-in-1",
+            label: "Multi-product experience",
+            counter: { to: 8, suffix: "-in-1" },
+          },
+          {
+            value: "3.4M+",
+            label: "Small business clients served",
+            counter: { to: 3.4, suffix: "M+", decimals: 1 },
+          },
         ],
         cover: {
           kind: "image",

@@ -77,6 +77,8 @@ export type Metric = {
   /** Null renders a muted "Metric pending" placeholder. */
   value: string | null
   label: string
+  /** Optional animated presentation for dashboard-style metric cards. */
+  counter?: { to: number; prefix?: string; suffix?: string; decimals?: number }
   /** Raw value shown in the source export, kept for reference. */
   sourceValue?: string
 }
