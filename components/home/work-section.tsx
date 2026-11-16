@@ -5,17 +5,8 @@ import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { Pending } from "@/components/site/pending"
-import { Reveal } from "@/components/site/reveal"
+import { IconBadge } from "@/components/site/icon-badge"
 import { MediaSlot } from "@/components/case-study/figure"
-import { CurtainCover } from "./curtain-cover"
-
-function IconBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="flex size-12 items-center justify-center rounded-full bg-surface-strong" aria-hidden="true">
-      {children}
-    </span>
-  )
-}
 
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
@@ -42,9 +33,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   const [format, year] = project.meta.split(" · ")
 
   return (
-    <Reveal>
-      <article data-cursor="view-project" className="group relative">
-        <CurtainCover>
+    <article data-cursor="view-project" className="group relative">
+      <div className="overflow-hidden rounded-lg">
           <div className="grid gap-3 lg:grid-cols-2">
             <div
               data-project={project.slug}
@@ -107,16 +97,15 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               </div>
             </dl>
           </div>
-        </CurtainCover>
-      </article>
-    </Reveal>
+      </div>
+    </article>
   )
 }
 
 export function WorkSection() {
   return (
     <SectionShell id="work" label={home.work.label}>
-      <div className="flex flex-col gap-6 md:gap-14">
+      <div className="flex flex-col gap-6 md:gap-14 lg:gap-8">
         <SectionTitle id="work">{home.work.title}</SectionTitle>
         <div className="flex flex-col gap-10 md:gap-14">
           {home.work.projects.map((project) => (

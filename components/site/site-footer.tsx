@@ -1,6 +1,7 @@
 import Link from "next/link"
+import { Download } from "lucide-react"
 import { site } from "@/lib/content/site"
-import { Pending } from "./pending"
+import { CopyEmailLink } from "./copy-email"
 
 export function SiteFooter() {
   return (
@@ -25,20 +26,29 @@ export function SiteFooter() {
           <div className="flex flex-col gap-4">
             <h2 className="type-eyebrow text-muted">Contact</h2>
             <ul className="type-supporting flex flex-col gap-2.5">
-              {site.contact.map((item) => (
-                <li key={item.label} className="flex items-center gap-3">
-                  {item.href ? (
-                    <a href={item.href} className="transition-colors hover:text-muted">
-                      {item.label}
-                    </a>
-                  ) : (
-                    <>
-                      <span>{item.label}</span>
-                      <Pending>Link pending</Pending>
-                    </>
-                  )}
-                </li>
-              ))}
+              <li>
+                <CopyEmailLink className="transition-colors hover:text-muted" />
+              </li>
+              <li>
+                <a
+                  href={site.resume.href}
+                  download={site.resume.filename}
+                  className="inline-flex items-center gap-2 transition-colors hover:text-muted"
+                >
+                  Resume
+                  <Download className="size-3.5" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-muted"
+                >
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { SectionEyebrow } from "./section-eyebrow"
+
 /** Two-column section: sticky label/metadata column on the left, content filling the remaining width on the right. */
 export function SectionShell({
   id,
@@ -20,7 +22,7 @@ export function SectionShell({
     >
       <div className="page-container grid gap-3 py-14 md:gap-6 md:py-20 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[10.5rem]">
         <div className="flex flex-col gap-10 lg:sticky lg:top-24 lg:self-start">
-          {label ? <p className="type-eyebrow text-muted">{label}</p> : null}
+          {label ? <SectionEyebrow>{label}</SectionEyebrow> : null}
           {aside}
         </div>
         <div className="min-w-0">{children}</div>

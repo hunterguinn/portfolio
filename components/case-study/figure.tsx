@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { Film, ImageIcon } from "lucide-react"
 import type { FigureData, FigureMeta, MediaSlot as MediaSlotData } from "@/lib/content/types"
-import { Reveal } from "@/components/site/reveal"
 import { OrderScreen } from "@/components/figures/order-screen"
 
 /** Frame shared by image, video, and coded figures, with a figcaption below. */
@@ -105,7 +104,7 @@ export function Figure({ figure }: { figure: FigureData }) {
   return (
     <FigureFrame meta={figure} hasSlotLabels={hasSlotLabels}>
       {figure.title ? <h3 className="type-body type-strong">{figure.title}</h3> : null}
-      {figure.reveal ? <Reveal>{grid}</Reveal> : grid}
+      {grid}
     </FigureFrame>
   )
 }

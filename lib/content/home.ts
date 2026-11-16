@@ -1,4 +1,4 @@
-import type { Card, GalleryItem, Metric, ProjectSummary, Testimonial } from "./types"
+import type { ExperienceMetric, GalleryItem, ProjectSummary, StackTool, Testimonial } from "./types"
 
 const team = [
   { role: "Product Designer", name: "Me" },
@@ -6,8 +6,20 @@ const team = [
 ]
 
 export const home = {
-  headline: "Designing financial interfaces and experiences that create clarity, build trust, and scale",
-  currently: "Currently at Bank of America",
+  headline: "Designing financial experiences that create clarity, build trust, and scale",
+  welcome: "Welcome",
+  intro:
+    "I'm building products across native and web platforms that empower consumers and wealth management clients at Bank of America.",
+  greeting: "Hey, I'm Hunter 👋",
+  stack: [
+    { name: "Figma", src: "/images/stack/figma.png" },
+    { name: "Framer", src: "/images/stack/framer.png" },
+    { name: "Sketch", src: "/images/stack/sketch.png" },
+    { name: "Adobe", src: "/images/stack/adobe.png" },
+    { name: "Jira", src: "/images/stack/jira.png" },
+    { name: "Vercel", src: "/images/stack/vercel.png" },
+    { name: "Codex", src: "/images/stack/codex.png" },
+  ] satisfies StackTool[],
   work: {
     title: "Selected Works",
     label: "Projects",
@@ -91,35 +103,42 @@ export const home = {
   },
   ai: {
     title: "Scaling design through AI, systems, and people.",
-    label: "AI Experiments",
+    label: "Experience",
     paragraphs: [
       "At Bank of America, I'm leading our Figma AI Enablement training and mentoring other designers on best practices, tooling, and efficiencies.",
       "I'm also building with AI to improve our design handoff, custom plugins, and workflow automation",
     ],
     metrics: [
       {
-        metric: { value: null, label: "Designers empowered", sourceValue: "0" } satisfies Metric,
+        icon: "users",
+        count: 92,
+        suffix: "+",
+        title: "Designers empowered",
         body: "Mentored and supported in their professional growth.",
       },
       {
-        metric: { value: null, label: "Learning sessions", sourceValue: "0" } satisfies Metric,
+        icon: "graduation-cap",
+        count: 10,
+        suffix: "",
+        title: "Learning sessions",
         body: "Advancing design capabilities and AI adoption across the organization.",
       },
       {
-        metric: { value: null, label: "AI experiences built", sourceValue: "0" } satisfies Metric,
+        icon: "sparkles",
+        count: 3,
+        suffix: "+",
+        title: "AI experiences built",
         body: "Using AI to improve design demos and build plugins that improve workflow automation",
       },
-    ],
-    stack: { title: "Stack", items: [] as Card[], pending: "Stack list pending" },
+    ] satisfies ExperienceMetric[],
   },
   testimonials: {
-    title: "Testimonials",
     items: [
       {
         quote:
           "Hunter is an exceptional design leader and educator. His learning and development sessions have raised design skills across the organization.",
         name: "Natasha McMichael",
-        role: "Digital Exectuive @ Bank of America",
+        role: "Digital Executive @ Bank of America",
       },
       {
         quote:
@@ -137,12 +156,8 @@ export const home = {
   },
   about: {
     title: "When I'm not at my desk",
-    label: "About Me",
+    label: "About",
     body: "I play tennis, pickleball, and go out on 50 mile rides on my road bike when the weather is nice. I also love having a trip on the calendar, whether it's a weekend getaway or a longer vacation.",
-    actions: [
-      { label: "Contact me", href: null as string | null },
-  { label: "Download CV", href: null as string | null },
-  ],
   /** Four bento columns, each stacking two photos. Add `src` to a photo to replace its placeholder. */
   gallery: [
   [
@@ -151,11 +166,11 @@ export const home = {
   ],
   [
   { src: "/images/home/about/img-4376.webp", alt: "Hunter sitting by the Beverly Hills sign", placeholder: "Beverly Hills", aspect: "1 / 1" },
-  { alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", aspect: "2 / 3" },
+  { src: "/images/home/about/img-4210.webp", alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", aspect: "2 / 3" },
   ],
   [
-  { alt: "Hunter in front of Hogwarts castle", placeholder: "Hogwarts", aspect: "2 / 3" },
-  { alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", aspect: "1 / 1" },
+  { src: "/images/home/about/img-7525.webp", alt: "Hunter in front of Hogwarts castle", placeholder: "Hogwarts", aspect: "2 / 3" },
+  { src: "/images/home/about/img-6203.webp", alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", aspect: "1 / 1" },
   ],
   [
   { src: "/images/home/about/img-6280.webp", alt: "The Colosseum arena in Rome", placeholder: "Colosseum", aspect: "4 / 5" },

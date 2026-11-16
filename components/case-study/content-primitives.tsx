@@ -16,6 +16,7 @@ import {
   Split,
   Target,
   Timer,
+  Quote,
   Unlink,
   Unplug,
   UserCheck,
@@ -23,7 +24,6 @@ import {
   type LucideIcon,
 } from "lucide-react"
 import type { Card, CardIcon, CardTone, Metric, Testimonial } from "@/lib/content/types"
-import { avatars } from "@/lib/content/avatars"
 import { Avatar } from "@/components/site/avatar"
 
 const cardIcons: Record<CardIcon, LucideIcon> = {
@@ -99,17 +99,22 @@ export function Callout({ text }: { text: string }) {
 
 export function TestimonialQuote({ testimonial, compact = false }: { testimonial: Testimonial; compact?: boolean }) {
   return (
-    <figure className={`flex h-full flex-col justify-between gap-6 card-surface rounded-lg ${compact ? "p-5" : "p-5 md:p-8"}`}>
-      <blockquote>
-        <p className={`${compact ? "type-quote" : "type-body"} text-pretty`}>
-          {`“${testimonial.quote}”`}
-        </p>
-      </blockquote>
-      <figcaption className="type-supporting flex items-center gap-3">
-        <Avatar name={testimonial.name} src={avatars[testimonial.name]} size={36} />
-        <span>
-          <span className="block type-strong">{testimonial.name}</span>
-          <span className="block text-muted">{testimonial.role}</span>
+    <figure
+      className={`flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-6" : "rounded-lg p-5 md:p-8"}`}
+    >
+      <div className="flex flex-col gap-5">
+        {compact ? <Quote className="size-5 text-muted" aria-hidden="true" /> : null}
+        <blockquote>
+          <p className={`${compact ? "type-quote" : "type-body"} text-pretty`}>
+            {compact ? testimonial.quote : `“${testimonial.quote}”`}
+          </p>
+        </blockquote>
+      </div>
+      <figcaption className="flex items-center gap-3 border-t pt-5">
+        <Avatar name={testimonial.name} size={40} />
+        <span className="flex flex-col">
+          <span className="type-supporting type-strong">{testimonial.name}</span>
+          <span className="type-caption block text-muted">{testimonial.role}</span>
         </span>
       </figcaption>
     </figure>

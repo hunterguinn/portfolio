@@ -5,6 +5,8 @@ import { SiteFooter } from "@/components/site/site-footer"
 import { CustomCursor } from "@/components/site/custom-cursor"
 import { PageTransition } from "@/components/site/page-transition"
 import { ContextMenuGuard } from "@/components/site/context-menu-guard"
+import { ScrollFade } from "@/components/site/scroll-fade"
+import { ToastHost } from "@/components/site/toast"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s · Hunter Guinn",
   },
   description:
-    "Hunter Guinn designs financial interfaces and experiences that create clarity, build trust, and scale. Currently at Bank of America.",
+    "Hunter Guinn designs financial experiences that create clarity, build trust, and scale. Currently at Bank of America.",
 }
 
 export const viewport: Viewport = {
@@ -40,6 +42,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
+          <ScrollFade />
+          <ToastHost />
           <PageTransition />
           <CustomCursor />
           <ContextMenuGuard />
