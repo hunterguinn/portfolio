@@ -13,18 +13,14 @@ export function SectionEyebrow({ children }: { children: React.ReactNode }) {
     const observer = new IntersectionObserver(
       () => {
         const sections = Array.from(document.querySelectorAll("main section"))
-        const center = window.innerHeight / 2
-        const candidates = sections
-          .map((item) => ({ item, bounds: item.getBoundingClientRect() }))
-          .filter(({ bounds }) => bounds.top < center && bounds.bottom > center)
-          .sort(
-            (left, right) =>
-              Math.abs((left.bounds.top + left.bounds.bottom) / 2 - center) -
-              Math.abs((right.bounds.top + right.bounds.bottom) / 2 - center),
-          )
-        setActive(candidates[0]?.item === section)
+        const triggerY = window.innerHeight * 0.65
+        const activeSection = sections.find((item) => {
+          const bounds = item.getBoundingClientRect()
+          return bounds.top <= triggerY && bounds.bottom > triggerY
+        })
+        setActive(activeSection === section)
       },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
+      { rootMargin: "-60% 0px -30% 0px", threshold: 0 },
     )
     observer.observe(section)
     return () => observer.disconnect()
