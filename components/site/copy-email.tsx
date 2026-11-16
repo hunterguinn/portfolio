@@ -34,7 +34,6 @@ export function CopyEmailLink({ className }: { className?: string }) {
   return (
     <button type="button" onClick={copyEmail} className={`inline-flex items-center gap-2 ${className ?? ""}`}>
       Email
-      <Copy className="size-3.5" aria-hidden="true" />
     </button>
   )
 }

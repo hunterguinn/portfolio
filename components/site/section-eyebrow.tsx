@@ -11,7 +11,8 @@ export function SectionEyebrow({ children }: { children: React.ReactNode }) {
     const section = ref.current?.closest("section")
     if (!section) return
     const observer = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting), {
-      rootMargin: "-30% 0px -30% 0px",
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0.5,
     })
     observer.observe(section)
     return () => observer.disconnect()

@@ -11,8 +11,7 @@ export function Hero() {
           <span className="relative inline-flex shrink-0">
             <Avatar name="Hunter Guinn" src={profileImage} size={54} alt="Portrait of Hunter Guinn" />
             <span className="absolute bottom-0 right-0 flex size-4 items-center justify-center" role="img" aria-label="Available">
-              <span className="absolute inline-flex size-full rounded-full bg-green opacity-70 motion-safe:animate-ping" />
-              <span className="relative inline-flex size-3 rounded-full border border-background bg-green" />
+              <span className="profile-availability-dot" />
             </span>
           </span>
           <p className="type-body">{home.greeting}</p>
