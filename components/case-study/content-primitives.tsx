@@ -100,13 +100,13 @@ export function Callout({ text }: { text: string }) {
 export function TestimonialQuote({ testimonial, compact = false }: { testimonial: Testimonial; compact?: boolean }) {
   if (compact) {
     return (
-      <figure className="flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-6">
+      <figure className="group flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
         <blockquote>
-          <p className="type-project-title text-pretty">{testimonial.quote}</p>
+          <p className="type-project-title text-pretty text-white/50 transition-opacity duration-300 group-hover:text-white">{testimonial.quote}</p>
         </blockquote>
         <figcaption className="flex items-center gap-3">
           <Avatar name={testimonial.name} size={40} />
-          <span className="flex flex-col">
+          <span className="flex flex-col gap-1">
             <span className="type-supporting type-strong">{testimonial.name}</span>
             <span className="type-eyebrow block text-muted">{testimonial.role}</span>
           </span>
@@ -117,19 +117,19 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
 
   return (
     <figure
-      className={`flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-6" : "rounded-lg p-5 md:p-8"}`}
+      className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8" : "rounded-lg p-8"}`}
     >
       <div className="flex flex-col gap-5">
         {compact ? <Quote className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="type-body text-pretty">
+          <p className="type-body text-pretty text-white/50 transition-opacity duration-300 group-hover:text-white">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>
       </div>
       <figcaption className="flex items-center gap-3 border-t pt-5">
         <Avatar name={testimonial.name} size={40} />
-        <span className="flex flex-col">
+        <span className="flex flex-col gap-1">
           <span className="type-supporting type-strong">{testimonial.name}</span>
           <span className="type-eyebrow block text-muted">{testimonial.role}</span>
         </span>

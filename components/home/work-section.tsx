@@ -67,12 +67,12 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
             sizes="(min-width: 1024px) 55vw, 100vw"
             className="-z-20 object-cover"
           />
-          <div className="project-preview-overlay absolute inset-0 -z-10" aria-hidden="true" />
+          <div className="project-preview-overlay absolute inset-0 -z-10 backdrop-blur-sm" aria-hidden="true" />
           <div className="project-preview-gradient absolute inset-0 -z-10" aria-hidden="true" />
           <CoverMedia cover={project.cover} />
-          <div className="flex flex-col gap-2 pr-5 md:pr-8">
+          <div className="flex flex-col gap-2 pl-1 pr-5 md:pr-8">
             <h3 className="type-project-title text-balance">{project.title}</h3>
-            <div className={`flex items-center justify-between gap-4 ${project.slug === "unified" ? "type-body" : "type-supporting"}`}>
+            <div className="flex items-center justify-between gap-4 type-supporting">
               <span>{category}</span>
               <span>{year}</span>
             </div>
@@ -108,7 +108,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
                 <Icon className="size-4" />
               </span>
               <div className="flex flex-col gap-0.5 md:gap-1.5">
-                <p className="type-display tabular-nums">
+                <p className="type-project-title tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
                   ) : metric.value ?? (
@@ -137,13 +137,11 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 export function WorkSection() {
   return (
     <SectionShell id="work" label={home.work.label}>
-      <div className="flex flex-col gap-8 md:gap-16 lg:gap-10">
+      <div className="flex flex-col gap-12 md:gap-16">
         <SectionTitle id="work">{home.work.title}</SectionTitle>
-        <div className="flex flex-col gap-12 md:gap-16">
-          {home.work.projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+        {home.work.projects.map((project) => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
       </div>
     </SectionShell>
   )
