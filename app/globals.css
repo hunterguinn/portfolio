@@ -242,11 +242,15 @@
   transform: translateY(-100%);
 }
 .btn-primary-group:hover .arrow-slot-icon-current,
-.btn-primary-group:focus-visible .arrow-slot-icon-current {
+.btn-primary-group:focus-visible .arrow-slot-icon-current,
+.hero-primary:hover .arrow-slot-icon-current,
+.hero-primary:focus-visible .arrow-slot-icon-current {
   transform: translateY(100%);
 }
 .btn-primary-group:hover .arrow-slot-icon-next,
-.btn-primary-group:focus-visible .arrow-slot-icon-next {
+.btn-primary-group:focus-visible .arrow-slot-icon-next,
+.hero-primary:hover .arrow-slot-icon-next,
+.hero-primary:focus-visible .arrow-slot-icon-next {
   transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {

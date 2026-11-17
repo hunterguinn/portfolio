@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { home } from "@/lib/content/home"
 import { profileImage } from "@/lib/content/avatars"
 import { CopyEmailButton } from "@/components/site/copy-email"
@@ -13,26 +13,31 @@ export function Hero() {
   return (
     <SectionShell bordered={false} label={home.welcome}>
       <div className="flex flex-col gap-5 pt-2 md:pt-6">
-        <div className="flex items-center gap-4">
-          <span className="relative inline-flex shrink-0">
-            <Avatar name="Hunter Guinn" src={profileImage} size={54} alt="Portrait of Hunter Guinn" />
-            <span className="absolute bottom-0 right-0 flex size-4 items-center justify-center" role="img" aria-label="Available">
-              <span className="profile-availability-dot" />
+        <div className="flex flex-col gap-8">
+          <div className="flex items-center gap-4">
+            <span className="relative inline-flex shrink-0">
+              <Avatar name="Hunter Guinn" src={profileImage} size={54} alt="Portrait of Hunter Guinn" />
+              <span className="absolute bottom-0 right-0 flex size-4 items-center justify-center" role="img" aria-label="Available">
+                <span className="profile-availability-dot" />
+              </span>
             </span>
-          </span>
-          <p className="type-body">{home.greeting}</p>
+            <p className="type-body">{home.greeting}</p>
+          </div>
+          <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
+          <p className="type-body flex flex-wrap items-center gap-3">
+            Currently at
+            <span className="btn-secondary inline-flex -rotate-2 items-center rounded-full px-3 py-1 type-eyebrow">
+              {home.currentCompany}
+            </span>
+          </p>
         </div>
-        <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
-        <p className="type-body flex flex-wrap items-center gap-3">
-          Currently at
-          <span className="inline-flex -rotate-2 items-center rounded-full bg-foreground px-4 py-1.5 type-supporting text-background">
-            {home.currentCompany}
-          </span>
-        </p>
         <div className="flex flex-wrap gap-3">
-          <Link href="#work" className={`${buttonClass} btn-primary`}>
+          <Link href="#work" className={`${buttonClass} btn-primary hero-primary group`}>
             See work
-            <ArrowRight className="size-4" aria-hidden="true" />
+            <span className="arrow-slot" aria-hidden="true">
+              <ChevronRight className="arrow-slot-icon arrow-slot-icon-current size-4" />
+              <ChevronRight className="arrow-slot-icon arrow-slot-icon-next size-4" />
+            </span>
           </Link>
           <CopyEmailButton className={`${buttonClass} btn-secondary`} />
         </div>

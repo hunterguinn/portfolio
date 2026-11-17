@@ -1,8 +1,8 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
-import { ChevronDown } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 
-/** Primary pill with a separate circle holding a down caret with a slot-machine hover motion. */
+/** Primary pill with a separate circle holding a right caret with a slot-machine hover motion. */
 export function ArrowLink({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return (
     <Link
@@ -14,8 +14,8 @@ export function ArrowLink({ href, children, className = "" }: { href: string; ch
       </span>
       <span className="btn-primary arrow-flip-wrap flex size-11 items-center justify-center overflow-hidden rounded-full" aria-hidden="true">
         <span className="arrow-slot">
-          <ChevronDown className="arrow-slot-icon arrow-slot-icon-current size-4" />
-          <ChevronDown className="arrow-slot-icon arrow-slot-icon-next size-4" />
+          <ChevronRight className="arrow-slot-icon arrow-slot-icon-current size-4" />
+          <ChevronRight className="arrow-slot-icon arrow-slot-icon-next size-4" />
         </span>
       </span>
     </Link>
