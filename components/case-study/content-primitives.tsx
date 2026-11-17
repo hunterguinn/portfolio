@@ -101,9 +101,14 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
   if (compact) {
     return (
       <figure className="group flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
-        <blockquote>
-          <p className="type-project-title text-pretty text-white/50 transition-opacity duration-300 group-hover:text-white">{testimonial.quote}</p>
-        </blockquote>
+        <div className="flex flex-col gap-3 md:gap-7">
+          <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
+            <Quote className="size-4" />
+          </span>
+          <blockquote>
+            <p className="type-project-title text-pretty text-white/50 transition-opacity duration-300 group-hover:text-white">{testimonial.quote}</p>
+          </blockquote>
+        </div>
         <figcaption className="flex items-center gap-3">
           <Avatar name={testimonial.name} size={40} />
           <span className="flex flex-col gap-1">

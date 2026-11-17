@@ -12,8 +12,8 @@ const buttonClass =
 export function Hero() {
   return (
     <SectionShell bordered={false} label={home.welcome}>
-      <div className="flex flex-col gap-5 pt-2 md:pt-6">
-        <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 pt-2 md:pt-6">
+        <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
             <span className="relative inline-flex shrink-0">
               <Avatar name="Hunter Guinn" src={profileImage} size={54} alt="Portrait of Hunter Guinn" />
@@ -24,9 +24,9 @@ export function Hero() {
             <p className="type-body">{home.greeting}</p>
           </div>
           <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
-          <p className="type-body flex flex-wrap items-center gap-3">
+          <p className="type-body flex flex-wrap items-center gap-2">
             Currently at
-            <span className="btn-secondary inline-flex -rotate-2 items-center rounded-full px-3 py-1 type-eyebrow">
+            <span className="btn-secondary inline-flex -rotate-2 items-center rounded-full px-3 py-1 type-supporting text-muted!">
               {home.currentCompany}
             </span>
           </p>

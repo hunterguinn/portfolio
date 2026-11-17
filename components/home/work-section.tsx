@@ -107,15 +107,15 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
                 <Icon className="size-4" />
               </span>
-              <div className="flex flex-col gap-0.5 md:gap-1.5">
-                <p className="type-project-title tabular-nums">
+              <div className="flex w-full min-w-0 flex-col gap-0.5 md:gap-1.5">
+                <p className="type-project-title w-full tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
                   ) : metric.value ?? (
                     <Pending>Metric pending</Pending>
                   )}
                 </p>
-                <p className="type-supporting text-pretty text-muted">{metric.label}</p>
+                <p className="type-supporting w-full text-wrap text-muted">{metric.label}</p>
               </div>
             </li>
           )
@@ -124,9 +124,9 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
             <InsightIcon className="size-4" />
           </span>
-          <div className="flex flex-col gap-0.5 md:gap-1.5">
-            <h4 className="type-body type-strong">{project.insight.title}</h4>
-            <p className="type-supporting text-pretty text-muted">{project.insight.body}</p>
+          <div className="flex w-full min-w-0 flex-col gap-0.5 md:gap-1.5">
+            <h4 className="type-body type-strong w-full">{project.insight.title}</h4>
+            <p className="type-supporting w-full text-wrap text-muted">{project.insight.body}</p>
           </div>
         </li>
       </ul>

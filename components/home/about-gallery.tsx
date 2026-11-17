@@ -35,9 +35,9 @@ function GalleryCard({ item }: { item: GalleryItem }) {
 /** Bento grid of photos: four stacked columns at wide sizes, two columns on smaller screens. */
 export function AboutGallery({ columns }: { columns: GalleryItem[][] }) {
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
       {columns.map((column) => (
-        <ul key={column[0].placeholder} className="flex flex-col gap-3">
+        <ul key={column[0].placeholder} className="flex flex-col gap-2">
           {column.map((item) => (
             <GalleryCard key={item.placeholder} item={item} />
           ))}
