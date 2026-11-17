@@ -17,7 +17,6 @@ import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { MediaSlot } from "@/components/case-study/figure"
 import { CountUp } from "@/components/site/count-up"
 import { Pending } from "@/components/site/pending"
-import { IconBadge } from "@/components/site/icon-badge"
 import { ArrowLink } from "@/components/site/arrow-link"
 
 const projectIcons: Record<ProjectIcon, LucideIcon> = {
@@ -103,30 +102,30 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         {project.metrics.map((metric, index) => {
           const Icon = projectIcons[project.metricIcons[index]]
           return (
-            <li key={metric.label} className="card-surface project-preview-card flex flex-col justify-between gap-8 rounded-3xl p-6">
-              <IconBadge>
+            <li key={metric.label} className="card-surface project-preview-card flex flex-col gap-3 rounded-lg p-5 md:gap-7">
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
                 <Icon className="size-4" />
-              </IconBadge>
-              <div className="flex flex-col gap-1">
-                <p className="type-display tabular-nums">
+              </span>
+              <div className="flex flex-col gap-0.5 md:gap-1.5">
+                <p className="type-project-title tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
                   ) : metric.value ?? (
                     <Pending>Metric pending</Pending>
                   )}
                 </p>
-                <p className="type-body text-pretty text-muted">{metric.label}</p>
+                <p className="type-supporting text-pretty text-muted">{metric.label}</p>
               </div>
             </li>
           )
         })}
-        <li className="card-surface project-preview-card flex flex-col justify-between gap-8 rounded-3xl p-6">
-          <IconBadge>
+        <li className="card-surface project-preview-card flex flex-col gap-3 rounded-lg p-5 md:gap-7">
+          <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
             <InsightIcon className="size-4" />
-          </IconBadge>
-          <div className="flex flex-col gap-1">
-            <h4 className="type-project-title text-balance">{project.insight.title}</h4>
-            <p className="type-body text-pretty text-muted">{project.insight.body}</p>
+          </span>
+          <div className="flex flex-col gap-0.5 md:gap-1.5">
+            <h4 className="type-body type-strong">{project.insight.title}</h4>
+            <p className="type-supporting text-pretty text-muted">{project.insight.body}</p>
           </div>
         </li>
       </ul>
