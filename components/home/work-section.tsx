@@ -82,7 +82,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
             <p className="text-body">{project.description}</p>
           </div>
           <div className="mt-auto flex flex-col gap-4 pt-2">
-            <div className="hidden flex-col gap-0 md:flex">
+            <div className="hidden flex-col gap-title-desc md:flex">
               <p className="text-body">The Team:</p>
               <ul className="text-body text-secondary">
                 {project.team.map((member) => (
@@ -105,7 +105,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
                 <Icon weight="regular" className="size-4" />
               </span>
-              <div className="flex w-full min-w-0 flex-col gap-0">
+              <div className="flex w-full min-w-0 flex-col gap-title-desc">
                 <p className="text-heading w-full tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
@@ -122,7 +122,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
             <InsightIcon weight="regular" className="size-4" />
           </span>
-          <div className="flex w-full min-w-0 flex-col gap-0">
+          <div className="flex w-full min-w-0 flex-col gap-title-desc">
             <h4 className="text-body text-strong w-full">{project.insight.title}</h4>
             <p className="text-caption w-full text-wrap text-secondary">{project.insight.body}</p>
           </div>

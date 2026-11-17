@@ -50,7 +50,7 @@ export function AiSection() {
                 <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
                   <Icon weight="regular" className="size-4" />
                 </span>
-                <div className="flex flex-col gap-0">
+                <div className="flex flex-col gap-title-desc">
                   <p className="text-heading tabular-nums">
                     <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
                   </p>

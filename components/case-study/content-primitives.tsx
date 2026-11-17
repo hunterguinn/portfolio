@@ -76,7 +76,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
                 <Icon weight="regular" className="size-4" aria-hidden="true" />
               </span>
             ) : null}
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col gap-title-desc">
               <h3 className="text-body text-strong">{card.title}</h3>
               <p className="text-caption text-secondary">{card.body}</p>
             </div>
@@ -106,7 +106,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
         </div>
         <figcaption className="flex items-center gap-3">
           <Avatar name={testimonial.name} size={40} />
-          <span className="flex flex-col gap-0">
+          <span className="flex flex-col gap-title-desc">
             <span className="text-caption text-strong">{testimonial.name}</span>
             <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
           </span>
@@ -129,7 +129,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       </div>
       <figcaption className="flex items-center gap-3 border-t pt-5">
         <Avatar name={testimonial.name} size={40} />
-        <span className="flex flex-col gap-0">
+        <span className="flex flex-col gap-title-desc">
           <span className="text-caption text-strong">{testimonial.name}</span>
           <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
         </span>

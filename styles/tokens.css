@@ -110,6 +110,7 @@
   --spacing-section-xl: calc(var(--spacing) * 24);
   --spacing-gutter: calc(var(--spacing) * 5);
   --spacing-gutter-desktop: calc(var(--spacing) * 10);
+  --spacing-title-desc: 2px;
   --radius-*: initial;
   --radius-none: 0px;
   --radius-full: calc(infinity * 1px);
