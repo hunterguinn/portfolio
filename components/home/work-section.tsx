@@ -79,7 +79,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           </div>
         </div>
 
-        <div className="card-surface flex flex-col gap-6 rounded-3xl p-5 md:gap-8 md:p-8 lg:col-span-5">
+        <div className="card-surface project-preview-card flex flex-col gap-6 rounded-3xl px-5 py-4 md:gap-8 md:px-8 md:py-6 lg:col-span-5">
           <div className="flex flex-1 rounded-2xl bg-background p-5 md:p-8">
             <p className="type-body text-pretty">{project.description}</p>
           </div>
@@ -91,7 +91,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               ))}
             </ul>
           </div>
-          <ArrowLink href={project.href} className="w-full md:w-auto">
+          <ArrowLink href={project.href} className="w-full">
             View project<span className="sr-only">: {project.title}</span>
           </ArrowLink>
         </div>
@@ -101,7 +101,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         {project.metrics.map((metric, index) => {
           const Icon = projectIcons[project.metricIcons[index]]
           return (
-            <li key={metric.label} className="card-surface flex flex-col justify-between gap-8 rounded-3xl p-6">
+            <li key={metric.label} className="card-surface project-preview-card flex flex-col justify-between gap-8 rounded-3xl p-6">
               <IconBadge>
                 <Icon className="size-4" />
               </IconBadge>
@@ -118,7 +118,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
             </li>
           )
         })}
-        <li className="card-surface flex flex-col justify-between gap-8 rounded-3xl p-6">
+        <li className="card-surface project-preview-card flex flex-col justify-between gap-8 rounded-3xl p-6">
           <IconBadge>
             <InsightIcon className="size-4" />
           </IconBadge>

@@ -194,6 +194,9 @@
 .card-surface:hover {
   background-color: var(--surface-strong);
 }
+.project-preview-card:hover {
+  background-color: var(--surface);
+}
 
 /* Primary buttons change fill on hover; secondary buttons are borderless surface pills. */
 .btn-primary {
