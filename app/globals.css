@@ -38,7 +38,7 @@
 }
 
 /*
- * Page container: content is exactly 1200px wide; gutters sit outside it.
+ * Page container: content is exactly 1400px wide; gutters sit outside it.
  * No margins anywhere: a .page-band parent centres the capped container.
  */
 .page-band {
@@ -51,12 +51,12 @@
 .page-container {
   width: 100%;
   padding-inline: var(--spacing-gutter);
-  max-width: calc(1200px + 2 * var(--spacing-gutter));
+  max-width: calc(1400px + 2 * var(--spacing-gutter));
 }
 @media (min-width: 48rem) {
   .page-container {
     padding-inline: var(--spacing-gutter-desktop);
-    max-width: calc(1200px + 2 * var(--spacing-gutter-desktop));
+    max-width: calc(1400px + 2 * var(--spacing-gutter-desktop));
   }
 }
 
@@ -138,17 +138,46 @@
 .btn-primary-group:hover .arrow-slot-icon-current,
 .btn-primary-group:focus-visible .arrow-slot-icon-current,
 .hero-primary:hover .arrow-slot-icon-current,
-.hero-primary:focus-visible .arrow-slot-icon-current {
+.hero-primary:focus-visible .arrow-slot-icon-current,
+.copy-email-button:hover .arrow-slot-icon-current,
+.copy-email-button:focus-visible .arrow-slot-icon-current,
+.hero-primary:hover .reel-text-current,
+.hero-primary:focus-visible .reel-text-current,
+.copy-email-button:hover .reel-text-current,
+.copy-email-button:focus-visible .reel-text-current {
   transform: translateY(100%);
 }
 .btn-primary-group:hover .arrow-slot-icon-next,
 .btn-primary-group:focus-visible .arrow-slot-icon-next,
 .hero-primary:hover .arrow-slot-icon-next,
-.hero-primary:focus-visible .arrow-slot-icon-next {
+.hero-primary:focus-visible .arrow-slot-icon-next,
+.copy-email-button:hover .arrow-slot-icon-next,
+.copy-email-button:focus-visible .arrow-slot-icon-next,
+.hero-primary:hover .reel-text-next,
+.hero-primary:focus-visible .reel-text-next,
+.copy-email-button:hover .reel-text-next,
+.copy-email-button:focus-visible .reel-text-next {
   transform: translateY(0);
 }
+
+/* Button label uses the same reel motion as the icon: both copies share one grid cell. */
+.reel-text {
+  display: grid;
+  overflow: hidden;
+}
+.reel-text-item {
+  grid-area: 1 / 1;
+  transition: transform 360ms cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+.reel-text-current {
+  transform: translateY(0);
+}
+.reel-text-next {
+  transform: translateY(-100%);
+}
 @media (prefers-reduced-motion: reduce) {
-  .arrow-slot-icon {
+  .arrow-slot-icon,
+  .reel-text-item {
     transition: none;
   }
 }
