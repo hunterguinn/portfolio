@@ -251,19 +251,16 @@
   }
 }
 
-/* Section labels dim together outside the active viewport band; white dots pulse softly in view. */
+/* Section labels sit at 40% opacity until their section is the single active one on the page. */
 .section-eyebrow {
   color: var(--foreground);
 }
 .js main p.section-eyebrow {
-  opacity: 0.6;
-  transition: opacity 250ms ease;
+  opacity: 0.4;
+  transition: opacity 400ms ease;
 }
 .js main p.section-eyebrow[data-active="true"] {
   opacity: 1;
-}
-.js main p.section-eyebrow:not([data-active="true"]) {
-  transition-duration: 0ms;
 }
 .section-eyebrow-dot,
 .profile-availability-dot {
@@ -276,23 +273,12 @@
 .section-eyebrow-dot {
   margin-inline-end: 0.5rem;
   background-color: #fff;
-}
-.section-eyebrow[data-active="true"] .section-eyebrow-dot {
-  animation: eyebrow-glow 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0.5rem rgb(255 255 255 / 70%);
 }
 .profile-availability-dot {
   background-color: var(--green);
   box-shadow: 0 0 0.3rem color-mix(in srgb, var(--green) 70%, transparent);
   animation: eyebrow-glow-green 1.8s ease-in-out infinite;
-}
-@keyframes eyebrow-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 0.5rem rgb(255 255 255 / 55%);
-  }
-  50% {
-    box-shadow: 0 0 1rem rgb(255 255 255 / 85%);
-  }
 }
 @keyframes eyebrow-glow-green {
   0%,
@@ -304,12 +290,8 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .section-eyebrow[data-active="true"] .section-eyebrow-dot,
   .profile-availability-dot {
     animation: none;
-    box-shadow: 0 0 0.5rem rgb(255 255 255 / 70%);
-  }
-  .profile-availability-dot {
     box-shadow: 0 0 0.5rem color-mix(in srgb, var(--green) 70%, transparent);
   }
 }

@@ -7,23 +7,38 @@ type EyebrowEntry = {
   setActive: (active: boolean) => void
 }
 
+const ACTIVATION_LINE = 0.4
 const entries = new Set<EyebrowEntry>()
 let updateFrame = 0
 
 function updateActiveEyebrow() {
   cancelAnimationFrame(updateFrame)
   updateFrame = requestAnimationFrame(() => {
-    const viewportCenter = window.innerHeight / 2
+    // A section becomes active once its label scrolls past this line, so the dim state is visible first.
+    const triggerLine = window.innerHeight * ACTIVATION_LINE
+    const scrollBottom = window.scrollY + window.innerHeight
+    const isAtPageEnd = scrollBottom >= document.documentElement.scrollHeight - 2
     let activeEntry: EyebrowEntry | undefined
-    let closestDistance = Number.POSITIVE_INFINITY
+    let activeTop = Number.NEGATIVE_INFINITY
 
     for (const entry of entries) {
-      const bounds = entry.element.getBoundingClientRect()
-      const isVisible = bounds.bottom > 0 && bounds.top < window.innerHeight
-      const distance = Math.abs((bounds.top + bounds.bottom) / 2 - viewportCenter)
-      if (isVisible && distance < closestDistance) {
-        closestDistance = distance
+      const top = entry.element.getBoundingClientRect().top
+      const sectionBottom = (entry.element.closest("section") ?? entry.element).getBoundingClientRect().bottom
+      if (top <= triggerLine && sectionBottom > triggerLine && top > activeTop) {
+        activeTop = top
         activeEntry = entry
+      }
+    }
+
+    // Short final sections can never push their label past the line, so hand them the highlight at the page end.
+    if (isAtPageEnd) {
+      let lastTop = Number.NEGATIVE_INFINITY
+      for (const entry of entries) {
+        const top = entry.element.getBoundingClientRect().top
+        if (top > lastTop && top < window.innerHeight) {
+          lastTop = top
+          activeEntry = entry
+        }
       }
     }
 
@@ -33,7 +48,7 @@ function updateActiveEyebrow() {
   })
 }
 
-/** Only the visible section label closest to the viewport center is fully opaque. */
+/** Exactly one section label per page is fully opaque: the section currently crossing the activation line. */
 export function SectionEyebrow({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLParagraphElement>(null)
   const [active, setActive] = useState(false)
