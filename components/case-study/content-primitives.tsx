@@ -108,7 +108,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
           <Avatar name={testimonial.name} size={40} />
           <span className="flex flex-col">
             <span className="type-supporting type-strong">{testimonial.name}</span>
-            <span className="type-caption block text-muted">{testimonial.role}</span>
+            <span className="type-eyebrow block text-muted">{testimonial.role}</span>
           </span>
         </figcaption>
       </figure>
@@ -131,7 +131,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
         <Avatar name={testimonial.name} size={40} />
         <span className="flex flex-col">
           <span className="type-supporting type-strong">{testimonial.name}</span>
-          <span className="type-caption block text-muted">{testimonial.role}</span>
+          <span className="type-eyebrow block text-muted">{testimonial.role}</span>
         </span>
       </figcaption>
     </figure>
