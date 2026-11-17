@@ -35,7 +35,7 @@ const projectIcons: Record<ProjectIcon, LucideIcon> = {
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
     return (
-      <div className="relative min-h-64 flex-1 overflow-hidden rounded-2xl bg-background md:min-h-[24rem]">
+      <div className="relative min-h-64 flex-1 overflow-hidden rounded-2xl rounded-tl-none rounded-br-none bg-background md:min-h-[24rem]">
         <Image
           src={cover.src}
           alt={cover.alt}
@@ -79,21 +79,23 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           </div>
         </div>
 
-        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl p-3 lg:col-span-5">
-          <div className="flex flex-1 rounded-2xl bg-background p-6">
+        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl px-3 py-6 md:px-5 md:py-10 lg:col-span-5">
+          <div className="rounded-2xl bg-background p-6">
             <p className="type-body text-pretty">{project.description}</p>
           </div>
-          <div className="hidden flex-col gap-1 md:flex">
-            <p className="type-body">The Team:</p>
-            <ul className="type-body text-muted">
-              {project.team.map((member) => (
-                <li key={member}>{member}</li>
-              ))}
-            </ul>
+          <div className="mt-auto flex flex-col gap-2 pt-2">
+            <div className="hidden flex-col gap-1 md:flex">
+              <p className="type-body">The Team:</p>
+              <ul className="type-body text-muted">
+                {project.team.map((member) => (
+                  <li key={member}>{member}</li>
+                ))}
+              </ul>
+            </div>
+            <ArrowLink href={project.href} className="w-full">
+              View project<span className="sr-only">: {project.title}</span>
+            </ArrowLink>
           </div>
-          <ArrowLink href={project.href} className="w-full">
-            View project<span className="sr-only">: {project.title}</span>
-          </ArrowLink>
         </div>
       </div>
 
