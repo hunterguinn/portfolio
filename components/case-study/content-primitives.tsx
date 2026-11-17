@@ -71,7 +71,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
           <li
             key={card.title}
             style={{ "--tone": tone } as React.CSSProperties}
-            className="card-surface flex flex-col gap-3 rounded-lg p-5 md:gap-7"
+            className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7"
           >
             {Icon ? (
               <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)]">
