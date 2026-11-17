@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { Film, ImageIcon } from "lucide-react"
+import { FilmStrip } from "@phosphor-icons/react/dist/ssr/FilmStrip"
+import { Image as ImageIcon } from "@phosphor-icons/react/dist/ssr/Image"
 import type { FigureData, FigureMeta, MediaSlot as MediaSlotData } from "@/lib/content/types"
 import { OrderScreen } from "@/components/figures/order-screen"
 
@@ -21,10 +22,10 @@ export function FigureFrame({
     <figure className="flex flex-col gap-4">
       {children}
       {showCaption ? (
-        <figcaption className="type-supporting flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          {meta.number ? <span className="type-eyebrow text-muted">{meta.number}</span> : null}
-          {captionText ? <span className="text-foreground">{captionText}</span> : null}
-          {showPending ? <span className="text-muted italic">Caption pending</span> : null}
+        <figcaption className="text-caption flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          {meta.number ? <span className="text-eyebrow text-secondary">{meta.number}</span> : null}
+          {captionText ? <span className="text-primary">{captionText}</span> : null}
+          {showPending ? <span className="text-secondary italic">Caption pending</span> : null}
         </figcaption>
       ) : null}
     </figure>
@@ -38,7 +39,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
     const contain = slot.fit === "contain"
     return (
       <div
-        className={`relative overflow-hidden rounded-lg ${contain ? "bg-[#ecebe7]" : "bg-surface"}`}
+        className={`relative overflow-hidden rounded-lg ${contain ? "bg-media-canvas" : "bg-surface"}`}
         style={style}
       >
         <Image
@@ -71,7 +72,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
     return <OrderScreen aspect={slot.aspect} />
   }
 
-  const Icon = slot.kind === "video" ? Film : ImageIcon
+  const Icon = slot.kind === "video" ? FilmStrip : ImageIcon
   return (
     <div
       role="img"
@@ -79,9 +80,9 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
       className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center"
       style={style}
     >
-      <Icon className="size-5 text-muted" aria-hidden="true" />
-      <span className="type-supporting max-w-[18rem] text-muted text-pretty">{slot.placeholder}</span>
-      <span className="type-eyebrow text-muted">
+      <Icon weight="regular" className="size-5 text-secondary" aria-hidden="true" />
+      <span className="text-caption text-secondary">{slot.placeholder}</span>
+      <span className="text-eyebrow text-secondary">
         {slot.kind === "video" ? "Video pending" : "Asset pending"}
       </span>
     </div>
@@ -93,9 +94,9 @@ export function Figure({ figure }: { figure: FigureData }) {
   const grid = (
     <div className="flex flex-col gap-4">
       {figure.slots.map((slot) => (
-        <div key={slot.placeholder} className="flex w-full flex-col gap-2.5">
+        <div key={slot.placeholder} className="flex w-full flex-col gap-3">
           <MediaSlot slot={slot} />
-          {slot.label ? <p className="type-eyebrow text-muted">{slot.label}</p> : null}
+          {slot.label ? <p className="text-eyebrow text-secondary">{slot.label}</p> : null}
         </div>
       ))}
     </div>
@@ -103,7 +104,7 @@ export function Figure({ figure }: { figure: FigureData }) {
 
   return (
     <FigureFrame meta={figure} hasSlotLabels={hasSlotLabels}>
-      {figure.title ? <h3 className="type-body type-strong">{figure.title}</h3> : null}
+      {figure.title ? <h3 className="text-body text-strong">{figure.title}</h3> : null}
       {grid}
     </FigureFrame>
   )

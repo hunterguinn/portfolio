@@ -1,28 +1,50 @@
 import Image from "next/image"
-import Link from "next/link"
+import { Shapes } from "@phosphor-icons/react/dist/ssr/Shapes"
+import { Briefcase } from "@phosphor-icons/react/dist/ssr/Briefcase"
+import { CreditCard } from "@phosphor-icons/react/dist/ssr/CreditCard"
+import { Database } from "@phosphor-icons/react/dist/ssr/Database"
+import { Bank } from "@phosphor-icons/react/dist/ssr/Bank"
+import { Stack } from "@phosphor-icons/react/dist/ssr/Stack"
+import { Storefront } from "@phosphor-icons/react/dist/ssr/Storefront"
+import { Wallet } from "@phosphor-icons/react/dist/ssr/Wallet"
+import { FlowArrow } from "@phosphor-icons/react/dist/ssr/FlowArrow"
+import type { Icon } from "@phosphor-icons/react"
 import { home } from "@/lib/content/home"
-import type { ProjectSummary } from "@/lib/content/types"
+import type { ProjectIcon, ProjectSummary } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { MediaSlot } from "@/components/case-study/figure"
 import { CountUp } from "@/components/site/count-up"
 import { Pending } from "@/components/site/pending"
+import { ArrowLink } from "@/components/site/arrow-link"
+
+const projectIcons: Record<ProjectIcon, Icon> = {
+  landmark: Bank,
+  wallet: Wallet,
+  "credit-card": CreditCard,
+  store: Storefront,
+  layers: Stack,
+  briefcase: Briefcase,
+  database: Database,
+  blocks: Shapes,
+  workflow: FlowArrow,
+}
 
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
     return (
-      <div className="card-surface relative min-h-64 overflow-hidden rounded-3xl md:min-h-[26rem]">
+      <div className="relative min-h-64 flex-1 overflow-hidden rounded-2xl rounded-tl-none rounded-br-none bg-page md:min-h-[24rem]">
         <Image
           src={cover.src}
           alt={cover.alt}
           fill
-          sizes="(min-width: 1024px) 45vw, 100vw"
-          className="object-contain p-6 md:p-10"
+          sizes="(min-width: 1024px) 55vw, 100vw"
+          className="object-contain bg-surface p-6 md:p-10"
         />
       </div>
     )
   }
   return (
-    <div className="card-surface flex min-h-64 flex-col overflow-hidden rounded-3xl p-3 md:min-h-[26rem]">
+    <div className="flex min-h-64 flex-1 flex-col overflow-hidden rounded-2xl bg-page p-3 md:min-h-[24rem]">
       <MediaSlot slot={cover} />
     </div>
   )
@@ -30,47 +52,82 @@ function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
 
 function ProjectCard({ project }: { project: ProjectSummary }) {
   const [category, year] = project.meta.split(" · ")
+  const InsightIcon = projectIcons[project.insight.icon]
 
   return (
-    <article data-cursor="view-project" className="group relative">
-      <div className="grid gap-3 text-foreground">
-        <div className="card-surface rounded-3xl p-5 md:p-7">
-          <h3 className="type-project-title text-balance">
-            <Link
-              href={project.href}
-              className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
-            >
-              {project.title}
-            </Link>
-          </h3>
-          <div className="mt-4 flex items-center justify-between gap-4 type-caption text-muted">
-            <span>{category}</span>
-            <span>{year}</span>
+    <article className="flex flex-col gap-3">
+      <div className="grid gap-3 lg:grid-cols-12">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl border border-subtle pb-4 pl-4 pr-0 pt-0 text-primary md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
+          <Image
+            src={project.background}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="-z-20 object-cover"
+          />
+          <div className="project-preview-overlay absolute inset-0 -z-10 backdrop-blur-sm" aria-hidden="true" />
+          <div className="project-preview-gradient absolute inset-0 -z-10" aria-hidden="true" />
+          <CoverMedia cover={project.cover} />
+          <div className="flex flex-col gap-2 pl-1 pr-5 md:pr-8">
+            <h3 className="text-heading text-balance">{project.title}</h3>
+            <div className="flex items-center justify-between gap-4 text-caption">
+              <span>{category}</span>
+              <span>{year}</span>
+            </div>
           </div>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
-          <CoverMedia cover={project.cover} />
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1 md:grid-rows-3">
-            {project.metrics.map((metric) => (
-              <dl key={metric.label} className="card-surface flex min-h-32 flex-col justify-between gap-5 rounded-3xl p-4 md:p-5">
-                <dd className="type-display tabular-nums">
+        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl p-3 md:p-5 lg:col-span-5">
+          <div className="rounded-2xl bg-page px-4 py-8 md:px-5 md:py-12">
+            <p className="text-body">{project.description}</p>
+          </div>
+          <div className="mt-auto flex flex-col gap-4 pt-2">
+            <div className="hidden flex-col gap-title-desc md:flex">
+              <p className="text-body">The Team:</p>
+              <ul className="text-body text-secondary">
+                {project.team.map((member) => (
+                  <li key={member}>{member}</li>
+                ))}
+              </ul>
+            </div>
+            <ArrowLink href={project.href} className="w-full">
+              View project<span className="sr-only">: {project.title}</span>
+            </ArrowLink>
+          </div>
+        </div>
+      </div>
+
+      <ul className="hidden w-full min-w-0 gap-3 md:grid md:grid-cols-3">
+        {project.metrics.map((metric, index) => {
+          const Icon = projectIcons[project.metricIcons[index]]
+          return (
+            <li key={metric.label} className="card-surface project-preview-card flex w-full min-w-0 flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+                <Icon weight="regular" className="size-4" />
+              </span>
+              <div className="flex w-full min-w-0 flex-col gap-title-desc">
+                <p className="text-heading w-full tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
                   ) : metric.value ?? (
                     <Pending>Metric pending</Pending>
                   )}
-                </dd>
-                <dt className="type-supporting text-muted text-pretty">{metric.label}</dt>
-              </dl>
-            ))}
-            <div className="card-surface flex min-h-32 flex-col justify-between gap-4 rounded-3xl p-4 md:p-5 sm:col-span-2 md:col-span-1">
-              <p className="type-caption text-muted">The Team</p>
-              <p className="type-body text-muted">Digital Leadership</p>
-            </div>
+                </p>
+                <p className="text-caption w-full text-wrap text-secondary">{metric.label}</p>
+              </div>
+            </li>
+          )
+        })}
+        <li className="card-surface project-preview-card flex w-full min-w-0 flex-col gap-3 rounded-lg p-5 md:gap-7">
+          <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+            <InsightIcon weight="regular" className="size-4" />
+          </span>
+          <div className="flex w-full min-w-0 flex-col gap-title-desc">
+            <h4 className="text-body text-strong w-full">{project.insight.title}</h4>
+            <p className="text-caption w-full text-wrap text-secondary">{project.insight.body}</p>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </article>
   )
 }
@@ -78,13 +135,11 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 export function WorkSection() {
   return (
     <SectionShell id="work" label={home.work.label}>
-      <div className="flex flex-col gap-6 md:gap-14 lg:gap-8">
+      <div className="flex flex-col gap-12 md:gap-16">
         <SectionTitle id="work">{home.work.title}</SectionTitle>
-        <div className="flex flex-col gap-10 md:gap-14">
-          {home.work.projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+        {home.work.projects.map((project) => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
       </div>
     </SectionShell>
   )

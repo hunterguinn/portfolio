@@ -187,12 +187,18 @@ export type CaseStudy = {
   sections: Section[]
 }
 
+export type ProjectIcon = "landmark" | "wallet" | "credit-card" | "store" | "layers" | "briefcase" | "database" | "blocks" | "workflow"
+
 export type ProjectSummary = {
   slug: CaseStudy["slug"]
   href: string
   title: string
   meta: string
   description: string
+  team: string[]
   metrics: Metric[]
+  metricIcons: [ProjectIcon, ProjectIcon]
+  insight: { icon: ProjectIcon; title: string; body: string }
   cover: MediaSlot
+  background: string
 }

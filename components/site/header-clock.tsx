@@ -21,11 +21,11 @@ function format(minute: number) {
 export function HeaderClock() {
   const minute = useSyncExternalStore(subscribe, getMinute, () => null)
   if (minute === null) {
-    return <span className="type-eyebrow hidden min-w-[9.5rem] text-muted lg:inline-block" aria-hidden="true" />
+    return <span className="text-eyebrow hidden min-w-[9.5rem] text-right text-secondary lg:inline-block" aria-hidden="true" />
   }
   const { text, iso } = format(minute)
   return (
-    <time dateTime={iso} className="type-eyebrow hidden min-w-[9.5rem] text-muted tabular-nums lg:inline-block">
+    <time dateTime={iso} className="text-eyebrow hidden min-w-[9.5rem] text-secondary tabular-nums lg:inline-block">
       {text}
     </time>
   )

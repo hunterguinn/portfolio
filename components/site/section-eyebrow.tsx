@@ -7,7 +7,7 @@ type EyebrowEntry = {
   setActive: (active: boolean) => void
 }
 
-const ACTIVATION_LINE = 0.4
+const ACTIVATION_LINE = 0.2
 const entries = new Set<EyebrowEntry>()
 let updateFrame = 0
 
@@ -76,7 +76,7 @@ export function SectionEyebrow({ children }: { children: React.ReactNode }) {
   }, [])
 
   return (
-    <p ref={ref} className="type-eyebrow section-eyebrow" data-active={active}>
+    <p ref={ref} className="text-eyebrow section-eyebrow" data-active={active}>
       <span className="section-eyebrow-dot" aria-hidden="true" />
       {children}
     </p>

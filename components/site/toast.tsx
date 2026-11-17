@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Check } from "lucide-react"
+import { Check } from "@phosphor-icons/react/dist/csr/Check"
 
 const TOAST_EVENT = "site:toast"
 const VISIBLE_MS = 2600
@@ -47,12 +47,12 @@ export function ToastHost() {
         <div
           key={toast.id}
           data-visible={visible}
-          className="toast flex items-center gap-2.5 rounded-full bg-surface-strong py-2.5 pl-3 pr-5 shadow-lg shadow-black/20 ring-1 ring-border"
+          className="toast flex items-center gap-3 rounded-full bg-surface-strong py-3 pl-3 pr-5 shadow-lg shadow-black/20 ring-1 ring-border"
         >
           <span className="flex size-5 items-center justify-center rounded-full bg-green text-background" aria-hidden="true">
-            <Check className="size-3" strokeWidth={3} />
+            <Check weight="regular" className="size-3" />
           </span>
-          <span className="type-supporting">{toast.message}</span>
+          <span className="text-caption">{toast.message}</span>
         </div>
       ) : null}
     </div>

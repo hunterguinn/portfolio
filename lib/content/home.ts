@@ -3,11 +3,10 @@ import type { ExperienceMetric, GalleryItem, ProjectSummary, StackTool, Testimon
 export const home = {
   headline: "Designing financial experiences that create clarity, build trust, and scale",
   welcome: "Welcome",
-  intro:
-    "I'm building products across native and web platforms that empower consumers and wealth management clients at Bank of America.",
   greeting: "Hey, I'm Hunter 👋",
+  currentCompany: "Bank of America",
   stack: [
-    { name: "Figma", src: "/images/stack/figma.png" },
+    { name: "Figma", src: "/images/stack/figma-new.png" },
     { name: "Codex", src: "/images/stack/codex.png" },
     { name: "Sketch", src: "/images/stack/sketch.png" },
     { name: "Adobe", src: "/images/stack/adobe.png" },
@@ -25,7 +24,16 @@ export const home = {
         title: "Merrill Edge Asset Transfer",
         meta: "Native app · 2027",
         description:
-          "I designed a faster, responsive asset transfer experience that leveraged an open finance API to prep-populate data from the client's external brokerage, rethinking how clients connect external accounts, select assets, and move investments into Merrill.",
+          "I helped redesign how clients transfer investments into Merrill, simplifying complex account connections, asset selection, and transfer requirements into a more streamlined digital experience.",
+        // Placeholder until the real team list is provided.
+        team: ["Digital Leadership"],
+        background: "/images/home/project-bg-1.webp",
+        metricIcons: ["landmark", "wallet"],
+        insight: {
+          icon: "database",
+          title: "Data to Design",
+          body: "I translated inconsistent API data and complex account requirements into clearer workflows.",
+        },
         metrics: [
           {
             value: "$19B",
@@ -53,7 +61,16 @@ export const home = {
         title: "Point-of-Sale Software",
         meta: "Android responsive · 2026",
         description:
-          "I helped bring a critical platform in-house following a vendor exit, providing point-of-sale continuity for small business clients and their customers.",
+          "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing a scalable design foundation across devices while maintaining continuity for small business merchants.",
+        // Placeholder until the real team list is provided.
+        team: ["Digital Leadership"],
+        background: "/images/home/project-bg-2.webp",
+        metricIcons: ["credit-card", "store"],
+        insight: {
+          icon: "blocks",
+          title: "Building 1 to n",
+          body: "I established reusable components to support consistent experiences across payment devices.",
+        },
         metrics: [
           {
             value: "16.6B",
@@ -79,9 +96,18 @@ export const home = {
         slug: "unified",
         href: "/unified",
         title: "Unified Client Application",
-        meta: "Web responsive · 2026",
+        meta: "Web responsive · 2025",
         description:
-          "I helped build a multi-product application that transformed how clients apply for banking services, balancing digital efficiency with the bank's eligibility and risk criteria.",
+          "I helped unify applications for business checking, credit cards, and payment services into a single digital experience, balancing simpler onboarding with complex eligibility and risk requirements.",
+        // Placeholder until the real team list is provided.
+        team: ["Digital Leadership"],
+        background: "/images/home/project-bg-3.webp",
+        metricIcons: ["layers", "briefcase"],
+        insight: {
+          icon: "workflow",
+          title: "xFN Collaboration",
+          body: "I aligned stakeholders around eligibility rules and competing scenarios to create a multi-product application.",
+        },
         metrics: [
           {
             value: "8-in-1",

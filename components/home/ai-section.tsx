@@ -1,15 +1,17 @@
 import Image from "next/image"
-import { GraduationCap, Sparkles, Users, type LucideIcon } from "lucide-react"
+import { GraduationCap } from "@phosphor-icons/react/dist/ssr/GraduationCap"
+import { Sparkle } from "@phosphor-icons/react/dist/ssr/Sparkle"
+import { Users } from "@phosphor-icons/react/dist/ssr/Users"
+import type { Icon } from "@phosphor-icons/react"
 import { home } from "@/lib/content/home"
 import type { ExperienceMetric } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { IconBadge } from "@/components/site/icon-badge"
 import { CountUp } from "@/components/site/count-up"
 
-const metricIcons: Record<ExperienceMetric["icon"], LucideIcon> = {
+const metricIcons: Record<ExperienceMetric["icon"], Icon> = {
   users: Users,
   "graduation-cap": GraduationCap,
-  sparkles: Sparkles,
+  sparkles: Sparkle,
 }
 
 export function AiSection() {
@@ -20,7 +22,7 @@ export function AiSection() {
       <div className="flex flex-col gap-8 md:gap-10">
         <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
           <SectionTitle id="experience">{ai.title}</SectionTitle>
-          <div className="flex flex-col gap-4 type-body text-muted text-pretty">
+          <div className="flex flex-col gap-4 text-body text-secondary">
             {ai.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -33,9 +35,9 @@ export function AiSection() {
                 src={tool.src}
                 alt={tool.name}
                 title={tool.name}
-                width={36}
-                height={36}
-                className="size-9 rounded-[8px] opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                width={48}
+                height={48}
+                className="size-12 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
               />
             </li>
           ))}
@@ -44,16 +46,16 @@ export function AiSection() {
           {ai.metrics.map((item, index) => {
             const Icon = metricIcons[item.icon]
             return (
-              <li key={item.title} className="card-surface flex flex-col justify-between gap-8 rounded-3xl p-6">
-                <IconBadge>
-                  <Icon className="size-4" />
-                </IconBadge>
-                <div className="flex flex-col gap-1">
-                  <p className="type-display">
+              <li key={item.title} className="card-surface project-preview-card flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
+                <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+                  <Icon weight="regular" className="size-4" />
+                </span>
+                <div className="flex flex-col gap-title-desc">
+                  <p className="text-heading tabular-nums">
                     <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
                   </p>
-                  <h3 className="type-body font-medium text-balance">{item.title}</h3>
-                  <p className="type-body text-muted text-pretty">{item.body}</p>
+                  <h3 className="text-body text-strong text-balance">{item.title}</h3>
+                  <p className="text-caption text-secondary">{item.body}</p>
                 </div>
               </li>
             )

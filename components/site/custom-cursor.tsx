@@ -1,10 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ArrowRight } from "lucide-react"
 
 const TEXT_ENTRY = 'input, textarea, select, [contenteditable="true"]'
-const VIEW_TARGET = '[data-cursor="view-project"]'
 
 export function CustomCursor() {
   const ref = useRef<HTMLDivElement>(null)
@@ -40,7 +38,6 @@ export function CustomCursor() {
       y = event.clientY
       const target = event.target instanceof Element ? event.target : null
       el.dataset.hidden = target?.closest(TEXT_ENTRY) ? "true" : "false"
-      el.dataset.mode = target?.closest(VIEW_TARGET) ? "view" : "dot"
       if (!frame) frame = requestAnimationFrame(render)
     }
     const onDown = () => (el.dataset.pressed = "true")
@@ -65,13 +62,8 @@ export function CustomCursor() {
 
   if (!enabled) return null
   return (
-    <div ref={ref} className="cursor-root" data-hidden="true" data-mode="dot" aria-hidden="true">
-      <span className="cursor-shape">
-        <span className="cursor-label">
-          View
-          <ArrowRight className="size-3.5" aria-hidden="true" />
-        </span>
-      </span>
+    <div ref={ref} className="cursor-root" data-hidden="true" aria-hidden="true">
+      <span className="cursor-shape" />
     </div>
   )
 }
