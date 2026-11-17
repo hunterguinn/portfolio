@@ -59,7 +59,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <article className="flex flex-col gap-3">
       <div className="grid gap-3 lg:grid-cols-12">
-        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl pb-4 pl-4 pr-0 pt-0 text-foreground md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl border border-border pb-4 pl-4 pr-0 pt-0 text-foreground md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
           <Image
             src={project.background}
             alt=""

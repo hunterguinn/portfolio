@@ -4,7 +4,7 @@ import type { GalleryItem } from "@/lib/content/types"
 
 function GalleryCard({ item }: { item: GalleryItem }) {
   return (
-    <li className="card-surface flex flex-1 flex-col rounded-3xl p-2">
+    <li className="card-surface gallery-card flex flex-1 flex-col rounded-3xl p-2">
       <div
         className="relative min-h-0 flex-1 overflow-hidden rounded-2xl bg-surface-strong"
         style={{ aspectRatio: item.aspect }}
