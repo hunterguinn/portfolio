@@ -7,6 +7,7 @@ import { PageTransition } from "@/components/site/page-transition"
 import { ContextMenuGuard } from "@/components/site/context-menu-guard"
 import { ScrollFade } from "@/components/site/scroll-fade"
 import { ToastHost } from "@/components/site/toast"
+import { ProjectAccessGate } from "@/components/site/project-access-gate"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main">{children}</main>
           <SiteFooter />
           <ScrollFade />
+          <ProjectAccessGate />
           <ToastHost />
           <PageTransition />
           <CustomCursor />

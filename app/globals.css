@@ -83,6 +83,10 @@
 .gallery-card:hover {
   background-color: var(--surface);
 }
+/* The password modal uses the card surface (via .card-surface) but must not react to hover. */
+.modal-card:hover {
+  background-color: var(--surface);
+}
 .project-preview-overlay {
   background-color: color-mix(in srgb, var(--overlay-white) 10%, transparent);
 }
