@@ -2,28 +2,77 @@
 
 import { useEffect, useRef, useState } from "react"
 
-/** Left-side section label: half strength by default, full strength while its section is in view. */
+type EyebrowEntry = {
+  element: HTMLParagraphElement
+  setActive: (active: boolean) => void
+}
+
+const ACTIVATION_LINE = 0.4
+const entries = new Set<EyebrowEntry>()
+let updateFrame = 0
+
+function updateActiveEyebrow() {
+  cancelAnimationFrame(updateFrame)
+  updateFrame = requestAnimationFrame(() => {
+    // A section becomes active once its label scrolls past this line, so the dim state is visible first.
+    const triggerLine = window.innerHeight * ACTIVATION_LINE
+    const scrollBottom = window.scrollY + window.innerHeight
+    const isAtPageEnd = scrollBottom >= document.documentElement.scrollHeight - 2
+    let activeEntry: EyebrowEntry | undefined
+    let activeTop = Number.NEGATIVE_INFINITY
+
+    for (const entry of entries) {
+      const top = entry.element.getBoundingClientRect().top
+      const sectionBottom = (entry.element.closest("section") ?? entry.element).getBoundingClientRect().bottom
+      if (top <= triggerLine && sectionBottom > triggerLine && top > activeTop) {
+        activeTop = top
+        activeEntry = entry
+      }
+    }
+
+    // Short final sections can never push their label past the line, so hand them the highlight at the page end.
+    if (isAtPageEnd) {
+      let lastTop = Number.NEGATIVE_INFINITY
+      for (const entry of entries) {
+        const top = entry.element.getBoundingClientRect().top
+        if (top > lastTop && top < window.innerHeight) {
+          lastTop = top
+          activeEntry = entry
+        }
+      }
+    }
+
+    for (const entry of entries) {
+      entry.setActive(entry === activeEntry)
+    }
+  })
+}
+
+/** Exactly one section label per page is fully opaque: the section currently crossing the activation line. */
 export function SectionEyebrow({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLParagraphElement>(null)
   const [active, setActive] = useState(false)
 
   useEffect(() => {
-    const section = ref.current?.closest("section")
-    if (!section) return
-    const observer = new IntersectionObserver(
-      () => {
-        const sections = Array.from(document.querySelectorAll("main section"))
-        const triggerY = window.innerHeight * 0.65
-        const activeSection = sections.find((item) => {
-          const bounds = item.getBoundingClientRect()
-          return bounds.top <= triggerY && bounds.bottom > triggerY
-        })
-        setActive(activeSection === section)
-      },
-      { rootMargin: "-60% 0px -30% 0px", threshold: 0 },
-    )
-    observer.observe(section)
-    return () => observer.disconnect()
+    const element = ref.current
+    if (!element) return
+    const entry = { element, setActive }
+    const isFirstEntry = entries.size === 0
+    entries.add(entry)
+    if (isFirstEntry) {
+      window.addEventListener("scroll", updateActiveEyebrow, { passive: true })
+      window.addEventListener("resize", updateActiveEyebrow)
+    }
+    updateActiveEyebrow()
+
+    return () => {
+      entries.delete(entry)
+      if (entries.size === 0) {
+        window.removeEventListener("scroll", updateActiveEyebrow)
+        window.removeEventListener("resize", updateActiveEyebrow)
+      }
+      updateActiveEyebrow()
+    }
   }, [])
 
   return (
