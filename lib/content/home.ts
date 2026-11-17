@@ -22,10 +22,10 @@ export const home = {
       {
         slug: "merrill",
         href: "/merrill",
-        title: "Merrill Edge Asset Transfer",
+        title: "Merrill Edge",
         meta: "Native app · 2027",
         description:
-          "I designed a faster, responsive asset transfer experience that leveraged an open finance API to prep-populate data from the client's external brokerage, rethinking how clients connect external accounts, select assets, and move investments into Merrill.",
+          "I helped redesign how clients transfer investments into Merrill, simplifying complex account connections, asset selection, and transfer requirements into a more streamlined digital experience.",
         metrics: [
           {
             value: "$19B",
@@ -50,10 +50,10 @@ export const home = {
       {
         slug: "pos",
         href: "/pos",
-        title: "Point-of-Sale Software",
+        title: "Point-of-Sale",
         meta: "Android responsive · 2026",
         description:
-          "I helped bring a critical platform in-house following a vendor exit, providing point-of-sale continuity for small business clients and their customers.",
+          "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing a scalable design foundation across devices while maintaining continuity for small business merchants.",
         metrics: [
           {
             value: "16.6B",
@@ -78,10 +78,10 @@ export const home = {
       {
         slug: "unified",
         href: "/unified",
-        title: "Unified Client Application",
+        title: "Unified",
         meta: "Web responsive · 2026",
         description:
-          "I helped build a multi-product application that transformed how clients apply for banking services, balancing digital efficiency with the bank's eligibility and risk criteria.",
+          "I helped unify applications for business checking, credit cards, and payment services into a single digital experience, balancing simpler onboarding with complex eligibility and risk requirements.",
         metrics: [
           {
             value: "8-in-1",

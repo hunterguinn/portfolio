@@ -10,19 +10,19 @@ import { Pending } from "@/components/site/pending"
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
     return (
-      <div className="card-surface relative min-h-64 overflow-hidden rounded-3xl md:min-h-[26rem]">
+      <div className="relative min-h-64 overflow-hidden rounded-2xl bg-background md:min-h-[26rem]">
         <Image
           src={cover.src}
           alt={cover.alt}
           fill
-          sizes="(min-width: 1024px) 45vw, 100vw"
+          sizes="(min-width: 1024px) 70vw, 100vw"
           className="object-contain p-6 md:p-10"
         />
       </div>
     )
   }
   return (
-    <div className="card-surface flex min-h-64 flex-col overflow-hidden rounded-3xl p-3 md:min-h-[26rem]">
+    <div className="flex min-h-64 flex-col overflow-hidden rounded-2xl bg-background p-3 md:min-h-[26rem]">
       <MediaSlot slot={cover} />
     </div>
   )
@@ -33,8 +33,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 
   return (
     <article data-cursor="view-project" className="group relative">
-      <div className="grid gap-3 text-foreground">
-        <div className="card-surface rounded-3xl p-5 md:p-7">
+      <div className="card-surface flex flex-col gap-6 rounded-3xl p-5 text-foreground md:gap-8 md:p-8">
+        <div>
           <h3 className="type-project-title text-balance">
             <Link
               href={project.href}
@@ -43,32 +43,29 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               {project.title}
             </Link>
           </h3>
-          <div className="mt-4 flex items-center justify-between gap-4 type-caption text-muted">
-            <span>{category}</span>
-            <span>{year}</span>
-          </div>
+          <p className="type-body mt-3 max-w-4xl text-pretty text-muted">{project.description}</p>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-[minmax(0,1.1fr)_minmax(18rem,0.9fr)]">
-          <CoverMedia cover={project.cover} />
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1 md:grid-rows-3">
-            {project.metrics.map((metric) => (
-              <dl key={metric.label} className="card-surface flex min-h-32 flex-col justify-between gap-5 rounded-3xl p-4 md:p-5">
-                <dd className="type-display tabular-nums">
-                  {metric.counter ? (
-                    <CountUp {...metric.counter} />
-                  ) : metric.value ?? (
-                    <Pending>Metric pending</Pending>
-                  )}
-                </dd>
-                <dt className="type-supporting text-muted text-pretty">{metric.label}</dt>
-              </dl>
-            ))}
-            <div className="card-surface flex min-h-32 flex-col justify-between gap-4 rounded-3xl p-4 md:p-5 sm:col-span-2 md:col-span-1">
-              <p className="type-caption text-muted">The Team</p>
-              <p className="type-body text-muted">Digital Leadership</p>
-            </div>
-          </div>
+        <div className="grid grid-cols-2 gap-4 md:gap-8">
+          {project.metrics.map((metric) => (
+            <dl key={metric.label} className="flex flex-col gap-2">
+              <dd className="type-display tabular-nums">
+                {metric.counter ? (
+                  <CountUp {...metric.counter} />
+                ) : metric.value ?? (
+                  <Pending>Metric pending</Pending>
+                )}
+              </dd>
+              <dt className="type-supporting text-pretty text-muted">{metric.label}</dt>
+            </dl>
+          ))}
+        </div>
+
+        <CoverMedia cover={project.cover} />
+
+        <div className="flex items-center justify-between gap-4 type-caption text-muted">
+          <span>{category}</span>
+          <span>{year}</span>
         </div>
       </div>
     </article>
