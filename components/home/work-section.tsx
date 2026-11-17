@@ -59,7 +59,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <article className="flex flex-col gap-3">
       <div className="grid gap-3 lg:grid-cols-12">
-        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl pb-5 pl-5 pr-0 pt-0 text-[#ffffff] md:gap-4 md:pb-8 md:pl-8 md:pr-0 md:pt-0 lg:col-span-7">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl pb-4 pl-4 pr-0 pt-0 text-[#ffffff] md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
           <Image
             src={project.background}
             alt=""
@@ -98,11 +98,11 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         </div>
       </div>
 
-      <ul className="hidden gap-3 md:grid md:grid-cols-3">
+      <ul className="hidden w-full min-w-0 gap-3 md:grid md:grid-cols-3">
         {project.metrics.map((metric, index) => {
           const Icon = projectIcons[project.metricIcons[index]]
           return (
-            <li key={metric.label} className="card-surface project-preview-card flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
+            <li key={metric.label} className="card-surface project-preview-card flex w-full min-w-0 flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
               <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
                 <Icon className="size-4" />
               </span>
@@ -119,7 +119,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
             </li>
           )
         })}
-        <li className="card-surface project-preview-card flex flex-col gap-3 rounded-lg p-5 md:gap-7">
+        <li className="card-surface project-preview-card flex w-full min-w-0 flex-col gap-3 rounded-lg p-5 md:gap-7">
           <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
             <InsightIcon className="size-4" />
           </span>
@@ -136,9 +136,9 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
 export function WorkSection() {
   return (
     <SectionShell id="work" label={home.work.label}>
-      <div className="flex flex-col gap-6 md:gap-14 lg:gap-8">
+      <div className="flex flex-col gap-8 md:gap-16 lg:gap-10">
         <SectionTitle id="work">{home.work.title}</SectionTitle>
-        <div className="flex flex-col gap-10 md:gap-14">
+        <div className="flex flex-col gap-12 md:gap-16">
           {home.work.projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
