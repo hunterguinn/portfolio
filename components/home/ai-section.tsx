@@ -19,7 +19,7 @@ export function AiSection() {
       <div className="flex flex-col gap-8 md:gap-10">
         <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
           <SectionTitle id="experience">{ai.title}</SectionTitle>
-          <div className="flex flex-col gap-4 type-body text-muted text-pretty">
+          <div className="flex flex-col gap-4 type-body text-muted">
             {ai.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -52,7 +52,7 @@ export function AiSection() {
                     <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
                   </p>
                   <h3 className="type-body type-strong text-balance">{item.title}</h3>
-                  <p className="type-supporting text-muted text-pretty">{item.body}</p>
+                  <p className="type-supporting text-muted">{item.body}</p>
                 </div>
               </li>
             )

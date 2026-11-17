@@ -105,8 +105,13 @@
  *   type-eyebrow        small details and uppercase labels      (12px, 500)
  *
  * Modifier: type-strong (600, short emphasis). Prose always fills its column; never cap its width.
+ * Prose roles use plain wrapping (no text-pretty / max-width) so lines run the full column.
  */
 @layer components {
+  .type-body,
+  .type-supporting {
+    text-wrap: wrap;
+  }
   .type-display {
     font-size: 2.25rem;
     font-weight: 500;

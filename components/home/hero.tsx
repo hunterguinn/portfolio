@@ -23,7 +23,7 @@ export function Hero() {
             </span>
             <p className="type-body">{home.greeting}</p>
           </div>
-          <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
+          <h1 className="type-display text-balance">{home.headline}</h1>
           <p className="type-body flex flex-wrap items-center gap-2">
             Currently at
             <span className="btn-secondary inline-flex -rotate-2 items-center rounded-full px-3 py-1 type-supporting text-muted!">

@@ -57,7 +57,7 @@ const toneColors: Record<CardTone, string> = {
 }
 
 export function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="type-body text-muted text-pretty">{children}</p>
+  return <p className="type-body text-muted">{children}</p>
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
@@ -80,7 +80,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
             ) : null}
             <div className="flex flex-col gap-0.5 md:gap-1.5">
               <h3 className="type-body type-strong">{card.title}</h3>
-              <p className="type-supporting text-muted text-pretty">{card.body}</p>
+              <p className="type-supporting text-muted">{card.body}</p>
             </div>
           </li>
         )
@@ -91,7 +91,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
 
 export function Callout({ text }: { text: string }) {
   return (
-    <blockquote className="type-project-title border-l-2 border-foreground py-0.5 pl-5 text-pretty">
+    <blockquote className="type-project-title border-l-2 border-foreground py-0.5 pl-5">
       <p>{text}</p>
     </blockquote>
   )
@@ -106,7 +106,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
             <Quote className="size-4" />
           </span>
           <blockquote>
-            <p className="type-project-title text-pretty text-white/50 transition-opacity duration-300 group-hover:text-white">{testimonial.quote}</p>
+            <p className="type-project-title text-white/50 transition-opacity duration-300 group-hover:text-white">{testimonial.quote}</p>
           </blockquote>
         </div>
         <figcaption className="flex items-center gap-3">
@@ -127,7 +127,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       <div className="flex flex-col gap-5">
         {compact ? <Quote className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="type-body text-pretty text-white/50 transition-opacity duration-300 group-hover:text-white">
+          <p className="type-body text-white/50 transition-opacity duration-300 group-hover:text-white">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>

@@ -80,7 +80,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
       style={style}
     >
       <Icon className="size-5 text-muted" aria-hidden="true" />
-      <span className="type-supporting max-w-[18rem] text-muted text-pretty">{slot.placeholder}</span>
+      <span className="type-supporting text-muted">{slot.placeholder}</span>
       <span className="type-eyebrow text-muted">
         {slot.kind === "video" ? "Video pending" : "Asset pending"}
       </span>

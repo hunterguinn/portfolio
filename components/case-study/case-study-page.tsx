@@ -34,7 +34,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4 md:gap-6">
             <h1 className="type-display text-balance">{study.title}</h1>
-            <p className="type-body text-muted text-pretty">{study.intro}</p>
+            <p className="type-body text-muted">{study.intro}</p>
           </div>
           <dl className="grid grid-cols-2 gap-8">
             <MetaList title="The Team" items={study.team} />

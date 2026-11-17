@@ -24,7 +24,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
             className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center"
           >
             <ImageIcon className="size-5 text-muted" aria-hidden="true" />
-            <span className="type-supporting text-muted text-pretty">{item.placeholder}</span>
+            <span className="type-supporting text-muted">{item.placeholder}</span>
           </div>
         )}
       </div>
