@@ -34,7 +34,7 @@ export const home = {
         insight: {
           icon: "database",
           title: "Data to Design",
-          body: "I translated inconsistent API data and complex account requirements into clearer, more predictable transfer workflows.",
+          body: "I translated inconsistent API data and complex account requirements into clearer workflows.",
         },
         metrics: [
           {
@@ -71,7 +71,7 @@ export const home = {
         insight: {
           icon: "blocks",
           title: "Building 1 to n",
-          body: "I established reusable components and interaction patterns to support consistent experiences across payment terminals, devices, and web applications.",
+          body: "I established reusable components to support consistent experiences across payment devices.",
         },
         metrics: [
           {
@@ -108,7 +108,7 @@ export const home = {
         insight: {
           icon: "workflow",
           title: "xFN Collaboration",
-          body: "I aligned stakeholders around eligibility rules and complex application scenarios, translating competing requirements into a cohesive experience.",
+          body: "I aligned stakeholders around eligibility rules and competing scenarios to create a multi-product application.",
         },
         metrics: [
           {

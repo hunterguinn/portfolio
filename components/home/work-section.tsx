@@ -72,7 +72,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           <CoverMedia cover={project.cover} />
           <div className="flex flex-col gap-2 pr-5 md:pr-8">
             <h3 className="type-project-title text-balance">{project.title}</h3>
-            <div className="flex items-center justify-between gap-4 type-body">
+            <div className={`flex items-center justify-between gap-4 ${project.slug === "unified" ? "type-body" : "type-supporting"}`}>
               <span>{category}</span>
               <span>{year}</span>
             </div>
