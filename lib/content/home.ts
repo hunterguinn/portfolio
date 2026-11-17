@@ -6,7 +6,7 @@ export const home = {
   greeting: "Hey, I'm Hunter 👋",
   currentCompany: "Bank of America",
   stack: [
-    { name: "Figma", src: "/images/stack/figma-new.png" },
+    { name: "Figma", src: "/images/stack/figma-replacement.png" },
     { name: "Codex", src: "/images/stack/codex.png" },
     { name: "Sketch", src: "/images/stack/sketch.png" },
     { name: "Adobe", src: "/images/stack/adobe.png" },
@@ -25,8 +25,7 @@ export const home = {
         meta: "Native app · 2027",
         description:
           "I helped redesign how clients transfer investments into Merrill, simplifying complex account connections, asset selection, and transfer requirements into a more streamlined digital experience.",
-        // Placeholder until the real team list is provided.
-        team: ["Digital Leadership"],
+        team: ["Product Design (Lead) • Digital Product • Investment Operations • Engineers • API Tech Team"],
         background: "/images/home/project-bg-1.webp",
         metricIcons: ["landmark", "wallet"],
         insight: {
@@ -62,8 +61,7 @@ export const home = {
         meta: "Android responsive · 2026",
         description:
           "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing a scalable design foundation across devices while maintaining continuity for small business merchants.",
-        // Placeholder until the real team list is provided.
-        team: ["Digital Leadership"],
+        team: ["Product Design (Lead) • Merchant Services • Product Management • Engineers • Platform Architecture"],
         background: "/images/home/project-bg-2.webp",
         metricIcons: ["credit-card", "store"],
         insight: {
@@ -99,8 +97,7 @@ export const home = {
         meta: "Web responsive · 2025",
         description:
           "I helped unify applications for business checking, credit cards, and payment services into a single digital experience, balancing simpler onboarding with complex eligibility and risk requirements.",
-        // Placeholder until the real team list is provided.
-        team: ["Digital Leadership"],
+        team: ["Product Design (Lead) · Product Management · Small Business CXO · Risk & KYC • Sales"],
         background: "/images/home/project-bg-3.webp",
         metricIcons: ["layers", "briefcase"],
         insight: {

@@ -83,10 +83,10 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           </div>
           <div className="mt-auto flex flex-col gap-4 pt-2">
             <div className="hidden flex-col gap-title-desc md:flex">
-              <p className="text-body">The Team:</p>
+              <p className="text-body font-semibold">The Team:</p>
               <ul className="text-body text-secondary">
                 {project.team.map((member) => (
-                  <li key={member}>{member}</li>
+                  <li key={member} className="text-caption">{member}</li>
                 ))}
               </ul>
             </div>
