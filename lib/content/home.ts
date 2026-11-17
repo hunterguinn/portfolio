@@ -2,10 +2,7 @@ import type { ExperienceMetric, GalleryItem, ProjectSummary, StackTool, Testimon
 
 export const home = {
   headline: "Designing financial experiences that create clarity, build trust, and scale",
-  welcome: "Welcome",
-  intro:
-    "I'm building products across native and web platforms that empower consumers and wealth management clients at Bank of America.",
-  greeting: "Hey, I'm Hunter 👋",
+  welcome: "Hey, I'm Hunter",
   stack: [
     { name: "Figma", src: "/images/stack/figma.png" },
     { name: "Codex", src: "/images/stack/codex.png" },

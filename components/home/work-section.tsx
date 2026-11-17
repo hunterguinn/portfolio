@@ -41,7 +41,7 @@ function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
           alt={cover.alt}
           fill
           sizes="(min-width: 1024px) 55vw, 100vw"
-          className="object-contain p-6 md:p-10"
+          className="object-contain bg-surface p-6 md:p-10"
         />
       </div>
     )
@@ -79,8 +79,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           </div>
         </div>
 
-        <div className="card-surface project-preview-card flex flex-col gap-6 rounded-3xl px-5 py-4 md:gap-8 md:px-8 md:py-6 lg:col-span-5">
-          <div className="flex flex-1 rounded-2xl bg-background p-5 md:p-8">
+        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl p-3 lg:col-span-5">
+          <div className="flex flex-1 rounded-2xl bg-background p-6">
             <p className="type-body text-pretty">{project.description}</p>
           </div>
           <div className="hidden flex-col gap-1 md:flex">
