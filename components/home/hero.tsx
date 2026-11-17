@@ -24,7 +24,6 @@ export function Hero() {
         </div>
         <div className="flex flex-col gap-4 lg:gap-6">
           <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
-          <p className="type-body max-w-2xl text-muted text-pretty">{home.intro}</p>
           <p className="type-body flex flex-wrap items-center gap-3">
             Currently at
             <span className="inline-flex -rotate-2 items-center rounded-full bg-foreground px-4 py-1.5 type-supporting text-background">

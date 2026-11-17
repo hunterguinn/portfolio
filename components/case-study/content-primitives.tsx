@@ -102,7 +102,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
     return (
       <figure className="flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-6">
         <blockquote>
-          <p className="type-quote italic text-pretty">{testimonial.quote}</p>
+          <p className="type-body italic text-pretty">{testimonial.quote}</p>
         </blockquote>
         <figcaption className="flex items-center gap-3">
           <Avatar name={testimonial.name} size={40} />
@@ -122,7 +122,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       <div className="flex flex-col gap-5">
         {compact ? <Quote className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>
-          <p className={`${compact ? "type-quote" : "type-body"} text-pretty`}>
+          <p className="type-body text-pretty">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>

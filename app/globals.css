@@ -100,7 +100,6 @@
  *
  *   type-display        hero, page and section titles, big metrics (36px, 500)
  *   type-project-title  project titles, pull quotes             (24px, 500)
- *   type-quote          testimonial quotes                      (15px, 600)
  *   type-body           descriptions and case-study prose       (15px, 400)
  *   type-supporting     labels, callouts, captions, nav         (14px, 400)
  *   type-eyebrow        small details and uppercase labels      (12px, 500)
@@ -112,12 +111,6 @@
     font-size: 2.25rem;
     font-weight: 500;
     line-height: 1.15;
-    letter-spacing: normal;
-  }
-  .type-quote {
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.45;
     letter-spacing: normal;
   }
   .type-project-title {
