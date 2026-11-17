@@ -3,7 +3,6 @@ import { GraduationCap, Sparkles, Users, type LucideIcon } from "lucide-react"
 import { home } from "@/lib/content/home"
 import type { ExperienceMetric } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { IconBadge } from "@/components/site/icon-badge"
 import { CountUp } from "@/components/site/count-up"
 
 const metricIcons: Record<ExperienceMetric["icon"], LucideIcon> = {
@@ -44,16 +43,16 @@ export function AiSection() {
           {ai.metrics.map((item, index) => {
             const Icon = metricIcons[item.icon]
             return (
-              <li key={item.title} className="card-surface flex flex-col justify-between gap-8 rounded-3xl p-6">
-                <IconBadge>
+              <li key={item.title} className="card-surface project-preview-card flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
+                <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
                   <Icon className="size-4" />
-                </IconBadge>
-                <div className="flex flex-col gap-1">
-                  <p className="type-display">
+                </span>
+                <div className="flex flex-col gap-0.5 md:gap-1.5">
+                  <p className="type-project-title tabular-nums">
                     <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
                   </p>
-                  <h3 className="type-body font-medium text-balance">{item.title}</h3>
-                  <p className="type-body text-muted text-pretty">{item.body}</p>
+                  <h3 className="type-body type-strong text-balance">{item.title}</h3>
+                  <p className="type-supporting text-muted text-pretty">{item.body}</p>
                 </div>
               </li>
             )

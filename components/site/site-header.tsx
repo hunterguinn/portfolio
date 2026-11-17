@@ -18,7 +18,7 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center gap-5 md:gap-8">
+        <div className="flex items-center gap-5 md:gap-6">
           <HeaderClock />
           <ThemeToggle />
         </div>

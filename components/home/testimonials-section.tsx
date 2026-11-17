@@ -11,7 +11,7 @@ function TestimonialTicker({ reverse = false }: { reverse?: boolean }) {
         {[false, true].map((duplicate) => (
           <ul key={String(duplicate)} className="flex shrink-0" aria-hidden={duplicate || undefined}>
             {items.map((item) => (
-              <li key={item.name} className="w-[21rem] shrink-0 pr-3 md:w-[24rem]">
+              <li key={item.name} className="w-[24rem] shrink-0 pr-3 md:w-[26rem]">
                 <TestimonialQuote testimonial={item} compact />
               </li>
             ))}
