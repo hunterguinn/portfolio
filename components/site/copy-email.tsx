@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Check, Copy } from "lucide-react"
+import { Check } from "@phosphor-icons/react/dist/csr/Check"
+import { Copy } from "@phosphor-icons/react/dist/csr/Copy"
 import { site } from "@/lib/content/site"
 import { showToast } from "./toast"
 
@@ -57,11 +58,11 @@ export function CopyEmailButton({ className }: { className?: string }) {
     <button type="button" onClick={onClick} className={`copy-email-button ${className ?? ""}`} data-copied={copied}>
       <span className="copy-email-flip">
         <span className="copy-email-face" aria-hidden={copied}>
-          <Copy className="size-4" aria-hidden="true" />
+          <Copy weight="regular" className="size-4" aria-hidden="true" />
           Copy email
         </span>
         <span className="copy-email-face copy-email-face-back" aria-hidden={!copied}>
-          <Check className="size-4 text-green" aria-hidden="true" />
+          <Check weight="regular" className="size-4 text-green" aria-hidden="true" />
           Copied!
         </span>
       </span>

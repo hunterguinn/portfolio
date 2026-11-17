@@ -1,14 +1,17 @@
 import Image from "next/image"
-import { GraduationCap, Sparkles, Users, type LucideIcon } from "lucide-react"
+import { GraduationCap } from "@phosphor-icons/react/dist/ssr/GraduationCap"
+import { Sparkle } from "@phosphor-icons/react/dist/ssr/Sparkle"
+import { Users } from "@phosphor-icons/react/dist/ssr/Users"
+import type { Icon } from "@phosphor-icons/react"
 import { home } from "@/lib/content/home"
 import type { ExperienceMetric } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { CountUp } from "@/components/site/count-up"
 
-const metricIcons: Record<ExperienceMetric["icon"], LucideIcon> = {
+const metricIcons: Record<ExperienceMetric["icon"], Icon> = {
   users: Users,
   "graduation-cap": GraduationCap,
-  sparkles: Sparkles,
+  sparkles: Sparkle,
 }
 
 export function AiSection() {
@@ -19,7 +22,7 @@ export function AiSection() {
       <div className="flex flex-col gap-8 md:gap-10">
         <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
           <SectionTitle id="experience">{ai.title}</SectionTitle>
-          <div className="flex flex-col gap-4 type-body text-muted">
+          <div className="flex flex-col gap-4 text-body text-secondary">
             {ai.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -34,7 +37,7 @@ export function AiSection() {
                 title={tool.name}
                 width={36}
                 height={36}
-                className="size-9 rounded-[8px] opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
               />
             </li>
           ))}
@@ -44,15 +47,15 @@ export function AiSection() {
             const Icon = metricIcons[item.icon]
             return (
               <li key={item.title} className="card-surface project-preview-card flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
-                <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
-                  <Icon className="size-4" />
+                <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+                  <Icon weight="regular" className="size-4" />
                 </span>
-                <div className="flex flex-col gap-0.5 md:gap-1.5">
-                  <p className="type-project-title tabular-nums">
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <p className="text-heading tabular-nums">
                     <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
                   </p>
-                  <h3 className="type-body type-strong text-balance">{item.title}</h3>
-                  <p className="type-supporting text-muted">{item.body}</p>
+                  <h3 className="text-body text-strong text-balance">{item.title}</h3>
+                  <p className="text-caption text-secondary">{item.body}</p>
                 </div>
               </li>
             )

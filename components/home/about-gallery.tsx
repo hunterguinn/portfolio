@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ImageIcon } from "lucide-react"
+import { Image as ImageIcon } from "@phosphor-icons/react/dist/ssr/Image"
 import type { GalleryItem } from "@/lib/content/types"
 
 function GalleryCard({ item }: { item: GalleryItem }) {
@@ -23,8 +23,8 @@ function GalleryCard({ item }: { item: GalleryItem }) {
             aria-label={`Placeholder for photo: ${item.placeholder}`}
             className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center"
           >
-            <ImageIcon className="size-5 text-muted" aria-hidden="true" />
-            <span className="type-supporting text-muted">{item.placeholder}</span>
+            <ImageIcon weight="regular" className="size-5 text-secondary" aria-hidden="true" />
+            <span className="text-caption text-secondary">{item.placeholder}</span>
           </div>
         )}
       </div>

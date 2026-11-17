@@ -10,7 +10,7 @@ export function AboutSection() {
       <div className="flex flex-col gap-8 md:gap-10">
         <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
           <SectionTitle id="about">{about.title}</SectionTitle>
-          <p className="type-body text-muted">{about.body}</p>
+          <p className="text-body text-secondary">{about.body}</p>
         </div>
         <AboutGallery columns={about.gallery} />
       </div>

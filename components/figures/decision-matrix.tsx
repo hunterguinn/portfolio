@@ -3,9 +3,9 @@ type Row = { category: string; trigger: string; reason: string; decision: "Sales
 export function DecisionMatrix({ rows }: { rows: Row[] }) {
   return (
     <div className="card-surface overflow-x-auto rounded-lg">
-      <table className="type-supporting w-full min-w-[44rem] text-left">
+      <table className="text-caption w-full min-w-[44rem] text-left">
         <caption className="sr-only">Conditions that route an applicant to Sales or stop the digital application</caption>
-        <thead className="border-b bg-surface type-eyebrow text-muted">
+        <thead className="border-b bg-surface text-eyebrow text-secondary">
           <tr>
             <th scope="col" className="px-4 py-3">
               Category
@@ -24,14 +24,14 @@ export function DecisionMatrix({ rows }: { rows: Row[] }) {
         <tbody className="divide-y align-top">
           {rows.map((row) => (
             <tr key={`${row.category}-${row.trigger}`}>
-              <th scope="row" className="px-4 py-4 type-strong">
+              <th scope="row" className="px-4 py-4 text-strong">
                 {row.category}
               </th>
               <td className="px-4 py-4">{row.trigger}</td>
-              <td className="px-4 py-4 text-muted">{row.reason}</td>
+              <td className="px-4 py-4 text-secondary">{row.reason}</td>
               <td className="px-4 py-4">
                 <span
-                  className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-0.5 type-eyebrow ${
+                  className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-eyebrow ${
                     row.decision === "Sales" ? "text-green" : "text-red"
                   }`}
                 >

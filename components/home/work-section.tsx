@@ -1,16 +1,14 @@
 import Image from "next/image"
-import {
-  Blocks,
-  Briefcase,
-  CreditCard,
-  Database,
-  Landmark,
-  Layers,
-  Store,
-  Wallet,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react"
+import { Shapes } from "@phosphor-icons/react/dist/ssr/Shapes"
+import { Briefcase } from "@phosphor-icons/react/dist/ssr/Briefcase"
+import { CreditCard } from "@phosphor-icons/react/dist/ssr/CreditCard"
+import { Database } from "@phosphor-icons/react/dist/ssr/Database"
+import { Bank } from "@phosphor-icons/react/dist/ssr/Bank"
+import { Stack } from "@phosphor-icons/react/dist/ssr/Stack"
+import { Storefront } from "@phosphor-icons/react/dist/ssr/Storefront"
+import { Wallet } from "@phosphor-icons/react/dist/ssr/Wallet"
+import { FlowArrow } from "@phosphor-icons/react/dist/ssr/FlowArrow"
+import type { Icon } from "@phosphor-icons/react"
 import { home } from "@/lib/content/home"
 import type { ProjectIcon, ProjectSummary } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
@@ -19,22 +17,22 @@ import { CountUp } from "@/components/site/count-up"
 import { Pending } from "@/components/site/pending"
 import { ArrowLink } from "@/components/site/arrow-link"
 
-const projectIcons: Record<ProjectIcon, LucideIcon> = {
-  landmark: Landmark,
+const projectIcons: Record<ProjectIcon, Icon> = {
+  landmark: Bank,
   wallet: Wallet,
   "credit-card": CreditCard,
-  store: Store,
-  layers: Layers,
+  store: Storefront,
+  layers: Stack,
   briefcase: Briefcase,
   database: Database,
-  blocks: Blocks,
-  workflow: Workflow,
+  blocks: Shapes,
+  workflow: FlowArrow,
 }
 
 function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
   if (cover.src && cover.kind === "image") {
     return (
-      <div className="relative min-h-64 flex-1 overflow-hidden rounded-2xl rounded-tl-none rounded-br-none bg-background md:min-h-[24rem]">
+      <div className="relative min-h-64 flex-1 overflow-hidden rounded-2xl rounded-tl-none rounded-br-none bg-page md:min-h-[24rem]">
         <Image
           src={cover.src}
           alt={cover.alt}
@@ -46,7 +44,7 @@ function CoverMedia({ cover }: { cover: ProjectSummary["cover"] }) {
     )
   }
   return (
-    <div className="flex min-h-64 flex-1 flex-col overflow-hidden rounded-2xl bg-background p-3 md:min-h-[24rem]">
+    <div className="flex min-h-64 flex-1 flex-col overflow-hidden rounded-2xl bg-page p-3 md:min-h-[24rem]">
       <MediaSlot slot={cover} />
     </div>
   )
@@ -59,7 +57,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <article className="flex flex-col gap-3">
       <div className="grid gap-3 lg:grid-cols-12">
-        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl border border-border pb-4 pl-4 pr-0 pt-0 text-foreground md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl border border-subtle pb-4 pl-4 pr-0 pt-0 text-primary md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
           <Image
             src={project.background}
             alt=""
@@ -71,8 +69,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           <div className="project-preview-gradient absolute inset-0 -z-10" aria-hidden="true" />
           <CoverMedia cover={project.cover} />
           <div className="flex flex-col gap-2 pl-1 pr-5 md:pr-8">
-            <h3 className="type-project-title text-balance">{project.title}</h3>
-            <div className="flex items-center justify-between gap-4 type-supporting">
+            <h3 className="text-heading text-balance">{project.title}</h3>
+            <div className="flex items-center justify-between gap-4 text-caption">
               <span>{category}</span>
               <span>{year}</span>
             </div>
@@ -80,13 +78,13 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         </div>
 
         <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl p-3 md:p-5 lg:col-span-5">
-          <div className="rounded-2xl bg-background px-3 py-8 md:px-5 md:py-12">
-            <p className="type-body">{project.description}</p>
+          <div className="rounded-2xl bg-page px-3 py-8 md:px-5 md:py-12">
+            <p className="text-body">{project.description}</p>
           </div>
           <div className="mt-auto flex flex-col gap-4 pt-2">
             <div className="hidden flex-col gap-1 md:flex">
-              <p className="type-body">The Team:</p>
-              <ul className="type-body text-muted">
+              <p className="text-body">The Team:</p>
+              <ul className="text-body text-secondary">
                 {project.team.map((member) => (
                   <li key={member}>{member}</li>
                 ))}
@@ -104,29 +102,29 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           const Icon = projectIcons[project.metricIcons[index]]
           return (
             <li key={metric.label} className="card-surface project-preview-card flex w-full min-w-0 flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
-              <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
-                <Icon className="size-4" />
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+                <Icon weight="regular" className="size-4" />
               </span>
-              <div className="flex w-full min-w-0 flex-col gap-0.5 md:gap-1.5">
-                <p className="type-project-title w-full tabular-nums">
+              <div className="flex w-full min-w-0 flex-col gap-1 md:gap-2">
+                <p className="text-heading w-full tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
                   ) : metric.value ?? (
                     <Pending>Metric pending</Pending>
                   )}
                 </p>
-                <p className="type-supporting w-full text-wrap text-muted">{metric.label}</p>
+                <p className="text-caption w-full text-wrap text-secondary">{metric.label}</p>
               </div>
             </li>
           )
         })}
         <li className="card-surface project-preview-card flex w-full min-w-0 flex-col gap-3 rounded-lg p-5 md:gap-7">
-          <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
-            <InsightIcon className="size-4" />
+          <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+            <InsightIcon weight="regular" className="size-4" />
           </span>
-          <div className="flex w-full min-w-0 flex-col gap-0.5 md:gap-1.5">
-            <h4 className="type-body type-strong w-full">{project.insight.title}</h4>
-            <p className="type-supporting w-full text-wrap text-muted">{project.insight.body}</p>
+          <div className="flex w-full min-w-0 flex-col gap-1 md:gap-2">
+            <h4 className="text-body text-strong w-full">{project.insight.title}</h4>
+            <p className="text-caption w-full text-wrap text-secondary">{project.insight.body}</p>
           </div>
         </li>
       </ul>

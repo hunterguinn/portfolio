@@ -62,13 +62,13 @@ export function TransferDemo({
   return (
     <div className="flex flex-col gap-4">
       <div className="card-surface overflow-x-auto rounded-lg">
-        <table className="type-supporting w-full min-w-[34rem] text-left">
+        <table className="text-caption w-full min-w-[34rem] text-left">
           <caption className="sr-only">
             {synchronized
               ? "Securities with a selection checkbox synchronized to an amount field"
               : "Securities where the amount field alone determines what transfers"}
           </caption>
-          <thead className="border-b bg-surface type-eyebrow text-muted">
+          <thead className="border-b bg-surface text-eyebrow text-secondary">
             <tr>
               {synchronized ? (
                 <th scope="col" className="w-12 px-4 py-3">
@@ -105,17 +105,17 @@ export function TransferDemo({
                     </td>
                   ) : null}
                   <th scope="row" className="px-4 py-3">
-                    <span className="block type-strong">{row.symbol}</span>
-                    <span className="block type-supporting text-muted">{row.name}</span>
+                    <span className="block text-strong">{row.symbol}</span>
+                    <span className="block text-caption text-secondary">{row.name}</span>
                   </th>
-                  <td className="px-4 py-3 text-right tabular-nums text-muted">{row.shares}</td>
+                  <td className="px-4 py-3 text-right tabular-nums text-secondary">{row.shares}</td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex flex-col items-end gap-1">
                       <label htmlFor={amountId} className="sr-only">
                         Amount to transfer for {row.name}
                       </label>
-                      <div className="flex w-36 items-center rounded-md border bg-background focus-within:outline-2 focus-within:outline-foreground">
-                        <span aria-hidden="true" className="pl-3 text-muted">
+                      <div className="flex w-36 items-center rounded-md border bg-page focus-within:outline-2 focus-within:outline-foreground">
+                        <span aria-hidden="true" className="pl-3 text-secondary">
                           $
                         </span>
                         <input
@@ -128,7 +128,7 @@ export function TransferDemo({
                           className="w-full bg-transparent px-2 py-2 text-right tabular-nums outline-none"
                         />
                       </div>
-                      <p className="type-supporting text-muted">
+                      <p className="text-caption text-secondary">
                         {needsAmount ? <span className="text-red">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
                       </p>
                     </div>
@@ -140,7 +140,7 @@ export function TransferDemo({
         </table>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p role="status" aria-live="polite" className="type-supporting text-muted">
+        <p role="status" aria-live="polite" className="text-caption text-secondary">
           {status}
         </p>
         <button
@@ -149,7 +149,7 @@ export function TransferDemo({
             setState(initialState(rows))
             setTouched(false)
           }}
-          className="btn-secondary type-supporting rounded-full px-4 py-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="btn-secondary text-caption rounded-full px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           Reset
         </button>

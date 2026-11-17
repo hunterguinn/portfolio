@@ -2,7 +2,8 @@
 
 import { useSyncExternalStore } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
+import { Moon } from "@phosphor-icons/react/dist/csr/Moon"
+import { Sun } from "@phosphor-icons/react/dist/csr/Sun"
 
 const noop = () => () => {}
 
@@ -16,9 +17,9 @@ export function ThemeToggle() {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="flex size-9 items-center justify-center rounded-full border text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+      className="flex size-9 items-center justify-center rounded-full border text-secondary transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
     >
-      {isDark ? <Sun className="size-4" aria-hidden="true" /> : <Moon className="size-4" aria-hidden="true" />}
+      {isDark ? <Sun weight="regular" className="size-4" aria-hidden="true" /> : <Moon weight="regular" className="size-4" aria-hidden="true" />}
     </button>
   )
 }

@@ -2,7 +2,7 @@ import { useId } from "react"
 import type { CitizenshipCopy } from "@/lib/content/types"
 
 const field =
-  "w-full rounded-md border bg-background px-3 py-2.5 type-body read-only:text-foreground disabled:cursor-not-allowed disabled:text-muted"
+  "w-full rounded-md border bg-page px-3 py-3 text-body read-only:text-primary disabled:cursor-not-allowed disabled:text-secondary"
 
 /** Read-only recreation of the citizenship step, shown as a figure. */
 export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
@@ -15,26 +15,26 @@ export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
       className="flex flex-col gap-6 card-surface rounded-lg p-6 md:p-8"
     >
       <div className="flex flex-col gap-1">
-        <h3 className="type-project-title">{copy.heading}</h3>
-        <p className="type-supporting text-muted">{copy.required}</p>
+        <h3 className="text-heading">{copy.heading}</h3>
+        <p className="text-caption text-secondary">{copy.required}</p>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor={`${id}-country`} className="type-supporting type-strong">
+      <div className="flex flex-col gap-2">
+        <label htmlFor={`${id}-country`} className="text-caption text-strong">
           {copy.countryLabel}
         </label>
         <input id={`${id}-country`} readOnly value={copy.countryValue} aria-describedby={`${id}-country-hint`} className={field} />
-        <p id={`${id}-country-hint`} className="type-supporting text-muted">
+        <p id={`${id}-country-hint`} className="text-caption text-secondary">
           {copy.countryHint}
         </p>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor={`${id}-status`} className="type-supporting type-strong">
+      <div className="flex flex-col gap-2">
+        <label htmlFor={`${id}-status`} className="text-caption text-strong">
           {copy.statusLabel}
         </label>
         <input id={`${id}-status`} disabled value={copy.statusValue} className={field} />
-        <details className="type-supporting text-muted">
+        <details className="text-caption text-secondary">
           <summary className="w-fit cursor-pointer underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground">
             {copy.statusHelpLabel}
           </summary>
@@ -42,8 +42,8 @@ export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
         </details>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor={`${id}-ssn`} className="type-supporting type-strong">
+      <div className="flex flex-col gap-2">
+        <label htmlFor={`${id}-ssn`} className="text-caption text-strong">
           {copy.ssnLabel}
         </label>
         <input id={`${id}-ssn`} readOnly placeholder={copy.ssnPlaceholder} className={field} />

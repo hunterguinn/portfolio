@@ -1,53 +1,51 @@
-import {
-  Activity,
-  Eye,
-  Layers,
-  LifeBuoy,
-  ListChecks,
-  MessageSquareText,
-  Minimize2,
-  MousePointerClick,
-  Repeat,
-  Route,
-  ShieldAlert,
-  ShieldCheck,
-  SlidersHorizontal,
-  Smartphone,
-  Split,
-  Target,
-  Timer,
-  Quote,
-  Unlink,
-  Unplug,
-  UserCheck,
-  Users,
-  type LucideIcon,
-} from "lucide-react"
+import { Pulse } from "@phosphor-icons/react/dist/ssr/Pulse"
+import { Eye } from "@phosphor-icons/react/dist/ssr/Eye"
+import { Stack } from "@phosphor-icons/react/dist/ssr/Stack"
+import { Lifebuoy } from "@phosphor-icons/react/dist/ssr/Lifebuoy"
+import { ListChecks } from "@phosphor-icons/react/dist/ssr/ListChecks"
+import { ChatText } from "@phosphor-icons/react/dist/ssr/ChatText"
+import { ArrowsIn } from "@phosphor-icons/react/dist/ssr/ArrowsIn"
+import { CursorClick } from "@phosphor-icons/react/dist/ssr/CursorClick"
+import { Repeat } from "@phosphor-icons/react/dist/ssr/Repeat"
+import { Path } from "@phosphor-icons/react/dist/ssr/Path"
+import { ShieldWarning } from "@phosphor-icons/react/dist/ssr/ShieldWarning"
+import { ShieldCheck } from "@phosphor-icons/react/dist/ssr/ShieldCheck"
+import { SlidersHorizontal } from "@phosphor-icons/react/dist/ssr/SlidersHorizontal"
+import { DeviceMobile } from "@phosphor-icons/react/dist/ssr/DeviceMobile"
+import { GitFork } from "@phosphor-icons/react/dist/ssr/GitFork"
+import { Target } from "@phosphor-icons/react/dist/ssr/Target"
+import { Timer } from "@phosphor-icons/react/dist/ssr/Timer"
+import { Quotes } from "@phosphor-icons/react/dist/ssr/Quotes"
+import { LinkBreak } from "@phosphor-icons/react/dist/ssr/LinkBreak"
+import { Plugs } from "@phosphor-icons/react/dist/ssr/Plugs"
+import { UserCheck } from "@phosphor-icons/react/dist/ssr/UserCheck"
+import { Users } from "@phosphor-icons/react/dist/ssr/Users"
+import type { Icon } from "@phosphor-icons/react"
 import type { Card, CardIcon, CardTone, Metric, Testimonial } from "@/lib/content/types"
 import { Avatar } from "@/components/site/avatar"
 
-const cardIcons: Record<CardIcon, LucideIcon> = {
+const cardIcons: Record<CardIcon, Icon> = {
   "shield-check": ShieldCheck,
-  "shield-alert": ShieldAlert,
-  unplug: Unplug,
+  "shield-alert": ShieldWarning,
+  unplug: Plugs,
   "list-checks": ListChecks,
-  split: Split,
+  split: GitFork,
   sliders: SlidersHorizontal,
-  message: MessageSquareText,
+  message: ChatText,
   timer: Timer,
-  layers: Layers,
+  layers: Stack,
   eye: Eye,
   repeat: Repeat,
   target: Target,
-  pointer: MousePointerClick,
-  minimize: Minimize2,
-  route: Route,
-  smartphone: Smartphone,
+  pointer: CursorClick,
+  minimize: ArrowsIn,
+  route: Path,
+  smartphone: DeviceMobile,
   users: Users,
-  unlink: Unlink,
+  unlink: LinkBreak,
   "user-check": UserCheck,
-  activity: Activity,
-  "life-buoy": LifeBuoy,
+  activity: Pulse,
+  "life-buoy": Lifebuoy,
 }
 
 const toneColors: Record<CardTone, string> = {
@@ -57,7 +55,7 @@ const toneColors: Record<CardTone, string> = {
 }
 
 export function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="type-body text-muted">{children}</p>
+  return <p className="text-body text-secondary">{children}</p>
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
@@ -74,13 +72,13 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
             className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7"
           >
             {Icon ? (
-              <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-[color-mix(in_oklab,var(--tone)_16%,transparent)] text-[var(--tone)]">
-                <Icon className="size-4" aria-hidden="true" />
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-tone/16 text-tone">
+                <Icon weight="regular" className="size-4" aria-hidden="true" />
               </span>
             ) : null}
-            <div className="flex flex-col gap-0.5 md:gap-1.5">
-              <h3 className="type-body type-strong">{card.title}</h3>
-              <p className="type-supporting text-muted">{card.body}</p>
+            <div className="flex flex-col gap-1 md:gap-2">
+              <h3 className="text-body text-strong">{card.title}</h3>
+              <p className="text-caption text-secondary">{card.body}</p>
             </div>
           </li>
         )
@@ -91,7 +89,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
 
 export function Callout({ text }: { text: string }) {
   return (
-    <blockquote className="type-project-title border-l-2 border-foreground py-0.5 pl-5">
+    <blockquote className="text-heading border-l-2 border-foreground py-1 pl-5">
       <p>{text}</p>
     </blockquote>
   )
@@ -102,18 +100,18 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
     return (
       <figure className="group flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
         <div className="flex flex-col gap-3 md:gap-7">
-          <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
-            <Quote className="size-4" />
+          <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
+            <Quotes weight="regular" className="size-4" />
           </span>
           <blockquote>
-            <p className="type-project-title text-white/50 transition-opacity duration-300 group-hover:text-white">{testimonial.quote}</p>
+            <p className="text-heading text-quote/50 transition-opacity duration-300 group-hover:text-quote">{testimonial.quote}</p>
           </blockquote>
         </div>
         <figcaption className="flex items-center gap-3">
           <Avatar name={testimonial.name} size={40} />
           <span className="flex flex-col gap-1">
-            <span className="type-supporting type-strong">{testimonial.name}</span>
-            <span className="type-eyebrow block text-muted">{testimonial.role}</span>
+            <span className="text-caption text-strong">{testimonial.name}</span>
+            <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
           </span>
         </figcaption>
       </figure>
@@ -125,9 +123,9 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8" : "rounded-lg p-8"}`}
     >
       <div className="flex flex-col gap-5">
-        {compact ? <Quote className="size-5 text-muted" aria-hidden="true" /> : null}
+        {compact ? <Quotes weight="regular" className="size-5 text-secondary" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="type-body text-white/50 transition-opacity duration-300 group-hover:text-white">
+          <p className="text-body text-quote/50 transition-opacity duration-300 group-hover:text-quote">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>
@@ -135,8 +133,8 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       <figcaption className="flex items-center gap-3 border-t pt-5">
         <Avatar name={testimonial.name} size={40} />
         <span className="flex flex-col gap-1">
-          <span className="type-supporting type-strong">{testimonial.name}</span>
-          <span className="type-eyebrow block text-muted">{testimonial.role}</span>
+          <span className="text-caption text-strong">{testimonial.name}</span>
+          <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
         </span>
       </figcaption>
     </figure>
@@ -144,10 +142,10 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
 }
 
 export function MetricValue({ metric, size = "lg" }: { metric: Metric; size?: "lg" | "md" }) {
-  const sizeClass = size === "lg" ? "type-display" : "type-project-title"
+  const sizeClass = size === "lg" ? "text-display" : "text-heading"
   if (metric.value === null) {
     return (
-      <span className={`${sizeClass} text-muted/50`}>
+      <span className={`${sizeClass} text-secondary/50`}>
         <span aria-hidden="true">—</span>
         <span className="sr-only">Metric pending</span>
       </span>
@@ -161,10 +159,10 @@ export function Metrics({ metrics }: { metrics: Metric[] }) {
     <dl className="grid gap-3 sm:grid-cols-2">
       {metrics.map((metric) => (
         <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
-          <dt className="flex flex-wrap items-center gap-2 type-supporting text-muted">
+          <dt className="flex flex-wrap items-center gap-2 text-caption text-secondary">
             {metric.label}
             {metric.value === null ? (
-              <span className="rounded-full border border-dashed px-2 py-0.5 type-eyebrow">
+              <span className="rounded-full border border-dashed px-2 py-1 text-eyebrow">
                 Metric pending
               </span>
             ) : null}
