@@ -59,7 +59,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <article className="flex flex-col gap-3">
       <div className="grid gap-3 lg:grid-cols-12">
-        <div className="relative isolate flex flex-col gap-6 overflow-hidden rounded-3xl pb-5 pl-5 pr-0 pt-0 text-[#ffffff] md:gap-8 md:pb-8 md:pl-8 md:pr-0 md:pt-0 lg:col-span-7">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl pb-5 pl-5 pr-0 pt-0 text-[#ffffff] md:gap-4 md:pb-8 md:pl-8 md:pr-0 md:pt-0 lg:col-span-7">
           <Image
             src={project.background}
             alt=""
@@ -78,11 +78,11 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           </div>
         </div>
 
-        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl px-3 py-6 md:px-5 md:py-10 lg:col-span-5">
+        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl px-3 pb-3 pt-6 md:px-5 md:pb-5 md:pt-10 lg:col-span-5">
           <div className="rounded-2xl bg-background p-6">
             <p className="type-body text-pretty">{project.description}</p>
           </div>
-          <div className="mt-auto flex flex-col gap-2 pt-2">
+          <div className="mt-auto flex flex-col gap-4 pt-2">
             <div className="hidden flex-col gap-1 md:flex">
               <p className="type-body">The Team:</p>
               <ul className="type-body text-muted">
@@ -102,7 +102,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         {project.metrics.map((metric, index) => {
           const Icon = projectIcons[project.metricIcons[index]]
           return (
-            <li key={metric.label} className="card-surface project-preview-card flex flex-col gap-3 rounded-lg p-5 md:gap-7">
+            <li key={metric.label} className="card-surface project-preview-card flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
               <span className="inline-flex size-8 items-center justify-center self-start rounded-[0.625rem] bg-surface-strong text-muted" aria-hidden="true">
                 <Icon className="size-4" />
               </span>
