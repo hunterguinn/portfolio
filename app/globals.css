@@ -257,7 +257,7 @@
 }
 .js main p.section-eyebrow {
   opacity: 0.4;
-  transition: opacity 400ms ease;
+  transition: opacity 800ms ease;
 }
 .js main p.section-eyebrow[data-active="true"] {
   opacity: 1;
