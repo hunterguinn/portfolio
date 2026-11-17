@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <SectionShell bordered={false} label={home.welcome}>
       <div className="flex flex-col gap-8 pt-2 md:pt-6">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
             <span className="relative inline-flex shrink-0">
               <Avatar name="Hunter Guinn" src={profileImage} size={54} alt="Portrait of Hunter Guinn" />

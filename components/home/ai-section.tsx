@@ -35,9 +35,9 @@ export function AiSection() {
                 src={tool.src}
                 alt={tool.name}
                 title={tool.name}
-                width={36}
-                height={36}
-                className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                width={48}
+                height={48}
+                className="size-12 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
               />
             </li>
           ))}

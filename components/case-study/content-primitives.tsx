@@ -100,9 +100,6 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
     return (
       <figure className="group flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
         <div className="flex flex-col gap-3 md:gap-7">
-          <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
-            <Quotes weight="regular" className="size-4" />
-          </span>
           <blockquote>
             <p className="text-heading text-quote/50 transition-opacity duration-300 group-hover:text-quote">{testimonial.quote}</p>
           </blockquote>
