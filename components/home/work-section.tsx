@@ -60,7 +60,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <article className="flex flex-col gap-3">
       <div className="grid gap-3 lg:grid-cols-12">
-        <div className="relative isolate flex flex-col gap-6 overflow-hidden rounded-3xl p-5 text-[#ffffff] md:gap-8 md:p-8 lg:col-span-7">
+        <div className="relative isolate flex flex-col gap-6 overflow-hidden rounded-3xl pb-5 pl-5 pr-0 pt-0 text-[#ffffff] md:gap-8 md:pb-8 md:pl-8 md:pr-0 md:pt-0 lg:col-span-7">
           <Image
             src={project.background}
             alt=""
@@ -70,7 +70,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           />
           <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/50 via-transparent to-transparent" aria-hidden="true" />
           <CoverMedia cover={project.cover} />
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 pr-5 md:pr-8">
             <h3 className="type-project-title text-balance">{project.title}</h3>
             <div className="flex items-center justify-between gap-4 type-body">
               <span>{category}</span>
@@ -83,7 +83,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           <div className="flex flex-1 rounded-2xl bg-background p-5 md:p-8">
             <p className="type-body text-pretty">{project.description}</p>
           </div>
-          <div className="flex flex-col gap-1">
+          <div className="hidden flex-col gap-1 md:flex">
             <p className="type-body">The Team:</p>
             <ul className="type-body text-muted">
               {project.team.map((member) => (
@@ -91,13 +91,13 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               ))}
             </ul>
           </div>
-          <ArrowLink href={project.href}>
+          <ArrowLink href={project.href} className="w-full md:w-auto">
             View project<span className="sr-only">: {project.title}</span>
           </ArrowLink>
         </div>
       </div>
 
-      <ul className="grid gap-3 md:grid-cols-3">
+      <ul className="hidden gap-3 md:grid md:grid-cols-3">
         {project.metrics.map((metric, index) => {
           const Icon = projectIcons[project.metricIcons[index]]
           return (
