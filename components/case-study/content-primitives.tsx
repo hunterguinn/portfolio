@@ -101,7 +101,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       <figure className="group flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
-            <p className="text-heading text-quote/50 transition-opacity duration-300 group-hover:text-quote">{testimonial.quote}</p>
+            <p className="text-heading text-quote transition-colors duration-300 group-hover:text-quote-hover">{testimonial.quote}</p>
           </blockquote>
         </div>
         <figcaption className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
       <div className="flex flex-col gap-5">
         {compact ? <Quotes weight="regular" className="size-5 text-secondary" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="text-body text-quote/50 transition-opacity duration-300 group-hover:text-quote">
+          <p className="text-body text-quote transition-colors duration-300 group-hover:text-quote-hover">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>
