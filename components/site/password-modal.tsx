@@ -33,7 +33,7 @@ export type PasswordModalProps = {
 export function PasswordModal({ next, onClose, returnFocusTo, preview }: PasswordModalProps) {
   const [state, formAction, actionPending] = useActionState(unlockProjects, preview?.state ?? initialState)
   const pending = actionPending || Boolean(preview?.pending)
-  const dialogRef = useRef<HTMLDivElement>(null)
+  const dialogRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const titleId = useId()
   const descriptionId = useId()
@@ -49,17 +49,18 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
 
   return (
     <div className="fixed inset-0 z-[91] flex h-dvh w-screen items-center justify-center overscroll-contain bg-overlay-black/60">
-      <div
+      <form
         ref={dialogRef}
+        action={formAction}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="card-surface modal-card max-h-[calc(100dvh-2rem)] w-[90vw] max-w-[800px] overflow-y-auto rounded-lg p-6 md:p-8"
+        className="card-surface modal-card max-h-[calc(100dvh-2rem)] w-[90vw] max-w-[800px] overflow-y-auto rounded-lg p-6"
       >
-        <div className="flex flex-col items-center gap-6">
-          <div className="flex flex-col items-center gap-4 text-center">
-            <Lock size={32} weight="regular" aria-hidden="true" />
+        <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <Lock size={24} weight="regular" aria-hidden="true" />
             <h2 id={titleId} className="text-display text-balance">
               Protected Page
             </h2>
@@ -74,7 +75,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             </p>
           </div>
 
-          <form action={formAction} className="flex w-full flex-col gap-4">
+          <div className="flex w-full flex-col gap-4">
             <input type="hidden" name="next" value={next} />
             <div className="flex flex-col gap-2">
               <label htmlFor={inputId} className="sr-only">
@@ -100,7 +101,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                   <p
                     key={state.failures}
                     id={errorId}
-                    className={`text-caption flex items-center justify-center gap-1.5 text-center text-red ${
+                    className={`text-caption flex items-center justify-start gap-1.5 text-left text-red ${
                       state.failures > 1 ? "gate-shake" : ""
                     }`}
                   >
@@ -116,7 +117,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                 type="button"
                 onClick={onClose}
                 disabled={pending}
-                className="btn-secondary text-body min-h-11 rounded-full px-6 py-2.5 font-medium disabled:opacity-60"
+                className="bg-background text-body min-h-11 rounded-full px-6 py-2.5 font-medium text-foreground transition-colors hover:bg-surface-strong disabled:opacity-60"
               >
                 Back
               </button>
@@ -129,9 +130,9 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                 {pending ? "Checking" : "Enter"}
               </button>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   )
 }
