@@ -107,7 +107,7 @@ export function TestimonialQuote({ testimonial, compact = false }: { testimonial
         <figcaption className="flex items-center gap-3">
           <Avatar name={testimonial.name} size={40} />
           <span className="flex flex-col gap-title-desc">
-            <span className="text-caption text-strong">{testimonial.name}</span>
+            <span className="text-body font-normal">{testimonial.name}</span>
             <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
           </span>
         </figcaption>
