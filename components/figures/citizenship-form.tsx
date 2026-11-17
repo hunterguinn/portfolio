@@ -14,7 +14,7 @@ export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
       aria-label="Citizenship step example"
       className="flex flex-col gap-6 card-surface rounded-lg p-6 md:p-8"
     >
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-0">
         <h3 className="text-heading">{copy.heading}</h3>
         <p className="text-caption text-secondary">{copy.required}</p>
       </div>

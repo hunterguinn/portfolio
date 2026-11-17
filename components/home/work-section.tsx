@@ -105,7 +105,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
               <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
                 <Icon weight="regular" className="size-4" />
               </span>
-              <div className="flex w-full min-w-0 flex-col gap-0 md:gap-2">
+              <div className="flex w-full min-w-0 flex-col gap-0">
                 <p className="text-heading w-full tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
@@ -122,7 +122,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
             <InsightIcon weight="regular" className="size-4" />
           </span>
-          <div className="flex w-full min-w-0 flex-col gap-0 md:gap-2">
+          <div className="flex w-full min-w-0 flex-col gap-0">
             <h4 className="text-body text-strong w-full">{project.insight.title}</h4>
             <p className="text-caption w-full text-wrap text-secondary">{project.insight.body}</p>
           </div>

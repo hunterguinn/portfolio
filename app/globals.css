@@ -70,12 +70,6 @@
   }
 }
 
-/* Card content stacks directly when the source card uses a 4px or 8px div gap. */
-.card-surface div[class~="gap-4"],
-.card-surface div[class~="gap-8"] {
-  gap: 0 !important;
-}
-
 /* Cards sit on the surface colour and use the shared border token. */
 .card-surface {
   @apply border border-border;

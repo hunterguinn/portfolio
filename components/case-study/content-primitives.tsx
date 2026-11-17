@@ -76,7 +76,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
                 <Icon weight="regular" className="size-4" aria-hidden="true" />
               </span>
             ) : null}
-            <div className="flex flex-col gap-0 md:gap-2">
+            <div className="flex flex-col gap-0">
               <h3 className="text-body text-strong">{card.title}</h3>
               <p className="text-caption text-secondary">{card.body}</p>
             </div>
