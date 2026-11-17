@@ -149,7 +149,7 @@ export function TransferDemo({
             setState(initialState(rows))
             setTouched(false)
           }}
-          className="type-supporting rounded-full border px-4 py-1.5 transition-colors hover:bg-surface-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="btn-secondary type-supporting rounded-full px-4 py-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           Reset
         </button>

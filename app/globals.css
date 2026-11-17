@@ -9,6 +9,7 @@
   --muted: #8a8a8a;
   --surface: #1a1a1a;
   --surface-strong: #252525;
+  --primary-hover: #8a8a8a;
   --border: #303030;
   --blue: #66b3ff;
   --red: #ff6961;
@@ -23,6 +24,7 @@
   --muted: #515154;
   --surface: #ffffff;
   --surface-strong: #ebebef;
+  --primary-hover: #6e6e73;
   --border: #d2d2d7;
   --blue: #0066cc;
   --red: #c22b32;
@@ -37,6 +39,7 @@
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
+  --color-primary-hover: var(--primary-hover);
   --color-border: var(--border);
   --color-blue: var(--blue);
   --color-red: var(--red);
@@ -188,9 +191,46 @@
   background-color: var(--surface);
   transition: background-color 280ms ease;
 }
-.card-surface:hover,
-[data-cursor="view-project"]:hover .card-surface {
+.card-surface:hover {
   background-color: var(--surface-strong);
+}
+
+/* Primary buttons change fill on hover; secondary buttons are borderless surface pills. */
+.btn-primary {
+  background-color: var(--foreground);
+  color: var(--background);
+  transition: background-color 200ms ease;
+}
+.btn-primary:hover,
+.btn-primary-group:hover .btn-primary,
+.btn-primary-group:focus-visible .btn-primary {
+  background-color: var(--primary-hover);
+}
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--foreground);
+  transition: background-color 200ms ease;
+}
+.btn-secondary:hover {
+  background-color: var(--surface-strong);
+}
+
+/* Arrow circle: rests pointing up-right and flips to point right on hover. */
+.arrow-flip-wrap {
+  perspective: 300px;
+}
+.arrow-flip {
+  transform: rotate(-45deg) rotateX(0deg);
+  transition: transform 600ms cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+.btn-primary-group:hover .arrow-flip,
+.btn-primary-group:focus-visible .arrow-flip {
+  transform: rotate(0deg) rotateX(360deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrow-flip {
+    transition: none;
+  }
 }
 
 /* Project cover gradients (per project, per theme). */
@@ -399,9 +439,6 @@
   mix-blend-mode: difference;
   will-change: transform;
 }
-.cursor-root[data-mode="view"] {
-  mix-blend-mode: normal;
-}
 .cursor-root[data-hidden="true"] .cursor-shape {
   opacity: 0;
 }
@@ -426,33 +463,11 @@
     opacity 150ms ease,
     transform 160ms ease;
 }
-.cursor-root[data-mode="view"] .cursor-shape {
-  width: auto;
-  height: auto;
-  padding: 0.5rem 1rem;
-  background: var(--foreground);
-}
 .cursor-root[data-pressed="true"] .cursor-shape {
   transform: translate(-50%, -50%) scale(0.9);
 }
-.cursor-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 120ms ease;
-}
-.cursor-root[data-mode="view"] .cursor-label {
-  opacity: 1;
-  transition: opacity 220ms ease 120ms;
-}
 @media (prefers-reduced-motion: reduce) {
-  .cursor-shape,
-  .cursor-label {
+  .cursor-shape {
     transition: opacity 150ms ease;
   }
 }

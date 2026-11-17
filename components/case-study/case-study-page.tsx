@@ -46,7 +46,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
                 <li key={link.id}>
                   <a
                     href={`#${link.id}`}
-                    className="inline-flex items-center rounded-full border type-supporting px-4 py-2 transition-colors hover:bg-foreground hover:text-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                    className="btn-secondary inline-flex items-center rounded-full type-supporting px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
                   >
                     {link.name}
                   </a>

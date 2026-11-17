@@ -26,11 +26,11 @@ export function Hero() {
           <h1 className="type-display max-w-3xl text-balance">{home.headline}</h1>
           <p className="type-body max-w-2xl text-muted text-pretty">{home.intro}</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="#work" className={`${buttonClass} bg-foreground text-background hover:opacity-90`}>
+            <Link href="#work" className={`${buttonClass} btn-primary`}>
               See work
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
-            <CopyEmailButton className={`${buttonClass} border hover:bg-foreground hover:text-background`} />
+            <CopyEmailButton className={`${buttonClass} btn-secondary`} />
           </div>
         </div>
       </div>

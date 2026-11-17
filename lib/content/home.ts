@@ -22,10 +22,19 @@ export const home = {
       {
         slug: "merrill",
         href: "/merrill",
-        title: "Merrill Edge",
+        title: "Merrill Edge Asset Transfer",
         meta: "Native app · 2027",
         description:
           "I helped redesign how clients transfer investments into Merrill, simplifying complex account connections, asset selection, and transfer requirements into a more streamlined digital experience.",
+        // Placeholder until the real team list is provided.
+        team: ["Digital Leadership"],
+        background: "/images/home/project-bg-1.webp",
+        metricIcons: ["landmark", "wallet"],
+        insight: {
+          icon: "database",
+          title: "Data to Design",
+          body: "I translated inconsistent API data and complex account requirements into clearer, more predictable transfer workflows.",
+        },
         metrics: [
           {
             value: "$19B",
@@ -50,10 +59,19 @@ export const home = {
       {
         slug: "pos",
         href: "/pos",
-        title: "Point-of-Sale",
+        title: "Point-of-Sale Software",
         meta: "Android responsive · 2026",
         description:
           "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing a scalable design foundation across devices while maintaining continuity for small business merchants.",
+        // Placeholder until the real team list is provided.
+        team: ["Digital Leadership"],
+        background: "/images/home/project-bg-2.webp",
+        metricIcons: ["credit-card", "store"],
+        insight: {
+          icon: "blocks",
+          title: "Building 1 to n",
+          body: "I established reusable components and interaction patterns to support consistent experiences across payment terminals, devices, and web applications.",
+        },
         metrics: [
           {
             value: "16.6B",
@@ -78,10 +96,19 @@ export const home = {
       {
         slug: "unified",
         href: "/unified",
-        title: "Unified",
-        meta: "Web responsive · 2026",
+        title: "Unified Client Application",
+        meta: "Web responsive · 2025",
         description:
           "I helped unify applications for business checking, credit cards, and payment services into a single digital experience, balancing simpler onboarding with complex eligibility and risk requirements.",
+        // Placeholder until the real team list is provided.
+        team: ["Digital Leadership"],
+        background: "/images/home/project-bg-3.webp",
+        metricIcons: ["layers", "briefcase"],
+        insight: {
+          icon: "workflow",
+          title: "xFN Collaboration",
+          body: "I aligned stakeholders around eligibility rules and complex application scenarios, translating competing requirements into a cohesive experience.",
+        },
         metrics: [
           {
             value: "8-in-1",
