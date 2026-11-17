@@ -59,7 +59,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
   return (
     <article className="flex flex-col gap-3">
       <div className="grid gap-3 lg:grid-cols-12">
-        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl pb-4 pl-4 pr-0 pt-0 text-[#ffffff] md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
+        <div className="relative isolate flex flex-col gap-3 overflow-hidden rounded-3xl pb-4 pl-4 pr-0 pt-0 text-foreground md:gap-4 md:pb-6 md:pl-6 md:pr-0 md:pt-0 lg:col-span-7">
           <Image
             src={project.background}
             alt=""
@@ -67,7 +67,8 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
             sizes="(min-width: 1024px) 55vw, 100vw"
             className="-z-20 object-cover"
           />
-          <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/50 via-transparent to-transparent" aria-hidden="true" />
+          <div className="project-preview-overlay absolute inset-0 -z-10" aria-hidden="true" />
+          <div className="project-preview-gradient absolute inset-0 -z-10" aria-hidden="true" />
           <CoverMedia cover={project.cover} />
           <div className="flex flex-col gap-2 pr-5 md:pr-8">
             <h3 className="type-project-title text-balance">{project.title}</h3>
@@ -79,7 +80,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
         </div>
 
         <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl p-3 md:p-5 lg:col-span-5">
-          <div className="rounded-2xl bg-background px-3 py-6 md:px-5 md:py-10">
+          <div className="rounded-2xl bg-background px-3 py-8 md:px-5 md:py-12">
             <p className="type-body text-pretty">{project.description}</p>
           </div>
           <div className="mt-auto flex flex-col gap-4 pt-2">
@@ -107,7 +108,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
                 <Icon className="size-4" />
               </span>
               <div className="flex flex-col gap-0.5 md:gap-1.5">
-                <p className="type-project-title tabular-nums">
+                <p className="type-display tabular-nums">
                   {metric.counter ? (
                     <CountUp {...metric.counter} />
                   ) : metric.value ?? (
