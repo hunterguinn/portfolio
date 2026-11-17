@@ -7,7 +7,7 @@ type EyebrowEntry = {
   setActive: (active: boolean) => void
 }
 
-const ACTIVATION_LINE = 0.4
+const ACTIVATION_LINE = 0.2
 const entries = new Set<EyebrowEntry>()
 let updateFrame = 0
 
