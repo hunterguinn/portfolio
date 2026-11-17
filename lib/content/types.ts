@@ -1,12 +1,12 @@
 /**
  * Content model for the portfolio. Every figure slot keeps its expected asset
- * label in `placeholder`; set `src` (a path under /public/media) to replace a
+ * label in `placeholder`; set `src` (a path under /media, backed by /private/media) to replace a
  * placeholder without touching layout code.
  */
 
 export type MediaSlot = {
   kind: "image" | "video"
-  /** Path to the supplied asset, e.g. "/media/merrill/asset-selection.png". */
+  /** Path to the supplied asset, e.g. "/media/merrill/asset-selection.png" (file lives in /private/media and requires the project session). */
   src?: string
   /** Video poster frame, when supplied. */
   poster?: string

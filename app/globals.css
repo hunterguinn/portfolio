@@ -407,6 +407,33 @@
   }
 }
 
+@keyframes gate-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+.gate-shake {
+  animation: gate-shake 360ms ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gate-shake {
+    animation: none;
+  }
+}
+
 .cover-gradient[data-project="merrill"] {
   --cover-base: var(--cover-merrill-base);
   --cover-a: var(--cover-merrill-a);

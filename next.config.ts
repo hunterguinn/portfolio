@@ -1,6 +1,9 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {
+    "/media/[...path]": ["./private/media/**/*"],
+  },
   async headers() {
     return [
       {
