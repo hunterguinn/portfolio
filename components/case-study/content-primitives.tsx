@@ -95,13 +95,26 @@ export function Callout({ text }: { text: string }) {
   )
 }
 
-export function TestimonialQuote({ testimonial, compact = false }: { testimonial: Testimonial; compact?: boolean }) {
+export function TestimonialQuote({
+  testimonial,
+  compact = false,
+  quoteWeight = "normal",
+}: {
+  testimonial: Testimonial
+  compact?: boolean
+  quoteWeight?: "light" | "normal"
+}) {
   if (compact) {
     return (
-      <figure className="group flex h-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
+      <figure className="group flex h-full w-[400px] flex-col justify-between gap-8 card-surface rounded-3xl p-8">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
-            <p className="text-heading text-quote transition-colors duration-300 group-hover:text-quote-hover">{testimonial.quote}</p>
+            <p
+              className="text-heading text-quote transition-colors duration-300 group-hover:text-quote-hover"
+              style={{ fontWeight: quoteWeight === "light" ? 300 : 400 }}
+            >
+              {testimonial.quote}
+            </p>
           </blockquote>
         </div>
         <figcaption className="flex items-center gap-3">

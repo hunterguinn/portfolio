@@ -1,6 +1,6 @@
 import Image from "next/image"
+import { Code } from "@phosphor-icons/react/dist/ssr/Code"
 import { GraduationCap } from "@phosphor-icons/react/dist/ssr/GraduationCap"
-import { Sparkle } from "@phosphor-icons/react/dist/ssr/Sparkle"
 import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
 import { home } from "@/lib/content/home"
@@ -11,7 +11,7 @@ import { CountUp } from "@/components/site/count-up"
 const metricIcons: Record<ExperienceMetric["icon"], Icon> = {
   users: Users,
   "graduation-cap": GraduationCap,
-  sparkles: Sparkle,
+  code: Code,
 }
 
 export function AiSection() {
@@ -51,9 +51,11 @@ export function AiSection() {
                   <Icon weight="regular" className="size-4" />
                 </span>
                 <div className="flex flex-col gap-title-desc">
-                  <p className="text-heading tabular-nums">
-                    <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
-                  </p>
+                  {item.count !== undefined ? (
+                    <p className="text-heading tabular-nums">
+                      <CountUp to={item.count} suffix={item.suffix ?? ""} delay={index * 350} />
+                    </p>
+                  ) : null}
                   <h3 className="text-body text-strong text-balance">{item.title}</h3>
                   <p className="text-caption text-secondary">{item.body}</p>
                 </div>

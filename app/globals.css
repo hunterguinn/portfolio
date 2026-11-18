@@ -59,6 +59,11 @@
     max-width: calc(1400px + 2 * var(--spacing-gutter-desktop));
   }
 }
+@media (min-width: 64rem) {
+  .page-container {
+    width: 80%;
+  }
+}
 
 /* Apple-style continuous corners (squircles), where the browser supports them. */
 @supports (corner-shape: squircle) {
@@ -115,6 +120,15 @@
 }
 .btn-secondary:hover {
   background-color: var(--surface-strong);
+}
+.gallery-pill {
+  background-color: color-mix(in srgb, var(--background) 50%, transparent);
+  color: var(--foreground);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.gallery-pill.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--background) 50%, transparent);
 }
 
 /* Arrow circle: a down caret cycles like a small lottery-machine reel on hover. */

@@ -56,7 +56,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="card-surface modal-card max-h-[calc(100dvh-2rem)] w-[90vw] max-w-[800px] overflow-y-auto rounded-lg p-6"
+        className="card-surface modal-card max-h-[calc(100dvh-2rem)] w-[90vw] max-w-[400px] overflow-y-auto rounded-lg p-6"
       >
         <div className="flex flex-col items-center gap-8">
           <div className="flex flex-col items-center gap-3 text-center">
@@ -112,7 +112,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               <button
                 type="button"
                 onClick={onClose}
