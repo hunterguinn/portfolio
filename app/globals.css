@@ -61,7 +61,7 @@
 }
 @media (min-width: 64rem) {
   .page-container {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -96,7 +96,7 @@
   background-color: color-mix(in srgb, var(--overlay-white) 10%, transparent);
 }
 .light .project-preview-overlay {
-  background-color: color-mix(in srgb, var(--background) 60%, transparent);
+  background-color: var(--background);
 }
 .dark .project-preview-gradient {
   background-image: linear-gradient(to top, color-mix(in srgb, var(--overlay-black) 50%, transparent), transparent);
@@ -122,6 +122,8 @@
   background-color: var(--surface-strong);
 }
 .gallery-pill {
+  padding-top: 3px;
+  font-size: 12px;
   background-color: color-mix(in srgb, var(--background) 50%, transparent);
   color: var(--foreground);
   -webkit-backdrop-filter: blur(10px);
@@ -228,13 +230,13 @@
   }
 }
 
-/* Section labels sit at 40% opacity until their section is the single active one on the page. */
+/* Section labels brighten after remaining in view for one second. */
 .section-eyebrow {
   color: var(--foreground);
 }
 .js main p.section-eyebrow {
   opacity: 0.4;
-  transition: opacity 800ms ease;
+  transition: opacity 300ms ease;
 }
 .js main p.section-eyebrow[data-active="true"] {
   opacity: 1;

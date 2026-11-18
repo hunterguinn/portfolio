@@ -28,20 +28,23 @@ export function AiSection() {
             ))}
           </div>
         </div>
-        <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
-          {stack.map((tool) => (
-            <li key={tool.name}>
-              <Image
-                src={tool.src}
-                alt={tool.name}
-                title={tool.name}
-                width={48}
-                height={48}
-                className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-              />
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col gap-3">
+          <p className="text-caption text-secondary">Stack</p>
+          <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
+            {stack.map((tool) => (
+              <li key={tool.name}>
+                <Image
+                  src={tool.src}
+                  alt={tool.name}
+                  title={tool.name}
+                  width={48}
+                  height={48}
+                  className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
         <ul className="grid gap-3 md:grid-cols-3">
           {ai.metrics.map((item, index) => {
             const Icon = metricIcons[item.icon]

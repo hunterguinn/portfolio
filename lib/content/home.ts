@@ -129,7 +129,7 @@ export const home = {
     ] satisfies ProjectSummary[],
   },
   ai: {
-    title: "Exploring what's next for design",
+    title: "Scaling design through AI, systems, and people",
     label: "Experience",
     paragraphs: [
       "At Bank of America, I'm leading our Figma AI Enablement training and mentoring other designers on best practices, tooling, and efficiencies.",
@@ -138,7 +138,7 @@ export const home = {
     metrics: [
       {
         icon: "code",
-        title: "Building with AI agents",
+        title: "Concept to code",
         body: "Building AI-assisted prototypes, custom plugins, and automations that connect design and development.",
       },
       {
@@ -146,14 +146,14 @@ export const home = {
         count: 92,
         suffix: "+",
         title: "Designers supported",
-        body: "Helping designers strengthen their skills, adopt new tools, and improve everyday workflows.",
+        body: "Helping designers strengthen their skills, workflow, and technique.",
       },
       {
         icon: "graduation-cap",
         count: 10,
         suffix: "",
         title: "Learning sessions",
-        body: "Sharing practical techniques, best practices, and workflows to support Figma AI adoption.",
+        body: "Sharing design efficiencies, best practices, and workflows to support AI adoption.",
       },
     ] satisfies ExperienceMetric[],
   },

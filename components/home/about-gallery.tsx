@@ -28,7 +28,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
           </div>
         )}
         {item.caption ? (
-          <p className="gallery-pill btn-primary text-caption absolute bottom-1 left-1/2 z-10 w-max -translate-x-1/2 rounded-full px-3 py-1 text-center">
+          <p className="gallery-pill btn-primary text-caption absolute bottom-2 left-1/2 z-10 w-max -translate-x-1/2 rounded-full px-3 py-1 text-center">
             {item.caption}
           </p>
         ) : null}
