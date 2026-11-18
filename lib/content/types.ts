@@ -111,7 +111,12 @@ export type Block =
   | {
       type: "transfer-steps"
       figure: FigureMeta
-      steps: { step: string; title: string; requirement: "Required" | "Conditional"; items: string[] }[]
+      steps: {
+        step: string
+        title: string
+        requirement: "Required" | "Conditional"
+        items: { label: string; source: "api" | "you" | "conditional" }[]
+      }[]
     }
   | {
       type: "transfer-demo"

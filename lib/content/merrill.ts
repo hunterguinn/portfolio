@@ -25,11 +25,11 @@ export const merrill: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Transferring assets between investment firms is inherently complex. Clients must manually enter the destination account, external account, ownership information, and securities to be compatible.",
+          text: "Our current transfer experience is old, antiquated, and only on the web. I designed a faster, responsive solution that leveraged an Open Finance API where clients could connect with their external brokerage, instead of entering that information manually.",
         },
         {
           type: "p",
-          text: "Our current transfer experience is old, antiquated, and only on the web. I designed a faster, responsive solution that leveraged an open finance API to prep-populate data from the client's external brokerage.",
+          text: "With the API, clients only have choose assets they want to transfer into Merrill, but it wasn't that simple. What if the API returns missing data? What if the data wasn't clean? What if we needed clients to verify information? This introduced a new set of issues.",
         },
         {
           type: "cards",
@@ -63,11 +63,7 @@ export const merrill: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "With the API, clients only have to select an eligible external account and choose assets to transfer. But it wasn't that simple. What would happen if the API returns any missing or incorrect external account data? We might need clients to confirm their name if their external account didn't match their Merrill account, or provide us with their external account number or account type.",
-        },
-        {
-          type: "p",
-          text: "I worked with product partners to confirm which information was always required, what the API could capture, and when the experience needed to collect more details (Figure 2.0).",
+          text: "I created a new asset transfer workflow with the open finance API, defining which information clients still needed to provide, what the API could capture, and when the experience needed to collect more details if the API failed (Figure 2.0).",
         },
         {
           type: "transfer-steps",
@@ -77,31 +73,45 @@ export const merrill: CaseStudy = {
               step: "01",
               title: "Account Selection",
               requirement: "Required",
-              items: ["Merrill account selection", "Connect with external <FI>", "<FI> account selection"],
+              items: [
+                { label: "Connect with external firm", source: "api" },
+                { label: "External firm account(s)", source: "api" },
+                { label: "Select Merrill account", source: "you" },
+              ],
             },
             {
               step: "02",
               title: "Asset Selection",
               requirement: "Required",
-              items: ["List of securities", "Amount of shares/cash", "Full transfer vs partial transfer"],
+              items: [
+                { label: "List of securities", source: "api" },
+                { label: "Share and cash amounts", source: "api" },
+                { label: "Full or partial transfer", source: "you" },
+                { label: "Assets to include or exclude", source: "you" },
+              ],
             },
             {
               step: "03",
               title: "Account Details",
               requirement: "Conditional",
               items: [
-                "Primary account holder",
-                "Account number",
-                "Account type",
-                "Joint account holders",
-                "Margins and options",
+                { label: "Primary account holder(s)", source: "api" },
+                { label: "Account number", source: "api" },
+                { label: "Account type", source: "api" },
+                { label: "Margins and options", source: "conditional" },
+                { label: "Joint account holders", source: "conditional" },
               ],
             },
             {
               step: "04",
               title: "Review & Submit",
               requirement: "Required",
-              items: ["Destination account", "External account", "Assets in transfer", "Terms & conditions"],
+              items: [
+                { label: "Destination account", source: "api" },
+                { label: "Assets in transfer", source: "api" },
+                { label: "Terms and conditions", source: "you" },
+                { label: "Submit transfer", source: "you" },
+              ],
             },
           ],
         },
