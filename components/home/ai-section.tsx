@@ -1,6 +1,6 @@
 import Image from "next/image"
+import { Code } from "@phosphor-icons/react/dist/ssr/Code"
 import { GraduationCap } from "@phosphor-icons/react/dist/ssr/GraduationCap"
-import { Sparkle } from "@phosphor-icons/react/dist/ssr/Sparkle"
 import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
 import { home } from "@/lib/content/home"
@@ -11,7 +11,7 @@ import { CountUp } from "@/components/site/count-up"
 const metricIcons: Record<ExperienceMetric["icon"], Icon> = {
   users: Users,
   "graduation-cap": GraduationCap,
-  sparkles: Sparkle,
+  code: Code,
 }
 
 export function AiSection() {
@@ -28,20 +28,23 @@ export function AiSection() {
             ))}
           </div>
         </div>
-        <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
-          {stack.map((tool) => (
-            <li key={tool.name}>
-              <Image
-                src={tool.src}
-                alt={tool.name}
-                title={tool.name}
-                width={48}
-                height={48}
-                className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-              />
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-col gap-3">
+          <p className="text-caption text-secondary">Stack</p>
+          <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
+            {stack.map((tool) => (
+              <li key={tool.name}>
+                <Image
+                  src={tool.src}
+                  alt={tool.name}
+                  title={tool.name}
+                  width={48}
+                  height={48}
+                  className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
         <ul className="grid gap-3 md:grid-cols-3">
           {ai.metrics.map((item, index) => {
             const Icon = metricIcons[item.icon]
@@ -51,9 +54,11 @@ export function AiSection() {
                   <Icon weight="regular" className="size-4" />
                 </span>
                 <div className="flex flex-col gap-title-desc">
-                  <p className="text-heading tabular-nums">
-                    <CountUp to={item.count} suffix={item.suffix} delay={index * 350} />
-                  </p>
+                  {item.count !== undefined ? (
+                    <p className="text-heading tabular-nums">
+                      <CountUp to={item.count} suffix={item.suffix ?? ""} delay={index * 350} />
+                    </p>
+                  ) : null}
                   <h3 className="text-body text-strong text-balance">{item.title}</h3>
                   <p className="text-caption text-secondary">{item.body}</p>
                 </div>

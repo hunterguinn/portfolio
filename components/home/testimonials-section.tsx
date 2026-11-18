@@ -10,9 +10,13 @@ function TestimonialTicker() {
       <div className="ticker-track">
         {[false, true].map((duplicate) => (
           <ul key={String(duplicate)} className="flex shrink-0" aria-hidden={duplicate || undefined}>
-            {items.map((item) => (
-              <li key={item.name} className="w-[26rem] shrink-0 pr-3 md:w-[28rem]">
-                <TestimonialQuote testimonial={item} compact />
+            {items.map((item, index) => (
+              <li key={item.name} className="w-[26rem] shrink-0 pr-3 md:w-[420px]">
+                <TestimonialQuote
+                  testimonial={item}
+                  compact
+                  quoteWeight={!duplicate && index === 0 ? "light" : "normal"}
+                />
               </li>
             ))}
           </ul>

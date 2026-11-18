@@ -30,16 +30,21 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
   return (
     <article>
-      <SectionShell bordered={false} label={study.eyebrow}>
+      <SectionShell
+        bordered={false}
+        label={study.eyebrow}
+        aside={
+          <dl className="flex flex-col gap-8">
+            <MetaList title="The Team" items={study.team} />
+            <MetaList title="The Timeline" items={study.timeline} />
+          </dl>
+        }
+      >
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4 md:gap-6">
             <h1 className="text-display text-balance">{study.title}</h1>
             <p className="text-body text-secondary">{study.intro}</p>
           </div>
-          <dl className="grid grid-cols-2 gap-8">
-            <MetaList title="The Team" items={study.team} />
-            <MetaList title="The Timeline" items={study.timeline} />
-          </dl>
           <nav aria-label="Jump to section">
             <ul className="flex flex-wrap gap-3">
               {jumpLinks.map((link) => (

@@ -40,6 +40,8 @@ export type GalleryItem = {
   alt: string
   /** Expected asset label shown while the asset is missing. */
   placeholder: string
+  /** Optional location pill overlaid on the photo. */
+  caption?: string
   /** Minimum CSS aspect-ratio for the photo; the card grows to fill its column. */
   aspect: string
 }
@@ -88,9 +90,9 @@ export type Testimonial = { quote: string; name: string; role: string }
 export type StackTool = { name: string; src: string }
 
 export type ExperienceMetric = {
-  icon: "users" | "graduation-cap" | "sparkles"
-  count: number
-  suffix: string
+  icon: "users" | "graduation-cap" | "code"
+  count?: number
+  suffix?: string
   title: string
   body: string
 }
@@ -109,7 +111,12 @@ export type Block =
   | {
       type: "transfer-steps"
       figure: FigureMeta
-      steps: { step: string; title: string; requirement: "Required" | "Conditional"; items: string[] }[]
+      steps: {
+        step: string
+        title: string
+        requirement: "Required" | "Conditional"
+        items: { label: string; source: "api" | "you" | "conditional" }[]
+      }[]
     }
   | {
       type: "transfer-demo"

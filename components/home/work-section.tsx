@@ -77,7 +77,7 @@ function ProjectCard({ project }: { project: ProjectSummary }) {
           </div>
         </div>
 
-        <div className="card-surface project-preview-card flex flex-col gap-2 rounded-3xl p-3 md:p-5 lg:col-span-5">
+        <div className="card-surface project-preview-card flex flex-col gap-6 rounded-3xl p-3 md:p-5 lg:col-span-5">
           <div className="rounded-2xl bg-page px-4 py-8 md:px-5 md:py-12">
             <p className="text-body">{project.description}</p>
           </div>
