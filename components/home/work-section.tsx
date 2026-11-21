@@ -11,7 +11,7 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
     <Link
       href={project.href}
       aria-label={`View project: ${project.title}`}
-      className="group relative block overflow-hidden rounded-lg border bg-surface"
+      className="card-hover group relative block overflow-hidden rounded-lg border bg-surface"
       style={{ aspectRatio: project.cover.aspect }}
     >
       <Image
@@ -51,15 +51,17 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
       <ProjectCover project={project} />
       <div className="flex flex-col gap-3">
         <h3 id={titleId} className="text-heading">
-          <Link href={project.href} className="transition-colors hover:text-secondary">
-            {project.title}
-          </Link>
+          {project.title}
         </h3>
         <p className="text-body text-secondary">{project.description}</p>
       </div>
+      <div className="flex items-baseline justify-between gap-4 text-caption text-secondary tabular-nums">
+        <span>{category}</span>
+        <span>{year}</span>
+      </div>
       <dl className="grid gap-3 sm:grid-cols-2">
         {project.metrics.map((metric) => (
-          <div key={metric.label} className="flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
+          <div key={metric.label} className="card-hover flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
             <dt className="text-caption text-secondary">{metric.label}</dt>
             <dd>
               <MetricValue metric={metric} />
@@ -67,10 +69,6 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
           </div>
         ))}
       </dl>
-      <div className="flex items-baseline justify-between gap-4 text-caption text-secondary tabular-nums">
-        <span>{year}</span>
-        <span>{category}</span>
-      </div>
     </article>
   )
 }

@@ -19,12 +19,12 @@
   --cover-unified-b: #7a5ad6;
   --background: #0a0a0a;
   --foreground: #f0f0f0;
-  --quote: #8a8a8a;
+  --quote: #808080;
   --quote-hover: #ffffff;
-  --muted: #8a8a8a;
-  --surface: #101010;
-  --surface-strong: #202020;
-  --primary-hover: #606060;
+  --muted: #808080;
+  --surface: #121212;
+  --surface-strong: #1a1a1a;
+  --primary-hover: #808080;
   --border: #202020;
   --blue: #66b3ff;
   --red: #ff6961;
@@ -70,7 +70,7 @@
   --text-display--font-weight: var(--font-weight-medium);
   --text-display--line-height: 1.15;
   --text-display--letter-spacing: normal;
-  --text-heading: 24px;
+  --text-heading: 28px;
   --text-heading--font-weight: var(--font-weight-medium);
   --text-heading--line-height: 1.25;
   --text-heading--letter-spacing: normal;

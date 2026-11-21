@@ -56,26 +56,146 @@ function BackButton({ className = "" }: { className?: string }) {
   )
 }
 
+const LINE_BASE = 16
+const LINE_ACTIVE = 24
+const LINE_BOOST = 32
+const PROXIMITY_FALLOFF = 32
+const PROXIMITY_REACH = 120
+const WIDTH_SMOOTHING = 14
+
 function DesktopRail({ sections, active }: { sections: RailSection[]; active?: string }) {
+  const navRef = useRef<HTMLElement>(null)
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([])
+  const lineRefs = useRef<(HTMLSpanElement | null)[]>([])
+  const widths = useRef<number[]>([])
+  const centers = useRef<number[]>([])
+  const pointer = useRef({ y: 0, reach: 0 })
+  const focused = useRef(-1)
+  const wake = useRef<() => void>(() => {})
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    let frame = 0
+    let lastTime = 0
+
+    const targetWidth = (index: number) => {
+      const base = sections[index].id === active ? LINE_ACTIVE : LINE_BASE
+      let boost = 0
+      const center = centers.current[index]
+      if (pointer.current.reach > 0 && Number.isFinite(center)) {
+        const distance = pointer.current.y - center
+        boost =
+          LINE_BOOST *
+          pointer.current.reach *
+          Math.exp(-(distance * distance) / (2 * PROXIMITY_FALLOFF * PROXIMITY_FALLOFF))
+      }
+      if (focused.current === index) boost = Math.max(boost, LINE_BOOST)
+      return base + boost
+    }
+
+    const step = (time: number) => {
+      const elapsed = Math.min((time - lastTime) / 1000, 0.05)
+      lastTime = time
+      const ease = reducedMotion.matches ? 1 : 1 - Math.exp(-WIDTH_SMOOTHING * elapsed)
+      let moving = false
+      sections.forEach((_, index) => {
+        const line = lineRefs.current[index]
+        if (!line) return
+        const target = targetWidth(index)
+        const from = widths.current[index] ?? target
+        let next = from + (target - from) * ease
+        if (Math.abs(target - next) < 0.1) next = target
+        else moving = true
+        widths.current[index] = next
+        line.style.width = `${next}px`
+      })
+      frame = moving ? requestAnimationFrame(step) : 0
+    }
+
+    const start = () => {
+      if (frame) return
+      lastTime = performance.now()
+      frame = requestAnimationFrame(step)
+    }
+
+    const release = () => {
+      if (pointer.current.reach === 0) return
+      pointer.current.reach = 0
+      start()
+    }
+
+    const onPointerMove = (event: PointerEvent) => {
+      const nav = navRef.current
+      const enabled = event.pointerType === "mouse" && !reducedMotion.matches
+      const rect = nav?.getBoundingClientRect()
+      if (!enabled || !rect || rect.width === 0) {
+        release()
+        return
+      }
+      const gap = Math.max(rect.left - event.clientX, event.clientX - rect.right, 0)
+      const closeness = Math.max(0, 1 - gap / PROXIMITY_REACH)
+      centers.current = linkRefs.current.map((link) => {
+        const box = link?.getBoundingClientRect()
+        return box ? box.top + box.height / 2 : Number.NaN
+      })
+      pointer.current = { y: event.clientY, reach: closeness * closeness * (3 - 2 * closeness) }
+      start()
+    }
+
+    wake.current = start
+    window.addEventListener("pointermove", onPointerMove, { passive: true })
+    window.addEventListener("blur", release)
+    document.documentElement.addEventListener("pointerleave", release)
+    start()
+
+    return () => {
+      cancelAnimationFrame(frame)
+      frame = 0
+      window.removeEventListener("pointermove", onPointerMove)
+      window.removeEventListener("blur", release)
+      document.documentElement.removeEventListener("pointerleave", release)
+    }
+  }, [sections, active])
+
   return (
-    <nav aria-label="Sections" className="fixed left-3 top-1/2 z-30 hidden -translate-y-1/2 lg:block xl:left-5">
+    <nav
+      ref={navRef}
+      aria-label="Sections"
+      className="fixed left-3 top-1/2 z-30 hidden -translate-y-1/2 lg:block xl:left-5"
+    >
       <ul className="flex flex-col">
-        {sections.map((section) => {
+        {sections.map((section, index) => {
           const current = section.id === active
           return (
             <li key={section.id}>
               <a
+                ref={(element) => {
+                  linkRefs.current[index] = element
+                }}
                 href={`#${section.id}`}
                 aria-current={current ? "location" : undefined}
-                className="group relative flex items-center px-3 py-2 focus-visible:outline-offset-0"
+                onFocus={(event) => {
+                  if (!event.currentTarget.matches(":focus-visible")) return
+                  focused.current = index
+                  wake.current()
+                }}
+                onBlur={() => {
+                  if (focused.current !== index) return
+                  focused.current = -1
+                  wake.current()
+                }}
+                className="group relative flex w-[4.75rem] items-center px-3 py-2 focus-visible:outline-offset-0"
               >
                 <span
+                  ref={(element) => {
+                    lineRefs.current[index] = element
+                  }}
                   aria-hidden="true"
-                  className={`block w-1 rounded-full transition-[height,background-color] duration-300 ${
-                    current ? "h-6 bg-foreground" : "h-4 bg-border group-hover:bg-secondary"
+                  className={`block h-0.5 w-4 rounded-full transition-colors duration-300 ${
+                    current ? "bg-foreground" : "bg-border group-hover:bg-secondary group-focus-visible:bg-secondary"
                   }`}
                 />
-                <span className="pointer-events-none absolute left-8 whitespace-nowrap rounded-full border bg-page px-3 py-1 text-caption text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <span className="pointer-events-none absolute left-[4.75rem] whitespace-nowrap rounded-full border bg-page px-3 py-1 text-caption text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
                   {section.name}
                 </span>
               </a>

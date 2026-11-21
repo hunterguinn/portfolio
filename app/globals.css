@@ -79,18 +79,33 @@
 .card-surface {
   @apply border border-border;
   background-color: var(--surface);
-  transition: background-color 280ms ease;
+}
+/* Every card shares one hover: the border lightens and the background steps up a surface level. */
+.card-surface,
+.card-hover {
+  transition:
+    background-color 280ms ease,
+    border-color 280ms ease;
+}
+.card-surface:hover,
+.card-hover:hover {
+  border-color: color-mix(in srgb, var(--muted) 40%, transparent);
 }
 .card-surface:hover {
   background-color: var(--surface-strong);
 }
+.card-hover:hover {
+  background-color: var(--surface);
+}
 .project-preview-card:hover,
 .gallery-card:hover {
   background-color: var(--surface);
+  border-color: var(--border);
 }
 /* The password modal uses the card surface (via .card-surface) but must not react to hover. */
 .modal-card:hover {
   background-color: var(--surface);
+  border-color: var(--border);
 }
 .project-preview-overlay {
   background-color: color-mix(in srgb, var(--overlay-white) 10%, transparent);

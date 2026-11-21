@@ -15,24 +15,26 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="group flex w-full flex-col justify-between gap-6 rounded-lg border p-5 text-left transition-colors duration-300 hover:border-secondary/40 hover:bg-surface md:p-6"
+        className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-5 pt-5 text-left md:gap-6 md:pl-6 md:pt-6"
       >
-        <span className="flex flex-col gap-2">
+        <span className="flex flex-col gap-1 pr-5 md:pr-6">
           {card.count !== undefined ? (
             <span className="text-heading tabular-nums">
               <CountUp to={card.count} suffix={card.suffix ?? ""} />
             </span>
           ) : null}
           <span className="text-body text-strong">{card.topic}</span>
-          {card.body ? (
-            <span className="text-caption text-secondary">{card.body}</span>
-          ) : (
-            <span className="text-caption text-secondary italic">[Description coming soon]</span>
-          )}
         </span>
-        <span className="inline-flex items-center gap-2 self-end text-caption text-secondary transition-colors group-hover:text-primary">
-          Read more
-          <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+        <span className="flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface-strong p-5 md:p-6">
+          {card.body ? (
+            <span className="text-body text-secondary">{card.body}</span>
+          ) : (
+            <span className="text-body text-secondary italic">[Description coming soon]</span>
+          )}
+          <span className="inline-flex items-center gap-2 self-end rounded-full bg-primary/10 px-4 py-2 text-caption text-primary transition-colors duration-300 group-hover:bg-primary/15">
+            Read more
+            <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+          </span>
         </span>
       </button>
     </li>
