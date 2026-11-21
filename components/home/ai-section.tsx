@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { useState } from "react"
 import { ArrowRight } from "@phosphor-icons/react/dist/csr/ArrowRight"
 import { home } from "@/lib/content/home"
@@ -41,7 +40,7 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
 }
 
 export function AiSection() {
-  const { ai, stack } = home
+  const { ai } = home
   const [open, setOpen] = useState<{ title: string; trigger: HTMLElement } | null>(null)
 
   return (
@@ -51,20 +50,6 @@ export function AiSection() {
       <ul className="grid gap-3 sm:grid-cols-2">
         {ai.cards.map((card) => (
           <AiCardView key={card.topic} card={card} onOpen={(title, trigger) => setOpen({ title, trigger })} />
-        ))}
-      </ul>
-      <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
-        {stack.map((tool) => (
-          <li key={tool.name}>
-            <Image
-              src={tool.src}
-              alt={tool.name}
-              title={tool.name}
-              width={48}
-              height={48}
-              className="size-8 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-            />
-          </li>
         ))}
       </ul>
       {open ? <ArticleModal title={open.title} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}

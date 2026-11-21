@@ -48,10 +48,6 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
 
   return (
     <article aria-labelledby={titleId} className="flex min-w-0 flex-col gap-6">
-      <div className="flex items-baseline justify-between gap-4 text-caption text-secondary tabular-nums">
-        <span>{year}</span>
-        <span>{category}</span>
-      </div>
       <ProjectCover project={project} />
       <div className="flex flex-col gap-3">
         <h3 id={titleId} className="text-heading">
@@ -60,21 +56,21 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
           </Link>
         </h3>
         <p className="text-body text-secondary">{project.description}</p>
-        <p className="text-caption text-secondary">{project.team.join(" ")}</p>
       </div>
       <dl className="grid gap-3 sm:grid-cols-2">
         {project.metrics.map((metric) => (
           <div key={metric.label} className="flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
             <dt className="text-caption text-secondary">{metric.label}</dt>
             <dd>
-              <MetricValue metric={metric} size="md" />
+              <MetricValue metric={metric} />
             </dd>
           </div>
         ))}
       </dl>
-      <p className="text-caption text-secondary">
-        <span className="text-strong text-primary">{project.insight.title}.</span> {project.insight.body}
-      </p>
+      <div className="flex items-baseline justify-between gap-4 text-caption text-secondary tabular-nums">
+        <span>{year}</span>
+        <span>{category}</span>
+      </div>
     </article>
   )
 }

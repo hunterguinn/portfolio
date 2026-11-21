@@ -153,17 +153,16 @@ export function TestimonialQuote({
   )
 }
 
-export function MetricValue({ metric, size = "lg" }: { metric: Metric; size?: "lg" | "md" }) {
-  const sizeClass = size === "lg" ? "text-display" : "text-heading"
+export function MetricValue({ metric }: { metric: Metric }) {
   if (metric.value === null) {
     return (
-      <span className={`${sizeClass} text-secondary/50`}>
+      <span className="text-display text-secondary/50">
         <span aria-hidden="true">—</span>
         <span className="sr-only">Metric pending</span>
       </span>
     )
   }
-  return <span className={`${sizeClass} tabular-nums`}>{metric.value}</span>
+  return <span className="text-display tabular-nums">{metric.value}</span>
 }
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {

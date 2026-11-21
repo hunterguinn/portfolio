@@ -17,9 +17,9 @@ export function TestimonialsSection() {
               </blockquote>
               <figcaption className="flex items-center gap-3">
                 <Avatar name={item.name} size={36} />
-                <span className="flex flex-col gap-title-desc">
-                  <span className="text-caption text-strong">{item.name}</span>
-                  <span className="text-eyebrow text-secondary">{item.role}</span>
+                <span className="flex flex-col gap-0">
+                  <span className="text-body font-normal">{item.name}</span>
+                  <span className="text-caption font-sans font-normal normal-case text-secondary">{item.role}</span>
                 </span>
               </figcaption>
             </figure>

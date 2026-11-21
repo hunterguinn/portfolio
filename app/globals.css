@@ -38,7 +38,7 @@
 }
 
 /*
- * Page container: content is exactly 1400px wide; gutters sit outside it.
+ * Page container: content is capped at 740px wide; gutters sit outside it.
  * No margins anywhere: a .page-band parent centres the capped container.
  */
 .page-band {
@@ -51,12 +51,12 @@
 .page-container {
   width: 100%;
   padding-inline: var(--spacing-gutter);
-  max-width: calc(1400px + 2 * var(--spacing-gutter));
+  max-width: calc(740px + 2 * var(--spacing-gutter));
 }
 @media (min-width: 48rem) {
   .page-container {
     padding-inline: var(--spacing-gutter-desktop);
-    max-width: calc(1400px + 2 * var(--spacing-gutter-desktop));
+    max-width: calc(740px + 2 * var(--spacing-gutter-desktop));
   }
 }
 @media (min-width: 64rem) {
@@ -484,9 +484,9 @@
 .sheet-panel {
   --foreground: #f0f0f0;
   --muted: #8a8a8a;
-  --surface: #1a1a1a;
-  --surface-strong: #252525;
-  --border: #303030;
+  --surface: #101010;
+  --surface-strong: #202020;
+  --border: #202020;
   background-color: var(--overlay-black);
   color: var(--foreground);
   animation: sheet-rise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;

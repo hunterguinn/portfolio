@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight"
+import { CaretDown } from "@phosphor-icons/react/dist/ssr/CaretDown"
 import { home } from "@/lib/content/home"
 import { site } from "@/lib/content/site"
 import { profileImage } from "@/lib/content/avatars"
@@ -7,9 +7,9 @@ import { Avatar } from "@/components/site/avatar"
 
 export function Hero() {
   return (
-    <section id="intro" aria-labelledby="intro-title" className="page-band">
-      <div className="page-container relative flex min-h-[80svh] flex-col justify-center py-section md:py-section-lg">
-        <div className="mx-auto grid w-full max-w-3xl gap-10 md:grid-cols-[minmax(0,1fr)_14rem] md:gap-12">
+    <section id="intro" aria-labelledby="intro-title" className="page-band min-h-svh">
+      <div className="page-container flex min-h-svh flex-col justify-center py-section md:py-section-lg">
+        <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_14rem] md:gap-12">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <span className="relative inline-flex shrink-0">
@@ -20,9 +20,16 @@ export function Hero() {
               </span>
               <p className="text-body text-secondary">{home.greeting}</p>
             </div>
-            <h1 id="intro-title" className="text-display">
+            <h1 id="intro-title" className="text-display font-light">
               {home.headline}
             </h1>
+            <Link
+              href="#work"
+              aria-label="Continue to selected work"
+              className="mt-24 flex size-10 items-center justify-center rounded-full text-secondary transition-colors hover:bg-surface hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            >
+              <CaretDown weight="regular" className="size-5" aria-hidden="true" />
+            </Link>
           </div>
 
           <dl className="flex flex-col gap-8 md:pt-16">
@@ -48,13 +55,6 @@ export function Hero() {
             </div>
           </dl>
         </div>
-        <Link
-          href="#work"
-          aria-label="Continue to selected work"
-          className="absolute bottom-6 right-[var(--spacing-gutter)] flex size-10 items-center justify-center rounded-full text-secondary transition-colors hover:bg-surface hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:right-[var(--spacing-gutter-desktop)]"
-        >
-          <CaretRight weight="regular" className="size-5" aria-hidden="true" />
-        </Link>
       </div>
     </section>
   )
