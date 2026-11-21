@@ -1,72 +1,73 @@
-import Image from "next/image"
-import { Code } from "@phosphor-icons/react/dist/ssr/Code"
-import { GraduationCap } from "@phosphor-icons/react/dist/ssr/GraduationCap"
-import { Users } from "@phosphor-icons/react/dist/ssr/Users"
-import type { Icon } from "@phosphor-icons/react"
-import { home } from "@/lib/content/home"
-import type { ExperienceMetric } from "@/lib/content/types"
-import { SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { CountUp } from "@/components/site/count-up"
+"use client"
 
-const metricIcons: Record<ExperienceMetric["icon"], Icon> = {
-  users: Users,
-  "graduation-cap": GraduationCap,
-  code: Code,
+import Image from "next/image"
+import { useState } from "react"
+import { ArrowRight } from "@phosphor-icons/react/dist/csr/ArrowRight"
+import { home } from "@/lib/content/home"
+import type { AiCard } from "@/lib/content/types"
+import { SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { CountUp } from "@/components/site/count-up"
+import { ArticleModal } from "./article-modal"
+
+function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, trigger: HTMLElement) => void }) {
+  return (
+    <li className="flex">
+      <button
+        type="button"
+        onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
+        aria-haspopup="dialog"
+        className="group flex w-full flex-col justify-between gap-6 rounded-lg border p-5 text-left transition-colors duration-300 hover:border-secondary/40 hover:bg-surface md:p-6"
+      >
+        <span className="flex flex-col gap-2">
+          {card.count !== undefined ? (
+            <span className="text-heading tabular-nums">
+              <CountUp to={card.count} suffix={card.suffix ?? ""} />
+            </span>
+          ) : null}
+          <span className="text-body text-strong">{card.topic}</span>
+          {card.body ? (
+            <span className="text-caption text-secondary">{card.body}</span>
+          ) : (
+            <span className="text-caption text-secondary italic">[Description coming soon]</span>
+          )}
+        </span>
+        <span className="inline-flex items-center gap-2 self-end text-caption text-secondary transition-colors group-hover:text-primary">
+          Read more
+          <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+        </span>
+      </button>
+    </li>
+  )
 }
 
 export function AiSection() {
   const { ai, stack } = home
+  const [open, setOpen] = useState<{ title: string; trigger: HTMLElement } | null>(null)
 
   return (
-    <SectionShell id="experience" label={ai.label}>
-      <div className="flex flex-col gap-8 md:gap-10">
-        <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
-          <SectionTitle id="experience">{ai.title}</SectionTitle>
-          <div className="flex flex-col gap-4 text-body text-secondary">
-            {ai.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <p className="text-caption text-secondary">Stack</p>
-          <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
-            {stack.map((tool) => (
-              <li key={tool.name}>
-                <Image
-                  src={tool.src}
-                  alt={tool.name}
-                  title={tool.name}
-                  width={48}
-                  height={48}
-                  className="size-9 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <ul className="grid gap-3 md:grid-cols-3">
-          {ai.metrics.map((item, index) => {
-            const Icon = metricIcons[item.icon]
-            return (
-              <li key={item.title} className="card-surface project-preview-card flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7">
-                <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-surface-strong text-secondary" aria-hidden="true">
-                  <Icon weight="regular" className="size-4" />
-                </span>
-                <div className="flex flex-col gap-title-desc">
-                  {item.count !== undefined ? (
-                    <p className="text-heading tabular-nums">
-                      <CountUp to={item.count} suffix={item.suffix ?? ""} delay={index * 350} />
-                    </p>
-                  ) : null}
-                  <h3 className="text-body text-strong text-balance">{item.title}</h3>
-                  <p className="text-caption text-secondary">{item.body}</p>
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
+    <SectionShell id="ai">
+      <SectionTitle id="ai">{ai.title}</SectionTitle>
+      <SectionIntro>{ai.intro}</SectionIntro>
+      <ul className="grid gap-3 sm:grid-cols-2">
+        {ai.cards.map((card) => (
+          <AiCardView key={card.topic} card={card} onOpen={(title, trigger) => setOpen({ title, trigger })} />
+        ))}
+      </ul>
+      <ul aria-label="Tools I use" className="flex flex-wrap items-center gap-4">
+        {stack.map((tool) => (
+          <li key={tool.name}>
+            <Image
+              src={tool.src}
+              alt={tool.name}
+              title={tool.name}
+              width={48}
+              height={48}
+              className="size-8 rounded-icon opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+            />
+          </li>
+        ))}
+      </ul>
+      {open ? <ArticleModal title={open.title} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
     </SectionShell>
   )
 }

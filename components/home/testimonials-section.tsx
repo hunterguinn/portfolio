@@ -1,40 +1,33 @@
 import { home } from "@/lib/content/home"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { TestimonialQuote } from "@/components/case-study/content-primitives"
-
-function TestimonialTicker() {
-  const { items } = home.testimonials
-
-  return (
-    <div className="ticker fade-item">
-      <div className="ticker-track">
-        {[false, true].map((duplicate) => (
-          <ul key={String(duplicate)} className="flex shrink-0" aria-hidden={duplicate || undefined}>
-            {items.map((item, index) => (
-              <li key={item.name} className="w-[26rem] shrink-0 pr-3 md:w-[420px]">
-                <TestimonialQuote
-                  testimonial={item}
-                  compact
-                  quoteWeight={!duplicate && index === 0 ? "light" : "normal"}
-                />
-              </li>
-            ))}
-          </ul>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { Avatar } from "@/components/site/avatar"
 
 export function TestimonialsSection() {
   const { testimonials } = home
 
   return (
-    <SectionShell id="testimonials" label={testimonials.label}>
-      <div className="flex flex-col gap-8 md:gap-10">
-        <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
-        <TestimonialTicker />
-      </div>
+    <SectionShell id="testimonials">
+      <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
+      <ul className="grid gap-3 md:grid-cols-2">
+        {testimonials.items.map((item, index) => (
+          <li key={item.name} className={index === 0 ? "md:col-span-2" : undefined}>
+            <figure className="flex h-full flex-col justify-between gap-8 rounded-lg border p-6 transition-colors duration-300 hover:bg-surface md:p-8">
+              <blockquote>
+                <p className={`${index === 0 ? "text-heading" : "text-body"} text-pretty text-quote`}>
+                  {`“${item.quote}”`}
+                </p>
+              </blockquote>
+              <figcaption className="flex items-center gap-3">
+                <Avatar name={item.name} size={36} />
+                <span className="flex flex-col gap-title-desc">
+                  <span className="text-caption text-strong">{item.name}</span>
+                  <span className="text-eyebrow text-secondary">{item.role}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
     </SectionShell>
   )
 }

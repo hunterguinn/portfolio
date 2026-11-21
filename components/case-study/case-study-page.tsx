@@ -1,16 +1,17 @@
 import Link from "next/link"
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight"
-import type { CaseStudy } from "@/lib/content/types"
+import type { CaseStudy, Section } from "@/lib/content/types"
 import { nextProject } from "@/lib/content/site"
-import { SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { IndexedRow, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SiteChrome, type RailSection } from "@/components/site/site-chrome"
 import { Blocks } from "./block-renderer"
 
 function MetaList({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2">
       <dt className="text-eyebrow text-secondary">{title}</dt>
       <dd>
-        <ul className="text-caption flex flex-col gap-1">
+        <ul className="flex flex-col gap-1 text-caption">
           {items.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -20,71 +21,84 @@ function MetaList({ title, items }: { title: string; items: string[] }) {
   )
 }
 
+type ResolvedChapter = { id: string; name: string; sections: Section[] }
+
+function resolveChapters(study: CaseStudy): ResolvedChapter[] {
+  const byId = new Map(study.sections.map((section) => [section.id, section]))
+  const used = new Set<string>()
+  const chapters = study.chapters.map((chapter) => {
+    const sections = chapter.sections.flatMap((id) => {
+      const section = byId.get(id)
+      if (!section) return []
+      used.add(id)
+      return [section]
+    })
+    return { id: sections[0]?.id ?? chapter.name, name: chapter.name, sections }
+  })
+  for (const section of study.sections) {
+    if (!used.has(section.id)) chapters.push({ id: section.id, name: section.title, sections: [section] })
+  }
+  return chapters.filter((chapter) => chapter.sections.length > 0)
+}
+
 export function CaseStudyPage({ study }: { study: CaseStudy }) {
   const next = nextProject[study.slug]
-  const jumpLinks = study.sections.reduce<{ id: string; name: string }[]>((links, section) => {
-    const name = section.label.replace(/^\d+\s*[–-]\s*/, "")
-    if (!links.some((link) => link.name === name)) links.push({ id: section.id, name })
-    return links
-  }, [])
+  const chapters = resolveChapters(study)
+  const rail: RailSection[] = [
+    { id: "overview", name: "Overview" },
+    ...chapters.map((chapter) => ({ id: chapter.id, name: chapter.name })),
+    { id: "next-project", name: "Next project" },
+  ]
 
   return (
-    <article>
-      <SectionShell
-        bordered={false}
-        label={study.eyebrow}
-        aside={
-          <dl className="flex flex-col gap-8">
+    <>
+      <SiteChrome sections={rail} back />
+      <article>
+        <SectionShell id="overview" bordered={false} className="pt-28 md:pt-36">
+          <div className="flex flex-col gap-4 md:gap-6">
+            <p className="text-eyebrow text-secondary">{study.eyebrow}</p>
+            <h1 id="overview-title" className="text-display text-balance">
+              {study.title}
+            </h1>
+            <p className="max-w-2xl text-body text-pretty text-secondary">{study.intro}</p>
+          </div>
+          <dl className="grid gap-6 border-t pt-6 sm:grid-cols-2">
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>
-        }
-      >
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-4 md:gap-6">
-            <h1 className="text-display text-balance">{study.title}</h1>
-            <p className="text-body text-secondary">{study.intro}</p>
-          </div>
-          <nav aria-label="Jump to section">
-            <ul className="flex flex-wrap gap-3">
-              {jumpLinks.map((link) => (
-                <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
-                    className="btn-secondary inline-flex items-center rounded-full text-caption px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </SectionShell>
-
-      {study.sections.map((section) => (
-        <SectionShell key={section.id} id={section.id} label={section.label}>
-          <div className="flex flex-col gap-4 md:gap-10 lg:gap-6">
-            <SectionTitle id={section.id}>{section.title}</SectionTitle>
-            <Blocks blocks={section.blocks} />
-          </div>
         </SectionShell>
-      ))}
 
-      <SectionShell id="next-project" label="00 – Next Project">
-        <Link
-          href={next.href}
-          className="group inline-flex flex-col gap-3 focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-foreground"
-        >
-          <span id="next-project-title" className="text-heading text-balance">
-            {next.title}
-          </span>
-          <span className="inline-flex items-center gap-2 text-caption text-secondary transition-colors group-hover:text-primary">
-            View project
-            <ArrowRight weight="regular" className="size-3.5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-          </span>
-        </Link>
-      </SectionShell>
-    </article>
+        {chapters.map((chapter, chapterIndex) => (
+          <SectionShell key={chapter.id} id={chapter.id}>
+            <SectionTitle id={chapter.id}>{chapter.name}</SectionTitle>
+            <div className="flex flex-col gap-16 md:gap-20">
+              {chapter.sections.map((section, sectionIndex) => (
+                <IndexedRow key={section.id} index={`${chapterIndex + 1}.${sectionIndex}`}>
+                  {section.title !== chapter.name ? (
+                    <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading text-balance">
+                      {section.title}
+                    </h3>
+                  ) : null}
+                  <Blocks blocks={section.blocks} />
+                </IndexedRow>
+              ))}
+            </div>
+          </SectionShell>
+        ))}
+
+        <SectionShell id="next-project">
+          <p className="text-eyebrow text-secondary">Next project</p>
+          <Link href={next.href} className="group -mt-6 inline-flex flex-col gap-3 self-start">
+            <span id="next-project-title" className="text-display text-balance transition-colors group-hover:text-secondary">
+              {next.title}
+            </span>
+            <span className="inline-flex items-center gap-2 text-caption text-secondary transition-colors group-hover:text-primary">
+              View project
+              <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+            </span>
+          </Link>
+        </SectionShell>
+      </article>
+    </>
   )
 }

@@ -1,11 +1,6 @@
 export const site = {
   name: "Hunter Guinn",
   copyright: "© 2026 Hunter Guinn",
-  nav: [
-    { label: "Projects", href: "/#work" },
-    { label: "Experience", href: "/#experience" },
-    { label: "About", href: "/#about" },
-  ],
   pages: [
     { label: "Merrill Edge Asset Transfer", href: "/merrill" },
     { label: "Enterprise Point-of-Sale Software", href: "/pos" },

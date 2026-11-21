@@ -53,12 +53,6 @@ export const pos: CaseStudy = {
               tone: "problem",
               body: "The fast transition left us with very little time to define requirements, evaluate design options, and improve the existing experience.",
             },
-            {
-              title: "Sprawling Design Scope",
-              icon: "layers",
-              tone: "problem",
-              body: "Hundreds of screens made it difficult to understand which features were available and how the acquired software worked.",
-            },
           ],
         },
         {
@@ -116,12 +110,6 @@ export const pos: CaseStudy = {
         {
           type: "cards",
           cards: [
-            {
-              title: "Understand Behaviors",
-              icon: "eye",
-              tone: "approach",
-              body: "Confirm what each screen does, what action lead where, and what functionality was necessary.",
-            },
             {
               title: "Repeat Where Possible",
               icon: "repeat",
@@ -182,15 +170,8 @@ export const pos: CaseStudy = {
             },
             {
               type: "cards",
-              columns: 2,
               cards: [
-                {
-                  title: "Clearer Actions",
-                  icon: "pointer",
-                  tone: "solution",
-                  body: "Removed redundant controls and unnecessary item details, making the interface easier to scan while keeping essential functionality accessible.",
-                },
-                {
+                    {
                   title: "Less Visual Clutter",
                   icon: "minimize",
                   tone: "solution",
@@ -560,5 +541,12 @@ export const pos: CaseStudy = {
         },
       ],
     },
+  ],
+  chapters: [
+    { name: "The Problem", sections: ["the-problem"] },
+    { name: "The Challenge", sections: ["the-challenge"] },
+    { name: "Design Process", sections: ["order-redesign", "split-check"] },
+    { name: "Design System", sections: ["design-system", "the-handoff"] },
+    { name: "The Result", sections: ["the-result"] },
   ],
 }

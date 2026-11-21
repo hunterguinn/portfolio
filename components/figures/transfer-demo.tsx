@@ -1,7 +1,7 @@
 "use client"
 
 import { useId, useState } from "react"
-import type { TransferRow } from "@/lib/content/types"
+import type { TransferRow, TransferRules } from "@/lib/content/types"
 
 type RowState = { checked: boolean; amount: string }
 
@@ -20,14 +20,17 @@ export function TransferDemo({
   mode,
   rows,
   initialStatus,
+  rules = {},
 }: {
   mode: "synchronized" | "amount-only"
   rows: TransferRow[]
   initialStatus: string
+  rules?: TransferRules
 }) {
   const baseId = useId()
   const [state, setState] = useState<RowState[]>(() => initialState(rows))
   const [touched, setTouched] = useState(false)
+  const [appliedRule, setAppliedRule] = useState<string | null>(null)
   const synchronized = mode === "synchronized"
 
   const update = (index: number, next: Partial<RowState>) => {
@@ -37,12 +40,14 @@ export function TransferDemo({
 
   const onAmountChange = (index: number, raw: string) => {
     const amount = raw.replace(/[^0-9.]/g, "")
-    // Entering $0 deselects; entering more than $0 reselects.
-    update(index, { amount, checked: synchronized ? toNumber(amount) > 0 : true })
+    const positive = toNumber(amount) > 0
+    if (amount !== "" && !positive) setAppliedRule(rules.zeroDeselects ?? null)
+    else if (synchronized && positive && !state[index].checked) setAppliedRule(rules.amountReselects ?? null)
+    update(index, { amount, checked: synchronized ? positive : true })
   }
 
   const onToggle = (index: number, checked: boolean) => {
-    // Deselecting zeroes the amount; reselecting asks for a new amount.
+    setAppliedRule((checked ? rules.reselectRequiresAmount : rules.deselectZeroes) ?? null)
     update(index, { checked, amount: checked ? "" : "0" })
   }
 
@@ -61,7 +66,7 @@ export function TransferDemo({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="card-surface overflow-x-auto rounded-lg">
+      <div className="overflow-x-auto rounded-lg border">
         <table className="text-caption w-full min-w-[34rem] text-left">
           <caption className="sr-only">
             {synchronized
@@ -139,6 +144,14 @@ export function TransferDemo({
           </tbody>
         </table>
       </div>
+      <p
+        aria-live="polite"
+        className={`rounded-md border-l-2 px-3 py-2 text-caption transition-opacity duration-300 ${
+          appliedRule ? "border-foreground bg-surface text-primary opacity-100" : "border-transparent opacity-0"
+        }`}
+      >
+        {appliedRule ? <><span className="text-secondary">Rule applied: </span>{appliedRule}</> : "\u00a0"}
+      </p>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p role="status" aria-live="polite" className="text-caption text-secondary">
           {status}
@@ -148,6 +161,7 @@ export function TransferDemo({
           onClick={() => {
             setState(initialState(rows))
             setTouched(false)
+            setAppliedRule(null)
           }}
           className="btn-secondary text-caption rounded-full px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >

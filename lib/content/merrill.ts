@@ -46,12 +46,6 @@ export const merrill: CaseStudy = {
               tone: "problem",
               body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
             },
-            {
-              title: "Asset Selection",
-              icon: "list-checks",
-              tone: "problem",
-              body: "Clients needed to specify what to transfer and how much to transfer, which could vary from very small to very large transfers.",
-            },
           ],
         },
       ],
@@ -163,6 +157,7 @@ export const merrill: CaseStudy = {
           type: "p",
           text: "However, if a client's external account holds ineligible assets, such as cryptocurrency or proprietary funds, then clients with over 50 securities were forced to make a partial transfer. I created tailored experiences for both (Figure 4.0, 4.1).",
         },
+        { type: "selection-limit", figure: {}, limit: 50 },
         {
           type: "figure",
           figure: {
@@ -200,12 +195,6 @@ export const merrill: CaseStudy = {
               tone: "solution",
               body: "An asset counter made the selection limit visible, while contextual messaging explained when clients needed to change their selections and why.",
             },
-            {
-              title: "Tailored Asset Selection",
-              icon: "sliders",
-              tone: "solution",
-              body: "Choose a full transfer would take clients right to the last screen, while a partial transfer would allow clients to choose up to 50 securities.",
-            },
           ],
         },
       ],
@@ -233,6 +222,12 @@ export const merrill: CaseStudy = {
           mode: "synchronized",
           rows: securities,
           initialStatus: "4 of 4 securities have an amount entered",
+          rules: {
+            zeroDeselects: "Entering $0 deselects the asset",
+            deselectZeroes: "deselecting an asset set its amount to $0",
+            amountReselects: "entering an amount greater than $0 reselects a deselected asset",
+            reselectRequiresAmount: "reselecting an asset requires users to enter a new amount",
+          },
         },
         {
           type: "p",
@@ -244,6 +239,9 @@ export const merrill: CaseStudy = {
           mode: "amount-only",
           rows: securities,
           initialStatus: "4 of 4 securities transferred in full",
+          rules: {
+            zeroDeselects: 'Clients would enter the amount to transfer or enter "0" to exclude a security.',
+          },
         },
         {
           type: "pair",
@@ -347,5 +345,12 @@ export const merrill: CaseStudy = {
         },
       ],
     },
+  ],
+  chapters: [
+    { name: "The Problem", sections: ["the-problem", "the-requirements"] },
+    { name: "Design Exploration", sections: ["design-exploration", "the-constraint"] },
+    { name: "Usability Testing", sections: ["usability-testing"] },
+    { name: "High-Fidelity Design", sections: ["high-fidelity-design"] },
+    { name: "The Result", sections: ["the-result"] },
   ],
 }

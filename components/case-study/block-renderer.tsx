@@ -10,6 +10,7 @@ import { DeliveryTimeline } from "@/components/figures/delivery-timeline"
 import { ResearchSummary } from "@/components/figures/research-summary"
 import { CitizenshipForm } from "@/components/figures/citizenship-form"
 import { PrototypeSlots } from "@/components/figures/prototype-slots"
+import { SelectionLimit } from "@/components/figures/selection-limit"
 
 export function Blocks({ blocks }: { blocks: Block[] }) {
   return (
@@ -55,7 +56,13 @@ function BlockView({ block }: { block: Block }) {
     case "transfer-demo":
       return (
         <FigureFrame meta={block.figure}>
-          <TransferDemo mode={block.mode} rows={block.rows} initialStatus={block.initialStatus} />
+          <TransferDemo mode={block.mode} rows={block.rows} initialStatus={block.initialStatus} rules={block.rules} />
+        </FigureFrame>
+      )
+    case "selection-limit":
+      return (
+        <FigureFrame meta={block.figure}>
+          <SelectionLimit limit={block.limit} />
         </FigureFrame>
       )
     case "application-flow":

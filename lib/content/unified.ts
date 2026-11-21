@@ -35,12 +35,6 @@ export const unified: CaseStudy = {
               tone: "problem",
               body: "Each application depended on sales associate review, even when some could be approved digitally, which accounted for the most friction.",
             },
-            {
-              title: "Disconnected Journeys",
-              icon: "unlink",
-              tone: "problem",
-              body: "Each product had its own application, questions, and requirements – there was no shared process.",
-            },
           ],
         },
         {
@@ -77,12 +71,6 @@ export const unified: CaseStudy = {
               icon: "pointer",
               tone: "approach",
               body: "Allow eligible clients to complete the application independently, phile preserving a path to sales support when additional review is needed.",
-            },
-            {
-              title: "Adapt to Each Client",
-              icon: "sliders",
-              tone: "approach",
-              body: "Use product selections and business information to determine which questions and setup steps appear.",
             },
             {
               title: "Preserve Product Rules",
@@ -346,12 +334,6 @@ export const unified: CaseStudy = {
               body: "Clients could complete outstanding actions without waiting for an associate to contact them, helping eligible applications progress faster.",
             },
             {
-              title: "Status & Visibility",
-              icon: "activity",
-              tone: "solution",
-              body: "Clients could see the status of each product they applied for, making progress and outstanding requirements easier to understand.",
-            },
-            {
               title: "Support If Needed",
               icon: "life-buoy",
               tone: "solution",
@@ -455,5 +437,14 @@ export const unified: CaseStudy = {
         },
       ],
     },
+  ],
+  chapters: [
+    { name: "The Problem", sections: ["the-problem"] },
+    { name: "The Requirements", sections: ["the-requirements", "design-exploration"] },
+    { name: "The Challenge", sections: ["the-challenge"] },
+    { name: "Layout Design", sections: ["layout-design", "design-system"] },
+    { name: "Design Refinement", sections: ["design-refinement"] },
+    { name: "High-Fidelity Design", sections: ["high-fidelity-design"] },
+    { name: "The Result", sections: ["the-result"] },
   ],
 }
