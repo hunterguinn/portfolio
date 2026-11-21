@@ -47,7 +47,7 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
   const titleId = `project-${project.slug}-title`
 
   return (
-    <article aria-labelledby={titleId} className="flex min-w-0 flex-col gap-6">
+    <article aria-labelledby={titleId} className="flex min-w-0 flex-col gap-4">
       <ProjectCover project={project} />
       <div className="flex flex-col gap-3">
         <h3 id={titleId} className="text-heading">

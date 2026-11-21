@@ -23,6 +23,7 @@ import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
 import type { Card, CardIcon, CardTone, Metric, Testimonial } from "@/lib/content/types"
 import { Avatar } from "@/components/site/avatar"
+import { CountUp } from "@/components/site/count-up"
 
 const cardIcons: Record<CardIcon, Icon> = {
   "shield-check": ShieldCheck,
@@ -156,13 +157,20 @@ export function TestimonialQuote({
 export function MetricValue({ metric }: { metric: Metric }) {
   if (metric.value === null) {
     return (
-      <span className="text-heading text-secondary/50">
+      <span className="text-metric text-secondary/50">
         <span aria-hidden="true">—</span>
         <span className="sr-only">Metric pending</span>
       </span>
     )
   }
-  return <span className="text-heading tabular-nums">{metric.value}</span>
+  if (metric.counter) {
+    return (
+      <span className="text-metric tabular-nums">
+        <CountUp {...metric.counter} />
+      </span>
+    )
+  }
+  return <span className="text-metric tabular-nums">{metric.value}</span>
 }
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {

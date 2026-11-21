@@ -17,9 +17,9 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         aria-haspopup="dialog"
         className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-5 pt-5 text-left md:gap-6 md:pl-6 md:pt-6"
       >
-        <span className="flex flex-col gap-1 pr-5 md:pr-6">
+        <span className="flex flex-col gap-0 pr-5 md:pr-6">
           {card.count !== undefined ? (
-            <span className="text-heading tabular-nums">
+            <span className="text-metric tabular-nums">
               <CountUp to={card.count} suffix={card.suffix ?? ""} />
             </span>
           ) : null}

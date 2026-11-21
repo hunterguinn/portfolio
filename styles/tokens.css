@@ -78,6 +78,10 @@
   --text-heading--font-weight: var(--font-weight-normal);
   --text-heading--line-height: 1.25;
   --text-heading--letter-spacing: normal;
+  --text-metric: 32px;
+  --text-metric--font-weight: var(--font-weight-semibold);
+  --text-metric--line-height: 1.15;
+  --text-metric--letter-spacing: normal;
   --text-body: 16px;
   --text-body--font-weight: var(--font-weight-normal);
   --text-body--line-height: 1.5;
