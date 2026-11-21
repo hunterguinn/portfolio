@@ -58,7 +58,7 @@ function BackButton({ className = "" }: { className?: string }) {
 
 const LINE_BASE = 16
 const LINE_ACTIVE = 24
-const LINE_BOOST = 32
+const LINE_BOOST = 20
 const PROXIMITY_FALLOFF = 32
 const PROXIMITY_REACH = 120
 const WIDTH_SMOOTHING = 14

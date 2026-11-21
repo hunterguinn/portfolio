@@ -70,8 +70,12 @@
   --text-display--font-weight: var(--font-weight-medium);
   --text-display--line-height: 1.15;
   --text-display--letter-spacing: normal;
-  --text-heading: 28px;
-  --text-heading--font-weight: var(--font-weight-medium);
+  --text-hero: 52px;
+  --text-hero--font-weight: var(--font-weight-normal);
+  --text-hero--line-height: 1.1;
+  --text-hero--letter-spacing: -0.02em;
+  --text-heading: 24px;
+  --text-heading--font-weight: var(--font-weight-normal);
   --text-heading--line-height: 1.25;
   --text-heading--letter-spacing: normal;
   --text-body: 16px;

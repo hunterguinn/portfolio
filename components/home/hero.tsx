@@ -2,8 +2,6 @@ import Link from "next/link"
 import { CaretDown } from "@phosphor-icons/react/dist/ssr/CaretDown"
 import { home } from "@/lib/content/home"
 import { site } from "@/lib/content/site"
-import { profileImage } from "@/lib/content/avatars"
-import { Avatar } from "@/components/site/avatar"
 
 export function Hero() {
   return (
@@ -11,18 +9,12 @@ export function Hero() {
       <div className="page-container flex min-h-svh flex-col justify-center py-section md:py-section-lg">
         <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_14rem] md:gap-12">
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <span className="relative inline-flex shrink-0">
-                <Avatar name={site.name} src={profileImage} size={40} alt="Portrait of Hunter Guinn" />
-                <span className="absolute -bottom-0.5 -right-0.5 flex size-4 items-center justify-center" role="img" aria-label="Available">
-                  <span className="profile-availability-dot" />
-                </span>
-              </span>
-              <p className="text-body text-secondary">{home.greeting}</p>
+            <div className="flex flex-col gap-4">
+              <h1 id="intro-title" className="text-hero whitespace-nowrap">
+                {site.name}
+              </h1>
+              <p className="text-body text-secondary">{home.headline}</p>
             </div>
-            <h1 id="intro-title" className="text-display font-light">
-              {home.headline}
-            </h1>
             <Link
               href="#work"
               aria-label="Continue to selected work"
