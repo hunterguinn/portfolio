@@ -11,7 +11,7 @@ export function TestimonialsSection() {
       <ul className="grid gap-3 md:grid-cols-2">
         {testimonials.items.map((item, index) => (
           <li key={`${item.name}-${index}`}>
-            <figure className="flex h-full flex-col justify-between gap-8 rounded-lg border p-6 transition-colors duration-300 hover:bg-surface md:p-8">
+            <figure className="flex h-full flex-col justify-between gap-8 rounded-lg border p-6 transition-colors duration-300 hover:bg-surface lg:p-6">
               <blockquote>
                 <p className="text-body text-quote">{`“${item.quote}”`}</p>
               </blockquote>

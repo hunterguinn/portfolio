@@ -71,7 +71,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
           <li
             key={card.title}
             style={{ "--tone": tone } as React.CSSProperties}
-            className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7"
+            className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7 lg:p-6"
           >
             {Icon ? (
               <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-tone/16 text-tone">
@@ -108,7 +108,7 @@ export function TestimonialQuote({
 }) {
   if (compact) {
     return (
-      <figure className="group flex h-full w-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
+      <figure className="group flex h-full w-full flex-col justify-between gap-8 card-surface rounded-3xl p-8 lg:p-6">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
             <p
@@ -132,7 +132,7 @@ export function TestimonialQuote({
 
   return (
     <figure
-      className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8" : "rounded-lg p-8"}`}
+      className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8 lg:p-6" : "rounded-lg p-8 lg:p-6"}`}
     >
       <div className="flex flex-col gap-5">
         {compact ? <Quotes weight="regular" className="size-5 text-secondary" aria-hidden="true" /> : null}

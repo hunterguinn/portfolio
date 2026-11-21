@@ -6,7 +6,7 @@ function Chip({ children }: { children: React.ReactNode }) {
 
 function Stage({ label, title, children }: { label: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="card-surface flex flex-col gap-4 rounded-lg p-5">
+    <div className="card-surface flex flex-col gap-4 rounded-lg p-5 lg:p-6">
       <div className="flex flex-col gap-title-desc">
         <p className="text-eyebrow text-secondary">{label}</p>
         <h3 className="text-body text-strong">{title}</h3>
@@ -54,7 +54,7 @@ export function ApplicationFlow({
       <Connector />
       <div className="grid gap-4 lg:grid-cols-3">
         {paths.map((path) => (
-          <div key={path.label} className="flex flex-col gap-4 card-surface rounded-lg p-5">
+          <div key={path.label} className="flex flex-col gap-4 card-surface rounded-lg p-5 lg:p-6">
             <div className="flex flex-col gap-title-desc">
               <p className="text-eyebrow text-secondary">Product path</p>
               <h3 className="text-body text-strong">{path.label}</h3>

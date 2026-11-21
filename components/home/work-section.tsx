@@ -64,7 +64,7 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
       </div>
       <dl className="grid gap-3 sm:grid-cols-2">
         {project.metrics.map((metric) => (
-          <div key={metric.label} className="flex flex-col-reverse gap-1 rounded-md border p-4">
+          <div key={metric.label} className="flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
             <dt className="text-caption text-secondary">{metric.label}</dt>
             <dd>
               <MetricValue metric={metric} size="md" />

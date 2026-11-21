@@ -64,12 +64,7 @@
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
-  --font-weight-light: 300;
   --leading-default: 1.55;
-  --text-title: 54px;
-  --text-title--font-weight: var(--font-weight-light);
-  --text-title--line-height: 1.1;
-  --text-title--letter-spacing: -0.02em;
   --text-display: 2.25rem;
   --text-display--font-weight: var(--font-weight-medium);
   --text-display--line-height: 1.15;
@@ -86,7 +81,7 @@
   --text-caption--font-weight: var(--font-weight-normal);
   --text-caption--line-height: 1.5;
   --text-caption--letter-spacing: normal;
-  --text-eyebrow: 0.75rem;
+  --text-eyebrow: 0.875rem;
   --text-eyebrow--font-weight: var(--font-weight-medium);
   --text-eyebrow--line-height: 1.35;
   --text-eyebrow--letter-spacing: normal;

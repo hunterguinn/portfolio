@@ -79,7 +79,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
     <div
       role="img"
       aria-label={`Placeholder for ${slot.kind}: ${slot.placeholder}`}
-      className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center"
+      className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center lg:p-6"
       style={style}
     >
       <Icon weight="regular" className="size-5 text-secondary" aria-hidden="true" />

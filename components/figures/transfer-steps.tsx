@@ -108,7 +108,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
           return (
             <li
               key={step.step}
-              className={`flex flex-col gap-4 rounded-lg border p-4 transition-colors duration-300 md:p-5 ${
+              className={`flex flex-col gap-4 rounded-lg border p-4 transition-colors duration-300 md:p-5 lg:p-6 ${
                 asksForMore ? "bg-surface" : ""
               }`}
             >

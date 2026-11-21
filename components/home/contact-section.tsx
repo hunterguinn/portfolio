@@ -5,7 +5,7 @@ import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { CopyEmailButton } from "@/components/site/copy-email"
 
 const tileClass =
-  "group flex flex-col justify-between gap-6 rounded-lg border p-5 text-left transition-colors duration-300 hover:border-secondary/40 hover:bg-surface"
+  "group flex flex-col justify-between gap-6 rounded-lg border p-5 text-left lg:p-6 transition-colors duration-300 hover:border-secondary/40 hover:bg-surface"
 
 export function ContactSection() {
   return (

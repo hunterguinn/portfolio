@@ -1,20 +1,14 @@
 import Link from "next/link"
-import { CaretDown } from "@phosphor-icons/react/dist/ssr/CaretDown"
+import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight"
 import { home } from "@/lib/content/home"
 import { site } from "@/lib/content/site"
 import { profileImage } from "@/lib/content/avatars"
-import { CopyEmailButton } from "@/components/site/copy-email"
 import { Avatar } from "@/components/site/avatar"
 
-const buttonClass =
-  "inline-flex items-center gap-2 rounded-full text-caption px-4 py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-
 export function Hero() {
-  const [firstName, ...rest] = site.name.split(" ")
-
   return (
     <section id="intro" aria-labelledby="intro-title" className="page-band">
-      <div className="page-container flex min-h-[70svh] flex-col justify-center py-section md:py-section-lg lg:min-h-[80svh]">
+      <div className="page-container relative flex min-h-[80svh] flex-col justify-center py-section md:py-section-lg">
         <div className="mx-auto grid w-full max-w-3xl gap-10 md:grid-cols-[minmax(0,1fr)_14rem] md:gap-12">
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
@@ -24,36 +18,19 @@ export function Hero() {
                   <span className="profile-availability-dot" />
                 </span>
               </span>
-              <p className="text-caption text-secondary">{home.greeting}</p>
+              <p className="text-body text-secondary">{home.greeting}</p>
             </div>
-            <h1 id="intro-title" className="text-title">
-              {firstName}
-              <span className="block text-secondary">{rest.join(" ")}</span>
+            <h1 id="intro-title" className="text-display">
+              {home.headline}
             </h1>
-            <p className="text-body">{home.headline}</p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="#work" className={`${buttonClass} btn-primary group`}>
-                <span className="reel-text">
-                  <span className="reel-text-item reel-text-current">See work</span>
-                  <span className="reel-text-item reel-text-next" aria-hidden="true">
-                    See work
-                  </span>
-                </span>
-                <span className="arrow-slot" aria-hidden="true">
-                  <CaretDown weight="regular" className="arrow-slot-icon arrow-slot-icon-current size-4" />
-                  <CaretDown weight="regular" className="arrow-slot-icon arrow-slot-icon-next size-4" />
-                </span>
-              </Link>
-              <CopyEmailButton className={`${buttonClass} btn-secondary`} />
-            </div>
           </div>
 
           <dl className="flex flex-col gap-8 md:pt-16">
             <div className="flex flex-col gap-2">
               <dt className="text-eyebrow text-secondary">Currently</dt>
               <dd className="flex flex-col gap-1">
-                <span className="text-caption">{home.current.role}</span>
-                <span className="text-caption text-secondary">{home.current.company}</span>
+                <span className="text-body">{home.current.role}</span>
+                <span className="text-body text-secondary">{home.current.company}</span>
                 <span className="text-eyebrow font-sans normal-case text-secondary">{home.current.period}</span>
               </dd>
             </div>
@@ -71,6 +48,13 @@ export function Hero() {
             </div>
           </dl>
         </div>
+        <Link
+          href="#work"
+          aria-label="Continue to selected work"
+          className="absolute bottom-6 right-[var(--spacing-gutter)] flex size-10 items-center justify-center rounded-full text-secondary transition-colors hover:bg-surface hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:right-[var(--spacing-gutter-desktop)]"
+        >
+          <CaretRight weight="regular" className="size-5" aria-hidden="true" />
+        </Link>
       </div>
     </section>
   )

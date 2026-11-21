@@ -70,12 +70,12 @@ export function SelectionLimit({ limit }: { limit: number }) {
       </div>
 
       <ul className="grid gap-3 sm:grid-cols-2" aria-live="polite">
-        <li className="flex flex-col gap-1 rounded-md border p-4">
+        <li className="flex flex-col gap-1 rounded-md border p-4 lg:p-6">
           <span className="text-eyebrow text-secondary">Full transfer</span>
           <span className="text-caption text-primary">{`All ${holdings} securities`}</span>
         </li>
         <li
-          className={`flex flex-col gap-1 rounded-md border p-4 transition-colors duration-300 ${atCap ? "bg-surface" : ""}`}
+          className={`flex flex-col gap-1 rounded-md border p-4 lg:p-6 transition-colors duration-300 ${atCap ? "bg-surface" : ""}`}
         >
           <span className="text-eyebrow text-secondary">Partial transfer</span>
           <span className="text-caption text-primary">
