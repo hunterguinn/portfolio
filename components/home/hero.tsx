@@ -26,11 +26,11 @@ export function Hero() {
               </span>
               <p className="text-caption text-secondary">{home.greeting}</p>
             </div>
-            <h1 id="intro-title" className="text-display text-balance">
+            <h1 id="intro-title" className="text-title">
               {firstName}
               <span className="block text-secondary">{rest.join(" ")}</span>
             </h1>
-            <p className="max-w-md text-body text-pretty">{home.headline}</p>
+            <p className="text-body">{home.headline}</p>
             <div className="flex flex-wrap gap-3">
               <Link href="#work" className={`${buttonClass} btn-primary group`}>
                 <span className="reel-text">
@@ -51,7 +51,11 @@ export function Hero() {
           <dl className="flex flex-col gap-8 md:pt-16">
             <div className="flex flex-col gap-2">
               <dt className="text-eyebrow text-secondary">Currently</dt>
-              <dd className="text-caption">{home.currentCompany}</dd>
+              <dd className="flex flex-col gap-1">
+                <span className="text-caption">{home.current.role}</span>
+                <span className="text-caption text-secondary">{home.current.company}</span>
+                <span className="text-eyebrow font-sans normal-case text-secondary">{home.current.period}</span>
+              </dd>
             </div>
             <div className="flex flex-col gap-3">
               <dt className="text-eyebrow text-secondary">Tools</dt>

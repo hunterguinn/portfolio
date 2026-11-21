@@ -471,3 +471,72 @@
   --cover-a: var(--cover-unified-a);
   --cover-b: var(--cover-unified-b);
 }
+
+/* Article sheet: slides up from below the viewport, dims the page, and slides back down on close. */
+.sheet-backdrop {
+  background-color: color-mix(in srgb, var(--overlay-black) 55%, transparent);
+  animation: sheet-fade-in 320ms ease-out both;
+}
+.sheet-backdrop[data-state="closed"] {
+  pointer-events: none;
+  animation: sheet-fade-out 260ms ease-in both;
+}
+.sheet-panel {
+  --foreground: #f0f0f0;
+  --muted: #8a8a8a;
+  --surface: #1a1a1a;
+  --surface-strong: #252525;
+  --border: #303030;
+  background-color: var(--overlay-black);
+  color: var(--foreground);
+  animation: sheet-rise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sheet-backdrop[data-state="closed"] .sheet-panel {
+  animation: sheet-drop 280ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+@keyframes sheet-rise {
+  from {
+    transform: translateY(100svh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes sheet-drop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100svh);
+    opacity: 0;
+  }
+}
+@keyframes sheet-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sheet-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet-backdrop,
+  .sheet-panel {
+    animation: sheet-fade-in 200ms ease-out both;
+  }
+  .sheet-backdrop[data-state="closed"],
+  .sheet-backdrop[data-state="closed"] .sheet-panel {
+    animation: sheet-fade-out 200ms ease-in both;
+  }
+}

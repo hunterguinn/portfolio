@@ -3,7 +3,11 @@ import type { AiCard, ProjectSummary, StackTool, Testimonial } from "./types"
 export const home = {
   headline: "Designing financial experiences that create clarity, build trust, and scale",
   greeting: "Hey, I'm Hunter 👋",
-  currentCompany: "Bank of America",
+  current: {
+    role: "VP Product Designer",
+    company: "@ Bank of America",
+    period: "2022 - Present",
+  },
   stack: [
     { name: "Figma", src: "/images/stack/figma-replacement.png" },
     { name: "Codex", src: "/images/stack/codex.png" },
@@ -179,6 +183,12 @@ export const home = {
           "Hunter serves as a model of what a great designer on our team is able to achieve. He worked smart and efficiently to deliver months ahead of schedule.",
         name: "Nate Ernst",
         role: "Senior Design Principal, Bank of America",
+      },
+      {
+        quote:
+          "Hunter demonstrates leadership with a diverse range of stakeholders. He is the most sought-after and productive member of the team.",
+        name: "Hunter Priester",
+        role: "Design Director, Wells Fargo",
       },
     ] satisfies Testimonial[],
   },

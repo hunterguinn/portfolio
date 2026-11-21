@@ -25,21 +25,18 @@ export function SectionShell({
 
 export function SectionTitle({ id, children }: { id?: string; children: React.ReactNode }) {
   return (
-    <h2 id={id ? `${id}-title` : undefined} className="text-display text-balance">
+    <h2 id={id ? `${id}-title` : undefined} className="text-display">
       {children}
     </h2>
   )
 }
 
-/** Intro copy under a section title, aligned to the reading column. */
+/** Intro copy under a section title, filling the reading column. */
 export function SectionIntro({ children }: { children: React.ReactNode }) {
-  return <p className="-mt-4 max-w-2xl text-body text-pretty text-secondary md:-mt-6">{children}</p>
+  return <p className="-mt-4 text-body text-secondary md:-mt-6">{children}</p>
 }
 
-/**
- * Numbered row: a narrow index column (number, year, or label) beside the content.
- * Content that should span the full column (figures, cards) can opt out with `md:-ml-22`.
- */
+/** Numbered row: a narrow index column (number or label) beside content that fills the remaining column. */
 export function IndexedRow({
   index,
   children,

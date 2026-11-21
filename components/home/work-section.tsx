@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight"
 import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
-import { IndexedRow, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { MetricValue } from "@/components/case-study/content-primitives"
 
 function ProjectCover({ project }: { project: ProjectSummary }) {
@@ -47,39 +47,34 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
   const titleId = `project-${project.slug}-title`
 
   return (
-    <article aria-labelledby={titleId}>
-      <IndexedRow
-        index={
-          <span className="flex gap-2 md:flex-col md:gap-1">
-            <span>{year}</span>
-            <span>{category}</span>
-          </span>
-        }
-      >
-        <ProjectCover project={project} />
-        <div className="flex flex-col gap-3">
-          <h3 id={titleId} className="text-heading text-balance">
-            <Link href={project.href} className="transition-colors hover:text-secondary">
-              {project.title}
-            </Link>
-          </h3>
-          <p className="text-body text-pretty text-secondary">{project.description}</p>
-          <p className="text-caption text-secondary">{project.team.join(" ")}</p>
-        </div>
-        <dl className="grid gap-3 sm:grid-cols-2">
-          {project.metrics.map((metric) => (
-            <div key={metric.label} className="flex flex-col-reverse gap-1 rounded-md border p-4">
-              <dt className="text-caption text-secondary">{metric.label}</dt>
-              <dd>
-                <MetricValue metric={metric} size="md" />
-              </dd>
-            </div>
-          ))}
-        </dl>
-        <p className="text-caption text-secondary">
-          <span className="text-strong text-primary">{project.insight.title}.</span> {project.insight.body}
-        </p>
-      </IndexedRow>
+    <article aria-labelledby={titleId} className="flex min-w-0 flex-col gap-6">
+      <div className="flex items-baseline justify-between gap-4 text-caption text-secondary tabular-nums">
+        <span>{year}</span>
+        <span>{category}</span>
+      </div>
+      <ProjectCover project={project} />
+      <div className="flex flex-col gap-3">
+        <h3 id={titleId} className="text-heading">
+          <Link href={project.href} className="transition-colors hover:text-secondary">
+            {project.title}
+          </Link>
+        </h3>
+        <p className="text-body text-secondary">{project.description}</p>
+        <p className="text-caption text-secondary">{project.team.join(" ")}</p>
+      </div>
+      <dl className="grid gap-3 sm:grid-cols-2">
+        {project.metrics.map((metric) => (
+          <div key={metric.label} className="flex flex-col-reverse gap-1 rounded-md border p-4">
+            <dt className="text-caption text-secondary">{metric.label}</dt>
+            <dd>
+              <MetricValue metric={metric} size="md" />
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <p className="text-caption text-secondary">
+        <span className="text-strong text-primary">{project.insight.title}.</span> {project.insight.body}
+      </p>
     </article>
   )
 }

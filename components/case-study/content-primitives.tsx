@@ -59,9 +59,11 @@ export function Paragraph({ children }: { children: React.ReactNode }) {
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
-  const grid = columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+  const count = cards.length === 4 ? 2 : Math.min(columns, cards.length)
+  const grid = count >= 3 ? "md:grid-cols-3" : count === 2 ? "md:grid-cols-2" : ""
+  const spanOrphan = count === 2 && cards.length % 2 === 1 ? "md:last:col-span-2" : ""
   return (
-    <ul className={`grid gap-3 ${grid}`}>
+    <ul className={`grid gap-3 ${grid} ${spanOrphan}`}>
       {cards.map((card) => {
         const tone = toneColors[card.tone ?? "approach"]
         const Icon = card.icon ? cardIcons[card.icon] : null
@@ -106,7 +108,7 @@ export function TestimonialQuote({
 }) {
   if (compact) {
     return (
-      <figure className="group flex h-full w-[400px] flex-col justify-between gap-8 card-surface rounded-3xl p-8">
+      <figure className="group flex h-full w-full flex-col justify-between gap-8 card-surface rounded-3xl p-8">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
             <p

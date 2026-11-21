@@ -38,7 +38,7 @@ export function CitizenshipForm({ copy }: { copy: CitizenshipCopy }) {
           <summary className="w-fit cursor-pointer underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground">
             {copy.statusHelpLabel}
           </summary>
-          <p className="max-w-md pt-2">{copy.statusHelp}</p>
+          <p className="pt-2">{copy.statusHelp}</p>
         </details>
       </div>
 

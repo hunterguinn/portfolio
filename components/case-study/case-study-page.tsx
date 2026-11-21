@@ -57,10 +57,10 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <SectionShell id="overview" bordered={false} className="pt-28 md:pt-36">
           <div className="flex flex-col gap-4 md:gap-6">
             <p className="text-eyebrow text-secondary">{study.eyebrow}</p>
-            <h1 id="overview-title" className="text-display text-balance">
+            <h1 id="overview-title" className="text-display">
               {study.title}
             </h1>
-            <p className="max-w-2xl text-body text-pretty text-secondary">{study.intro}</p>
+            <p className="text-body text-secondary">{study.intro}</p>
           </div>
           <dl className="grid gap-6 border-t pt-6 sm:grid-cols-2">
             <MetaList title="The Team" items={study.team} />
@@ -75,7 +75,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {chapter.sections.map((section, sectionIndex) => (
                 <IndexedRow key={section.id} index={`${chapterIndex + 1}.${sectionIndex}`}>
                   {section.title !== chapter.name ? (
-                    <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading text-balance">
+                    <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
                       {section.title}
                     </h3>
                   ) : null}
@@ -88,8 +88,8 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
         <SectionShell id="next-project">
           <p className="text-eyebrow text-secondary">Next project</p>
-          <Link href={next.href} className="group -mt-6 inline-flex flex-col gap-3 self-start">
-            <span id="next-project-title" className="text-display text-balance transition-colors group-hover:text-secondary">
+          <Link href={next.href} className="group -mt-6 flex flex-col gap-3">
+            <span id="next-project-title" className="text-display transition-colors group-hover:text-secondary">
               {next.title}
             </span>
             <span className="inline-flex items-center gap-2 text-caption text-secondary transition-colors group-hover:text-primary">
