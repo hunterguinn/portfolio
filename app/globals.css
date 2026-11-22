@@ -101,6 +101,16 @@
   border-color: var(--border);
 }
 
+/* Light cards keep the same surface and border on hover. */
+.light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card),
+.light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card):hover {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+.light .ai-card-panel {
+  background-color: var(--surface);
+}
+
 /* Primary buttons change fill on hover; secondary buttons are borderless surface pills. */
 .btn-primary {
   background-color: var(--foreground);

@@ -25,7 +25,7 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
           ) : null}
           <span className="text-body">{card.topic}</span>
         </span>
-        <span className="flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface-strong p-5 md:p-6">
+        <span className="ai-card-panel flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface-strong p-5 md:p-6">
           {card.body ? (
             <span className="text-body text-muted">{card.body}</span>
           ) : (
