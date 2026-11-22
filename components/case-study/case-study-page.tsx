@@ -57,7 +57,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
       <article>
         <SectionShell id="overview" bordered={false} className="pt-28 md:pt-36">
           <div className="flex flex-col gap-4 md:gap-6">
-            <SectionEyebrow>{study.eyebrow}</SectionEyebrow>
+            <p className="text-eyebrow text-muted">{study.eyebrow}</p>
             <h1 id="overview-title" className="text-display">
               {study.title}
             </h1>
@@ -79,12 +79,9 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {chapter.sections.map((section, sectionIndex) => (
                 <div key={section.id} className="flex min-w-0 flex-col gap-6">
                   {section.title !== chapter.name ? (
-                    <div className="flex flex-col gap-4">
-                      <SectionEyebrow>{section.label}</SectionEyebrow>
-                      <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
-                        {section.title}
-                      </h3>
-                    </div>
+                    <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
+                      {section.title}
+                    </h3>
                   ) : null}
                   <Blocks blocks={section.blocks} />
                 </div>
