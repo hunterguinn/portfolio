@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight"
 import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
@@ -11,6 +10,7 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
     <Link
       href={project.href}
       aria-label={`View project: ${project.title}`}
+      data-cursor="project"
       className="card-hover group relative block overflow-hidden rounded-lg border bg-surface"
       style={{ aspectRatio: project.cover.aspect }}
     >
@@ -34,10 +34,6 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
           {project.cover.placeholder}
         </span>
       )}
-      <span className="gallery-pill absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors group-hover:text-foreground">
-        View project
-        <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
-      </span>
     </Link>
   )
 }
