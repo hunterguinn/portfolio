@@ -6,7 +6,7 @@ import { site } from "@/lib/content/site"
 export function Hero() {
   return (
     <section id="intro" aria-labelledby="intro-title" className="page-band min-h-[90svh]">
-      <div className="page-container flex min-h-[90svh] flex-col justify-center py-section md:py-section-lg">
+      <div className="page-container relative flex min-h-[90svh] flex-col justify-center py-section-xl">
         <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_150px] md:gap-20">
           <div className="flex min-w-0 flex-col gap-12">
             <div className="flex flex-col gap-4">
@@ -24,13 +24,6 @@ export function Hero() {
                 <span className="text-eyebrow font-sans normal-case text-muted">{home.current.period}</span>
               </dd>
             </dl>
-            <Link
-              href="#work"
-              aria-label="Continue to selected work"
-              className="mt-16 flex size-10 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-            >
-              <CaretDown weight="regular" className="size-5" aria-hidden="true" />
-            </Link>
           </div>
 
           <dl className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
@@ -46,6 +39,13 @@ export function Hero() {
             </dd>
           </dl>
         </div>
+        <Link
+          href="#work"
+          aria-label="Continue to selected work"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex size-10 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        >
+          <CaretDown weight="regular" className="size-5" aria-hidden="true" />
+        </Link>
       </div>
     </section>
   )
