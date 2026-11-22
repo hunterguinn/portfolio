@@ -34,18 +34,6 @@ export type FigureData = {
   reveal?: boolean
 }
 
-/** One photo in the About Me bento grid. Set `src` (under /public/images/home/about) to replace the placeholder. */
-export type GalleryItem = {
-  src?: string
-  alt: string
-  /** Expected asset label shown while the asset is missing. */
-  placeholder: string
-  /** Optional location pill overlaid on the photo. */
-  caption?: string
-  /** Minimum CSS aspect-ratio for the photo; the card grows to fill its column. */
-  aspect: string
-}
-
 export type FigureMeta = Pick<FigureData, "number" | "title" | "caption">
 
 export type CardTone = "problem" | "approach" | "solution"
@@ -89,12 +77,14 @@ export type Testimonial = { quote: string; name: string; role: string }
 
 export type StackTool = { name: string; src: string }
 
-export type ExperienceMetric = {
-  icon: "users" | "graduation-cap" | "code"
+export type AiCard = {
+  /** Verified count shown before the topic, e.g. 92 with suffix "+". */
   count?: number
   suffix?: string
-  title: string
-  body: string
+  topic: string
+  /** Null marks unfinished copy, rendered as a labelled placeholder. */
+  body: string | null
+  articleTitle: string
 }
 
 export type TransferRow = { symbol: string; name: string; shares: number; amount: number }
@@ -124,7 +114,10 @@ export type Block =
       mode: "synchronized" | "amount-only"
       rows: TransferRow[]
       initialStatus: string
+      /** Source sentences describing each interaction rule, surfaced as the rule is applied. */
+      rules: TransferRules
     }
+  | { type: "selection-limit"; figure: FigureMeta; limit: number }
   | {
       type: "application-flow"
       figure: FigureMeta
@@ -161,6 +154,13 @@ export type Block =
       status: string
     }
 
+export type TransferRules = {
+  zeroDeselects?: string
+  deselectZeroes?: string
+  amountReselects?: string
+  reselectRequiresAmount?: string
+}
+
 export type CitizenshipCopy = {
   heading: string
   required: string
@@ -183,6 +183,12 @@ export type Section = {
   blocks: Block[]
 }
 
+/** A major section on the page, grouping one or more source sections as numbered subsections. */
+export type Chapter = {
+  name: string
+  sections: string[]
+}
+
 export type CaseStudy = {
   slug: "merrill" | "unified" | "pos"
   eyebrow: string
@@ -192,6 +198,7 @@ export type CaseStudy = {
   team: string[]
   timeline: string[]
   sections: Section[]
+  chapters: Chapter[]
 }
 
 export type ProjectIcon = "landmark" | "wallet" | "credit-card" | "store" | "layers" | "briefcase" | "database" | "blocks" | "workflow"

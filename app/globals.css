@@ -38,7 +38,7 @@
 }
 
 /*
- * Page container: content is exactly 1400px wide; gutters sit outside it.
+ * Page container: content is capped at 740px wide; gutters sit outside it.
  * No margins anywhere: a .page-band parent centres the capped container.
  */
 .page-band {
@@ -51,12 +51,12 @@
 .page-container {
   width: 100%;
   padding-inline: var(--spacing-gutter);
-  max-width: calc(1400px + 2 * var(--spacing-gutter));
+  max-width: calc(740px + 2 * var(--spacing-gutter));
 }
 @media (min-width: 48rem) {
   .page-container {
     padding-inline: var(--spacing-gutter-desktop);
-    max-width: calc(1400px + 2 * var(--spacing-gutter-desktop));
+    max-width: calc(740px + 2 * var(--spacing-gutter-desktop));
   }
 }
 @media (min-width: 64rem) {
@@ -79,27 +79,36 @@
 .card-surface {
   @apply border border-border;
   background-color: var(--surface);
-  transition: background-color 280ms ease;
 }
-.card-surface:hover {
-  background-color: var(--surface-strong);
+/* Every card uses the surface color on hover, with a lighter border. */
+.card-surface,
+.card-hover {
+  transition:
+    background-color 280ms ease,
+    border-color 280ms ease;
+}
+.card-surface:hover,
+.card-hover:hover {
+  border-color: color-mix(in srgb, var(--muted) 40%, transparent);
+}
+.card-surface:hover,
+.card-hover:hover {
+  background-color: var(--surface);
 }
 .project-preview-card:hover,
 .gallery-card:hover {
   background-color: var(--surface);
+  border-color: var(--border);
 }
-/* The password modal uses the card surface (via .card-surface) but must not react to hover. */
-.modal-card:hover {
+
+/* Light cards keep the same surface and border on hover. */
+.light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card),
+.light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card):hover {
   background-color: var(--surface);
+  border-color: var(--border);
 }
-.project-preview-overlay {
-  background-color: color-mix(in srgb, var(--overlay-white) 10%, transparent);
-}
-.light .project-preview-overlay {
+.light .ai-card-panel {
   background-color: var(--background);
-}
-.dark .project-preview-gradient {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--overlay-black) 50%, transparent), transparent);
 }
 
 /* Primary buttons change fill on hover; secondary buttons are borderless surface pills. */
@@ -111,7 +120,7 @@
 .btn-primary:hover,
 .btn-primary-group:hover .btn-primary,
 .btn-primary-group:focus-visible .btn-primary {
-  background-color: var(--primary-hover);
+  background-color: var(--muted);
 }
 .btn-secondary {
   background-color: var(--surface);
@@ -120,17 +129,6 @@
 }
 .btn-secondary:hover {
   background-color: var(--surface-strong);
-}
-.gallery-pill {
-  padding-top: 3px;
-  font-size: 12px;
-  background-color: color-mix(in srgb, var(--background) 50%, transparent);
-  color: var(--foreground);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-.gallery-pill.btn-primary:hover {
-  background-color: color-mix(in srgb, var(--background) 50%, transparent);
 }
 
 /* Arrow circle: a down caret cycles like a small lottery-machine reel on hover. */
@@ -202,29 +200,21 @@
   }
 }
 
-/* Project cover gradients (per project, per theme). */
-.cover-gradient {
-  background-color: var(--cover-base);
-  background-image:
-    radial-gradient(110% 80% at 0% 55%, var(--cover-a) 0%, transparent 60%),
-    radial-gradient(80% 60% at 15% 100%, var(--cover-b) 0%, transparent 65%);
-}
-
 /*
  * Scroll fade. Titles, text blocks and cards are hidden until ScrollFade marks them with [data-in],
  * then fade in after a 0.2s delay. Keep this target list in sync with components/site/scroll-fade.tsx.
  */
-.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item) {
+.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow) {
   opacity: 0;
   transition:
     opacity 600ms ease 200ms,
     background-color 280ms ease;
 }
-.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item)[data-in] {
+.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow)[data-in] {
   opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  .js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item) {
+  .js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow) {
     opacity: 1;
     transition: none;
   }
@@ -233,12 +223,10 @@
 /* Section labels brighten after remaining in view for one second. */
 .section-eyebrow {
   color: var(--foreground);
-}
-.js main p.section-eyebrow {
   opacity: 0.4;
-  transition: opacity 300ms ease;
+  transition: opacity 500ms ease;
 }
-.js main p.section-eyebrow[data-active="true"] {
+.section-eyebrow[data-active="true"] {
   opacity: 1;
 }
 .section-eyebrow-dot,
@@ -418,12 +406,38 @@
     opacity 150ms ease,
     transform 160ms ease;
 }
+.cursor-root[data-project="true"] {
+  mix-blend-mode: normal;
+}
+.cursor-root[data-project="true"] .cursor-shape {
+  width: calc(var(--cursor-label-width) + var(--spacing) * 6);
+  height: calc(var(--cursor-label-height) + var(--spacing) * 2);
+  padding: var(--spacing) calc(var(--spacing) * 3);
+  background: var(--foreground);
+  color: var(--background);
+}
+.cursor-project-label {
+  width: max-content;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cursor-root[data-project="true"] .cursor-project-label {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 100ms;
+}
 .cursor-root[data-pressed="true"] .cursor-shape {
   transform: translate(-50%, -50%) scale(0.9);
 }
 @media (prefers-reduced-motion: reduce) {
-  .cursor-shape {
-    transition: opacity 150ms ease;
+  .cursor-shape,
+  .cursor-project-label {
+    transition: none;
   }
 }
 
@@ -454,20 +468,109 @@
   }
 }
 
-.cover-gradient[data-project="merrill"] {
-  --cover-base: var(--cover-merrill-base);
-  --cover-a: var(--cover-merrill-a);
-  --cover-b: var(--cover-merrill-b);
+/* Article sheet: slides up from below the viewport, dims the page, and slides back down on close. */
+.sheet-backdrop {
+  background-color: color-mix(in srgb, var(--overlay-black) 60%, transparent);
+  animation: sheet-fade-in 320ms ease-out both;
+}
+.sheet-backdrop[data-state="closed"] {
+  pointer-events: none;
+  animation: sheet-fade-out 260ms ease-in both;
+}
+.sheet-panel {
+  animation: sheet-rise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sheet-backdrop[data-state="closed"] .sheet-panel {
+  animation: sheet-drop 280ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+@keyframes sheet-rise {
+  from {
+    transform: translateY(100svh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes sheet-drop {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100svh);
+    opacity: 0;
+  }
+}
+@keyframes sheet-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sheet-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet-backdrop,
+  .sheet-panel {
+    animation: sheet-fade-in 200ms ease-out both;
+  }
+  .sheet-backdrop[data-state="closed"],
+  .sheet-backdrop[data-state="closed"] .sheet-panel {
+    animation: sheet-fade-out 200ms ease-in both;
+  }
 }
 
-.cover-gradient[data-project="pos"] {
-  --cover-base: var(--cover-pos-base);
-  --cover-a: var(--cover-pos-a);
-  --cover-b: var(--cover-pos-b);
+/* Shared modal appearance; the palette stays dark in either site theme. */
+.modal-panel {
+  @apply rounded-lg border p-6 text-left;
+  background-color: var(--background);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+.modal-close {
+  @apply relative -mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full text-muted transition-colors;
+}
+.modal-close::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+}
+.modal-close:hover,
+.modal-close:focus-visible {
+  background-color: var(--surface);
+  color: var(--foreground);
 }
 
-.cover-gradient[data-project="unified"] {
-  --cover-base: var(--cover-unified-base);
-  --cover-a: var(--cover-unified-a);
-  --cover-b: var(--cover-unified-b);
+/* Project card surfaces stay distinct from the page and use surface on hover. */
+.case-study {
+  --card-background: #010101;
+}
+.light .case-study {
+  --card-background: var(--surface);
+}
+.case-study :is(.card-surface, .card-hover) {
+  background-color: var(--card-background);
+}
+.case-study :is(.card-surface, .card-hover):hover {
+  background-color: var(--surface);
+}
+
+/* Reuse muted at 25% for slightly darker inactive light-mode rail lines. */
+.light a:not(:hover):not(:focus-visible) .rail-line[data-active="false"] {
+  background-color: color-mix(in srgb, var(--muted) 25%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-eyebrow {
+    transition: none;
+  }
 }

@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react"
 
-/** Counts from 0 to `to` the first time it scrolls into view, after an optional stagger delay. */
+/** Counts from 0 to `to` the first time it scrolls into view. Width is reserved for the final value. */
 export function CountUp({
   to,
   prefix = "",
   suffix = "",
   decimals = 0,
   delay = 0,
-  duration = 1600,
+  duration = 1000,
 }: {
   to: number
   prefix?: string
@@ -37,7 +37,7 @@ export function CountUp({
       const start = performance.now()
       const tick = (now: number) => {
         const progress = Math.min((now - start) / duration, 1)
-        setValue(Number((to * (1 - Math.pow(1 - progress, 3))).toFixed(decimals)))
+        setValue(to * (1 - Math.pow(1 - progress, 3)))
         if (progress < 1) frame = requestAnimationFrame(tick)
       }
       frame = requestAnimationFrame(tick)
@@ -58,20 +58,21 @@ export function CountUp({
       window.clearTimeout(timer)
       cancelAnimationFrame(frame)
     }
-  }, [to, decimals, delay, duration])
+  }, [to, delay, duration])
+
+  const finalText = `${prefix}${to.toFixed(decimals)}${suffix}`
 
   return (
-    <span ref={ref} className="tabular-nums">
-      <span aria-hidden="true">
+    <span ref={ref} className="inline-grid tabular-nums">
+      <span aria-hidden="true" className="invisible col-start-1 row-start-1">
+        {finalText}
+      </span>
+      <span aria-hidden="true" className="col-start-1 row-start-1">
         {prefix}
         {value.toFixed(decimals)}
         {suffix}
       </span>
-      <span className="sr-only">
-        {prefix}
-        {to.toFixed(decimals)}
-        {suffix}
-      </span>
+      <span className="sr-only">{finalText}</span>
     </span>
   )
 }

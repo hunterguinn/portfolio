@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { CaretRight } from "@phosphor-icons/react/dist/csr/CaretRight"
 
 const TEXT_ENTRY = 'input, textarea, select, [contenteditable="true"]'
 
@@ -22,6 +23,16 @@ export function CustomCursor() {
     const root = document.documentElement
     root.classList.add("has-custom-cursor")
 
+    const label = el.querySelector<HTMLElement>(".cursor-project-label")
+    const measure = () => {
+      if (!label) return
+      el.style.setProperty("--cursor-label-width", `${label.offsetWidth}px`)
+      el.style.setProperty("--cursor-label-height", `${label.offsetHeight}px`)
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    if (label) observer.observe(label)
+
     let x = -100
     let y = -100
     let frame = 0
@@ -29,6 +40,11 @@ export function CustomCursor() {
       el.style.transform = `translate3d(${x}px, ${y}px, 0)`
       frame = 0
     }
+    const updateTarget = (target: Element | null) => {
+      el.dataset.hidden = target?.closest(TEXT_ENTRY) ? "true" : "false"
+      el.dataset.project = target?.closest('[data-cursor="project"]') ? "true" : "false"
+    }
+    const onScroll = () => updateTarget(document.elementFromPoint(x, y))
     const onMove = (event: PointerEvent) => {
       if (event.pointerType === "touch") {
         el.dataset.hidden = "true"
@@ -37,7 +53,7 @@ export function CustomCursor() {
       x = event.clientX
       y = event.clientY
       const target = event.target instanceof Element ? event.target : null
-      el.dataset.hidden = target?.closest(TEXT_ENTRY) ? "true" : "false"
+      updateTarget(target)
       if (!frame) frame = requestAnimationFrame(render)
     }
     const onDown = () => (el.dataset.pressed = "true")
@@ -45,14 +61,17 @@ export function CustomCursor() {
     const onLeave = () => (el.dataset.hidden = "true")
 
     window.addEventListener("pointermove", onMove, { passive: true })
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true })
     window.addEventListener("pointerdown", onDown)
     window.addEventListener("pointerup", onUp)
     window.addEventListener("blur", onLeave)
     document.addEventListener("pointerleave", onLeave)
     return () => {
+      observer.disconnect()
       root.classList.remove("has-custom-cursor")
       cancelAnimationFrame(frame)
       window.removeEventListener("pointermove", onMove)
+      window.removeEventListener("scroll", onScroll, true)
       window.removeEventListener("pointerdown", onDown)
       window.removeEventListener("pointerup", onUp)
       window.removeEventListener("blur", onLeave)
@@ -63,7 +82,12 @@ export function CustomCursor() {
   if (!enabled) return null
   return (
     <div ref={ref} className="cursor-root" data-hidden="true" aria-hidden="true">
-      <span className="cursor-shape" />
+      <span className="cursor-shape">
+        <span className="cursor-project-label text-caption">
+          View project
+          <CaretRight weight="regular" className="size-4 shrink-0" aria-hidden="true" />
+        </span>
+      </span>
     </div>
   )
 }

@@ -27,6 +27,8 @@ export function useModalBehavior(dialogRef: RefObject<HTMLElement | null>, { onC
 
     const root = document.documentElement
     const previousOverflow = root.style.overflow
+    const previousGutter = root.style.scrollbarGutter
+    root.style.scrollbarGutter = "stable"
     root.style.overflow = "hidden"
 
     const madeInert: Element[] = []
@@ -35,6 +37,8 @@ export function useModalBehavior(dialogRef: RefObject<HTMLElement | null>, { onC
       element.setAttribute("inert", "")
       madeInert.push(element)
     }
+
+    if (!dialog.contains(document.activeElement)) dialog.focus({ preventScroll: true })
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -69,6 +73,7 @@ export function useModalBehavior(dialogRef: RefObject<HTMLElement | null>, { onC
     return () => {
       document.removeEventListener("keydown", onKeyDown)
       root.style.overflow = previousOverflow
+      root.style.scrollbarGutter = previousGutter
       madeInert.forEach((element) => element.removeAttribute("inert"))
       const focusIsFree = !document.activeElement || document.activeElement === document.body
       if (previousFocus?.isConnected && focusIsFree) previousFocus.focus()

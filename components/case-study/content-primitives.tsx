@@ -23,6 +23,7 @@ import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
 import type { Card, CardIcon, CardTone, Metric, Testimonial } from "@/lib/content/types"
 import { Avatar } from "@/components/site/avatar"
+import { CountUp } from "@/components/site/count-up"
 
 const cardIcons: Record<CardIcon, Icon> = {
   "shield-check": ShieldCheck,
@@ -55,21 +56,23 @@ const toneColors: Record<CardTone, string> = {
 }
 
 export function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="text-body text-secondary">{children}</p>
+  return <p className="text-body text-muted">{children}</p>
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
-  const grid = columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+  const count = Math.min(columns, cards.length)
+  const grid = count >= 3 ? "md:grid-cols-3" : count === 2 ? "md:grid-cols-2" : ""
+  const spanOrphan = count === 2 && cards.length % 2 === 1 ? "md:last:col-span-2" : ""
   return (
-    <ul className={`grid gap-3 ${grid}`}>
-      {cards.map((card) => {
+    <ul className={`grid gap-3 ${grid} ${spanOrphan}`}>
+      {cards.map((card, index) => {
         const tone = toneColors[card.tone ?? "approach"]
         const Icon = card.icon ? cardIcons[card.icon] : null
         return (
           <li
-            key={card.title}
+            key={`${card.title}-${index}`}
             style={{ "--tone": tone } as React.CSSProperties}
-            className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7"
+            className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7 lg:p-6"
           >
             {Icon ? (
               <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-tone/16 text-tone">
@@ -78,7 +81,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
             ) : null}
             <div className="flex flex-col gap-title-desc">
               <h3 className="text-body text-strong">{card.title}</h3>
-              <p className="text-caption text-secondary">{card.body}</p>
+              <p className="text-caption text-muted">{card.body}</p>
             </div>
           </li>
         )
@@ -106,11 +109,11 @@ export function TestimonialQuote({
 }) {
   if (compact) {
     return (
-      <figure className="group flex h-full w-[400px] flex-col justify-between gap-8 card-surface rounded-3xl p-8">
+      <figure className="group flex h-full w-full flex-col justify-between gap-8 card-surface rounded-3xl p-8 lg:p-6">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
             <p
-              className="text-heading text-quote transition-colors duration-300 group-hover:text-quote-hover"
+              className="text-heading text-muted transition-colors duration-300 group-hover:text-foreground"
               style={{ fontWeight: quoteWeight === "light" ? 300 : 400 }}
             >
               {testimonial.quote}
@@ -121,7 +124,7 @@ export function TestimonialQuote({
           <Avatar name={testimonial.name} size={40} />
           <span className="flex flex-col gap-title-desc">
             <span className="text-body font-normal">{testimonial.name}</span>
-            <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
+            <span className="text-eyebrow block text-muted">{testimonial.role}</span>
           </span>
         </figcaption>
       </figure>
@@ -130,12 +133,12 @@ export function TestimonialQuote({
 
   return (
     <figure
-      className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8" : "rounded-lg p-8"}`}
+      className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8 lg:p-6" : "rounded-lg p-8 lg:p-6"}`}
     >
       <div className="flex flex-col gap-5">
-        {compact ? <Quotes weight="regular" className="size-5 text-secondary" aria-hidden="true" /> : null}
+        {compact ? <Quotes weight="regular" className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="text-body text-quote transition-colors duration-300 group-hover:text-quote-hover">
+          <p className="text-body text-muted transition-colors duration-300 group-hover:text-foreground">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>
@@ -144,32 +147,38 @@ export function TestimonialQuote({
         <Avatar name={testimonial.name} size={40} />
         <span className="flex flex-col gap-title-desc">
           <span className="text-caption text-strong">{testimonial.name}</span>
-          <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
+          <span className="text-eyebrow block text-muted">{testimonial.role}</span>
         </span>
       </figcaption>
     </figure>
   )
 }
 
-export function MetricValue({ metric, size = "lg" }: { metric: Metric; size?: "lg" | "md" }) {
-  const sizeClass = size === "lg" ? "text-display" : "text-heading"
+export function MetricValue({ metric }: { metric: Metric }) {
   if (metric.value === null) {
     return (
-      <span className={`${sizeClass} text-secondary/50`}>
+        <span className="text-heading text-muted/50">
         <span aria-hidden="true">—</span>
         <span className="sr-only">Metric pending</span>
       </span>
     )
   }
-  return <span className={`${sizeClass} tabular-nums`}>{metric.value}</span>
+  if (metric.counter) {
+    return (
+      <span className="text-heading tabular-nums">
+        <CountUp {...metric.counter} />
+      </span>
+    )
+  }
+  return <span className="text-heading tabular-nums">{metric.value}</span>
 }
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {
   return (
-    <dl className="grid gap-3 sm:grid-cols-2">
-      {metrics.map((metric) => (
-        <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
-          <dt className="flex flex-wrap items-center gap-2 text-caption text-secondary">
+    <dl className="grid gap-3 md:grid-cols-3">
+      {metrics.map((metric, index) => (
+        <div key={`${metric.label}-${index}`} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
+          <dt className="flex flex-wrap items-center gap-2 text-caption text-muted">
             {metric.label}
             {metric.value === null ? (
               <span className="rounded-full border border-dashed px-2 py-1 text-eyebrow">

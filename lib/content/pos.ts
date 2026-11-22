@@ -16,7 +16,7 @@ export const orderScreen = {
 
 export const pos: CaseStudy = {
   slug: "pos",
-  eyebrow: "Case Study",
+  eyebrow: "Case Study / 2026",
   title: "Enterprise Point-of-Sale System",
   description:
     "Case study: turning an acquired point-of-sale product into a cohesive, bank-owned platform across payment devices for small business clients.",
@@ -53,11 +53,12 @@ export const pos: CaseStudy = {
               tone: "problem",
               body: "The fast transition left us with very little time to define requirements, evaluate design options, and improve the existing experience.",
             },
+            // Temporary duplicate: replace with new copy.
             {
-              title: "Sprawling Design Scope",
-              icon: "layers",
+              title: "Aggressive Timeline",
+              icon: "timer",
               tone: "problem",
-              body: "Hundreds of screens made it difficult to understand which features were available and how the acquired software worked.",
+              body: "The fast transition left us with very little time to define requirements, evaluate design options, and improve the existing experience.",
             },
           ],
         },
@@ -117,17 +118,18 @@ export const pos: CaseStudy = {
           type: "cards",
           cards: [
             {
-              title: "Understand Behaviors",
-              icon: "eye",
-              tone: "approach",
-              body: "Confirm what each screen does, what action lead where, and what functionality was necessary.",
-            },
-            {
               title: "Repeat Where Possible",
               icon: "repeat",
               tone: "approach",
               body: "Reuse page templates and design patterns so technology has less net-new development and the experience becomes predicable.",
             },
+            {
+              title: "Targeted Improvements",
+              icon: "target",
+              tone: "approach",
+              body: "Prioritize practical changes that simplify tasks, clarify actions, and improve consistency without adding complexity.",
+            },
+            // Temporary duplicate: replace with new copy.
             {
               title: "Targeted Improvements",
               icon: "target",
@@ -182,20 +184,20 @@ export const pos: CaseStudy = {
             },
             {
               type: "cards",
-              columns: 2,
               cards: [
-                {
-                  title: "Clearer Actions",
-                  icon: "pointer",
-                  tone: "solution",
-                  body: "Removed redundant controls and unnecessary item details, making the interface easier to scan while keeping essential functionality accessible.",
-                },
-                {
+                    {
                   title: "Less Visual Clutter",
                   icon: "minimize",
                   tone: "solution",
                   body: "Removed item thumbnails, since merchants rarely uploaded any, and decimal quantities, since items were always sold in whole numbers",
                 },
+                {
+                  title: "Fewer Steps",
+                  icon: "route",
+                  tone: "solution",
+                  body: "Merchants could add items and adjust quantities on the screen, eliminating unnecessary navigation and keeping key actions in reach.",
+                },
+                // Temporary duplicate: replace with new copy.
                 {
                   title: "Fewer Steps",
                   icon: "route",
@@ -556,9 +558,18 @@ export const pos: CaseStudy = {
           metrics: [
             { value: "$400 billion+", label: "Annual processing volume" },
             { value: "20,000+", label: "Merchant clients empowered" },
+            // Temporary duplicate: replace with new copy.
+            { value: "20,000+", label: "Merchant clients empowered" },
           ],
         },
       ],
     },
+  ],
+  chapters: [
+    { name: "The Problem", sections: ["the-problem"] },
+    { name: "The Challenge", sections: ["the-challenge"] },
+    { name: "Design Process", sections: ["order-redesign", "split-check"] },
+    { name: "Design System", sections: ["design-system", "the-handoff"] },
+    { name: "The Result", sections: ["the-result"] },
   ],
 }

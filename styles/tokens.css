@@ -3,29 +3,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* The article sheet stays dark in either site theme. */
 :root,
-.dark {
+.dark,
+.sheet-panel,
+.modal-panel {
   --overlay-white: #ffffff;
   --overlay-black: #000000;
   --media-canvas: #ecebe7;
-  --cover-merrill-base: #0c1511;
-  --cover-merrill-a: #2a8f62;
-  --cover-merrill-b: #c9a63c;
-  --cover-pos-base: #170e0f;
-  --cover-pos-a: #c8423f;
-  --cover-pos-b: #e08a3c;
-  --cover-unified-base: #0c1220;
-  --cover-unified-a: #3b6fd6;
-  --cover-unified-b: #7a5ad6;
   --background: #0a0a0a;
   --foreground: #f0f0f0;
-  --quote: #8a8a8a;
-  --quote-hover: #ffffff;
-  --muted: #8a8a8a;
-  --surface: #1a1a1a;
-  --surface-strong: #252525;
-  --primary-hover: var(--muted);
-  --border: #303030;
+  --muted: #808080;
+  --surface: #121212;
+  --surface-strong: #1a1a1a;
+  --border: #202020;
   --blue: #66b3ff;
   --red: #ff6961;
   --yellow: #ffd60a;
@@ -34,24 +25,12 @@
 }
 
 .light {
-  --cover-merrill-base: #e4efe9;
-  --cover-merrill-a: #8fd1b0;
-  --cover-merrill-b: #ecd98f;
-  --cover-pos-base: #f3e5e3;
-  --cover-pos-a: #f0a7a2;
-  --cover-pos-b: #f3cf9c;
-  --cover-unified-base: #e3e9f6;
-  --cover-unified-a: #9db8ef;
-  --cover-unified-b: #c5b4ef;
   --background: #f5f5f7;
   --foreground: #1d1d1f;
-  --quote: #6e6e73;
-  --quote-hover: #1d1d1f;
   --muted: #515154;
   --surface: var(--overlay-white);
   --surface-strong: #ebebef;
-  --primary-hover: #6e6e73;
-  --border: #d2d2d7;
+  --border: #e0e0e5;
   --blue: #0066cc;
   --red: #c22b32;
   --yellow: #805b00;
@@ -61,17 +40,22 @@
 
 @theme inline {
   --text-*: initial;
+  --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --leading-default: 1.55;
   --text-display: 2.25rem;
-  --text-display--font-weight: var(--font-weight-medium);
+  --text-display--font-weight: var(--font-weight-normal);
   --text-display--line-height: 1.15;
   --text-display--letter-spacing: normal;
-  --text-heading: 24px;
-  --text-heading--font-weight: var(--font-weight-medium);
-  --text-heading--line-height: 1.25;
+  --text-hero: 52px;
+  --text-hero--font-weight: var(--font-weight-light);
+  --text-hero--line-height: 1.1;
+  --text-hero--letter-spacing: -0.02em;
+  --text-heading: 28px;
+  --text-heading--font-weight: var(--font-weight-normal);
+  --text-heading--line-height: 1.2;
   --text-heading--letter-spacing: normal;
   --text-body: 16px;
   --text-body--font-weight: var(--font-weight-normal);
@@ -81,34 +65,28 @@
   --text-caption--font-weight: var(--font-weight-normal);
   --text-caption--line-height: 1.5;
   --text-caption--letter-spacing: normal;
-  --text-eyebrow: 0.75rem;
+  --text-mono: 0.75rem;
+  --text-eyebrow: var(--text-mono);
   --text-eyebrow--font-weight: var(--font-weight-medium);
   --text-eyebrow--line-height: 1.35;
   --text-eyebrow--letter-spacing: normal;
   --color-*: initial;
   --color-tone: var(--tone);
-  --color-primary: var(--foreground);
-  --color-page: var(--background);
-  --color-secondary: var(--muted);
-  --color-subtle: var(--border);
   --color-overlay-white: var(--overlay-white);
   --color-overlay-black: var(--overlay-black);
-  --color-quote: var(--quote);
-  --color-quote-hover: var(--quote-hover);
   --color-media-canvas: var(--media-canvas);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
-  --color-primary-hover: var(--primary-hover);
   --color-border: var(--border);
   --color-blue: var(--blue);
   --color-red: var(--red);
   --color-yellow: var(--yellow);
   --color-green: var(--green);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   --spacing: 0.25rem;
   --spacing-section: calc(var(--spacing) * 14);
   --spacing-section-lg: calc(var(--spacing) * 20);
@@ -121,13 +99,13 @@
   --radius-full: calc(infinity * 1px);
   --radius-icon: 8px;
   --radius-xs: 0.375rem;
-  --radius-sm: 0.625rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.75rem;
-  --radius-xl: 2.25rem;
-  --radius-2xl: 2.5rem;
-  --radius-3xl: 2.75rem;
-  --radius-4xl: 3rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.375rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2rem;
 }
 
 @utility text-strong {
@@ -140,6 +118,7 @@
     text-wrap: wrap;
   }
   .text-eyebrow {
+    font-family: var(--font-mono);
     text-transform: uppercase;
   }
 }

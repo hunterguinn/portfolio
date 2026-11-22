@@ -1,10 +1,13 @@
-import type { ExperienceMetric, GalleryItem, ProjectSummary, StackTool, Testimonial } from "./types"
+import type { AiCard, ProjectSummary, StackTool, Testimonial } from "./types"
 
 export const home = {
   headline: "Designing financial experiences that create clarity, build trust, and scale",
-  welcome: "Welcome",
   greeting: "Hey, I'm Hunter 👋",
-  currentCompany: "Bank of America",
+  current: {
+    role: "Vice President, Product Designer",
+    company: "@ Bank of America",
+    period: "2022 - Present",
+  },
   stack: [
     { name: "Figma", src: "/images/stack/figma-replacement.png" },
     { name: "Codex", src: "/images/stack/codex.png" },
@@ -129,33 +132,35 @@ export const home = {
     ] satisfies ProjectSummary[],
   },
   ai: {
-    title: "Scaling design through AI, systems, and people",
-    label: "Experience",
-    paragraphs: [
-      "At Bank of America, I'm leading our Figma AI Enablement training and mentoring other designers on best practices, tooling, and efficiencies.",
-      "I'm also using AI to build interactive prototypes, custom plugins, and workflow automations. These explorations bring complex product scenarios to life, connect design decisions to implementation, and give product, engineering, and leadership teams something tangible to evaluate.",
-    ],
-    metrics: [
+    title: "Scaling design through AI",
+    label: "AI",
+    intro:
+      "I'm currently leading Figma AI Enablement training and mentoring other designers across our design organization. Read more about the work I've been doing and how it's helping our organization.",
+    cards: [
       {
-        icon: "code",
-        title: "Concept to code",
-        body: "Building AI-assisted prototypes, custom plugins, and automations that connect design and development.",
+        count: 10,
+        topic: "Learning sessions hosted",
+        body: "Sharing design efficiencies, best practices, and workflows to support AI adoption.",
+        articleTitle: "Learning sessions hosted",
       },
       {
-        icon: "users",
         count: 92,
         suffix: "+",
-        title: "Designers supported",
+        topic: "Designers supported",
         body: "Helping designers strengthen their skills, workflow, and technique.",
+        articleTitle: "Designers supported",
       },
       {
-        icon: "graduation-cap",
-        count: 10,
-        suffix: "",
-        title: "Learning sessions",
-        body: "Sharing design efficiencies, best practices, and workflows to support AI adoption.",
+        topic: "Concept to Code",
+        body: "Building AI-assisted prototypes, custom plugins, and automations that connect design and development.",
+        articleTitle: "Concept to Code",
       },
-    ] satisfies ExperienceMetric[],
+      {
+        topic: "System to delivery",
+        body: null,
+        articleTitle: "System to delivery",
+      },
+    ] satisfies AiCard[],
   },
   testimonials: {
     label: "Testimonials",
@@ -179,30 +184,12 @@ export const home = {
         name: "Nate Ernst",
         role: "Senior Design Principal, Bank of America",
       },
+      {
+        quote:
+          "Hunter demonstrates leadership with a diverse range of stakeholders. He is the most sought-after and productive member of the team.",
+        name: "Hunter Priester",
+        role: "Design Director, Wells Fargo",
+      },
     ] satisfies Testimonial[],
-  },
-  about: {
-    title: "When I'm not at my desk",
-    label: "About",
-    body: "I play tennis, pickleball, and go out on 50 mile rides on my road bike when the weather is nice. I also love having a trip on the calendar, whether it's a weekend getaway or a longer vacation.",
-  /** Four bento columns, each stacking two photos. Add `src` to a photo to replace its placeholder. */
-  gallery: [
-    [
-      { src: "/images/home/about/img-6173.webp", alt: "Hunter standing at a railing above Lake Como", placeholder: "Lake Como", caption: "Lake Como, IT", aspect: "7 / 10" },
-      { src: "/images/home/about/img-1761.webp", alt: "Boston skyline across the harbor at sunset", placeholder: "Boston skyline", caption: "Boston, MA", aspect: "7 / 5" },
-    ],
-    [
-      { src: "/images/home/about/img-4376.webp", alt: "Hunter sitting by the Beverly Hills sign", placeholder: "Beverly Hills", caption: "Los Angeles, CA", aspect: "1 / 1" },
-      { src: "/images/home/about/img-4210.webp", alt: "Road bike handlebars on an empty country road", placeholder: "Road bike ride", caption: "Stowe, VT", aspect: "2 / 3" },
-    ],
-    [
-      { src: "/images/home/about/img-7525.webp", alt: "Hunter in front of Hogwarts castle", placeholder: "Hogwarts", caption: "Anaheim, CA", aspect: "2 / 3" },
-      { src: "/images/home/about/img-6203.webp", alt: "View over the Hudson River from a hilltop", placeholder: "Hudson River", caption: "Hudson Valley, NY", aspect: "1 / 1" },
-    ],
-    [
-      { src: "/images/home/about/img-6280.webp", alt: "The Colosseum arena in Rome", placeholder: "Colosseum", caption: "Rome, IT", aspect: "4 / 5" },
-      { src: "/images/home/about/img-4844.webp", alt: "The Trevi Fountain in Rome", placeholder: "Trevi Fountain", caption: "Rome, IT", aspect: "4 / 5" },
-    ],
-  ] as GalleryItem[][],
   },
 }

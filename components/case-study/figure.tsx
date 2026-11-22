@@ -23,9 +23,9 @@ export function FigureFrame({
       {children}
       {showCaption ? (
         <figcaption className="text-caption flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          {meta.number ? <span className="text-eyebrow text-secondary">{meta.number}</span> : null}
-          {captionText ? <span className="text-primary">{captionText}</span> : null}
-          {showPending ? <span className="text-secondary italic">Caption pending</span> : null}
+          {meta.number ? <span className="text-eyebrow text-muted">{meta.number}</span> : null}
+          {captionText ? <span className="text-foreground">{captionText}</span> : null}
+          {showPending ? <span className="text-muted italic">Caption pending</span> : null}
         </figcaption>
       ) : null}
     </figure>
@@ -79,12 +79,12 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
     <div
       role="img"
       aria-label={`Placeholder for ${slot.kind}: ${slot.placeholder}`}
-      className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center"
-      style={style}
+      className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center lg:p-6"
+      style={{ aspectRatio: "16 / 9" }}
     >
-      <Icon weight="regular" className="size-5 text-secondary" aria-hidden="true" />
-      <span className="text-caption text-secondary">{slot.placeholder}</span>
-      <span className="text-eyebrow text-secondary">
+      <Icon weight="regular" className="size-5 text-muted" aria-hidden="true" />
+      <span className="text-caption text-muted">{slot.placeholder}</span>
+      <span className="text-eyebrow text-muted">
         {slot.kind === "video" ? "Video pending" : "Asset pending"}
       </span>
     </div>
@@ -98,7 +98,7 @@ export function Figure({ figure }: { figure: FigureData }) {
       {figure.slots.map((slot) => (
         <div key={slot.placeholder} className="flex w-full flex-col gap-3">
           <MediaSlot slot={slot} />
-          {slot.label ? <p className="text-eyebrow text-secondary">{slot.label}</p> : null}
+          {slot.label ? <p className="text-eyebrow text-muted">{slot.label}</p> : null}
         </div>
       ))}
     </div>

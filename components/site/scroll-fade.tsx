@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
 /** Must match the targets listed under "Scroll fade" in globals.css. */
-const TARGETS = "main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item)"
+const TARGETS = "main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow)"
 
 /**
  * Fades every title, text block and card in as it enters the viewport. Elements are hidden by CSS from the

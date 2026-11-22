@@ -1,7 +1,7 @@
 "use client"
 
 import { useActionState, useEffect, useId, useRef } from "react"
-import { Lock } from "@phosphor-icons/react/dist/ssr/Lock"
+import { X } from "@phosphor-icons/react/dist/csr/X"
 import { Warning } from "@phosphor-icons/react/dist/ssr/Warning"
 import { unlockProjects, type UnlockState } from "@/app/actions/unlock-projects"
 import type { ProtectedProjectPath } from "@/lib/auth/protected-routes"
@@ -22,7 +22,7 @@ function errorMessage(state: UnlockState) {
 export type PasswordModalProps = {
   /** Project opened after a successful unlock. */
   next: ProtectedProjectPath
-  /** Dismisses the modal: the Back button and Escape. */
+  /** Dismisses the modal: Close, Back, and Escape. */
   onClose: () => void
   /** Element that opened the modal; focus returns to it on close. */
   returnFocusTo?: HTMLElement | null
@@ -56,15 +56,23 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="card-surface modal-card max-h-[calc(100dvh-2rem)] w-[90vw] max-w-[400px] overflow-y-auto rounded-lg p-6"
+        className="modal-panel max-h-[calc(100dvh-2rem)] w-[90vw] max-w-lg overflow-y-auto"
       >
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex flex-col items-center gap-3 text-center">
-            <Lock size={24} weight="regular" aria-hidden="true" />
-            <h2 id={titleId} className="text-display text-balance">
-              Protected Page
-            </h2>
-            <p id={descriptionId} className="text-body text-pretty text-secondary">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-start justify-between gap-4">
+              <h2 id={titleId} className="text-heading text-strong">Protected Page</h2>
+              <button
+                type="button"
+                onClick={onClose}
+                disabled={pending}
+                aria-label="Close password dialog"
+                className="modal-close disabled:opacity-60"
+              >
+                <X weight="regular" className="size-4" aria-hidden="true" />
+              </button>
+            </div>
+            <p id={descriptionId} className="text-body text-pretty text-muted">
               This project is password protected. Enter the password below or{" "}
               <a
                 href="mailto:hunterg26@icloud.com"
@@ -94,7 +102,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                 placeholder="Enter password"
                 aria-invalid={message ? true : undefined}
                 aria-describedby={message ? errorId : undefined}
-                className="text-caption w-full rounded-md border border-border bg-background px-4 py-3 text-foreground transition-colors placeholder:text-secondary focus-visible:border-foreground"
+                className="text-caption w-full rounded-md border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
               />
               <div aria-live="polite" className="min-h-6">
                 {message ? (
@@ -112,12 +120,12 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={onClose}
                 disabled={pending}
-                className="bg-background text-body min-h-11 rounded-full px-6 py-2.5 font-medium text-foreground transition-colors hover:bg-surface-strong disabled:opacity-60"
+                className="bg-surface text-body min-h-11 rounded-full px-6 py-2.5 font-medium text-foreground transition-colors hover:bg-surface-strong disabled:opacity-60"
               >
                 Back
               </button>

@@ -1,40 +1,31 @@
 import { home } from "@/lib/content/home"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { TestimonialQuote } from "@/components/case-study/content-primitives"
-
-function TestimonialTicker() {
-  const { items } = home.testimonials
-
-  return (
-    <div className="ticker fade-item">
-      <div className="ticker-track">
-        {[false, true].map((duplicate) => (
-          <ul key={String(duplicate)} className="flex shrink-0" aria-hidden={duplicate || undefined}>
-            {items.map((item, index) => (
-              <li key={item.name} className="w-[26rem] shrink-0 pr-3 md:w-[420px]">
-                <TestimonialQuote
-                  testimonial={item}
-                  compact
-                  quoteWeight={!duplicate && index === 0 ? "light" : "normal"}
-                />
-              </li>
-            ))}
-          </ul>
-        ))}
-      </div>
-    </div>
-  )
-}
+import { Avatar } from "@/components/site/avatar"
 
 export function TestimonialsSection() {
   const { testimonials } = home
 
   return (
-    <SectionShell id="testimonials" label={testimonials.label}>
-      <div className="flex flex-col gap-8 md:gap-10">
-        <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
-        <TestimonialTicker />
-      </div>
+    <SectionShell id="testimonials">
+      <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
+      <ul className="grid gap-3 md:grid-cols-2">
+        {testimonials.items.map((item, index) => (
+          <li key={`${item.name}-${index}`}>
+            <figure className="flex h-full flex-col gap-20 card-hover rounded-lg border p-6 lg:p-6">
+              <blockquote>
+                <p className="text-body text-muted">{`“${item.quote}”`}</p>
+              </blockquote>
+              <figcaption className="flex items-center gap-3">
+                <Avatar name={item.name} size={36} />
+                <span className="flex flex-col gap-0">
+                  <span className="text-body font-normal">{item.name}</span>
+                  <span className="text-caption font-sans font-normal normal-case text-muted">{item.role}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
     </SectionShell>
   )
 }

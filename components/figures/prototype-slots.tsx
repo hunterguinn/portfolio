@@ -24,7 +24,7 @@ export function PrototypeSlots({
                 aspect: slot.aspect,
               }}
             />
-            <p className="text-eyebrow text-secondary">{slot.device}</p>
+            <p className="text-eyebrow text-muted">{slot.device}</p>
           </div>
         ))}
       </div>
