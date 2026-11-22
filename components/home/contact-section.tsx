@@ -37,7 +37,7 @@ export function ContactSection() {
                 className="card-hover group flex w-full flex-col justify-between gap-6 rounded-lg border p-5 text-left"
               >
                 <span className="text-body">{link.label}</span>
-                <span className="inline-flex items-center gap-1 font-mono text-caption text-muted transition-colors group-hover:text-foreground">
+                <span className="inline-flex items-center gap-1 font-mono text-mono text-muted transition-colors group-hover:text-foreground">
                   {link.handle}
                   <ArrowUpRight weight="regular" className="size-3.5" aria-hidden="true" />
                   <span className="sr-only">(opens in a new tab)</span>
