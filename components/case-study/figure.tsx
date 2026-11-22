@@ -80,7 +80,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
       role="img"
       aria-label={`Placeholder for ${slot.kind}: ${slot.placeholder}`}
       className="card-surface flex flex-col items-center justify-center gap-3 rounded-lg p-4 text-center lg:p-6"
-      style={style}
+      style={{ aspectRatio: "16 / 9" }}
     >
       <Icon weight="regular" className="size-5 text-muted" aria-hidden="true" />
       <span className="text-caption text-muted">{slot.placeholder}</span>

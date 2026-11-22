@@ -54,8 +54,12 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
   return (
     <>
       <SiteChrome sections={rail} back />
-      <article>
-        <SectionShell id="overview" bordered={false} className="pt-28 md:pt-36">
+      <article className="case-study">
+        <SectionShell
+          id="overview"
+          bordered={false}
+          className={study.slug === "merrill" ? "flex min-h-svh flex-col justify-center" : "pt-28 md:pt-36"}
+        >
           <div className="flex flex-col gap-4 md:gap-6">
             <p className="text-eyebrow text-muted">{study.eyebrow}</p>
             <h1 id="overview-title" className="text-display">
@@ -63,7 +67,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             </h1>
             <p className="text-body text-muted">{study.intro}</p>
           </div>
-          <dl className="grid gap-6 border-t pt-6 sm:grid-cols-2">
+          <dl className={`grid gap-6 sm:grid-cols-2 ${study.slug === "merrill" ? "" : "border-t pt-6"}`}>
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>

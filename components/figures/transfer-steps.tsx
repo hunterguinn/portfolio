@@ -71,7 +71,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div role="radiogroup" aria-labelledby={`${groupId}-label`} className="flex flex-wrap gap-2">
+        <div role="radiogroup" aria-labelledby={`${groupId}-label`} className="grid w-full grid-cols-3 gap-1 rounded-full border bg-surface p-1 sm:w-auto">
           <span id={`${groupId}-label`} className="sr-only">
             API scenario
           </span>
@@ -84,7 +84,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                 role="radio"
                 aria-checked={selected}
                 onClick={() => setScenario(option.id)}
-                className={`rounded-full border px-4 py-2 text-caption transition-colors duration-300 ${
+                className={`rounded-full px-2 py-2 text-caption sm:px-4 transition-colors duration-300 ${
                   selected ? "bg-foreground text-background" : "text-muted hover:bg-surface hover:text-foreground"
                 }`}
               >
@@ -108,7 +108,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
           return (
             <li
               key={step.step}
-              className={`flex flex-col gap-4 rounded-lg border p-4 transition-colors duration-300 md:p-5 lg:p-6 ${
+              className={`card-hover flex flex-col gap-4 rounded-lg border p-4 transition-colors duration-300 md:p-5 lg:p-6 ${
                 asksForMore ? "bg-surface" : ""
               }`}
             >

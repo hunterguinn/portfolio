@@ -552,3 +552,17 @@
   background-color: var(--surface);
   color: var(--foreground);
 }
+
+/* Project card surfaces stay distinct from the page and use surface on hover. */
+.case-study {
+  --card-background: #010101;
+}
+.light .case-study {
+  --card-background: var(--surface);
+}
+.case-study :is(.card-surface, .card-hover) {
+  background-color: var(--card-background);
+}
+.case-study :is(.card-surface, .card-hover):hover {
+  background-color: var(--surface);
+}
