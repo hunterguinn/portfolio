@@ -15,9 +15,9 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-5 pt-5 text-left md:gap-6 md:pl-6 md:pt-6 lg:pl-8"
+        className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-6 pt-6 text-left md:gap-6"
       >
-        <span className="flex flex-col gap-0 pr-5 md:pr-6">
+        <span className="flex flex-col gap-0 pr-6">
           {card.count !== undefined ? (
             <span className="text-heading tabular-nums">
               <CountUp to={card.count} suffix={card.suffix ?? ""} />
@@ -25,13 +25,13 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
           ) : null}
           <span className="text-body">{card.topic}</span>
         </span>
-        <span className="ai-card-panel flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface-strong p-5 md:p-6">
+        <span className="ai-card-panel flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface-strong p-6">
           {card.body ? (
             <span className="text-body text-muted">{card.body}</span>
           ) : (
             <span className="text-body text-muted italic">[Description coming soon]</span>
           )}
-          <span className="inline-flex items-center gap-2 self-end rounded-full bg-foreground/10 px-4 py-2 text-caption text-foreground transition-colors duration-300 group-hover:bg-foreground/15">
+          <span className="inline-flex items-center gap-2 self-end text-caption text-foreground">
             Read more
             <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
           </span>

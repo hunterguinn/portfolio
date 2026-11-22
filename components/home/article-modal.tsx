@@ -50,7 +50,7 @@ export function ArticleModal({
         className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] max-w-lg flex-col gap-4 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
-          <h2 id={titleId} className="text-body text-strong">
+          <h2 id={titleId} className="text-heading text-strong">
             {title}
           </h2>
           <button
@@ -63,7 +63,7 @@ export function ArticleModal({
           </button>
         </div>
         <div className="min-h-0 overflow-y-auto overscroll-contain">
-          <p className="text-caption text-muted">[Article content coming soon]</p>
+          <p className="text-body text-muted">[Article content coming soon]</p>
         </div>
       </div>
     </div>,

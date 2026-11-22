@@ -61,7 +61,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <div className="flex items-start justify-between gap-4">
-              <h2 id={titleId} className="text-body text-strong">Protected Page</h2>
+              <h2 id={titleId} className="text-heading text-strong">Protected Page</h2>
               <button
                 type="button"
                 onClick={onClose}
@@ -72,7 +72,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                 <X weight="regular" className="size-4" aria-hidden="true" />
               </button>
             </div>
-            <p id={descriptionId} className="text-caption text-pretty text-muted">
+            <p id={descriptionId} className="text-body text-pretty text-muted">
               This project is password protected. Enter the password below or{" "}
               <a
                 href="mailto:hunterg26@icloud.com"
@@ -120,7 +120,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={onClose}
