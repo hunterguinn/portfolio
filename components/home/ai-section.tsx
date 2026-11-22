@@ -44,7 +44,7 @@ function AiCardView({ card, index, onOpen }: { card: AiCard; index: number; onOp
 
 export function AiSection() {
   const { ai } = home
-  const [open, setOpen] = useState<{ title: string; trigger: HTMLElement } | null>(null)
+  const [open, setOpen] = useState<{ card: AiCard; trigger: HTMLElement } | null>(null)
 
   return (
     <SectionShell id="ai">
@@ -52,10 +52,10 @@ export function AiSection() {
       <SectionIntro>{ai.intro}</SectionIntro>
       <ul className="grid gap-3 sm:grid-cols-2">
         {ai.cards.map((card, index) => (
-          <AiCardView key={card.topic} card={card} index={index} onOpen={(title, trigger) => setOpen({ title, trigger })} />
+          <AiCardView key={card.topic} card={card} index={index} onOpen={(_, trigger) => setOpen({ card, trigger })} />
         ))}
       </ul>
-      {open ? <ArticleModal title={open.title} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
+      {open ? <ArticleModal title={open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
     </SectionShell>
   )
 }
