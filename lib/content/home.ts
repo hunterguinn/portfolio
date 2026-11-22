@@ -29,7 +29,8 @@ export const home = {
         description:
           "I helped redesign how clients move investments into Merrill, simplifying external account connections, asset selection, and complex transfer requirements into a more manageable digital experience.",
         team: ["Product Design (Lead) • Digital Product • Investment Operations • Engineers • API Tech Team"],
-        background: "/images/home/project-bg-1.webp",
+        background: "/images/home/merrill-bg.webp",
+        mockup: { width: 1800, height: 2176, left: "27%", top: "14%", size: "46%" },
         metricIcons: ["landmark", "wallet"],
         insight: {
           icon: "database",
@@ -54,7 +55,7 @@ export const home = {
           fit: "contain",
           alt: "Three phone screens from the Merrill Edge asset transfer flow: choosing a financial institution, selecting assets, and reviewing the transfer",
           placeholder: "Merrill · Project cover",
-          aspect: "16 / 10",
+          aspect: "3 / 2",
         },
       },
       {
@@ -65,7 +66,8 @@ export const home = {
         description:
           "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing reusable design patterns across payment devices while supporting business continuity for merchants.",
         team: ["Product Design (Lead) • Merchant Services • Product Management • Engineers • Platform Architecture"],
-        background: "/images/home/project-bg-2.webp",
+        background: "/images/home/pos-bg.webp",
+        mockup: { width: 1800, height: 1049, left: "14%", top: "22%", size: "72%" },
         metricIcons: ["credit-card", "store"],
         insight: {
           icon: "blocks",
@@ -90,7 +92,7 @@ export const home = {
           fit: "contain",
           alt: "Three PAX point-of-sale terminals running the Bank of America payment software",
           placeholder: "POS · Project cover",
-          aspect: "16 / 10",
+          aspect: "3 / 2",
         },
       },
       {
@@ -101,7 +103,8 @@ export const home = {
         description:
           "I helped consolidate applications for business checking, credit cards, and payment services into a single experience, balancing simpler onboarding with complex eligibility, risk, and compliance requirements.",
         team: ["Product Design (Lead) · Product Management · Small Business CXO · Risk & KYC • Sales"],
-        background: "/images/home/project-bg-3.webp",
+        background: "/images/home/unified-bg.webp",
+        mockup: { width: 1800, height: 2760, left: "19.5%", top: "20%", size: "61%" },
         metricIcons: ["layers", "briefcase"],
         insight: {
           icon: "workflow",
@@ -126,7 +129,7 @@ export const home = {
           fit: "contain",
           alt: "Business Advantage application flow showing the select products step with credit card options",
           placeholder: "Unified · Project cover",
-          aspect: "16 / 10",
+          aspect: "3 / 2",
         },
       },
     ] satisfies ProjectSummary[],

@@ -217,4 +217,6 @@ export type ProjectSummary = {
   insight: { icon: ProjectIcon; title: string; body: string }
   cover: MediaSlot
   background: string
+  /** Device mockup size (px) and its placement inside the surface panel, as percentages of the panel. */
+  mockup: { width: number; height: number; left: string; top: string; size: string }
 }

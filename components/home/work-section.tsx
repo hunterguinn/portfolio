@@ -11,7 +11,7 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
       href={project.href}
       aria-label={`View project: ${project.title}`}
       data-cursor="project"
-      className="card-hover group relative block overflow-hidden rounded-lg border bg-surface"
+      className="card-hover group relative block overflow-hidden border"
       style={{ aspectRatio: project.cover.aspect }}
     >
       <Image
@@ -19,21 +19,29 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
         alt=""
         fill
         sizes="(min-width: 768px) 40rem, 100vw"
-        className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
+        className="object-cover"
       />
-      {project.cover.src ? (
-        <Image
-          src={project.cover.src}
-          alt={project.cover.alt}
-          fill
-          sizes="(min-width: 768px) 40rem, 100vw"
-          className="object-contain p-6 transition-transform duration-700 ease-out motion-safe:group-hover:-translate-y-1 md:p-10"
-        />
-      ) : (
-        <span className="absolute inset-0 flex items-center justify-center text-caption text-muted">
-          {project.cover.placeholder}
-        </span>
-      )}
+      <div className="project-holo absolute top-[16.6%] right-0 bottom-0 left-[11%] overflow-hidden rounded-tl-3xl bg-surface">
+        {project.cover.src ? (
+          <div
+            className="absolute"
+            style={{ left: project.mockup.left, top: project.mockup.top, width: project.mockup.size }}
+          >
+            <Image
+              src={project.cover.src}
+              alt={project.cover.alt}
+              width={project.mockup.width}
+              height={project.mockup.height}
+              sizes="(min-width: 768px) 30rem, 80vw"
+              className="h-auto w-full transform-gpu transition-transform duration-700 ease-out will-change-transform motion-safe:group-hover:scale-[1.06]"
+            />
+          </div>
+        ) : (
+          <span className="absolute inset-0 flex items-center justify-center text-caption text-muted">
+            {project.cover.placeholder}
+          </span>
+        )}
+      </div>
     </Link>
   )
 }
