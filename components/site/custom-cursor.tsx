@@ -23,6 +23,16 @@ export function CustomCursor() {
     const root = document.documentElement
     root.classList.add("has-custom-cursor")
 
+    const label = el.querySelector<HTMLElement>(".cursor-project-label")
+    const measure = () => {
+      if (!label) return
+      el.style.setProperty("--cursor-label-width", `${label.offsetWidth}px`)
+      el.style.setProperty("--cursor-label-height", `${label.offsetHeight}px`)
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    if (label) observer.observe(label)
+
     let x = -100
     let y = -100
     let frame = 0
@@ -57,6 +67,7 @@ export function CustomCursor() {
     window.addEventListener("blur", onLeave)
     document.addEventListener("pointerleave", onLeave)
     return () => {
+      observer.disconnect()
       root.classList.remove("has-custom-cursor")
       cancelAnimationFrame(frame)
       window.removeEventListener("pointermove", onMove)
