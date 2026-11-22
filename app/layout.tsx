@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next"
 import { ThemeProvider } from "next-themes"
-import { SiteFooter } from "@/components/site/site-footer"
 import { CustomCursor } from "@/components/site/custom-cursor"
 import { PageTransition } from "@/components/site/page-transition"
 import { ContextMenuGuard } from "@/components/site/context-menu-guard"
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Skip to content
           </a>
           <main id="main">{children}</main>
-          <SiteFooter />
           <ScrollFade />
           <ProjectAccessGate />
           <ToastHost />
