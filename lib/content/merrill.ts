@@ -103,17 +103,6 @@ export const merrill: CaseStudy = {
                 { label: "Joint account holders", source: "conditional" },
               ],
             },
-            {
-              step: "04",
-              title: "Review & Submit",
-              requirement: "Required",
-              items: [
-                { label: "Destination account", source: "api" },
-                { label: "Assets in transfer", source: "api" },
-                { label: "Terms and conditions", source: "you" },
-                { label: "Submit transfer", source: "you" },
-              ],
-            },
           ],
         },
       ],

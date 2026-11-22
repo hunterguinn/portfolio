@@ -20,24 +20,6 @@ const scenarios: { id: Scenario; label: string }[] = [
   { id: "failure", label: "API Failure" },
 ]
 
-const legend = [
-  {
-    title: "What Open Finance captures",
-    description: "Securely pulls account and asset details from the external firm, reducing manual entry.",
-    source: "api",
-  },
-  {
-    title: "Required from you",
-    description: "A few selections and confirmations, like your Merrill account, transfer type, and terms acceptance.",
-    source: "you",
-  },
-  {
-    title: "When we ask for more details",
-    description: "If the API cannot retrieve certain information, we’ll request it from you in context.",
-    source: "requested",
-  },
-] as const
-
 function resolve(source: Source, scenario: Scenario): Resolved {
   if (source === "you") return "you"
   if (source === "conditional") return scenario === "success" ? "skipped" : "requested"
@@ -46,7 +28,7 @@ function resolve(source: Source, scenario: Scenario): Resolved {
 
 const badge: Record<Resolved, { text: string; className: string }> = {
   api: { text: "API", className: "bg-green/10 text-green" },
-  you: { text: "Required", className: "bg-yellow/10 text-yellow" },
+  you: { text: "Required", className: "bg-red/10 text-red" },
   requested: { text: "Requested", className: "bg-yellow/10 text-yellow" },
   skipped: { text: "Not needed", className: "bg-muted/10 text-muted" },
 }
@@ -102,7 +84,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
         })}
       </div>
 
-      <ol className="grid gap-3 lg:grid-cols-4">
+      <ol className="grid gap-3 lg:grid-cols-3">
         {availableSteps.map((step) => {
           const resolved = step.items.map((item) => resolve(item.source, scenario))
           const inactive = scenario === "success" && step.requirement === "Conditional"
@@ -111,7 +93,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
             <li
               key={step.step}
               className={`card-hover min-w-0 flex flex-col gap-4 rounded-lg border p-4 transition-[opacity,background-color,border-color] duration-300 motion-reduce:transition-none ${
-                inactive ? "opacity-40" : "opacity-100"
+                inactive ? "opacity-60" : "opacity-100"
               }`}
             >
               <span className="text-caption text-muted tabular-nums">{step.step}</span>
@@ -121,7 +103,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                   const state = badge[resolved[index]]
                   return (
                     <li key={item.label} className="flex min-w-0 items-start gap-2 py-3 text-caption text-muted lg:flex-col">
-                      <span className={`min-w-0 flex-1 lg:flex-none ${resolved[index] === "skipped" ? "line-through" : ""}`}>
+                      <span className={`min-w-0 flex-1 lg:flex-none ${resolved[index] === "api" ? "line-through opacity-60" : resolved[index] === "skipped" ? "line-through" : ""}`}>
                         {item.label}
                       </span>
                       <span
@@ -138,18 +120,6 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
         })}
       </ol>
 
-      <ul aria-label="Transfer step legend" className="grid gap-x-6 gap-y-4 sm:grid-cols-3">
-        {legend.map((item) => {
-          return (
-            <li key={item.title} className="flex items-start gap-3">
-              <div className="flex min-w-0 flex-col gap-1">
-                <h4 className="text-caption text-strong">{item.title}</h4>
-                <p className="text-caption text-muted">{item.description}</p>
-              </div>
-            </li>
-          )
-        })}
-      </ul>
       <p className="text-eyebrow text-muted">Illustrative scenarios · no live API connection</p>
     </div>
   )
