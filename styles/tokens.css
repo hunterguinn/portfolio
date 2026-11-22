@@ -6,7 +6,8 @@
 /* The article sheet stays dark in either site theme. */
 :root,
 .dark,
-.sheet-panel {
+.sheet-panel,
+.modal-panel {
   --overlay-white: #ffffff;
   --overlay-black: #000000;
   --media-canvas: #ecebe7;

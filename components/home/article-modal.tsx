@@ -37,7 +37,7 @@ export function ArticleModal({
   return createPortal(
     <div
       data-state={closing ? "closed" : "open"}
-      className="sheet-backdrop fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6"
+      className="sheet-backdrop fixed inset-0 z-50 flex items-center justify-center"
       onClick={requestClose}
     >
       <div
@@ -47,7 +47,7 @@ export function ArticleModal({
         aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
-        className="sheet-panel flex max-h-[calc(100svh-2rem)] w-full max-w-lg flex-col gap-4 rounded-t-md border border-b-0 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] outline-none sm:max-h-[calc(100svh-3rem)] sm:rounded-md sm:border-b sm:p-6"
+        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] max-w-lg flex-col gap-4 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
           <h2 id={titleId} className="text-body text-strong">
@@ -57,13 +57,13 @@ export function ArticleModal({
             type="button"
             onClick={requestClose}
             aria-label="Close article"
-            className="relative -mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full text-muted transition-colors after:absolute after:-inset-2 after:content-[''] hover:bg-surface hover:text-foreground focus-visible:bg-surface focus-visible:text-foreground"
+            className="modal-close"
           >
             <X weight="regular" className="size-4" aria-hidden="true" />
           </button>
         </div>
         <div className="min-h-0 overflow-y-auto overscroll-contain">
-          <p className="text-body text-muted">[Article content coming soon]</p>
+          <p className="text-caption text-muted">[Article content coming soon]</p>
         </div>
       </div>
     </div>,
