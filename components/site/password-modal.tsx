@@ -64,7 +64,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             <h2 id={titleId} className="text-display text-balance">
               Protected Page
             </h2>
-            <p id={descriptionId} className="text-body text-pretty text-secondary">
+            <p id={descriptionId} className="text-body text-pretty text-muted">
               This project is password protected. Enter the password below or{" "}
               <a
                 href="mailto:hunterg26@icloud.com"
@@ -94,7 +94,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                 placeholder="Enter password"
                 aria-invalid={message ? true : undefined}
                 aria-describedby={message ? errorId : undefined}
-                className="text-caption w-full rounded-md border border-border bg-background px-4 py-3 text-foreground transition-colors placeholder:text-secondary focus-visible:border-foreground"
+                className="text-caption w-full rounded-md border border-border bg-background px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
               />
               <div aria-live="polite" className="min-h-6">
                 {message ? (

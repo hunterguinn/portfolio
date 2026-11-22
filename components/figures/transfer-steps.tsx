@@ -50,9 +50,9 @@ function resolve(source: Source, scenario: Scenario): Resolved {
 
 const badge: Record<Resolved, { text: string; className: string; Icon: typeof Lightning }> = {
   api: { text: "API", className: "text-green", Icon: Lightning },
-  you: { text: "You", className: "text-primary", Icon: User },
-  requested: { text: "Requested", className: "border-dashed text-primary", Icon: CircleDashed },
-  skipped: { text: "Not needed", className: "border-dashed text-secondary", Icon: MinusCircle },
+  you: { text: "You", className: "text-foreground", Icon: User },
+  requested: { text: "Requested", className: "border-dashed text-foreground", Icon: CircleDashed },
+  skipped: { text: "Not needed", className: "border-dashed text-muted", Icon: MinusCircle },
 }
 
 export function TransferSteps({ steps }: { steps: Step[] }) {
@@ -85,7 +85,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                 aria-checked={selected}
                 onClick={() => setScenario(option.id)}
                 className={`rounded-full border px-4 py-2 text-caption transition-colors duration-300 ${
-                  selected ? "bg-foreground text-background" : "text-secondary hover:bg-surface hover:text-primary"
+                  selected ? "bg-foreground text-background" : "text-muted hover:bg-surface hover:text-foreground"
                 }`}
               >
                 {option.label}
@@ -93,7 +93,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
             )
           })}
         </div>
-        <p role="status" aria-live="polite" className="text-caption text-secondary tabular-nums">
+        <p role="status" aria-live="polite" className="text-caption text-muted tabular-nums">
           {`API ${counts.api} · You ${counts.you} · Requested ${counts.requested}`}
         </p>
       </div>
@@ -113,10 +113,10 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
               }`}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="text-caption text-secondary tabular-nums">{step.step}</span>
+                <span className="text-caption text-muted tabular-nums">{step.step}</span>
                 <span
                   className={`rounded-full border px-2 py-1 text-eyebrow transition-colors duration-300 ${
-                    stepState === "Required" ? "text-primary" : "border-dashed text-secondary"
+                    stepState === "Required" ? "text-foreground" : "border-dashed text-muted"
                   }`}
                 >
                   {stepState}
@@ -127,7 +127,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                 {step.items.map((item, index) => {
                   const state = badge[resolved[index]]
                   return (
-                    <li key={item.label} className="flex min-w-0 items-center gap-3 py-2.5 text-caption text-secondary">
+                    <li key={item.label} className="flex min-w-0 items-center gap-3 py-2.5 text-caption text-muted">
                       <state.Icon
                         weight="regular"
                         className={`size-4 shrink-0 transition-colors duration-300 ${state.className}`}
@@ -158,13 +158,13 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
               <state.Icon weight="regular" className={`mt-0.5 size-4 shrink-0 ${state.className}`} aria-hidden="true" />
               <div className="flex min-w-0 flex-col gap-1">
                 <h4 className="text-caption text-strong">{item.title}</h4>
-                <p className="text-caption text-secondary">{item.description}</p>
+                <p className="text-caption text-muted">{item.description}</p>
               </div>
             </li>
           )
         })}
       </ul>
-      <p className="text-eyebrow text-secondary">Illustrative scenarios · no live API connection</p>
+      <p className="text-eyebrow text-muted">Illustrative scenarios · no live API connection</p>
     </div>
   )
 }

@@ -24,9 +24,9 @@ export function SelectionLimit({ limit }: { limit: number }) {
     <div className="flex flex-col gap-6 rounded-lg border p-4 md:p-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor={`${baseId}-holdings`} className="flex items-baseline justify-between text-caption text-secondary">
+          <label htmlFor={`${baseId}-holdings`} className="flex items-baseline justify-between text-caption text-muted">
             Securities in external account
-            <span className="text-body text-primary tabular-nums">{holdings}</span>
+            <span className="text-body text-foreground tabular-nums">{holdings}</span>
           </label>
           <input
             id={`${baseId}-holdings`}
@@ -39,11 +39,11 @@ export function SelectionLimit({ limit }: { limit: number }) {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor={`${baseId}-selected`} className="flex items-baseline justify-between text-caption text-secondary">
+          <label htmlFor={`${baseId}-selected`} className="flex items-baseline justify-between text-caption text-muted">
             Selected individually
-            <span className="text-body text-primary tabular-nums">
+            <span className="text-body text-foreground tabular-nums">
               {clampedSelected}
-              <span className="text-caption text-secondary">{` / ${selectable}`}</span>
+              <span className="text-caption text-muted">{` / ${selectable}`}</span>
             </span>
           </label>
           <input
@@ -71,20 +71,20 @@ export function SelectionLimit({ limit }: { limit: number }) {
 
       <ul className="grid gap-3 sm:grid-cols-2" aria-live="polite">
         <li className="flex flex-col gap-1 rounded-md border p-4 lg:p-6">
-          <span className="text-eyebrow text-secondary">Full transfer</span>
-          <span className="text-caption text-primary">{`All ${holdings} securities`}</span>
+          <span className="text-eyebrow text-muted">Full transfer</span>
+          <span className="text-caption text-foreground">{`All ${holdings} securities`}</span>
         </li>
         <li
           className={`flex flex-col gap-1 rounded-md border p-4 lg:p-6 transition-colors duration-300 ${atCap ? "bg-surface" : ""}`}
         >
-          <span className="text-eyebrow text-secondary">Partial transfer</span>
-          <span className="text-caption text-primary">
+          <span className="text-eyebrow text-muted">Partial transfer</span>
+          <span className="text-caption text-foreground">
             {overLimit ? `Up to ${limit} of ${holdings} securities` : `Any of ${holdings} securities`}
           </span>
-          {atCap ? <span className="text-caption text-secondary">{`Limit of ${limit} reached`}</span> : null}
+          {atCap ? <span className="text-caption text-muted">{`Limit of ${limit} reached`}</span> : null}
         </li>
       </ul>
-      <p className="text-eyebrow text-secondary">{`Illustrative state · ${limit}-security limit`}</p>
+      <p className="text-eyebrow text-muted">{`Illustrative state · ${limit}-security limit`}</p>
     </div>
   )
 }

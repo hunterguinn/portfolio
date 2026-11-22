@@ -4,7 +4,7 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 
 ## Design system
 
-[`styles/tokens.css`](styles/tokens.css) is the shared source for exactly four token categories: typography, colors, spacing, and border radius. [`app/globals.css`](app/globals.css) imports it and retains the site's layout, interactions, and animation rules. Existing theme variables and Tailwind color aliases remain available for compatibility.
+[`styles/tokens.css`](styles/tokens.css) is the shared source for exactly four token categories: typography, colors, spacing, and border radius. [`app/globals.css`](app/globals.css) imports it and retains the site's layout, interactions, and animation rules. Each color role has one theme variable and one matching Tailwind utility name.
 
 ### Typography
 
@@ -21,23 +21,29 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 
 ### Colors
 
+The palette has **13 color tokens**, down from 25. Each is used by a component or the global stylesheet.
+
 | Utility / variable | Dark | Light |
 | --- | --- | --- |
-| `bg-page` / `--background` | #0a0a0a | #f5f5f7 |
-| `bg-surface` / `--surface` | #1a1a1a | #ffffff |
-| `bg-surface-strong` / `--surface-strong` | #252525 | #ebebef |
-| `text-primary` / `--foreground` | #f0f0f0 | #1d1d1f |
-| `text-secondary` / `--muted` | #8a8a8a | #515154 |
-| `border-subtle` / `--border` | #303030 | #d2d2d7 |
-| `--primary-hover` | secondary text | #6e6e73 |
-| `--blue` | #66b3ff | #0066cc |
-| `--red` | #ff6961 | #c22b32 |
-| `--yellow` | #ffd60a | #805b00 |
-| `--green` | #5ddb7d | #1a7336 |
+| `bg-background` / `--background` | #0a0a0a | #f5f5f7 |
+| `bg-surface` / `--surface` | #121212 | #ffffff |
+| `bg-surface-strong` / `--surface-strong` | #1a1a1a | #ebebef |
+| `text-foreground` / `--foreground` | #f0f0f0 | #1d1d1f |
+| `text-muted` / `--muted` | #808080 | #515154 |
+| `border-border` / `--border` | #202020 | #d2d2d7 |
+| `--overlay-white` | #ffffff | #ffffff |
+| `--overlay-black` | #000000 | #000000 |
+| `bg-media-canvas` / `--media-canvas` | #ecebe7 | #ecebe7 |
+| `text-blue` / `--blue` | #66b3ff | #0066cc |
+| `text-red` / `--red` | #ff6961 | #c22b32 |
+| `text-yellow` / `--yellow` | #ffd60a | #805b00 |
+| `text-green` / `--green` | #5ddb7d | #1a7336 |
 
-The exact existing cover gradient colors, pure white/black overlays, #fafafa quotation color, and #ecebe7 media canvas are also centralized. No palette colors were added. Use Tailwind opacity modifiers such as `text-secondary/50` or `bg-page/85`. `bg-tone/16 text-tone` uses a shared semantic color chosen through `--tone` for existing card states.
+Nine unused cover-gradient tokens and their unused CSS rules were removed: project covers use image assets. `--quote` and `--primary-hover` now use `--muted`; quote hover uses `--foreground`. The duplicate `page`, `primary`, `secondary`, and `subtle` utility aliases were removed; use `background`, `foreground`, `muted`, and `border` respectively. Tailwind opacity modifiers such as `text-muted/50` and `bg-background/85` still work. `bg-tone/16 text-tone` uses a component-local `--tone` chosen from the existing status colors rather than a separate palette color.
 
-`.dark` and `.light` select the palettes; the default is dark, matching the original site. `bg-page` and `text-primary` intentionally use separate color names so background and foreground utilities, including opacity modifiers, remain unambiguous. The browser `themeColor` metadata in `app/layout.tsx` retains the same two literal background colors: browser metadata cannot reference CSS custom properties.
+The small intentional visual changes are unified muted text/button hover in light mode, quote hover using foreground in dark mode, and the article sheet using the shared dark grays (#808080 text and #121212 hover surface) instead of near-duplicates. Background, surface, raised surface, and border remain distinct to retain depth. Fixed white/black overlays and the warm media canvas retain their separate roles. The toast shadow uses the existing black overlay token rather than the disabled Tailwind default `black` color.
+
+`.dark` and `.light` select the palettes; the default is dark. `.sheet-panel` selects the same dark palette even inside a light page, with no separate hardcoded colors. The browser `themeColor` metadata in `app/layout.tsx` repeats the two background values because browser metadata cannot reference CSS custom properties.
 
 ### Spacing
 
@@ -82,9 +88,9 @@ Copy `styles/tokens.css` into a Tailwind CSS v4 project and import it from the g
 Apply `font-sans` to the root/body and select `.dark` or `.light` on the root (or use `next-themes` as this site does). Use the roles and tokens directly:
 
 ```tsx
-<article className="rounded-lg bg-surface p-5 text-primary">
+<article className="rounded-lg bg-surface p-5 text-foreground">
   <h2 className="text-heading">Project title</h2>
-  <p className="mt-3 text-body text-secondary">Project description</p>
+  <p className="mt-3 text-body text-muted">Project description</p>
 </article>
 ```
 
@@ -100,7 +106,7 @@ Use direct SSR imports in Server Components and direct CSR imports in Client Com
 import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight"
 // In a "use client" file: @phosphor-icons/react/dist/csr/CaretRight
 
-<CaretRight weight="regular" className="size-4 text-secondary" aria-hidden="true" />
+<CaretRight weight="regular" className="size-4 text-muted" aria-hidden="true" />
 ```
 
 Keep icon weight explicit and preserve the accessible label on the surrounding control. Do not override stroke width or add alternative weights.

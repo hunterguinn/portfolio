@@ -3,28 +3,18 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* The article sheet stays dark in either site theme. */
 :root,
-.dark {
+.dark,
+.sheet-panel {
   --overlay-white: #ffffff;
   --overlay-black: #000000;
   --media-canvas: #ecebe7;
-  --cover-merrill-base: #0c1511;
-  --cover-merrill-a: #2a8f62;
-  --cover-merrill-b: #c9a63c;
-  --cover-pos-base: #170e0f;
-  --cover-pos-a: #c8423f;
-  --cover-pos-b: #e08a3c;
-  --cover-unified-base: #0c1220;
-  --cover-unified-a: #3b6fd6;
-  --cover-unified-b: #7a5ad6;
   --background: #0a0a0a;
   --foreground: #f0f0f0;
-  --quote: #808080;
-  --quote-hover: #ffffff;
   --muted: #808080;
   --surface: #121212;
   --surface-strong: #1a1a1a;
-  --primary-hover: #808080;
   --border: #202020;
   --blue: #66b3ff;
   --red: #ff6961;
@@ -34,23 +24,11 @@
 }
 
 .light {
-  --cover-merrill-base: #e4efe9;
-  --cover-merrill-a: #8fd1b0;
-  --cover-merrill-b: #ecd98f;
-  --cover-pos-base: #f3e5e3;
-  --cover-pos-a: #f0a7a2;
-  --cover-pos-b: #f3cf9c;
-  --cover-unified-base: #e3e9f6;
-  --cover-unified-a: #9db8ef;
-  --cover-unified-b: #c5b4ef;
   --background: #f5f5f7;
   --foreground: #1d1d1f;
-  --quote: #6e6e73;
-  --quote-hover: #1d1d1f;
   --muted: #515154;
   --surface: var(--overlay-white);
   --surface-strong: #ebebef;
-  --primary-hover: #6e6e73;
   --border: #d2d2d7;
   --blue: #0066cc;
   --red: #c22b32;
@@ -92,21 +70,14 @@
   --text-eyebrow--letter-spacing: normal;
   --color-*: initial;
   --color-tone: var(--tone);
-  --color-primary: var(--foreground);
-  --color-page: var(--background);
-  --color-secondary: var(--muted);
-  --color-subtle: var(--border);
   --color-overlay-white: var(--overlay-white);
   --color-overlay-black: var(--overlay-black);
-  --color-quote: var(--quote);
-  --color-quote-hover: var(--quote-hover);
   --color-media-canvas: var(--media-canvas);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
-  --color-primary-hover: var(--primary-hover);
   --color-border: var(--border);
   --color-blue: var(--blue);
   --color-red: var(--red);

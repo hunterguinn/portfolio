@@ -57,13 +57,13 @@ export function ArticleModal({
             type="button"
             onClick={requestClose}
             aria-label="Close article"
-            className="relative -mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full text-secondary transition-colors after:absolute after:-inset-2 after:content-[''] hover:bg-surface hover:text-primary focus-visible:bg-surface focus-visible:text-primary"
+            className="relative -mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full text-muted transition-colors after:absolute after:-inset-2 after:content-[''] hover:bg-surface hover:text-foreground focus-visible:bg-surface focus-visible:text-foreground"
           >
             <X weight="regular" className="size-4" aria-hidden="true" />
           </button>
         </div>
         <div className="min-h-0 overflow-y-auto overscroll-contain">
-          <p className="text-body text-secondary">[Article content coming soon]</p>
+          <p className="text-body text-muted">[Article content coming soon]</p>
         </div>
       </div>
     </div>,

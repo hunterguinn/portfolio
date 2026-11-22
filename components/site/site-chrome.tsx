@@ -192,10 +192,10 @@ function DesktopRail({ sections, active }: { sections: RailSection[]; active?: s
                   }}
                   aria-hidden="true"
                   className={`block h-0.5 w-4 rounded-full transition-colors duration-300 ${
-                    current ? "bg-foreground" : "bg-border group-hover:bg-secondary group-focus-visible:bg-secondary"
+                    current ? "bg-foreground" : "bg-border group-hover:bg-muted group-focus-visible:bg-muted"
                   }`}
                 />
-                <span className="pointer-events-none absolute left-[4.75rem] whitespace-nowrap rounded-full border bg-page px-3 py-1 text-caption text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <span className="pointer-events-none absolute left-[4.75rem] whitespace-nowrap rounded-full border bg-background px-3 py-1 text-caption text-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
                   {section.name}
                 </span>
               </a>
@@ -238,7 +238,7 @@ function MobileSectionMenu({ sections, active }: { sections: RailSection[]; acti
         aria-expanded={open}
         aria-controls={menuId}
         onClick={() => setOpen((value) => !value)}
-        className="flex h-9 max-w-full items-center gap-2 rounded-full px-3 text-caption text-secondary transition-colors hover:text-primary"
+        className="flex h-9 max-w-full items-center gap-2 rounded-full px-3 text-caption text-muted transition-colors hover:text-foreground"
       >
         <span className="sr-only">Current section: </span>
         <span className="truncate">{current.name}</span>
@@ -262,7 +262,7 @@ function MobileSectionMenu({ sections, active }: { sections: RailSection[]; acti
                 aria-current={section.id === active ? "location" : undefined}
                 onClick={() => setOpen(false)}
                 className={`flex items-center gap-3 rounded-xs px-3 py-2 text-caption transition-colors hover:bg-surface-strong ${
-                  section.id === active ? "text-primary" : "text-secondary"
+                  section.id === active ? "text-foreground" : "text-muted"
                 }`}
               >
                 <span
@@ -293,7 +293,7 @@ export function SiteChrome({ sections, back = false }: { sections: RailSection[]
   return (
     <>
       <div className="sticky top-0 z-40 lg:hidden">
-        <div className="page-band border-b border-b-surface bg-page/85 backdrop-blur-md">
+        <div className="page-band border-b border-b-surface bg-background/85 backdrop-blur-md">
           <div className="page-container flex h-14 items-center gap-2">
             {back ? <BackButton /> : null}
             <MobileSectionMenu sections={sections} active={active} />

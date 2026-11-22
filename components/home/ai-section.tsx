@@ -27,11 +27,11 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         </span>
         <span className="flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface p-5 md:p-6">
           {card.body ? (
-            <span className="text-body text-secondary">{card.body}</span>
+            <span className="text-body text-muted">{card.body}</span>
           ) : (
-            <span className="text-body text-secondary italic">[Description coming soon]</span>
+            <span className="text-body text-muted italic">[Description coming soon]</span>
           )}
-          <span className="inline-flex items-center gap-2 self-end rounded-full bg-primary/10 px-4 py-2 text-caption text-primary transition-colors duration-300 group-hover:bg-primary/15">
+          <span className="inline-flex items-center gap-2 self-end rounded-full bg-foreground/10 px-4 py-2 text-caption text-foreground transition-colors duration-300 group-hover:bg-foreground/15">
             Read more
             <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
           </span>

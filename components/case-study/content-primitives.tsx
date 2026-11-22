@@ -56,7 +56,7 @@ const toneColors: Record<CardTone, string> = {
 }
 
 export function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="text-body text-secondary">{children}</p>
+  return <p className="text-body text-muted">{children}</p>
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
@@ -81,7 +81,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
             ) : null}
             <div className="flex flex-col gap-title-desc">
               <h3 className="text-body text-strong">{card.title}</h3>
-              <p className="text-caption text-secondary">{card.body}</p>
+              <p className="text-caption text-muted">{card.body}</p>
             </div>
           </li>
         )
@@ -113,7 +113,7 @@ export function TestimonialQuote({
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
             <p
-              className="text-heading text-quote transition-colors duration-300 group-hover:text-quote-hover"
+              className="text-heading text-muted transition-colors duration-300 group-hover:text-foreground"
               style={{ fontWeight: quoteWeight === "light" ? 300 : 400 }}
             >
               {testimonial.quote}
@@ -124,7 +124,7 @@ export function TestimonialQuote({
           <Avatar name={testimonial.name} size={40} />
           <span className="flex flex-col gap-title-desc">
             <span className="text-body font-normal">{testimonial.name}</span>
-            <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
+            <span className="text-eyebrow block text-muted">{testimonial.role}</span>
           </span>
         </figcaption>
       </figure>
@@ -136,9 +136,9 @@ export function TestimonialQuote({
       className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8 lg:p-6" : "rounded-lg p-8 lg:p-6"}`}
     >
       <div className="flex flex-col gap-5">
-        {compact ? <Quotes weight="regular" className="size-5 text-secondary" aria-hidden="true" /> : null}
+        {compact ? <Quotes weight="regular" className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="text-body text-quote transition-colors duration-300 group-hover:text-quote-hover">
+          <p className="text-body text-muted transition-colors duration-300 group-hover:text-foreground">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>
@@ -147,7 +147,7 @@ export function TestimonialQuote({
         <Avatar name={testimonial.name} size={40} />
         <span className="flex flex-col gap-title-desc">
           <span className="text-caption text-strong">{testimonial.name}</span>
-          <span className="text-eyebrow block text-secondary">{testimonial.role}</span>
+          <span className="text-eyebrow block text-muted">{testimonial.role}</span>
         </span>
       </figcaption>
     </figure>
@@ -157,7 +157,7 @@ export function TestimonialQuote({
 export function MetricValue({ metric }: { metric: Metric }) {
   if (metric.value === null) {
     return (
-        <span className="text-heading text-secondary/50">
+        <span className="text-heading text-muted/50">
         <span aria-hidden="true">—</span>
         <span className="sr-only">Metric pending</span>
       </span>
@@ -178,7 +178,7 @@ export function Metrics({ metrics }: { metrics: Metric[] }) {
     <dl className="grid gap-3 sm:grid-cols-2">
       {metrics.map((metric) => (
         <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
-          <dt className="flex flex-wrap items-center gap-2 text-caption text-secondary">
+          <dt className="flex flex-wrap items-center gap-2 text-caption text-muted">
             {metric.label}
             {metric.value === null ? (
               <span className="rounded-full border border-dashed px-2 py-1 text-eyebrow">

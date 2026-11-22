@@ -33,7 +33,7 @@ export function SectionTitle({ id, children }: { id?: string; children: React.Re
 
 /** Intro copy under a section title, filling the reading column. */
 export function SectionIntro({ children }: { children: React.ReactNode }) {
-  return <p className="-mt-4 text-body text-secondary md:-mt-6">{children}</p>
+  return <p className="-mt-4 text-body text-muted md:-mt-6">{children}</p>
 }
 
 /** Numbered row: a narrow index column (number or label) beside content that fills the remaining column. */
@@ -48,7 +48,7 @@ export function IndexedRow({
 }) {
   return (
     <div className={`grid gap-3 md:grid-cols-[4rem_minmax(0,1fr)] md:gap-x-6 ${className}`}>
-      <div className="text-caption text-secondary tabular-nums md:pt-1">{index}</div>
+      <div className="text-caption text-muted tabular-nums md:pt-1">{index}</div>
       <div className="flex min-w-0 flex-col gap-6">{children}</div>
     </div>
   )

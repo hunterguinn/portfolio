@@ -22,14 +22,14 @@ export function OrderScreen({ aspect }: { aspect: string }) {
     >
       <div className="flex items-center justify-between border-b px-4 py-3">
         <span className="text-caption text-strong">Order #1042</span>
-        <span className="text-eyebrow text-secondary">Table 6</span>
+        <span className="text-eyebrow text-muted">Table 6</span>
       </div>
       <ul className="flex flex-1 flex-col divide-y overflow-hidden">
         {items.map((item) => (
           <li key={item.name} className="flex items-center justify-between gap-3 px-4 py-3">
             <div className="min-w-0">
               <p className="truncate text-caption text-strong">{item.name}</p>
-              <p className="truncate text-caption text-secondary">{item.note || money.format(item.price)}</p>
+              <p className="truncate text-caption text-muted">{item.note || money.format(item.price)}</p>
             </div>
             <div className="flex shrink-0 items-center gap-2">
               <span className="flex size-6 items-center justify-center rounded-full border" aria-hidden="true">
@@ -45,7 +45,7 @@ export function OrderScreen({ aspect }: { aspect: string }) {
       </ul>
       <div className="flex flex-col gap-3 border-t bg-surface-strong px-4 py-4">
         <div className="flex items-baseline justify-between">
-          <span className="text-caption text-secondary">Subtotal</span>
+          <span className="text-caption text-muted">Subtotal</span>
           <span className="text-body text-strong tabular-nums">{money.format(subtotal)}</span>
         </div>
         <div className="rounded-md bg-foreground py-3 text-center text-caption text-strong text-background">Pay</div>

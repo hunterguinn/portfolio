@@ -5,7 +5,7 @@ export function DecisionMatrix({ rows }: { rows: Row[] }) {
     <div className="card-surface overflow-x-auto rounded-lg">
       <table className="text-caption w-full min-w-[44rem] text-left">
         <caption className="sr-only">Conditions that route an applicant to Sales or stop the digital application</caption>
-        <thead className="border-b bg-surface text-eyebrow text-secondary">
+        <thead className="border-b bg-surface text-eyebrow text-muted">
           <tr>
             <th scope="col" className="px-4 py-3">
               Category
@@ -28,7 +28,7 @@ export function DecisionMatrix({ rows }: { rows: Row[] }) {
                 {row.category}
               </th>
               <td className="px-4 py-4">{row.trigger}</td>
-              <td className="px-4 py-4 text-secondary">{row.reason}</td>
+              <td className="px-4 py-4 text-muted">{row.reason}</td>
               <td className="px-4 py-4">
                 <span
                   className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-eyebrow ${

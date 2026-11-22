@@ -13,13 +13,13 @@ export function TestimonialsSection() {
           <li key={`${item.name}-${index}`}>
             <figure className="flex h-full flex-col justify-between gap-8 card-hover rounded-lg border p-6 lg:p-6">
               <blockquote>
-                <p className="text-body text-quote">{`“${item.quote}”`}</p>
+                <p className="text-body text-muted">{`“${item.quote}”`}</p>
               </blockquote>
               <figcaption className="flex items-center gap-3">
                 <Avatar name={item.name} size={36} />
                 <span className="flex flex-col gap-0">
                   <span className="text-body font-normal">{item.name}</span>
-                  <span className="text-caption font-sans font-normal normal-case text-secondary">{item.role}</span>
+                  <span className="text-caption font-sans font-normal normal-case text-muted">{item.role}</span>
                 </span>
               </figcaption>
             </figure>

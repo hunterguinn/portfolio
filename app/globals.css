@@ -107,15 +107,6 @@
   background-color: var(--surface);
   border-color: var(--border);
 }
-.project-preview-overlay {
-  background-color: color-mix(in srgb, var(--overlay-white) 10%, transparent);
-}
-.light .project-preview-overlay {
-  background-color: var(--background);
-}
-.dark .project-preview-gradient {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--overlay-black) 50%, transparent), transparent);
-}
 
 /* Primary buttons change fill on hover; secondary buttons are borderless surface pills. */
 .btn-primary {
@@ -126,7 +117,7 @@
 .btn-primary:hover,
 .btn-primary-group:hover .btn-primary,
 .btn-primary-group:focus-visible .btn-primary {
-  background-color: var(--primary-hover);
+  background-color: var(--muted);
 }
 .btn-secondary {
   background-color: var(--surface);
@@ -215,14 +206,6 @@
   .reel-text-item {
     transition: none;
   }
-}
-
-/* Project cover gradients (per project, per theme). */
-.cover-gradient {
-  background-color: var(--cover-base);
-  background-image:
-    radial-gradient(110% 80% at 0% 55%, var(--cover-a) 0%, transparent 60%),
-    radial-gradient(80% 60% at 15% 100%, var(--cover-b) 0%, transparent 65%);
 }
 
 /*
@@ -469,24 +452,6 @@
   }
 }
 
-.cover-gradient[data-project="merrill"] {
-  --cover-base: var(--cover-merrill-base);
-  --cover-a: var(--cover-merrill-a);
-  --cover-b: var(--cover-merrill-b);
-}
-
-.cover-gradient[data-project="pos"] {
-  --cover-base: var(--cover-pos-base);
-  --cover-a: var(--cover-pos-a);
-  --cover-b: var(--cover-pos-b);
-}
-
-.cover-gradient[data-project="unified"] {
-  --cover-base: var(--cover-unified-base);
-  --cover-a: var(--cover-unified-a);
-  --cover-b: var(--cover-unified-b);
-}
-
 /* Article sheet: slides up from below the viewport, dims the page, and slides back down on close. */
 .sheet-backdrop {
   background-color: color-mix(in srgb, var(--overlay-black) 55%, transparent);
@@ -497,11 +462,6 @@
   animation: sheet-fade-out 260ms ease-in both;
 }
 .sheet-panel {
-  --foreground: #f0f0f0;
-  --muted: #8a8a8a;
-  --surface: #101010;
-  --surface-strong: #202020;
-  --border: #202020;
   background-color: var(--overlay-black);
   color: var(--foreground);
   animation: sheet-rise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;

@@ -8,7 +8,7 @@ function Stage({ label, title, children }: { label: string; title: string; child
   return (
     <div className="card-surface flex flex-col gap-4 rounded-lg p-5 lg:p-6">
       <div className="flex flex-col gap-title-desc">
-        <p className="text-eyebrow text-secondary">{label}</p>
+        <p className="text-eyebrow text-muted">{label}</p>
         <h3 className="text-body text-strong">{title}</h3>
       </div>
       {children}
@@ -44,9 +44,9 @@ export function ApplicationFlow({
       <Stage label={selection.label} title={selection.title}>
         <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {selection.products.map((product) => (
-            <li key={product.name} className="flex items-center justify-between gap-3 rounded-md bg-page px-3 py-2 text-caption">
+            <li key={product.name} className="flex items-center justify-between gap-3 rounded-md bg-background px-3 py-2 text-caption">
               {product.name}
-              <span className="text-caption text-secondary tabular-nums">{product.count}</span>
+              <span className="text-caption text-muted tabular-nums">{product.count}</span>
             </li>
           ))}
         </ul>
@@ -56,7 +56,7 @@ export function ApplicationFlow({
         {paths.map((path) => (
           <div key={path.label} className="flex flex-col gap-4 card-surface rounded-lg p-5 lg:p-6">
             <div className="flex flex-col gap-title-desc">
-              <p className="text-eyebrow text-secondary">Product path</p>
+              <p className="text-eyebrow text-muted">Product path</p>
               <h3 className="text-body text-strong">{path.label}</h3>
             </div>
             <ul className="flex flex-wrap gap-2">
@@ -64,7 +64,7 @@ export function ApplicationFlow({
                 <Chip key={item}>{item}</Chip>
               ))}
             </ul>
-            <p className="flex flex-1 items-end text-caption text-secondary">Applies to: {path.appliesTo.join(", ")}</p>
+            <p className="flex flex-1 items-end text-caption text-muted">Applies to: {path.appliesTo.join(", ")}</p>
           </div>
         ))}
       </div>

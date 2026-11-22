@@ -73,7 +73,7 @@ export function TransferDemo({
               ? "Securities with a selection checkbox synchronized to an amount field"
               : "Securities where the amount field alone determines what transfers"}
           </caption>
-          <thead className="border-b bg-surface text-eyebrow text-secondary">
+          <thead className="border-b bg-surface text-eyebrow text-muted">
             <tr>
               {synchronized ? (
                 <th scope="col" className="w-12 px-4 py-3">
@@ -111,16 +111,16 @@ export function TransferDemo({
                   ) : null}
                   <th scope="row" className="px-4 py-3">
                     <span className="block text-strong">{row.symbol}</span>
-                    <span className="block text-caption text-secondary">{row.name}</span>
+                    <span className="block text-caption text-muted">{row.name}</span>
                   </th>
-                  <td className="px-4 py-3 text-right tabular-nums text-secondary">{row.shares}</td>
+                  <td className="px-4 py-3 text-right tabular-nums text-muted">{row.shares}</td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex flex-col items-end gap-1">
                       <label htmlFor={amountId} className="sr-only">
                         Amount to transfer for {row.name}
                       </label>
-                      <div className="flex w-36 items-center rounded-md border bg-page focus-within:outline-2 focus-within:outline-foreground">
-                        <span aria-hidden="true" className="pl-3 text-secondary">
+                      <div className="flex w-36 items-center rounded-md border bg-background focus-within:outline-2 focus-within:outline-foreground">
+                        <span aria-hidden="true" className="pl-3 text-muted">
                           $
                         </span>
                         <input
@@ -133,7 +133,7 @@ export function TransferDemo({
                           className="w-full bg-transparent px-2 py-2 text-right tabular-nums outline-none"
                         />
                       </div>
-                      <p className="text-caption text-secondary">
+                      <p className="text-caption text-muted">
                         {needsAmount ? <span className="text-red">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
                       </p>
                     </div>
@@ -147,13 +147,13 @@ export function TransferDemo({
       <p
         aria-live="polite"
         className={`rounded-md border-l-2 px-3 py-2 text-caption transition-opacity duration-300 ${
-          appliedRule ? "border-foreground bg-surface text-primary opacity-100" : "border-transparent opacity-0"
+          appliedRule ? "border-foreground bg-surface text-foreground opacity-100" : "border-transparent opacity-0"
         }`}
       >
-        {appliedRule ? <><span className="text-secondary">Rule applied: </span>{appliedRule}</> : "\u00a0"}
+        {appliedRule ? <><span className="text-muted">Rule applied: </span>{appliedRule}</> : "\u00a0"}
       </p>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p role="status" aria-live="polite" className="text-caption text-secondary">
+        <p role="status" aria-live="polite" className="text-caption text-muted">
           {status}
         </p>
         <button

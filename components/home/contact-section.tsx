@@ -12,7 +12,7 @@ export function ContactSection() {
     <SectionShell id="contact">
       <SectionTitle id="contact">{"Let's connect"}</SectionTitle>
       <div className="grid items-start gap-8 md:grid-cols-2 md:gap-6">
-        <p className="text-body text-secondary">
+        <p className="text-body text-muted">
           Always interested in new opportunities, collaborations, and conversations about technology and design.
         </p>
         <ul className="grid grid-cols-2 gap-3">
@@ -25,7 +25,7 @@ export function ContactSection() {
                 className="card-hover group flex w-full flex-col justify-between gap-6 rounded-lg border p-5 text-left"
               >
                 <span className="text-body">{link.label}</span>
-                <span className="inline-flex items-center gap-1 font-mono text-caption text-secondary transition-colors group-hover:text-primary">
+                <span className="inline-flex items-center gap-1 font-mono text-caption text-muted transition-colors group-hover:text-foreground">
                   {link.handle}
                   <ArrowUpRight weight="regular" className="size-3.5" aria-hidden="true" />
                   <span className="sr-only">(opens in a new tab)</span>

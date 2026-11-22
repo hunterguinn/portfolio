@@ -11,10 +11,10 @@ export function ResearchSummary({
         <h3 id="research-questions" className="text-body text-strong">
           {questions.title}
         </h3>
-        <ul className="flex flex-col gap-3 text-caption text-secondary">
+        <ul className="flex flex-col gap-3 text-caption text-muted">
           {questions.items.map((item) => (
             <li key={item} className="flex gap-3">
-              <span aria-hidden="true" className="text-primary">
+              <span aria-hidden="true" className="text-foreground">
                 ?
               </span>
               {item}
@@ -36,7 +36,7 @@ export function ResearchSummary({
               >
                 {item.status}
               </span>
-              <span className="text-secondary">{item.text}</span>
+              <span className="text-muted">{item.text}</span>
             </li>
           ))}
         </ul>

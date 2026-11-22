@@ -30,11 +30,11 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
           className="object-contain p-6 transition-transform duration-700 ease-out motion-safe:group-hover:-translate-y-1 md:p-10"
         />
       ) : (
-        <span className="absolute inset-0 flex items-center justify-center text-caption text-secondary">
+        <span className="absolute inset-0 flex items-center justify-center text-caption text-muted">
           {project.cover.placeholder}
         </span>
       )}
-      <span className="gallery-pill absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors group-hover:text-primary">
+      <span className="gallery-pill absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-colors group-hover:text-foreground">
         View project
         <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
       </span>
@@ -53,16 +53,16 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
         <h3 id={titleId} className="text-heading">
           {project.title}
         </h3>
-        <p className="text-body text-secondary">{project.description}</p>
+        <p className="text-body text-muted">{project.description}</p>
       </div>
-      <div className="flex items-baseline justify-between gap-4 text-caption text-secondary tabular-nums">
+      <div className="flex items-baseline justify-between gap-4 text-caption text-muted tabular-nums">
         <span>{category}</span>
         <span>{year}</span>
       </div>
       <dl className="grid gap-3 sm:grid-cols-2">
         {project.metrics.map((metric) => (
           <div key={metric.label} className="card-hover flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
-            <dt className="text-caption text-secondary">{metric.label}</dt>
+            <dt className="text-caption text-muted">{metric.label}</dt>
             <dd>
               <MetricValue metric={metric} />
             </dd>
