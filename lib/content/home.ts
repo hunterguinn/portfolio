@@ -27,7 +27,7 @@ export const home = {
         title: "Merrill Edge Asset Transfer",
         meta: "Native app · 2027",
         description:
-          "I helped redesign how clients transfer investments into Merrill, simplifying complex account connections, asset selection, and transfer requirements into a more streamlined digital experience.",
+          "I helped redesign how clients move investments into Merrill, simplifying external account connections, asset selection, and complex transfer requirements into a more manageable digital experience.",
         team: ["Product Design (Lead) • Digital Product • Investment Operations • Engineers • API Tech Team"],
         background: "/images/home/project-bg-1.webp",
         metricIcons: ["landmark", "wallet"],
@@ -63,7 +63,7 @@ export const home = {
         title: "Point-of-Sale Software",
         meta: "Android responsive · 2026",
         description:
-          "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing a scalable design foundation across devices while maintaining continuity for small business merchants.",
+          "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing reusable design patterns across payment devices while supporting business continuity for merchants.",
         team: ["Product Design (Lead) • Merchant Services • Product Management • Engineers • Platform Architecture"],
         background: "/images/home/project-bg-2.webp",
         metricIcons: ["credit-card", "store"],
@@ -99,7 +99,7 @@ export const home = {
         title: "Unified Client Application",
         meta: "Web responsive · 2025",
         description:
-          "I helped unify applications for business checking, credit cards, and payment services into a single digital experience, balancing simpler onboarding with complex eligibility and risk requirements.",
+          "I helped consolidate applications for business checking, credit cards, and payment services into a single experience, balancing simpler onboarding with complex eligibility, risk, and compliance requirements.",
         team: ["Product Design (Lead) · Product Management · Small Business CXO · Risk & KYC • Sales"],
         background: "/images/home/project-bg-3.webp",
         metricIcons: ["layers", "briefcase"],
@@ -135,12 +135,12 @@ export const home = {
     title: "Scaling design through AI",
     label: "AI",
     intro:
-      "I'm currently leading Figma AI Enablement training and mentoring other designers across our design organization. Read more about the work I've been doing and how it's helping our organization.",
+      "At Bank of America, I'm leading Figma AI enablement through hands-on learning sessions, designer mentorship, and practical tooling. Alongside this work, I'm exploring how AI-assisted prototyping, reusable components, and automation can improve the way teams design, communicate, and build products.",
     cards: [
       {
         count: 10,
         topic: "Learning sessions hosted",
-        body: "Sharing design efficiencies, best practices, and workflows to support AI adoption.",
+        body: "Supporting designers as they strengthen their Figma skills, adopt more consistent practices, and discover opportunities to improve their workflows.",
         articleTitle: "Learning sessions hosted",
       },
       {
@@ -152,12 +152,14 @@ export const home = {
       },
       {
         topic: "Concept to Code",
-        body: "Building AI-assisted prototypes, custom plugins, and automations that connect design and development.",
+        sublabel: "Exploration · Prototyping · Open source",
+        body: "Building interactive, AI-assisted prototypes that demonstrate product logic, design states, and reusable components beyond static mockups.",
         articleTitle: "Concept to Code",
       },
       {
         topic: "System to delivery",
-        body: null,
+        sublabel: "Systems · Tooling · Automation",
+        body: "Exploring how shared design tokens, components, and documentation can create greater consistency between design and implementation.",
         articleTitle: "System to delivery",
       },
     ] satisfies AiCard[],

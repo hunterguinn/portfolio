@@ -82,6 +82,7 @@ export type AiCard = {
   count?: number
   suffix?: string
   topic: string
+  sublabel?: string
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
   articleTitle: string
