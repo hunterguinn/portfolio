@@ -8,10 +8,10 @@ export function TestimonialsSection() {
   return (
     <SectionShell id="testimonials">
       <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
-      <ul className="grid gap-12 md:grid-cols-2">
+      <ul className="grid gap-3 md:grid-cols-2">
         {testimonials.items.map((item, index) => (
           <li key={`${item.name}-${index}`}>
-            <figure className="flex h-full flex-col justify-between gap-8 card-hover rounded-lg border p-6 lg:p-6">
+            <figure className="flex h-full flex-col gap-20 card-hover rounded-lg border p-6 lg:p-6">
               <blockquote>
                 <p className="text-body text-muted">{`“${item.quote}”`}</p>
               </blockquote>
