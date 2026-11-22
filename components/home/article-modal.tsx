@@ -10,10 +10,12 @@ const EXIT_MS = 280
 
 export function ArticleModal({
   title,
+  content,
   onClose,
   returnFocusTo,
 }: {
   title: string
+  content: { heading?: string; body: string }[]
   onClose: () => void
   returnFocusTo: HTMLElement | null
 }) {
@@ -62,8 +64,13 @@ export function ArticleModal({
             <X weight="regular" className="size-4" aria-hidden="true" />
           </button>
         </div>
-        <div className="min-h-0 overflow-y-auto overscroll-contain">
-          <p className="text-body text-muted">[Article content coming soon]</p>
+        <div className="min-h-0 space-y-5 overflow-y-auto overscroll-contain">
+          {content.map((section, index) => (
+            <section key={`${section.heading ?? "intro"}-${index}`} className="space-y-2">
+              {section.heading ? <h3 className="text-caption text-strong">{section.heading}</h3> : null}
+              <p className="text-body text-muted">{section.body}</p>
+            </section>
+          ))}
         </div>
       </div>
     </div>,

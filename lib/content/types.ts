@@ -82,9 +82,11 @@ export type AiCard = {
   count?: number
   suffix?: string
   topic: string
+  sublabel?: string
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
   articleTitle: string
+  articleContent: { heading?: string; body: string }[]
 }
 
 export type TransferRow = { symbol: string; name: string; shares: number; amount: number }
