@@ -61,20 +61,20 @@ Layout spacing formerly using 2px, 6px, and 10px now uses 4px, 8px, and 12px res
 
 ### Border radius
 
-| Token / Tailwind utility | Radius |
-| --- | --- |
-| `radius-xs` / `rounded-xs` | 6px |
-| `radius-icon` / `rounded-icon` | 8px |
-| `radius-sm` / `rounded-sm` | 10px |
-| `radius-md` / `rounded-md` | 16px |
-| `radius-lg` / `rounded-lg` | 28px |
-| `radius-xl` / `rounded-xl` | 36px |
-| `radius-2xl` / `rounded-2xl` | 40px |
-| `radius-3xl` / `rounded-3xl` | 44px |
-| `radius-4xl` / `rounded-4xl` | 48px |
-| `radius-full` / `rounded-full` | fully rounded |
+The site uses exactly two radius values. No other border radius values are allowed.
 
-Existing radii are retained exactly, including the 8px tool-logo radius and 10px icon badges. Continuous corners and pill behavior remain in the site stylesheet. The animated page curtain retains its original percentage / viewport-based keyframe geometry.
+| Token / Tailwind utility | Radius | Use for |
+| --- | --- | --- |
+| `radius-md` / `rounded-md` | 12px | Small cards, inputs, metric tiles, menu items, icon buttons and badges |
+| `radius-lg` / `rounded-lg` | 24px | Larger cards, modals, figures, and image-level containers (project covers, media frames) |
+| `radius-full` / `rounded-full` | fully rounded | Only for circles and pills that must stay round: avatars, status dots, buttons, tags, toasts |
+
+Rules:
+
+- Pick the radius by size: 12px for small cards, 24px for larger cards and image-level containers. Never add arbitrary values such as `rounded-[20px]`, and do not reintroduce `xs`, `sm`, `xl`, `2xl`, `3xl`, `4xl`, or `icon` tokens; they are removed from `styles/tokens.css`.
+- A corner-specific radius (for example `rounded-tl-lg`) must still use one of the two values.
+- Nested rounded elements use the same token as their parent, or `rounded-md` inside a `rounded-lg` parent.
+- Continuous corners (squircles) and pill behavior are applied by the site stylesheet. The animated page curtain retains its original percentage / viewport-based keyframe geometry.
 
 ## Reuse in Vercel v0
 

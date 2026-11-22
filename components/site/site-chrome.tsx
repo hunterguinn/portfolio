@@ -49,7 +49,7 @@ function BackButton({ className = "" }: { className?: string }) {
       href="/"
       aria-label="Back to portfolio"
       onClick={() => sessionStorage.setItem(RESTORE_HOME_KEY, "1")}
-      className={`btn-secondary inline-flex size-10 shrink-0 items-center justify-center rounded-icon border border-transparent ${className}`}
+      className={`btn-secondary inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-transparent ${className}`}
     >
       <ArrowLeft weight="regular" className="size-4" aria-hidden="true" />
     </Link>
@@ -262,7 +262,7 @@ function MobileSectionMenu({ sections, active }: { sections: RailSection[]; acti
                 href={`#${section.id}`}
                 aria-current={section.id === active ? "location" : undefined}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 rounded-xs px-3 py-2 text-caption transition-colors hover:bg-surface-strong ${
+                className={`flex items-center gap-3 rounded-md px-3 py-2 text-caption transition-colors hover:bg-surface-strong ${
                   section.id === active ? "text-foreground" : "text-muted"
                 }`}
               >

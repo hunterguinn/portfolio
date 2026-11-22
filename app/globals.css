@@ -101,39 +101,6 @@
   border-color: var(--border);
 }
 
-/* Holographic sheen: an iridescent diagonal band sweeps across the preview panel on hover. */
-.project-holo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: color-dodge;
-  background-image: linear-gradient(
-    115deg,
-    transparent 20%,
-    rgba(0, 231, 255, 0.35) 36%,
-    rgba(255, 0, 231, 0.3) 44%,
-    rgba(255, 250, 120, 0.3) 52%,
-    rgba(0, 255, 160, 0.3) 60%,
-    transparent 76%
-  );
-  background-size: 250% 250%;
-  background-position: 100% 100%;
-  background-repeat: no-repeat;
-}
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .project-holo::after {
-    transition:
-      opacity 400ms ease-out,
-      background-position 900ms ease-out;
-  }
-  .group:hover .project-holo::after {
-    opacity: 0.55;
-    background-position: 0% 0%;
-  }
-}
-
 /* Light cards keep the same surface and border on hover. */
 .light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card),
 .light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card):hover {
