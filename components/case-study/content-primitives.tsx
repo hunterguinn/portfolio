@@ -157,7 +157,7 @@ export function TestimonialQuote({
 export function MetricValue({ metric }: { metric: Metric }) {
   if (metric.value === null) {
     return (
-      <span className="text-metric text-secondary/50">
+        <span className="text-heading text-secondary/50">
         <span aria-hidden="true">—</span>
         <span className="sr-only">Metric pending</span>
       </span>
@@ -165,12 +165,12 @@ export function MetricValue({ metric }: { metric: Metric }) {
   }
   if (metric.counter) {
     return (
-      <span className="text-metric tabular-nums">
+      <span className="text-heading tabular-nums">
         <CountUp {...metric.counter} />
       </span>
     )
   }
-  return <span className="text-metric tabular-nums">{metric.value}</span>
+  return <span className="text-heading tabular-nums">{metric.value}</span>
 }
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {

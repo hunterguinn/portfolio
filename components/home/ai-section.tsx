@@ -19,13 +19,13 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
       >
         <span className="flex flex-col gap-0 pr-5 md:pr-6">
           {card.count !== undefined ? (
-            <span className="text-metric tabular-nums">
+            <span className="text-heading tabular-nums">
               <CountUp to={card.count} suffix={card.suffix ?? ""} />
             </span>
           ) : null}
-          <span className="text-body text-strong">{card.topic}</span>
+          <span className="text-body">{card.topic}</span>
         </span>
-        <span className="flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface-strong p-5 md:p-6">
+        <span className="flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface p-5 md:p-6">
           {card.body ? (
             <span className="text-body text-secondary">{card.body}</span>
           ) : (

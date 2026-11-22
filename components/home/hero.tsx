@@ -5,10 +5,10 @@ import { site } from "@/lib/content/site"
 
 export function Hero() {
   return (
-    <section id="intro" aria-labelledby="intro-title" className="page-band min-h-svh">
-      <div className="page-container flex min-h-svh flex-col justify-center py-section md:py-section-lg">
-        <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_14rem] md:gap-20">
-          <div className="flex flex-col gap-8">
+    <section id="intro" aria-labelledby="intro-title" className="page-band min-h-[90svh]">
+      <div className="page-container flex min-h-[90svh] flex-col justify-center py-section md:py-section-lg">
+        <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_150px] md:gap-20">
+          <div className="flex min-w-0 flex-col gap-12">
             <div className="flex flex-col gap-4">
               <p className="text-eyebrow text-secondary">Portfolio / 2027</p>
               <h1 id="intro-title" className="text-hero whitespace-nowrap">
@@ -33,7 +33,7 @@ export function Hero() {
             </Link>
           </div>
 
-          <dl className="flex flex-col gap-3 md:pt-16">
+          <dl className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
             <dt className="text-eyebrow text-secondary">Tools</dt>
             <dd>
               <ul className="flex flex-wrap gap-2">

@@ -4,7 +4,7 @@ export const home = {
   headline: "Designing financial experiences that create clarity, build trust, and scale",
   greeting: "Hey, I'm Hunter 👋",
   current: {
-    role: "VP Product Designer",
+    role: "Vice President, Product Designer",
     company: "@ Bank of America",
     period: "2022 - Present",
   },

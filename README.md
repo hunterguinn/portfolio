@@ -10,8 +10,9 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 
 | Class | Size | Weight | Line height | Letter spacing |
 | --- | --- | --- | --- | --- |
-| `text-display` | 2.25rem (36px) | 500 | 1.15 | normal |
-| `text-heading` | 24px | 500 | 1.25 | normal |
+| `text-hero` | 52px | 300 | 1.1 | -0.02em |
+| `text-display` | 2.25rem (36px) | 400 | 1.15 | normal |
+| `text-heading` | 28px | 400 | 1.2 | normal |
 | `text-body` | 16px | 400 | 1.5 | normal |
 | `text-caption` | 0.875rem (14px) | 400 | 1.5 | normal |
 | `text-eyebrow` | 0.75rem (12px) | 500 | 1.35 | normal |
