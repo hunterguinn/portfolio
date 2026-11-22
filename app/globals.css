@@ -80,7 +80,7 @@
   @apply border border-border;
   background-color: var(--surface);
 }
-/* Every card shares one hover: the border lightens and the background steps up a surface level. */
+/* Every card uses the surface color on hover, with a lighter border. */
 .card-surface,
 .card-hover {
   transition:
@@ -91,9 +91,7 @@
 .card-hover:hover {
   border-color: color-mix(in srgb, var(--muted) 40%, transparent);
 }
-.card-surface:hover {
-  background-color: var(--surface-strong);
-}
+.card-surface:hover,
 .card-hover:hover {
   background-color: var(--surface);
 }
