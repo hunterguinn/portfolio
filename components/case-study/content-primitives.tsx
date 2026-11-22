@@ -60,17 +60,17 @@ export function Paragraph({ children }: { children: React.ReactNode }) {
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
-  const count = cards.length === 4 ? 2 : Math.min(columns, cards.length)
+  const count = Math.min(columns, cards.length)
   const grid = count >= 3 ? "md:grid-cols-3" : count === 2 ? "md:grid-cols-2" : ""
   const spanOrphan = count === 2 && cards.length % 2 === 1 ? "md:last:col-span-2" : ""
   return (
     <ul className={`grid gap-3 ${grid} ${spanOrphan}`}>
-      {cards.map((card) => {
+      {cards.map((card, index) => {
         const tone = toneColors[card.tone ?? "approach"]
         const Icon = card.icon ? cardIcons[card.icon] : null
         return (
           <li
-            key={card.title}
+            key={`${card.title}-${index}`}
             style={{ "--tone": tone } as React.CSSProperties}
             className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7 lg:p-6"
           >
@@ -175,9 +175,9 @@ export function MetricValue({ metric }: { metric: Metric }) {
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {
   return (
-    <dl className="grid gap-3 sm:grid-cols-2">
-      {metrics.map((metric) => (
-        <div key={metric.label} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
+    <dl className="grid gap-3 md:grid-cols-3">
+      {metrics.map((metric, index) => (
+        <div key={`${metric.label}-${index}`} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
           <dt className="flex flex-wrap items-center gap-2 text-caption text-muted">
             {metric.label}
             {metric.value === null ? (

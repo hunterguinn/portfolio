@@ -9,7 +9,7 @@ const securities: TransferRow[] = [
 
 export const merrill: CaseStudy = {
   slug: "merrill",
-  eyebrow: "Case Study",
+  eyebrow: "Case Study / 2027",
   title: "Merrill Edge Asset Transfer",
   description:
     "Case study: a faster, responsive asset transfer experience for Merrill wealth management clients, powered by an open finance API.",
@@ -40,6 +40,13 @@ export const merrill: CaseStudy = {
               tone: "problem",
               body: "Clients need to select corresponding account types, such as Roth IRA to Roth IRA, rather than choose an ineligible account from the start.",
             },
+            {
+              title: "Incomplete Data",
+              icon: "unplug",
+              tone: "problem",
+              body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
+            },
+            // Temporary duplicate: replace with new copy.
             {
               title: "Incomplete Data",
               icon: "unplug",
@@ -195,6 +202,13 @@ export const merrill: CaseStudy = {
               tone: "solution",
               body: "An asset counter made the selection limit visible, while contextual messaging explained when clients needed to change their selections and why.",
             },
+            // Temporary duplicate: replace with new copy.
+            {
+              title: "Two Paths",
+              icon: "split",
+              tone: "solution",
+              body: "An asset counter made the selection limit visible, while contextual messaging explained when clients needed to change their selections and why.",
+            },
           ],
         },
       ],
@@ -340,6 +354,8 @@ export const merrill: CaseStudy = {
           type: "metrics",
           metrics: [
             { value: "$80 billion", label: "Net assets transferred annually" },
+            { value: "4+ million", label: "Merrill clients supported" },
+            // Temporary duplicate: replace with new copy.
             { value: "4+ million", label: "Merrill clients supported" },
           ],
         },

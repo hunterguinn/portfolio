@@ -2,9 +2,10 @@ import Link from "next/link"
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight"
 import type { CaseStudy, Section } from "@/lib/content/types"
 import { nextProject } from "@/lib/content/site"
-import { IndexedRow, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { SiteChrome, type RailSection } from "@/components/site/site-chrome"
 import { Blocks } from "./block-renderer"
+import { SectionEyebrow } from "@/components/site/section-eyebrow"
 
 function MetaList({ title, items }: { title: string; items: string[] }) {
   return (
@@ -56,7 +57,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
       <article>
         <SectionShell id="overview" bordered={false} className="pt-28 md:pt-36">
           <div className="flex flex-col gap-4 md:gap-6">
-            <p className="text-eyebrow text-muted">{study.eyebrow}</p>
+            <SectionEyebrow>{study.eyebrow}</SectionEyebrow>
             <h1 id="overview-title" className="text-display">
               {study.title}
             </h1>
@@ -70,24 +71,30 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
         {chapters.map((chapter, chapterIndex) => (
           <SectionShell key={chapter.id} id={chapter.id}>
-            <SectionTitle id={chapter.id}>{chapter.name}</SectionTitle>
+            <div className="flex flex-col gap-4">
+              <SectionEyebrow>{`Section ${String(chapterIndex + 1).padStart(2, "0")}`}</SectionEyebrow>
+              <SectionTitle id={chapter.id}>{chapter.name}</SectionTitle>
+            </div>
             <div className="flex flex-col gap-16 md:gap-20">
               {chapter.sections.map((section, sectionIndex) => (
-                <IndexedRow key={section.id} index={`${chapterIndex + 1}.${sectionIndex}`}>
+                <div key={section.id} className="flex min-w-0 flex-col gap-6">
                   {section.title !== chapter.name ? (
-                    <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
-                      {section.title}
-                    </h3>
+                    <div className="flex flex-col gap-4">
+                      <SectionEyebrow>{section.label}</SectionEyebrow>
+                      <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
+                        {section.title}
+                      </h3>
+                    </div>
                   ) : null}
                   <Blocks blocks={section.blocks} />
-                </IndexedRow>
+                </div>
               ))}
             </div>
           </SectionShell>
         ))}
 
         <SectionShell id="next-project">
-          <p className="text-eyebrow text-muted">Next project</p>
+          <SectionEyebrow>Next project</SectionEyebrow>
           <Link href={next.href} className="group -mt-6 flex flex-col gap-3">
             <span id="next-project-title" className="text-display transition-colors group-hover:text-muted">
               {next.title}

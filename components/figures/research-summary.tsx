@@ -6,7 +6,7 @@ export function ResearchSummary({
   findings: { title: string; items: { text: string; status: "Confirmed" | "Unconfirmed" }[] }
 }) {
   return (
-    <div className="grid gap-3 lg:grid-cols-2">
+    <div className="grid gap-3 lg:grid-cols-3">
       <section className="card-surface flex flex-col gap-5 rounded-lg p-6" aria-labelledby="research-questions">
         <h3 id="research-questions" className="text-body text-strong">
           {questions.title}
@@ -37,6 +37,21 @@ export function ResearchSummary({
                 {item.status}
               </span>
               <span className="text-muted">{item.text}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="card-surface flex flex-col gap-5 rounded-lg p-6" aria-labelledby="research-questions-copy">
+        <h3 id="research-questions-copy" className="text-body text-strong">
+          {questions.title}
+        </h3>
+        <ul className="flex flex-col gap-3 text-caption text-muted">
+          {questions.items.map((item) => (
+            <li key={item} className="flex gap-3">
+              <span aria-hidden="true" className="text-foreground">
+                ?
+              </span>
+              {item}
             </li>
           ))}
         </ul>

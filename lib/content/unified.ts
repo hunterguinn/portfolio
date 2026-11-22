@@ -2,7 +2,7 @@ import type { CaseStudy } from "./types"
 
 export const unified: CaseStudy = {
   slug: "unified",
-  eyebrow: "Case Study",
+  eyebrow: "Case Study / 2025",
   title: "Unified Client Application",
   description:
     "Case study: one digital application that lets businesses apply for multiple banking products in a single session while preserving eligibility and risk controls.",
@@ -29,6 +29,13 @@ export const unified: CaseStudy = {
               tone: "problem",
               body: "Fintechs like Toast and Square made getting started feel fast and straightforward, setting expectations for how quickly businesses could access financial services.",
             },
+            {
+              title: "Associate-Led Process",
+              icon: "users",
+              tone: "problem",
+              body: "Each application depended on sales associate review, even when some could be approved digitally, which accounted for the most friction.",
+            },
+            // Temporary duplicate: replace with new copy.
             {
               title: "Associate-Led Process",
               icon: "users",
@@ -72,6 +79,13 @@ export const unified: CaseStudy = {
               tone: "approach",
               body: "Allow eligible clients to complete the application independently, phile preserving a path to sales support when additional review is needed.",
             },
+            {
+              title: "Preserve Product Rules",
+              icon: "shield-check",
+              tone: "approach",
+              body: "Maintain each product's eligibility criteria and risk requirements within a shared architecture.",
+            },
+            // Temporary duplicate: replace with new copy.
             {
               title: "Preserve Product Rules",
               icon: "shield-check",
@@ -339,6 +353,13 @@ export const unified: CaseStudy = {
               tone: "solution",
               body: "Clients could contact a Merchant Associate with questions, preserving human support for situations that needed guidance or additional review.",
             },
+            // Temporary duplicate: replace with new copy.
+            {
+              title: "Support If Needed",
+              icon: "life-buoy",
+              tone: "solution",
+              body: "Clients could contact a Merchant Associate with questions, preserving human support for situations that needed guidance or additional review.",
+            },
           ],
         },
       ],
@@ -432,6 +453,8 @@ export const unified: CaseStudy = {
           type: "metrics",
           metrics: [
             { value: null, label: "Submission in pilot testing", sourceValue: "0% faster" },
+            { value: null, label: "Small business clients supported", sourceValue: "0+" },
+            // Temporary duplicate: replace with new copy.
             { value: null, label: "Small business clients supported", sourceValue: "0+" },
           ],
         },

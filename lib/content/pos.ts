@@ -16,7 +16,7 @@ export const orderScreen = {
 
 export const pos: CaseStudy = {
   slug: "pos",
-  eyebrow: "Case Study",
+  eyebrow: "Case Study / 2026",
   title: "Enterprise Point-of-Sale System",
   description:
     "Case study: turning an acquired point-of-sale product into a cohesive, bank-owned platform across payment devices for small business clients.",
@@ -47,6 +47,13 @@ export const pos: CaseStudy = {
               tone: "problem",
               body: "Losing the existing point-of-sale solution threatened payment processing for small businesses and put thousands of client relationships at risk.",
             },
+            {
+              title: "Aggressive Timeline",
+              icon: "timer",
+              tone: "problem",
+              body: "The fast transition left us with very little time to define requirements, evaluate design options, and improve the existing experience.",
+            },
+            // Temporary duplicate: replace with new copy.
             {
               title: "Aggressive Timeline",
               icon: "timer",
@@ -122,6 +129,13 @@ export const pos: CaseStudy = {
               tone: "approach",
               body: "Prioritize practical changes that simplify tasks, clarify actions, and improve consistency without adding complexity.",
             },
+            // Temporary duplicate: replace with new copy.
+            {
+              title: "Targeted Improvements",
+              icon: "target",
+              tone: "approach",
+              body: "Prioritize practical changes that simplify tasks, clarify actions, and improve consistency without adding complexity.",
+            },
           ],
         },
         {
@@ -177,6 +191,13 @@ export const pos: CaseStudy = {
                   tone: "solution",
                   body: "Removed item thumbnails, since merchants rarely uploaded any, and decimal quantities, since items were always sold in whole numbers",
                 },
+                {
+                  title: "Fewer Steps",
+                  icon: "route",
+                  tone: "solution",
+                  body: "Merchants could add items and adjust quantities on the screen, eliminating unnecessary navigation and keeping key actions in reach.",
+                },
+                // Temporary duplicate: replace with new copy.
                 {
                   title: "Fewer Steps",
                   icon: "route",
@@ -536,6 +557,8 @@ export const pos: CaseStudy = {
           type: "metrics",
           metrics: [
             { value: "$400 billion+", label: "Annual processing volume" },
+            { value: "20,000+", label: "Merchant clients empowered" },
+            // Temporary duplicate: replace with new copy.
             { value: "20,000+", label: "Merchant clients empowered" },
           ],
         },
