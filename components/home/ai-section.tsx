@@ -15,7 +15,7 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-5 pt-5 text-left md:gap-6 md:pl-6 md:pt-6"
+        className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-5 pt-5 text-left md:gap-6 md:pl-6 md:pt-6 lg:pl-8"
       >
         <span className="flex flex-col gap-0 pr-5 md:pr-6">
           {card.count !== undefined ? (
