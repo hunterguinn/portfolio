@@ -108,7 +108,7 @@
   border-color: var(--border);
 }
 .light .ai-card-panel {
-  background-color: var(--surface);
+  background-color: var(--background);
 }
 
 /* Primary buttons change fill on hover; secondary buttons are borderless surface pills. */
@@ -204,17 +204,17 @@
  * Scroll fade. Titles, text blocks and cards are hidden until ScrollFade marks them with [data-in],
  * then fade in after a 0.2s delay. Keep this target list in sync with components/site/scroll-fade.tsx.
  */
-.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item) {
+.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow) {
   opacity: 0;
   transition:
     opacity 600ms ease 200ms,
     background-color 280ms ease;
 }
-.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item)[data-in] {
+.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow)[data-in] {
   opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  .js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item) {
+  .js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow) {
     opacity: 1;
     transition: none;
   }
@@ -223,12 +223,10 @@
 /* Section labels brighten after remaining in view for one second. */
 .section-eyebrow {
   color: var(--foreground);
-}
-.js main p.section-eyebrow {
   opacity: 0.4;
-  transition: opacity 300ms ease;
+  transition: opacity 500ms ease;
 }
-.js main p.section-eyebrow[data-active="true"] {
+.section-eyebrow[data-active="true"] {
   opacity: 1;
 }
 .section-eyebrow-dot,
@@ -565,4 +563,14 @@
 }
 .case-study :is(.card-surface, .card-hover):hover {
   background-color: var(--surface);
+}
+
+/* Reuse muted at 25% for slightly darker inactive light-mode rail lines. */
+.light a:not(:hover):not(:focus-visible) .rail-line[data-active="false"] {
+  background-color: color-mix(in srgb, var(--muted) 25%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-eyebrow {
+    transition: none;
+  }
 }
