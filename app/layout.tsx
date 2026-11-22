@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next"
 import { ThemeProvider } from "next-themes"
 import { CustomCursor } from "@/components/site/custom-cursor"
-import { PageTransition } from "@/components/site/page-transition"
 import { ContextMenuGuard } from "@/components/site/context-menu-guard"
-import { ScrollFade } from "@/components/site/scroll-fade"
+import { MotionReveal } from "@/components/site/motion-reveal"
 import { ToastHost } from "@/components/site/toast"
 import { ProjectAccessGate } from "@/components/site/project-access-gate"
 import "./globals.css"
@@ -39,10 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Skip to content
           </a>
           <main id="main">{children}</main>
-          <ScrollFade />
+          <MotionReveal />
           <ProjectAccessGate />
           <ToastHost />
-          <PageTransition />
           <CustomCursor />
           <ContextMenuGuard />
         </ThemeProvider>

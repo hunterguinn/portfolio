@@ -102,6 +102,23 @@
   --radius-lg: 24px;
 }
 
+/*
+ * Motion. One language for every reveal and interaction; components/site/motion-reveal.tsx mirrors
+ * the trigger offset and stagger values. No bounce, blur, rotation, parallax, count-ups or loops.
+ */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-reveal: 480ms;
+  --motion-intro: 560ms;
+  --motion-feedback: 180ms;
+  --motion-cover: 400ms;
+  --motion-distance: 8px;
+  --motion-distance-media: 12px;
+  --motion-stagger: 60ms;
+  --motion-stagger-cap: 180ms;
+  --motion-trigger-offset: 32px;
+}
+
 @utility text-strong {
   font-weight: var(--font-weight-semibold);
 }

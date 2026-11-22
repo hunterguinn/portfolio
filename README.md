@@ -74,7 +74,30 @@ Rules:
 - Pick the radius by size: 12px for small cards, 24px for larger cards and image-level containers. Never add arbitrary values such as `rounded-[20px]`, and do not reintroduce `xs`, `sm`, `xl`, `2xl`, `3xl`, `4xl`, or `icon` tokens; they are removed from `styles/tokens.css`.
 - A corner-specific radius (for example `rounded-tl-lg`) must still use one of the two values.
 - Nested rounded elements use the same token as their parent, or `rounded-md` inside a `rounded-lg` parent.
-- Continuous corners (squircles) and pill behavior are applied by the site stylesheet. The animated page curtain retains its original percentage / viewport-based keyframe geometry.
+- Continuous corners (squircles) and pill behavior are applied by the site stylesheet.
+
+### Motion
+
+All motion uses the shared tokens in `styles/tokens.css`; `components/site/motion-reveal.tsx` mirrors the trigger offset and stagger values.
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--motion-ease` | cubic-bezier(0.22, 1, 0.36, 1) | Every reveal and movement |
+| `--motion-reveal` | 480ms | In-view content reveals |
+| `--motion-intro` | 560ms | Page introduction sequence |
+| `--motion-feedback` | 180ms | Hover, focus and state color changes |
+| `--motion-cover` | 400ms | Project cover scale (1.01) |
+| `--motion-distance` / `--motion-distance-media` | 8px / 12px | Standard / large media rise |
+| `--motion-stagger` / `--motion-stagger-cap` | 60ms / 180ms | Sibling stagger and its maximum delay |
+| `--motion-trigger-offset` | 32px | Reveal when the leading edge passes 32px above the viewport bottom |
+
+Rules:
+
+- Mark a meaningful content unit with `data-reveal` (`""` standard, `"media"` figures and covers, `"fade"` small labels). Reveal a heading with its prose, a card, a figure with its caption, or a metric row. Never animate single paragraphs, lines or icons, or wrap a whole long section.
+- Units reveal once per page visit and never fade out. Content already on screen at load is never hidden; units skipped by fast scrolling appear instantly.
+- Only the page introduction uses `data-intro` with `data-intro-step` 1–3 (60ms apart, settled within ~750ms). Persistent controls are never part of it.
+- Hover feedback only on interactive elements and only for fine pointers: color/border changes on links, buttons and clickable cards (`.card-hover`), a 2px `.arrow-nudge`, and the clipped `.cover-zoom`. Static cards, testimonials and metrics get entrance motion only.
+- No bounce, overshoot, blur, rotation, parallax, animated gradients, floating or looping decoration, typewriter or word-by-word effects, or count-up numbers. Reduced-motion users get no movement.
 
 ## Reuse in Vercel v0
 

@@ -10,13 +10,17 @@ export function Hero() {
         <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_150px] md:gap-20">
           <div className="flex min-w-0 flex-col gap-12">
             <div className="flex flex-col gap-4">
-              <p className="text-eyebrow text-muted">Portfolio / 2027</p>
-              <h1 id="intro-title" className="text-hero whitespace-nowrap">
-                {site.name}
-              </h1>
-              <p className="text-body text-muted">{home.headline}</p>
+              <p data-intro="fade" className="text-eyebrow text-muted">
+                Portfolio / 2027
+              </p>
+              <div data-intro="" data-intro-step="1" className="flex flex-col gap-4">
+                <h1 id="intro-title" className="text-hero whitespace-nowrap">
+                  {site.name}
+                </h1>
+                <p className="text-body text-muted">{home.headline}</p>
+              </div>
             </div>
-            <dl className="flex flex-col gap-2">
+            <dl data-intro="" data-intro-step="2" className="flex flex-col gap-2">
               <dt className="text-eyebrow text-muted">Currently</dt>
               <dd className="flex flex-col gap-1">
                 <span className="text-body">{home.current.role}</span>
@@ -26,12 +30,12 @@ export function Hero() {
             </dl>
           </div>
 
-          <dl className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
+          <dl data-intro="" data-intro-step="3" className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
             <dt className="text-eyebrow text-muted">Tools</dt>
             <dd>
               <ul className="flex flex-wrap gap-2">
                 {home.stack.map((tool) => (
-                  <li key={tool.name} className="card-hover rounded-full border px-3 py-1 text-caption text-muted">
+                  <li key={tool.name} className="rounded-full border px-3 py-1 text-caption text-muted">
                     {tool.name}
                   </li>
                 ))}

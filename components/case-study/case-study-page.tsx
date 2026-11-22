@@ -61,13 +61,21 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
           className={study.slug === "merrill" ? "flex min-h-svh flex-col justify-center" : "pt-28 md:pt-36"}
         >
           <div className="flex flex-col gap-4 md:gap-6">
-            <p className="text-eyebrow text-muted">{study.eyebrow}</p>
-            <h1 id="overview-title" className="text-display">
+            <p data-intro="fade" className="text-eyebrow text-muted">
+              {study.eyebrow}
+            </p>
+            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-display">
               {study.title}
             </h1>
-            <p className="text-body text-muted">{study.intro}</p>
+            <p data-intro="" data-intro-step="2" className="text-body text-muted">
+              {study.intro}
+            </p>
           </div>
-          <dl className={`grid gap-6 sm:grid-cols-2 ${study.slug === "merrill" ? "" : "border-t pt-6"}`}>
+          <dl
+            data-intro=""
+            data-intro-step="3"
+            className={`grid gap-6 sm:grid-cols-2 ${study.slug === "merrill" ? "" : "border-t pt-6"}`}
+          >
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>
@@ -75,36 +83,41 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
         {chapters.map((chapter, chapterIndex) => (
           <SectionShell key={chapter.id} id={chapter.id}>
-            <div className="flex flex-col gap-4">
+            <div data-reveal="" className="flex flex-col gap-4">
               <SectionEyebrow>{`Section ${String(chapterIndex + 1).padStart(2, "0")}`}</SectionEyebrow>
               <SectionTitle id={chapter.id}>{chapter.name}</SectionTitle>
             </div>
             <div className="flex flex-col gap-16 md:gap-20">
               {chapter.sections.map((section, sectionIndex) => (
-                <div key={section.id} className="flex min-w-0 flex-col gap-6">
-                  {section.title !== chapter.name ? (
-                    <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
-                      {section.title}
-                    </h3>
-                  ) : null}
-                  <Blocks blocks={section.blocks} />
-                </div>
+                <Blocks
+                  key={section.id}
+                  blocks={section.blocks}
+                  heading={
+                    section.title !== chapter.name ? (
+                      <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
+                        {section.title}
+                      </h3>
+                    ) : undefined
+                  }
+                />
               ))}
             </div>
           </SectionShell>
         ))}
 
         <SectionShell id="next-project">
-          <SectionEyebrow>Next project</SectionEyebrow>
-          <Link href={next.href} className="group -mt-6 flex flex-col gap-3">
-            <span id="next-project-title" className="text-display transition-colors group-hover:text-muted">
-              {next.title}
-            </span>
-            <span className="inline-flex items-center gap-2 text-caption text-muted transition-colors group-hover:text-foreground">
-              View project
-              <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-            </span>
-          </Link>
+          <div data-reveal="" className="flex flex-col gap-4 md:gap-6">
+            <SectionEyebrow>Next project</SectionEyebrow>
+            <Link href={next.href} className="group flex flex-col gap-3">
+              <span id="next-project-title" className="text-display transition-colors group-hover:text-muted">
+                {next.title}
+              </span>
+              <span className="inline-flex items-center gap-2 text-caption text-muted transition-colors group-hover:text-foreground">
+                View project
+                <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
+              </span>
+            </Link>
+          </div>
         </SectionShell>
       </article>
     </>

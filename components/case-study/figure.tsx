@@ -19,7 +19,7 @@ export function FigureFrame({
   const showCaption = meta.number || captionText || showPending
 
   return (
-    <figure className="flex flex-col gap-4">
+    <figure data-reveal="media" className="flex flex-col gap-4">
       {children}
       {showCaption ? (
         <figcaption className="text-caption flex flex-wrap items-baseline gap-x-3 gap-y-1">

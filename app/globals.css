@@ -80,30 +80,28 @@
   @apply border border-border;
   background-color: var(--surface);
 }
-/* Every card uses the surface color on hover, with a lighter border. */
-.card-surface,
+/*
+ * Clickable cards (articles, contact links, project covers) get a restrained border change.
+ * Static cards (.card-surface) never react to hover; they only use the entrance reveal.
+ */
 .card-hover {
   transition:
-    background-color 280ms ease,
-    border-color 280ms ease;
+    background-color var(--motion-feedback) ease,
+    border-color var(--motion-feedback) ease,
+    opacity var(--motion-reveal) var(--motion-ease),
+    translate var(--motion-reveal) var(--motion-ease);
 }
-.card-surface:hover,
-.card-hover:hover {
-  border-color: color-mix(in srgb, var(--muted) 40%, transparent);
+@media (hover: hover) and (pointer: fine) {
+  .card-hover:hover {
+    border-color: color-mix(in srgb, var(--muted) 40%, transparent);
+  }
 }
-.card-surface:hover,
-.card-hover:hover {
-  background-color: var(--surface);
-}
-.project-preview-card:hover,
-.gallery-card:hover {
-  background-color: var(--surface);
-  border-color: var(--border);
+.card-hover:focus-visible {
+  border-color: var(--foreground);
 }
 
-/* Light cards keep the same surface and border on hover. */
-.light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card),
-.light :is(.card-surface, .card-hover, .project-preview-card, .gallery-card):hover {
+/* Light cards keep the same surface and border. */
+.light .card-surface {
   background-color: var(--surface);
   border-color: var(--border);
 }
@@ -201,33 +199,118 @@
 }
 
 /*
- * Scroll fade. Titles, text blocks and cards are hidden until ScrollFade marks them with [data-in],
- * then fade in after a 0.2s delay. Keep this target list in sync with components/site/scroll-fade.tsx.
+ * In-view reveal. MotionReveal marks off-screen [data-reveal] units as [data-pending]; removing it
+ * plays the reveal once. Content is never hidden without JS or when already on screen.
+ * data-reveal=""      → standard: fade + 8px rise
+ * data-reveal="media" → figures and covers: fade + 12px rise
+ * data-reveal="fade"  → small labels: opacity only
  */
-.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow) {
-  opacity: 0;
+[data-reveal] {
   transition:
-    opacity 600ms ease 200ms,
-    background-color 280ms ease;
+    opacity var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms),
+    translate var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms);
 }
-.js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow)[data-in] {
-  opacity: 1;
+[data-reveal][data-pending] {
+  opacity: 0;
+  translate: 0 var(--motion-distance);
 }
-@media (prefers-reduced-motion: reduce) {
-  .js main :is(h1, h2, h3, p, blockquote, figure, article, .card-surface, .fade-item):not(.section-eyebrow) {
-    opacity: 1;
-    transition: none;
+[data-reveal="media"][data-pending] {
+  translate: 0 var(--motion-distance-media);
+}
+[data-reveal="fade"][data-pending] {
+  translate: none;
+}
+[data-reveal][data-instant] {
+  transition: none;
+}
+/* Clickable cards that also reveal keep their own hover transitions alongside the reveal. */
+.card-hover[data-reveal] {
+  transition:
+    background-color var(--motion-feedback) ease,
+    border-color var(--motion-feedback) ease,
+    opacity var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms),
+    translate var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms);
+}
+
+/*
+ * Page introduction: a compact sequence that starts on first render. Steps are 60ms apart and the
+ * whole intro settles within ~750ms. Persistent controls are not part of it.
+ */
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    translate: 0 var(--motion-distance);
+  }
+}
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+  }
+}
+[data-intro] {
+  animation: intro-rise var(--motion-intro) var(--motion-ease) both;
+  animation-delay: calc(var(--intro-step, 0) * var(--motion-stagger));
+}
+[data-intro="fade"] {
+  animation-name: intro-fade;
+}
+[data-intro-step="1"] {
+  --intro-step: 1;
+}
+[data-intro-step="2"] {
+  --intro-step: 2;
+}
+[data-intro-step="3"] {
+  --intro-step: 3;
+}
+
+/* Link arrows nudge 2px in the direction of travel. */
+.arrow-nudge {
+  transition: translate var(--motion-feedback) var(--motion-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .arrow-nudge {
+    translate: 2px 0;
   }
 }
 
-/* Section labels brighten after remaining in view for one second. */
+/* Clickable project covers: a 1.01 clipped scale inside the existing frame. */
+.cover-zoom {
+  transition: scale var(--motion-cover) var(--motion-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .cover-zoom {
+    scale: 1.01;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  .card-hover[data-reveal] {
+    transition:
+      background-color var(--motion-feedback) ease,
+      border-color var(--motion-feedback) ease;
+  }
+  [data-reveal][data-pending] {
+    opacity: 1;
+    translate: none;
+  }
+  [data-intro] {
+    animation: none;
+  }
+  .arrow-nudge,
+  .cover-zoom {
+    transition: none;
+  }
+  .group:hover :is(.arrow-nudge, .cover-zoom) {
+    translate: none;
+    scale: none;
+  }
+}
+
+/* Section labels are static; the dot is a fixed marker, not an indicator. */
 .section-eyebrow {
   color: var(--foreground);
-  opacity: 0.4;
-  transition: opacity 500ms ease;
-}
-.section-eyebrow[data-active="true"] {
-  opacity: 1;
 }
 .section-eyebrow-dot,
 .profile-availability-dot {
@@ -242,68 +325,10 @@
   background-color: var(--foreground);
   box-shadow: 0 0 0.5rem color-mix(in srgb, var(--foreground) 70%, transparent);
 }
-/* Same 6px dot as the section eyebrows, with a soft green halo that breathes outward and fades. */
+/* Same 6px dot as the section eyebrows, in green with a static soft glow. */
 .profile-availability-dot {
-  position: relative;
   background-color: var(--green);
-}
-.profile-availability-dot::before {
-  content: "";
-  position: absolute;
-  inset: -0.5rem;
-  border-radius: var(--radius-full);
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--green) 55%, transparent) 0%,
-    color-mix(in srgb, var(--green) 25%, transparent) 45%,
-    transparent 72%
-  );
-  filter: blur(1.5px);
-  animation: availability-halo 2.4s ease-in-out infinite;
-}
-@keyframes availability-halo {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .profile-availability-dot::before {
-    animation: none;
-    opacity: 0.5;
-  }
-}
-
-/* Testimonial ticker: steady, endless, no controls. Fades into the page background at both edges. */
-.ticker {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, var(--overlay-black) 10%, var(--overlay-black) 90%, transparent);
-}
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker 28s linear infinite;
-}
-.ticker-reverse .ticker-track {
-  animation-direction: reverse;
-}
-@keyframes ticker {
-  to {
-    transform: translateX(-50%);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ticker {
-    overflow-x: auto;
-  }
-  .ticker-track {
-    animation: none;
-  }
+  box-shadow: 0 0 0.5rem color-mix(in srgb, var(--green) 60%, transparent);
 }
 
 /* Copy-email confirmation flips vertically without changing the button's footprint. */
@@ -348,17 +373,6 @@
 .toast[data-visible="true"] {
   opacity: 1;
   transform: none;
-}
-
-/* Page transition curtain. */
-.page-curtain {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  pointer-events: none;
-  visibility: hidden;
-  background: var(--surface);
-  will-change: transform;
 }
 
 /* Custom cursor (fine pointers only, enabled by CustomCursor). */
@@ -551,7 +565,7 @@
   color: var(--foreground);
 }
 
-/* Project card surfaces stay distinct from the page and use surface on hover. */
+/* Project card surfaces stay distinct from the page. */
 .case-study {
   --card-background: #010101;
 }
@@ -561,16 +575,8 @@
 .case-study :is(.card-surface, .card-hover) {
   background-color: var(--card-background);
 }
-.case-study :is(.card-surface, .card-hover):hover {
-  background-color: var(--surface);
-}
 
 /* Reuse muted at 25% for slightly darker inactive light-mode rail lines. */
 .light a:not(:hover):not(:focus-visible) .rail-line[data-active="false"] {
   background-color: color-mix(in srgb, var(--muted) 25%, transparent);
-}
-@media (prefers-reduced-motion: reduce) {
-  .section-eyebrow {
-    transition: none;
-  }
 }

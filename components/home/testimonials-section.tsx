@@ -1,5 +1,5 @@
 import { home } from "@/lib/content/home"
-import { SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { Avatar } from "@/components/site/avatar"
 
 export function TestimonialsSection() {
@@ -7,11 +7,13 @@ export function TestimonialsSection() {
 
   return (
     <SectionShell id="testimonials">
-      <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
+      <SectionHeader>
+        <SectionTitle id="testimonials">{testimonials.title}</SectionTitle>
+      </SectionHeader>
       <ul className="grid gap-3 md:grid-cols-2">
         {testimonials.items.map((item, index) => (
-          <li key={`${item.name}-${index}`}>
-            <figure className="flex h-full flex-col gap-16 card-hover rounded-lg border p-6 lg:p-6">
+          <li key={`${item.name}-${index}`} data-reveal="">
+            <figure className="flex h-full flex-col gap-16 rounded-lg border p-6 lg:p-6">
               <div className="flex items-center justify-between text-eyebrow text-muted">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <span>Testimonial</span>

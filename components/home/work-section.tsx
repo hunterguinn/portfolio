@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
-import { SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { MetricValue } from "@/components/case-study/content-primitives"
 
 function ProjectCover({ project }: { project: ProjectSummary }) {
@@ -14,7 +14,7 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
       className="card-hover group relative block overflow-hidden rounded-lg border"
       style={{ aspectRatio: project.cover.aspect }}
     >
-      <div className="absolute inset-0 transform-gpu transition-transform duration-700 ease-out will-change-transform motion-safe:group-hover:scale-[1.06]">
+      <div className="cover-zoom absolute inset-0">
         <Image
           src={project.background}
           alt=""
@@ -54,21 +54,25 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
 
   return (
     <article aria-labelledby={titleId} className="flex min-w-0 flex-col gap-6">
-      <ProjectCover project={project} />
+      <div data-reveal="media">
+        <ProjectCover project={project} />
+      </div>
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-3">
-          <h3 id={titleId} className="text-heading">
-            {project.title}
-          </h3>
-          <p className="text-body text-muted">{project.description}</p>
-        </div>
-        <div className="flex items-baseline justify-between gap-4 text-caption text-muted tabular-nums">
-          <span>{category}</span>
-          <span>{year}</span>
+        <div data-reveal="" className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
+            <h3 id={titleId} className="text-heading">
+              {project.title}
+            </h3>
+            <p className="text-body text-muted">{project.description}</p>
+          </div>
+          <div className="flex items-baseline justify-between gap-4 text-caption text-muted tabular-nums">
+            <span>{category}</span>
+            <span>{year}</span>
+          </div>
         </div>
         <dl className="grid gap-3 sm:grid-cols-2">
           {project.metrics.map((metric) => (
-            <div key={metric.label} className="card-hover flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
+            <div key={metric.label} data-reveal="" className="flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
               <dt className="text-caption text-muted">{metric.label}</dt>
               <dd>
                 <MetricValue metric={metric} />
@@ -84,7 +88,9 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
 export function WorkSection() {
   return (
     <SectionShell id="work">
-      <SectionTitle id="work">{home.work.title}</SectionTitle>
+      <SectionHeader>
+        <SectionTitle id="work">{home.work.title}</SectionTitle>
+      </SectionHeader>
       <div className="flex flex-col gap-16 md:gap-24">
         {home.work.projects.map((project) => (
           <ProjectEntry key={project.slug} project={project} />

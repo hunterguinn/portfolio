@@ -4,13 +4,12 @@ import { useState } from "react"
 import { ArrowRight } from "@phosphor-icons/react/dist/csr/ArrowRight"
 import { home } from "@/lib/content/home"
 import type { AiCard } from "@/lib/content/types"
-import { SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { CountUp } from "@/components/site/count-up"
+import { SectionHeader, SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { ArticleModal } from "./article-modal"
 
 function AiCardView({ card, index, onOpen }: { card: AiCard; index: number; onOpen: (title: string, trigger: HTMLElement) => void }) {
   return (
-    <li className="flex">
+    <li data-reveal="" className="flex">
       <button
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
@@ -24,7 +23,7 @@ function AiCardView({ card, index, onOpen }: { card: AiCard; index: number; onOp
           </span>
           {card.count !== undefined ? (
             <span className="text-heading tabular-nums">
-              <CountUp to={card.count} suffix={card.suffix ?? ""} />
+              {`${card.count}${card.suffix ?? ""}`}
             </span>
           ) : null}
           <span className="text-body">{card.topic}</span>
@@ -34,7 +33,7 @@ function AiCardView({ card, index, onOpen }: { card: AiCard; index: number; onOp
           <span className="text-body text-muted">{card.body}</span>
           <span className="inline-flex items-center gap-2 self-end text-caption text-foreground">
             Read more
-            <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+            <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
           </span>
         </span>
       </button>
@@ -48,8 +47,10 @@ export function AiSection() {
 
   return (
     <SectionShell id="ai">
-      <SectionTitle id="ai">{ai.title}</SectionTitle>
-      <SectionIntro>{ai.intro}</SectionIntro>
+      <SectionHeader>
+        <SectionTitle id="ai">{ai.title}</SectionTitle>
+        <SectionIntro>{ai.intro}</SectionIntro>
+      </SectionHeader>
       <ul className="grid gap-3 sm:grid-cols-2">
         {ai.cards.map((card, index) => (
           <AiCardView key={card.topic} card={card} index={index} onOpen={(_, trigger) => setOpen({ card, trigger })} />
