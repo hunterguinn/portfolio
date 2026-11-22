@@ -47,11 +47,11 @@ function BackButton({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
+      aria-label="Back to portfolio"
       onClick={() => sessionStorage.setItem(RESTORE_HOME_KEY, "1")}
-      className={`btn-secondary inline-flex h-9 items-center gap-2 rounded-full border border-transparent pl-3 pr-4 text-caption ${className}`}
+      className={`btn-secondary inline-flex size-10 shrink-0 items-center justify-center rounded-icon border border-transparent ${className}`}
     >
       <ArrowLeft weight="regular" className="size-4" aria-hidden="true" />
-      Portfolio
     </Link>
   )
 }
