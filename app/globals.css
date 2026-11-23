@@ -87,17 +87,15 @@
     background-color var(--motion-card) var(--motion-ease),
     border-color var(--motion-card) var(--motion-ease);
 }
-/*
- * Clickable cards (articles, contact links) lift 4px with a restrained border and background
- * change. The lift uses `transform`, so it composes with the entrance `translate` instead of
- * overriding it. Static cards (.card-surface) get the same background and border change on hover
- * but never lift. Project covers (.card-hover-flat) stay put and rely on the clipped image zoom.
- */
+/* Every card lifts on hover, whether it is interactive or purely presentational. */
+.card-surface,
 .card-static,
+.card-hover,
 .pill-hover {
   transition:
     background-color var(--motion-card) var(--motion-ease),
-    border-color var(--motion-card) var(--motion-ease);
+    border-color var(--motion-card) var(--motion-ease),
+    transform var(--motion-card) var(--motion-ease);
 }
 .light .avatar-initials {
   background-color: var(--background);
@@ -105,28 +103,11 @@
 @media (hover: hover) and (pointer: fine) {
   .card-surface:hover,
   .card-static:hover,
+  .card-hover:hover,
   .pill-hover:hover {
-    border-color: var(--border-hover);
-    background-color: var(--surface);
-  }
-}
-.card-hover {
-  transition:
-    background-color var(--motion-card) var(--motion-ease),
-    border-color var(--motion-card) var(--motion-ease),
-    transform var(--motion-card) var(--motion-ease);
-}
-@media (hover: hover) and (pointer: fine) {
-  .card-hover:hover {
     transform: translateY(var(--motion-card-lift));
     border-color: var(--border-hover);
     background-color: var(--surface);
-  }
-}
-@media (hover: hover) and (pointer: fine) {
-  .card-hover-flat:hover {
-    transform: none;
-    background-color: transparent;
   }
 }
 .card-hover:focus-visible {
@@ -360,12 +341,18 @@
   .cover-zoom.media-settle {
     transition: none;
   }
-  .card-hover {
+  .card-surface,
+  .card-static,
+  .card-hover,
+  .pill-hover {
     transition:
       background-color var(--motion-card) ease,
       border-color var(--motion-card) ease;
   }
-  .card-hover:hover {
+  .card-surface:hover,
+  .card-static:hover,
+  .card-hover:hover,
+  .pill-hover:hover {
     transform: none;
   }
   [data-reveal][data-pending],
