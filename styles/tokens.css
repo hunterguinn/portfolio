@@ -98,7 +98,7 @@
   --radius-none: 0px;
   --radius-full: calc(infinity * 1px);
   /* Only two radii: md for small cards, lg for larger cards and image-level containers. */
-  --radius-md: 12px;
+  --radius-md: 16px;
   --radius-lg: 24px;
 }
 

@@ -89,8 +89,14 @@
  * overriding it. Static cards (.card-surface) get the same background and border change on hover
  * but never lift. Project covers (.card-hover-flat) stay put and rely on the clipped image zoom.
  */
+.card-static {
+  transition:
+    background-color var(--motion-card) var(--motion-ease),
+    border-color var(--motion-card) var(--motion-ease);
+}
 @media (hover: hover) and (pointer: fine) {
-  .card-surface:hover {
+  .card-surface:hover,
+  .card-static:hover {
     border-color: color-mix(in srgb, var(--muted) 45%, transparent);
     background-color: color-mix(in srgb, var(--surface) 70%, var(--surface-strong));
   }
@@ -122,6 +128,12 @@
 .light .card-surface {
   background-color: var(--surface);
   border-color: var(--border);
+}
+@media (hover: hover) and (pointer: fine) {
+  .light .card-surface:hover {
+    border-color: color-mix(in srgb, var(--muted) 45%, transparent);
+    background-color: color-mix(in srgb, var(--surface) 70%, var(--surface-strong));
+  }
 }
 .light .ai-card-panel {
   background-color: var(--background);
@@ -641,6 +653,12 @@
 }
 .case-study :is(.card-surface, .card-hover) {
   background-color: var(--card-background);
+}
+@media (hover: hover) and (pointer: fine) {
+  .case-study :is(.card-surface, .card-hover, .card-static):hover {
+    border-color: color-mix(in srgb, var(--muted) 45%, transparent);
+    background-color: color-mix(in srgb, var(--card-background) 70%, var(--surface-strong));
+  }
 }
 
 /* Reuse muted at 25% for slightly darker inactive light-mode rail lines. */

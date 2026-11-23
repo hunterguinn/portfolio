@@ -78,11 +78,6 @@ export type Testimonial = { quote: string; name: string; role: string }
 export type StackTool = { name: string; src: string }
 
 export type AiCard = {
-  /** Verified count shown before the topic, e.g. 92 with suffix "+". */
-  count?: number
-  suffix?: string
-  topic: string
-  sublabel?: string
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
   articleTitle: string

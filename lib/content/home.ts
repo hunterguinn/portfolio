@@ -142,10 +142,8 @@ export const home = {
       "At Bank of America, I'm leading Figma AI enablement through hands-on learning sessions, designer mentorship, and practical tooling. Alongside this work, I'm exploring how AI-assisted prototyping, reusable components, and automation can improve the way teams design, communicate, and build products.",
     cards: [
       {
-        count: 10,
-        topic: "Learning sessions hosted",
         body: "Supporting designers as they strengthen their Figma skills, adopt more consistent practices, and discover opportunities to improve their workflows.",
-        articleTitle: "Learning sessions hosted",
+        articleTitle: "Making AI practical for everyday design",
         articleContent: [
           { body: "I've been leading Figma AI enablement and learning sessions across our design organization, helping designers explore emerging capabilities through practical examples." },
           { body: "Rather than focusing on AI features in isolation, I've approached these sessions around everyday design challenges: reducing repetitive work, accelerating early exploration, working more effectively with components, and finding opportunities to simplify existing processes." },
@@ -155,9 +153,6 @@ export const home = {
         ],
       },
       {
-        count: 92,
-        suffix: "+",
-        topic: "Designers supported",
         body: "Helping designers strengthen their skills, workflow, and technique.",
         articleTitle: "Designer mentorship",
         articleContent: [
@@ -169,8 +164,6 @@ export const home = {
         ],
       },
       {
-        topic: "Concept to Code",
-        sublabel: "Exploration · Prototyping · Open source",
         body: "Building interactive, AI-assisted prototypes that demonstrate product logic, design states, and reusable components beyond static mockups.",
         articleTitle: "Concept to Code",
         articleContent: [
@@ -182,8 +175,6 @@ export const home = {
         ],
       },
       {
-        topic: "System to delivery",
-        sublabel: "Systems · Tooling · Automation",
         body: "Exploring how shared design tokens, components, and documentation can create greater consistency between design and implementation.",
         articleTitle: "System to delivery",
         articleContent: [

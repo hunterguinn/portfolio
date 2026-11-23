@@ -21,7 +21,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
   }
 
   return (
-    <div className="flex flex-col gap-6 rounded-lg border p-4 md:p-6">
+    <div className="card-static flex flex-col gap-6 rounded-lg border p-4 md:p-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor={`${baseId}-holdings`} className="flex items-baseline justify-between text-caption text-muted">
@@ -70,12 +70,12 @@ export function SelectionLimit({ limit }: { limit: number }) {
       </div>
 
       <ul className="grid gap-3 sm:grid-cols-2" aria-live="polite">
-        <li className="flex flex-col gap-1 rounded-md border p-4 lg:p-6">
+        <li className="card-static flex flex-col gap-1 rounded-md border p-4 lg:p-6">
           <span className="text-eyebrow text-muted">Full transfer</span>
           <span className="text-caption text-foreground">{`All ${holdings} securities`}</span>
         </li>
         <li
-          className={`flex flex-col gap-1 rounded-md border p-4 lg:p-6 transition-colors duration-300 ${atCap ? "bg-surface" : ""}`}
+          className={`card-static flex flex-col gap-1 rounded-md border p-4 lg:p-6 ${atCap ? "bg-surface" : ""}`}
         >
           <span className="text-eyebrow text-muted">Partial transfer</span>
           <span className="text-caption text-foreground">
