@@ -56,6 +56,13 @@ export function ArticleModal({
   const scrollRef = useRef<HTMLDivElement>(null)
   const titleId = useId()
   const [closing, setClosing] = useState(false)
+  const largerHeadings = new Set([
+    "Building a shared foundation",
+    "Connecting design and code",
+    "Automation needs structure",
+    "Making the approach reproducible",
+    "Choosing the right medium",
+  ])
   const closingRef = useRef(false)
   const exitTimer = useRef<number | undefined>(undefined)
 
@@ -83,7 +90,7 @@ export function ArticleModal({
         aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
-        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] flex-col gap-4 outline-none"
+        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] flex-col gap-6 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
           <h2 id={titleId} className="text-heading">
@@ -101,7 +108,11 @@ export function ArticleModal({
         <div ref={scrollRef} className="min-h-0 space-y-5 overflow-y-auto overscroll-contain">
           {content.map((section, index) => (
             <section key={`${section.heading ?? "intro"}-${index}`} className="space-y-2">
-              {section.heading ? <h3 className="text-caption text-strong">{section.heading}</h3> : null}
+              {section.heading ? (
+                <h3 className={largerHeadings.has(section.heading) ? "text-body text-strong" : "text-caption text-strong"}>
+                  {section.heading}
+                </h3>
+              ) : null}
               {section.body.split("\n\n").map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex} className="text-body text-muted">{paragraph}</p>
               ))}
