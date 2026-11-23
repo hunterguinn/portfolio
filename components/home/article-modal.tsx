@@ -54,7 +54,6 @@ export function ArticleModal({
 }) {
   const dialogRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const hasDemonstration = content.some((section) => section.demonstration === "contextual-prompt")
   const titleId = useId()
   const [closing, setClosing] = useState(false)
   const closingRef = useRef(false)
@@ -84,7 +83,7 @@ export function ArticleModal({
         aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
-        className={`sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] flex-col gap-4 outline-none ${hasDemonstration ? "max-w-4xl" : "max-w-lg"}`}
+        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] flex-col gap-4 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
           <h2 id={titleId} className="text-heading">

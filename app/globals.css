@@ -42,13 +42,16 @@
 }
 
 /* One centered reading column; its responsive width creates the horizontal gutters. */
+:root {
+  --content-max-width: 740px;
+}
 .page-band[class*="border-t-"] {
   border-top-color: var(--surface);
 }
 .page-container {
   box-sizing: border-box;
   width: 90%;
-  max-width: 740px;
+  max-width: var(--content-max-width);
   margin-inline: auto;
   padding: 0;
 }
@@ -617,6 +620,7 @@
 /* Shared modal appearance; colors come from the active site theme. */
 .modal-panel {
   @apply rounded-lg border p-6 text-left;
+  max-width: min(90vw, var(--content-max-width));
   background-color: var(--background);
   color: var(--foreground);
   border-color: var(--border);
