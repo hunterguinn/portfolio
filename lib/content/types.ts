@@ -77,6 +77,12 @@ export type Testimonial = { quote: string; name: string; role: string }
 
 export type StackTool = { name: string; src: string }
 
+export type ArticleBlock =
+  | { type: "p"; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "metrics"; metrics: Metric[]; note?: string }
+  | { type: "callout"; text: string; attribution?: string }
+
 export type ArticleSection = {
   heading?: string
   /** Separate paragraphs with a blank line. */
@@ -84,6 +90,7 @@ export type ArticleSection = {
   items?: string[]
   conclusion?: string
   demonstration?: "contextual-prompt"
+  blocks?: ArticleBlock[]
 }
 
 export type AiCard = {

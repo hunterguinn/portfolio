@@ -178,12 +178,96 @@ export const home = {
       {
         body: "Strengthening Figma skills, component practices, and shared workflows to help designers work more consistently and effectively across teams.",
         articleTitle: "Helping designers build stronger Figma practices",
+        modalTitle: "Building a stronger design team",
         articleContent: [
-          { body: "Design tools are becoming increasingly capable. Tasks that once required substantial manual effort can now be completed faster through automation, reusable components, and AI-assisted workflows. But greater capability also creates a new challenge: knowing how to use these tools thoughtfully." },
-          { body: "I've been helping designers strengthen the fundamentals behind their work, particularly in Figma: component structure, reusable patterns, consistent design practices, and more efficient ways to organize and maintain files." },
-          { heading: "Improving the way we work", body: "Small workflow decisions can have consequences beyond the individual designer. Component structure affects whether others can reuse it; file organization affects how easily teammates can understand it; and consistent patterns influence the effort required to maintain an experience. My approach is to help designers understand the reasoning behind these practices rather than simply introducing another set of rules." },
-          { heading: "Teaching principles, not shortcuts", body: "A tool might generate a component quickly, but that component still needs appropriate structure, naming, behavior, and alignment with an existing design system. Strong fundamentals help designers evaluate and improve outputs, whether they are working on components, prototypes, documentation, or emerging workflows." },
-          { heading: "The broader opportunity", body: "Shared knowledge creates opportunities for teams to work more consistently. A technique learned by one designer can become a repeatable practice adopted by others. The goal isn't to make every designer work identically; it's to create a stronger foundation that gives people more time to focus on the decisions that require design thinking." },
+          {
+            body: "Modern design tools are increasingly informed by the principles of frontend development. Designers have greater control over how interfaces are structured, how they respond to different conditions, and how design decisions translate into implementation.\n\nTaking advantage of these capabilities requires more than learning new features. It requires a deeper understanding of the technical principles behind them.",
+          },
+          {
+            heading: "Establishing a culture of continuous learning",
+            body: "Recognizing an opportunity to strengthen our organization's proficiency in Figma, I lead Figma Office Hours and learning and development initiatives.",
+            blocks: [
+              {
+                type: "metrics",
+                metrics: [
+                  {
+                    value: "7",
+                    label: "Learning and development sessions",
+                  },
+                  {
+                    value: "20–50",
+                    label: "Attendees per session",
+                  },
+                ],
+                note: "These figures represent participation and program activity at the time of recognition, not measured improvements in designer performance.",
+              },
+              {
+                type: "p",
+                text: "Tools like Figma, Framer, and Webflow have helped narrow the gap between design and development by introducing shared methodologies and technical concepts.",
+              },
+              {
+                type: "p",
+                text: "Frames behave similarly to HTML containers, nested layers reflect the hierarchical structure of the DOM, and auto layout shares principles with CSS flexbox. Components and their properties encourage the same patterns of reusability and configurability found in frontend frameworks, while variables provide a foundation for connecting design tokens to their implementation in code.",
+              },
+              {
+                type: "p",
+                text: "I incorporate these parallels into my learning sessions to help designers understand not only how to construct interfaces, but how those interfaces are ultimately built.",
+              },
+            ],
+          },
+          {
+            heading: "Developing technical proficiency",
+            body: "I structure my learning sessions around introductory and advanced topics to accommodate different levels of experience across the organization.",
+            blocks: [
+              {
+                type: "p",
+                text: "Introductory sessions focus on establishing strong technical foundations:",
+              },
+              {
+                type: "list",
+                items: [
+                  "Frame structure, nesting, and layer hierarchy.",
+                  "Auto layout, alignment, padding, and spacing.",
+                  "Responsive behavior, resizing, and layout constraints.",
+                  "Components, instances, and design system adoption.",
+                  "File organization and efficient working practices.",
+                ],
+              },
+              {
+                type: "p",
+                text: "Advanced sessions build upon these fundamentals:",
+              },
+              {
+                type: "list",
+                items: [
+                  "Nested components, component properties, and variants.",
+                  "More complex auto layout and responsive interface patterns.",
+                  "Variables, modes, and their relationship to design tokens.",
+                  "Advanced prototyping and interaction logic.",
+                  "Workflow optimization and reducing unnecessary manual effort.",
+                ],
+              },
+              {
+                type: "p",
+                text: "Rather than teaching these capabilities in isolation, I connect them to practical design problems and the decisions designers encounter throughout their work.",
+              },
+            ],
+          },
+          {
+            heading: "Developing independent problem-solvers",
+            body: "My approach to teaching emphasizes the reasoning behind a technique rather than simply demonstrating how to execute it.\n\nFor example, understanding the relationship between fixed, hug, and fill sizing gives designers a foundation for constructing responsive interfaces without manually adjusting layouts. Understanding the value behind component properties and variants, and when an interface requires a new configuration rather than an entirely new component.\n\nThese concepts become increasingly valuable as junior designers take on more complex projects. The objective is to develop the technical knowledge and judgment to solve unfamiliar problems independently.",
+            blocks: [
+              {
+                type: "callout",
+                text: "Leadership testimonial pending: insert the original approved quote about assessing the team's needs and transitioning from Office Hours to Lunch & Learn.",
+                attribution: "Original author and title pending.",
+              },
+            ],
+          },
+          {
+            heading: "Investing in collective capability",
+            body: "As design tools become more sophisticated, technical literacy becomes an increasingly important part of design craft.\n\nThrough learning and development, I aim to establish a shared understanding of how interfaces are structured, how design decisions translate into development, and how designers can work more efficiently without compromising quality.\n\nThe goal isn't to turn designers into developers. It's to equip them with the knowledge, confidence, and technical judgment to become more effective product designers.",
+          },
         ],
       },
       {

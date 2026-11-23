@@ -13,7 +13,17 @@ const WORDS_PER_MINUTE = 200
 
 function readMinutes(card: AiCard) {
   const words = card.articleContent
-    .flatMap((section) => [section.heading, section.body, ...(section.items ?? []), section.conclusion])
+    .flatMap((section) => [
+      section.heading, section.body, ...(section.items ?? []), section.conclusion,
+      ...(section.blocks ?? []).flatMap((block) => {
+        switch (block.type) {
+          case "p": return [block.text]
+          case "list": return block.items
+          case "callout": return [block.text, block.attribution]
+          case "metrics": return [block.note, ...block.metrics.map((metric) => `${metric.value ?? ""} ${metric.label}`)]
+        }
+      }),
+    ])
     .filter(Boolean).join(" ").split(/\s+/).length
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))
 }

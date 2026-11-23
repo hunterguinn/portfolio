@@ -4,11 +4,39 @@ import { useCallback, useEffect, useId, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { X } from "@phosphor-icons/react/dist/csr/X"
 import { useModalBehavior } from "@/components/site/use-modal-behavior"
-import type { ArticleSection } from "@/lib/content/types"
+import type { ArticleBlock, ArticleSection } from "@/lib/content/types"
+import { ProjectMetrics } from "@/components/site/project-metrics"
+import { Callout } from "@/components/site/callout"
 import { ContextualPromptDemo } from "./contextual-prompt-demo"
 
 /** Matches the longest exit animation (`sheet-drop`) in globals.css. */
 const EXIT_MS = 280
+
+function ArticleList({ items }: { items: string[] }) {
+  return (
+    <ul className="list-disc space-y-2 pl-5 text-body text-muted">
+      {items.map((item) => <li key={item}>{item}</li>)}
+    </ul>
+  )
+}
+
+function ArticleBlockView({ block }: { block: ArticleBlock }) {
+  switch (block.type) {
+    case "p":
+      return <p className="text-body text-muted">{block.text}</p>
+    case "list":
+      return <ArticleList items={block.items} />
+    case "metrics":
+      return (
+        <div className="space-y-2">
+          <ProjectMetrics metrics={block.metrics} />
+          {block.note ? <p className="text-caption text-muted">{block.note}</p> : null}
+        </div>
+      )
+    case "callout":
+      return <Callout text={block.text} attribution={block.attribution} />
+  }
+}
 
 export function ArticleModal({
   title,
@@ -75,13 +103,10 @@ export function ArticleModal({
               {section.body.split("\n\n").map((paragraph, paragraphIndex) => (
                 <p key={paragraphIndex} className="text-body text-muted">{paragraph}</p>
               ))}
-              {section.items ? (
-                <ul className="list-disc space-y-2 pl-5 text-body text-muted">
-                  {section.items.map((item) => <li key={item}>{item}</li>)}
-                </ul>
-              ) : null}
+              {section.items ? <ArticleList items={section.items} /> : null}
               {section.conclusion ? <p className="text-body text-muted">{section.conclusion}</p> : null}
               {section.demonstration === "contextual-prompt" ? <ContextualPromptDemo scrollRootRef={scrollRef} /> : null}
+              {section.blocks?.map((block, blockIndex) => <ArticleBlockView key={blockIndex} block={block} />)}
             </section>
           ))}
         </div>
