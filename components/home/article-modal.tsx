@@ -7,6 +7,7 @@ import { useModalBehavior } from "@/components/site/use-modal-behavior"
 import type { ArticleBlock, ArticleSection } from "@/lib/content/types"
 import { ProjectMetrics } from "@/components/site/project-metrics"
 import { Callout } from "@/components/site/callout"
+import { Figure } from "@/components/case-study/figure"
 import { ContextualPromptDemo } from "./contextual-prompt-demo"
 
 /** Matches the longest exit animation (`sheet-drop`) in globals.css. */
@@ -35,6 +36,8 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
       )
     case "callout":
       return <Callout text={block.text} attribution={block.attribution} />
+    case "figure":
+      return <Figure figure={block.figure} />
   }
 }
 

@@ -24,11 +24,13 @@ export function FigureFrame({
   meta,
   kind = "visual",
   hasSlotLabels = false,
+  showCaptionText = false,
   children,
 }: {
   meta: FigureMeta
   kind?: FigureKind
   hasSlotLabels?: boolean
+  showCaptionText?: boolean
   children: React.ReactNode
 }) {
   const captionText = meta.caption ?? meta.title
@@ -40,6 +42,7 @@ export function FigureFrame({
       {showCaption ? (
         <figcaption className="flex flex-wrap items-center justify-end gap-2">
           <CaptionContent number={meta.number} caption={captionText} kind={kind} />
+          {showCaptionText && captionText ? <p className="w-full text-caption text-muted">{captionText}</p> : null}
         </figcaption>
       ) : null}
     </figure>
@@ -129,7 +132,7 @@ export function Figure({ figure }: { figure: FigureData }) {
   )
 
   return (
-    <FigureFrame meta={figure} kind={kind} hasSlotLabels={hasSlotLabels}>
+    <FigureFrame meta={figure} kind={kind} hasSlotLabels={hasSlotLabels} showCaptionText={figure.showCaptionText}>
       {figure.title ? <h3 className="text-body text-strong">{figure.title}</h3> : null}
       {grid}
     </FigureFrame>

@@ -273,12 +273,63 @@ export const home = {
       {
         body: "Building interactive prototypes that bring complex workflows, application states, and design decisions to life beyond static mockups.",
         articleTitle: "Prototyping complex workflows beyond Figma",
+        modalTitle: "Prototyping beyond Figma",
         articleContent: [
-          { body: "Static designs are effective at communicating visual direction, but they can leave some of the most important product questions unanswered. What happens when an API fails? How does an experience respond to different account types? What changes between loading, success, and error states? These details often require extensive annotations, additional frames, or conversations to fully explain. In complex products, the behavior behind the interface can be just as important as the interface itself. Recently, I've been exploring how AI-assisted development can help communicate that complexity more effectively." },
-          { heading: "Moving from mockups to working experiences", body: "Using tools such as Codex and Vercel, I've been building interactive JavaScript prototypes that go beyond individual screens. These projects can demonstrate conditional workflows, responsive behavior, component variations, and application states within a single working experience. What interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore and communicate product behavior in ways that previously required more technical support. Instead of describing how an experience should respond to a particular scenario, I can build a working representation of it. That changes the nature of the conversation. Stakeholders can interact with an idea rather than relying entirely on static representations or explanations." },
-          { heading: "Making prototypes useful beyond the presentation", body: "I've also been creating documentation sites alongside these projects. The documentation explains how components are structured, how interaction patterns work, and how someone else could build or adapt the experience. I see this as an important distinction between a prototype created for a single review and one designed to become a reusable resource. Where appropriate, I'm making these projects open source so others can examine the implementation, learn from the approach, and build on the work. The documentation is part of the design, not something added after development is complete." },
-          { heading: "Designing with a better understanding of implementation", body: "Working more directly with code has also changed how I approach design decisions. It encourages me to think earlier about component architecture, application states, responsive behavior, and the relationship between individual interactions and the larger system. At the same time, AI-generated code isn't automatically good code. It still requires evaluation for quality, accessibility, maintainability, and consistency with established patterns. That's an important part of the experimentation." },
-          { heading: "What I'm exploring next", body: "I'm interested in how working prototypes can become a more useful bridge between design, product, and engineering. The opportunity isn't to turn every designer into a full-time developer. It's to reduce the distance between an idea and a testable experience, making requirements more concrete and implementation questions easier to identify. For complex products, that could change how teams explore solutions, communicate decisions, and prepare experiences for development." },
+          {
+            body: "Static mockups are effective at communicating visual direction, supporting initial development estimates, and facilitating stakeholder conversations. But they often leave important product questions unanswered.\n\nWhat happens when an API fails? How does the experience differ for an existing client? What happens when someone enters an unexpected value? How does a workflow adapt to different account types?\n\nThese scenarios often require extensive annotations, additional design artifacts, or conversations to fully explain. In complex financial products, the behavior behind the interface can be just as important as the interface itself.",
+          },
+          {
+            heading: "Moving from mockups to working experiences",
+            body: "I've been exploring how AI-assisted development can help communicate that complexity more effectively.\n\nUsing Codex, Claude Code, and Vercel, I've built interactive JavaScript prototypes that extend beyond individual screens. These projects bring conditional workflows, responsive layouts, component variations, application states, and product documentation into a single working experience.\n\nRather than creating separate designs for every possible scenario, I can construct a prototype that responds dynamically to user inputs, business rules, and simulated system responses.",
+            blocks: [
+              {
+                type: "figure",
+                figure: {
+                  caption: "An interactive JavaScript prototype bringing product workflows, application states, and design documentation into a single working experience.",
+                  showCaptionText: true,
+                  slots: [
+                    {
+                      kind: "image",
+                      // Add src: "/images/prototype.webp" when the screenshot is available.
+                      alt: "Landscape screenshot of an interactive JavaScript prototype or documentation site showing connected product workflows and application states.",
+                      placeholder: "JavaScript prototype screenshot",
+                      aspect: "16 / 9",
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            heading: "Translating requirements into behavior",
+            body: "Building a working prototype requires a different way of thinking about design. Written requirements need to become conditional logic, user interactions need to trigger state changes, and individual screens need to function as part of a connected experience.\n\nThis involves exploring technical concepts such as:",
+            items: [
+              "Conditional rendering based on client eligibility, account types, and business rules.",
+              "State management to maintain user selections, input values, and workflow progress.",
+              "Form validation, error handling, and recovery paths.",
+              "Simulated API responses to demonstrate successful, incomplete, and failed system interactions.",
+              "Responsive layouts and reusable interface components.",
+            ],
+            conclusion: "Translating requirements into working behavior encourages me to evaluate those requirements more critically, identify overlooked scenarios, and explore functional questions earlier in the design process.",
+            blocks: [
+              {
+                type: "callout",
+                text: "Instead of designing every possible screen, I can design the conditions that determine which screen a client experiences.",
+              },
+            ],
+          },
+          {
+            heading: "Connecting prototypes and documentation",
+            body: "Beyond the experience itself, I've been building documentation sites that bring interactive prototypes, product requirements, component references, and application states together.\n\nRather than distributing information across design files, presentations, and written specifications, these sites provide a centralized resource where teams can explore an experience, understand its underlying logic, and reference the design system components used throughout it.\n\nI've used these materials to communicate design concepts and product complexity to stakeholders, product managers, and digital leadership, giving them an opportunity to interact with an experience rather than relying entirely on static representations or explanations.",
+          },
+          {
+            heading: "Making the approach reproducible",
+            body: "An important part of this exploration is making the process accessible to other designers.\n\nAlongside these prototypes, I've been documenting the tools, project structure, development workflows, and instructions needed to build similar experiences using AI-assisted development.\n\nBy sharing reusable resources and open-source approaches, I aim to make this methodology something other designers can independently adopt, experiment with, and build upon.",
+          },
+          {
+            heading: "Choosing the right medium",
+            body: "Not every design problem requires a working prototype. Figma remains an effective environment for visual exploration, rapid iteration, and design collaboration.\n\nI turn to code when the behavior of an experience becomes difficult to communicate through individual screens alone—particularly when multiple business rules, system responses, or user inputs influence what happens next.\n\nThese prototypes aren't intended to replace production engineering or formal design deliverables. They're another medium for exploring ideas, evaluating assumptions, and establishing a shared understanding of how a product should work.\n\nWhat interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore, build, and communicate ideas through mediums that previously required considerably more technical support.",
+          },
         ],
       },
       {

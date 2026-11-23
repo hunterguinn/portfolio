@@ -21,6 +21,7 @@ function readMinutes(card: AiCard) {
           case "list": return block.items
           case "callout": return [block.text, block.attribution]
           case "metrics": return [block.note, ...block.metrics.map((metric) => `${metric.value ?? ""} ${metric.label}`)]
+          case "figure": return [block.figure.title, block.figure.caption]
         }
       }),
     ])

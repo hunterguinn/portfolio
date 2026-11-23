@@ -30,6 +30,8 @@ export type FigureData = {
   title?: string
   /** Source caption. When both title and caption are missing, "Caption pending" renders. */
   caption?: string
+  /** Show editorial caption text in addition to the existing media-type pill. */
+  showCaptionText?: boolean
   slots: MediaSlot[]
   reveal?: boolean
 }
@@ -82,6 +84,7 @@ export type ArticleBlock =
   | { type: "list"; items: string[] }
   | { type: "metrics"; metrics: Metric[]; note?: string }
   | { type: "callout"; text: string; attribution?: string }
+  | { type: "figure"; figure: FigureData }
 
 export type ArticleSection = {
   heading?: string
