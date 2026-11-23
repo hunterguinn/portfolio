@@ -22,20 +22,17 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="card-hover group flex w-full flex-col gap-7 overflow-hidden rounded-lg border pl-7 pt-7 text-left"
+        className="card-hover group flex min-w-0 w-full flex-col justify-between gap-7 rounded-lg border p-7 text-left"
       >
-        <span className="text-body pr-7">{card.articleTitle}</span>
-        <span className="ai-card-panel flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface p-6">
-          <span className="text-caption text-muted">{card.body}</span>
-          <span className="flex w-full items-center justify-between gap-4 text-caption">
-            <span className="inline-flex items-center gap-2 text-muted">
-              <Clock weight="regular" className="size-4 shrink-0" aria-hidden="true" />
-              {readMinutes(card)} min read
-            </span>
-            <span className="inline-flex items-center gap-2 text-foreground">
-              Read more
-              <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
-            </span>
+        <span className="text-body font-medium">{card.articleTitle}</span>
+        <span className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 text-caption">
+          <span className="inline-flex items-center gap-2 whitespace-nowrap text-muted">
+            <Clock weight="regular" className="size-4 shrink-0" aria-hidden="true" />
+            {readMinutes(card)} min read
+          </span>
+          <span className="inline-flex items-center gap-2 whitespace-nowrap text-foreground">
+            Read more
+            <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
           </span>
         </span>
       </button>
