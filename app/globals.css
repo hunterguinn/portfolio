@@ -17,6 +17,10 @@
     font-size: var(--text-body);
     line-height: var(--leading-default);
   }
+  b,
+  strong {
+    font-weight: var(--font-weight-medium);
+  }
   ::selection {
     background: var(--foreground);
     color: var(--background);
