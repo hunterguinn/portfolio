@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight"
 import { site } from "@/lib/content/site"
 import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionEyebrow } from "@/components/site/section-eyebrow"
 
 const links = [
   { label: "LinkedIn", handle: "/in/hunterguinn", href: site.linkedin },
@@ -11,6 +12,7 @@ export function ContactSection() {
   return (
     <SectionShell id="contact">
       <SectionHeader>
+        <SectionEyebrow>Contact</SectionEyebrow>
         <SectionTitle id="contact">
           <a
             href={`mailto:${site.email}`}

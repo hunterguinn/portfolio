@@ -4,6 +4,7 @@ import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
 import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { MetricValue } from "@/components/case-study/content-primitives"
+import { SectionEyebrow } from "@/components/site/section-eyebrow"
 
 function ProjectCover({ project }: { project: ProjectSummary }) {
   return (
@@ -85,6 +86,7 @@ export function WorkSection() {
   return (
     <SectionShell id="work">
       <SectionHeader>
+        <SectionEyebrow>{home.work.label}</SectionEyebrow>
         <SectionTitle id="work">{home.work.title}</SectionTitle>
       </SectionHeader>
       <div className="flex flex-col gap-16 md:gap-24">

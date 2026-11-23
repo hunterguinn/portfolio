@@ -199,13 +199,13 @@ export const home = {
       },
       {
         quote:
-          "Hunter demonstrates leadership with a diverse range of stakeholders. He is the most sought-after and productive member of the team.",
-        name: "Hunter Priester",
-        role: "Design Director, Wells Fargo",
+          "Hunter took the lead the Figma routine, identifying the needs of the team and creating opportunities for designers to continuously learn, collaborate, and deepen their expertise.",
+        name: "Elsy Lao",
+        role: "Design Leadership, Bank of America",
       },
       {
         quote:
-          "Hunter serves as a model of what a great designer on our team is able to achieve. He worked smart and efficiently to deliver months ahead of schedule.",
+          "The direction Hunter gave helped all associated teams get to final requirements, make decisions, and deliver so much faster than they possibly could have in any other circumstance.",
         name: "Nate Ernst",
         role: "Senior Design Principal, Bank of America",
       },

@@ -6,6 +6,7 @@ import { Clock } from "@phosphor-icons/react/dist/csr/Clock"
 import { home } from "@/lib/content/home"
 import type { AiCard } from "@/lib/content/types"
 import { SectionHeader, SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionEyebrow } from "@/components/site/section-eyebrow"
 import { ArticleModal } from "./article-modal"
 
 const WORDS_PER_MINUTE = 200
@@ -47,6 +48,7 @@ export function AiSection() {
   return (
     <SectionShell id="ai">
       <SectionHeader>
+        <SectionEyebrow>{ai.label}</SectionEyebrow>
         <SectionTitle id="ai">{ai.title}</SectionTitle>
         <SectionIntro>{ai.intro}</SectionIntro>
       </SectionHeader>

@@ -52,7 +52,7 @@ export function ArticleModal({
         className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] max-w-lg flex-col gap-4 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
-          <h2 id={titleId} className="text-heading text-strong">
+          <h2 id={titleId} className="text-heading">
             {title}
           </h2>
           <button
