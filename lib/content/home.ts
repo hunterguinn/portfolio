@@ -1,11 +1,12 @@
 import type { AiCard, ProjectSummary, StackTool, Testimonial } from "./types"
 
 export const home = {
-  headline: "Designing financial experiences that create clarity, build trust, and scale",
+  headline:
+    "I design financial experiences by connecting customer needs, business priorities, and technical realities, turning complex requirements into interfaces that are easier to use and build.",
   greeting: "Hey, I'm Hunter 👋",
   current: {
     role: "Vice President, Product Designer",
-    company: "@ Bank of America",
+    company: "Bank of America",
     period: "2022 - Present",
   },
   stack: [
@@ -25,7 +26,7 @@ export const home = {
         slug: "merrill",
         href: "/merrill",
         title: "Merrill Edge Asset Transfer",
-        meta: "Native app · 2027",
+        category: "Native app",
         description:
           "I helped redesign how clients move investments into Merrill, simplifying external account connections, asset selection, and complex transfer requirements into a more manageable digital experience.",
         team: ["Product Design (Lead) • Digital Product • Investment Operations • Engineers • API Tech Team"],
@@ -62,7 +63,7 @@ export const home = {
         slug: "pos",
         href: "/pos",
         title: "Point-of-Sale Software",
-        meta: "Android responsive · 2026",
+        category: "Responsive web",
         description:
           "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing reusable design patterns across payment devices while supporting business continuity for merchants.",
         team: ["Product Design (Lead) • Merchant Services • Product Management • Engineers • Platform Architecture"],
@@ -99,7 +100,7 @@ export const home = {
         slug: "unified",
         href: "/unified",
         title: "Unified Client Application",
-        meta: "Web responsive · 2025",
+        category: "Responsive web",
         description:
           "I helped consolidate applications for business checking, credit cards, and payment services into a single experience, balancing simpler onboarding with complex eligibility, risk, and compliance requirements.",
         team: ["Product Design (Lead) · Product Management · Small Business CXO · Risk & KYC • Sales"],

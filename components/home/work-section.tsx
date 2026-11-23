@@ -11,7 +11,7 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
       href={project.href}
       aria-label={`View project: ${project.title}`}
       data-cursor="project"
-      className="card-hover group relative block overflow-hidden rounded-lg border"
+      className="card-hover card-hover-flat group relative block overflow-hidden rounded-lg border"
       style={{ aspectRatio: project.cover.aspect }}
     >
       <div className="media-settle cover-zoom absolute inset-0">
@@ -44,12 +44,12 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
           )}
         </div>
       </div>
+      <span className="cover-pill text-caption absolute top-5 left-5">{project.category}</span>
     </Link>
   )
 }
 
 function ProjectEntry({ project }: { project: ProjectSummary }) {
-  const [category, year] = project.meta.split(" · ")
   const titleId = `project-${project.slug}-title`
 
   return (
@@ -64,10 +64,6 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
               {project.title}
             </h3>
             <p className="text-body text-muted">{project.description}</p>
-          </div>
-          <div className="flex items-baseline justify-between gap-4 text-caption text-muted tabular-nums">
-            <span>{category}</span>
-            <span>{year}</span>
           </div>
         </div>
         <dl className="grid gap-3 sm:grid-cols-2">

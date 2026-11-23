@@ -209,7 +209,7 @@ export type ProjectSummary = {
   slug: CaseStudy["slug"]
   href: string
   title: string
-  meta: string
+  category: string
   description: string
   team: string[]
   metrics: Metric[]

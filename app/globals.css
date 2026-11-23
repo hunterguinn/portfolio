@@ -79,12 +79,22 @@
 .card-surface {
   @apply border border-border;
   background-color: var(--surface);
+  transition:
+    background-color var(--motion-card) var(--motion-ease),
+    border-color var(--motion-card) var(--motion-ease);
 }
 /*
- * Clickable cards (articles, contact links, project covers) lift 4px with a restrained border and
- * background change. The lift uses `transform`, so it composes with the entrance `translate`
- * instead of overriding it. Static cards (.card-surface) never react to hover.
+ * Clickable cards (articles, contact links) lift 4px with a restrained border and background
+ * change. The lift uses `transform`, so it composes with the entrance `translate` instead of
+ * overriding it. Static cards (.card-surface) get the same background and border change on hover
+ * but never lift. Project covers (.card-hover-flat) stay put and rely on the clipped image zoom.
  */
+@media (hover: hover) and (pointer: fine) {
+  .card-surface:hover {
+    border-color: color-mix(in srgb, var(--muted) 45%, transparent);
+    background-color: color-mix(in srgb, var(--surface) 70%, var(--surface-strong));
+  }
+}
 .card-hover {
   transition:
     background-color var(--motion-card) var(--motion-ease),
@@ -96,6 +106,12 @@
     transform: translateY(var(--motion-card-lift));
     border-color: color-mix(in srgb, var(--muted) 45%, transparent);
     background-color: color-mix(in srgb, var(--surface) 70%, var(--surface-strong));
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-hover-flat:hover {
+    transform: none;
+    background-color: transparent;
   }
 }
 .card-hover:focus-visible {
@@ -471,6 +487,15 @@
   padding: var(--spacing) calc(var(--spacing) * 3);
   background: var(--foreground);
   color: var(--background);
+}
+.cover-pill {
+  z-index: 1;
+  width: max-content;
+  padding: var(--spacing) calc(var(--spacing) * 3);
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--overlay-white) 10%, transparent);
+  color: var(--overlay-black);
+  white-space: nowrap;
 }
 .cursor-project-label {
   width: max-content;
