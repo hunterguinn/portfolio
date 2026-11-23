@@ -7,13 +7,14 @@ import { OrderScreen } from "@/components/figures/order-screen"
 export type FigureKind = "image" | "video" | "visual" | "prototype" | "media"
 
 /** One caption treatment for grouped visuals and individually numbered media slots. */
-function CaptionContent({ number, caption }: { number?: string; caption: string }) {
+function CaptionContent({ number, caption, kind }: { number?: string; caption?: string; kind: FigureKind }) {
+  const label = kind === "visual" ? "Illustrative" : kind
   return (
     <>
-      <span className="pill-hover min-w-0 rounded-full border px-3 py-1 text-eyebrow text-muted">
-        {caption}
+      {number ? <span className="shrink-0 text-eyebrow text-muted">{number}</span> : null}
+      <span title={caption} className="pill-hover shrink-0 rounded-full border px-2 py-1 text-eyebrow text-muted">
+        {label}
       </span>
-      {number ? <span className="ml-auto shrink-0 text-eyebrow text-muted">{number}</span> : null}
     </>
   )
 }
@@ -37,8 +38,8 @@ export function FigureFrame({
     <figure data-reveal="media" className="flex flex-col gap-4">
       {children}
       {showCaption ? (
-        <figcaption className="flex items-center justify-between gap-3">
-          <CaptionContent number={meta.number} caption={captionText || kind} />
+        <figcaption className="flex flex-wrap items-center justify-end gap-2">
+          <CaptionContent number={meta.number} caption={captionText} kind={kind} />
         </figcaption>
       ) : null}
     </figure>
@@ -114,8 +115,9 @@ export function Figure({ figure }: { figure: FigureData }) {
         <div key={slot.placeholder} className="flex w-full flex-col gap-3">
           <MediaSlot slot={slot} />
           {slot.label ? (
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-end gap-2">
               <CaptionContent
+                kind={slot.fallback ? "visual" : slot.kind}
                 number={slot.label.match(/^(Figure\s+\d+(?:\.\d+)*)/i)?.[1]}
                 caption={slot.label.replace(/^Figure\s+\d+(?:\.\d+)*\s*[·–—:-]?\s*/i, "") || (slot.fallback ? "visual" : slot.kind)}
               />

@@ -104,7 +104,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                   const state = badge[resolved[index]]
                   return (
                     <li key={item.label} className="flex min-w-0 flex-col items-start gap-0.5 py-2 text-caption text-foreground">
-                      <span className={`min-w-0 flex-1 lg:flex-none ${resolved[index] === "api" ? "line-through opacity-40" : ""}`}>
+                      <span className={`min-w-0 flex-1 lg:flex-none ${resolved[index] === "api" ? "opacity-40" : ""}`}>
                         {item.label}
                       </span>
                       <span
