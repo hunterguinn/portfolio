@@ -64,7 +64,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <p data-intro="fade" className="text-eyebrow text-muted">
               {study.eyebrow}
             </p>
-            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-display">
+            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-hero">
               {study.title}
             </h1>
             <p data-intro="" data-intro-step="2" className="text-body text-muted">

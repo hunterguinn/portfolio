@@ -61,7 +61,7 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
       <div className="flex flex-col gap-4">
         <div data-reveal="" className="flex flex-col gap-4">
           <div className="flex flex-col gap-3">
-            <h3 id={titleId} className="text-heading">
+            <h3 id={titleId} className="text-[36px] leading-[1.2] font-light">
               {project.title}
             </h3>
             <p className="text-body text-muted">{project.description}</p>
@@ -69,7 +69,11 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
         </div>
         <dl className="grid gap-3 sm:grid-cols-2">
           {project.metrics.map((metric) => (
-            <div key={metric.label} data-reveal="" className="card-static flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
+            <div
+              key={metric.label}
+              data-reveal=""
+              className={`card-static flex flex-col-reverse gap-1 rounded-md border p-4 lg:px-6 lg:pt-5 ${project.slug === "pos" ? "lg:pb-6" : "lg:pb-5"}`}
+            >
               <dt className="text-caption text-muted">{metric.label}</dt>
               <dd>
                 <MetricValue metric={metric} />

@@ -137,7 +137,7 @@ export const home = {
   },
   ai: {
     title: "Scaling design through AI",
-    label: "AI",
+    label: "Recently",
     intro:
       "At Bank of America, I'm leading Figma AI enablement through hands-on learning sessions, designer mentorship, and practical tooling. Alongside this work, I'm exploring how AI-assisted prototyping, reusable components, and automation can improve the way teams design, communicate, and build products.",
     cards: [

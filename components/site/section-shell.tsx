@@ -16,8 +16,10 @@ export function SectionShell({
       aria-labelledby={id ? `${id}-title` : undefined}
       className={`page-band ${bordered ? "border-t" : ""}`}
     >
-      <div className={`page-container py-section md:py-section-lg lg:py-section-xl ${className}`}>
-        <div className="mx-auto flex w-full max-w-[740px] flex-col gap-10 md:gap-12">{children}</div>
+      <div
+        className={`page-container mx-auto flex w-full flex-col gap-10 py-section md:gap-12 md:py-section-lg lg:py-section-xl ${className}`}
+      >
+        {children}
       </div>
     </section>
   )
