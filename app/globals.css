@@ -675,3 +675,40 @@
 .light a:not(:hover):not(:focus-visible) .rail-line[data-active="false"] {
   background-color: color-mix(in srgb, var(--muted) 25%, transparent);
 }
+
+/* Native range semantics with one shared 16px thumb geometry for ticks and labels. */
+.transfer-range {
+  appearance: none;
+  height: calc(var(--spacing) * 6);
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.transfer-range::-webkit-slider-runnable-track {
+  height: var(--spacing);
+  border-radius: var(--radius-full);
+  background: linear-gradient(to right, var(--foreground) var(--range-progress), color-mix(in srgb, var(--muted) 20%, transparent) var(--range-progress));
+}
+.transfer-range::-webkit-slider-thumb {
+  appearance: none;
+  box-sizing: border-box;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * -1.5);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+}
+.transfer-range::-moz-range-track {
+  height: var(--spacing);
+  border-radius: var(--radius-full);
+  background: linear-gradient(to right, var(--foreground) var(--range-progress), color-mix(in srgb, var(--muted) 20%, transparent) var(--range-progress));
+}
+.transfer-range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+}
