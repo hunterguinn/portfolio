@@ -49,7 +49,7 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
           sizes="(min-width: 1024px) 60vw, 100vw"
           // The image optimizer fetches without the visitor's session cookie, so protected media loads directly.
           unoptimized={slot.src.startsWith("/media/")}
-          className={contain ? "object-contain p-5 md:p-8" : "object-cover object-top"}
+          className={`media-settle ${contain ? "object-contain p-5 md:p-8" : "object-cover object-top"}`}
         />
       </div>
     )

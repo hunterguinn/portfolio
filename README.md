@@ -83,20 +83,26 @@ All motion uses the shared tokens in `styles/tokens.css`; `components/site/motio
 | Token | Value | Use |
 | --- | --- | --- |
 | `--motion-ease` | cubic-bezier(0.22, 1, 0.36, 1) | Every reveal and movement |
-| `--motion-reveal` | 480ms | In-view content reveals |
-| `--motion-intro` | 560ms | Page introduction sequence |
-| `--motion-feedback` | 180ms | Hover, focus and state color changes |
-| `--motion-cover` | 400ms | Project cover scale (1.01) |
-| `--motion-distance` / `--motion-distance-media` | 8px / 12px | Standard / large media rise |
-| `--motion-stagger` / `--motion-stagger-cap` | 60ms / 180ms | Sibling stagger and its maximum delay |
-| `--motion-trigger-offset` | 32px | Reveal when the leading edge passes 32px above the viewport bottom |
+| `--motion-intro` / `--motion-intro-step` | 1,100ms / 110ms | Page introduction groups and the gap between them |
+| `--motion-reveal` | 900ms | In-view text and card reveals |
+| `--motion-media` | 1,200ms | Figure and cover reveals, including the inner image settle |
+| `--motion-caption-delay` | 240ms | Caption follows its image |
+| `--motion-distance` / `--motion-distance-media` | 24px / 32px | Text and card rise / media rise |
+| `--motion-media-scale` | 1.05 | Image starts slightly enlarged inside its clipped frame and settles to 1 |
+| `--motion-stagger` / `--motion-stagger-cap` | 120ms / 360ms | Reading-order stagger and its maximum delay |
+| `--motion-trigger-offset` | 48px | Reveal when the leading edge passes 48px inside the viewport |
+| `--motion-card` / `--motion-card-lift` | 300ms / -4px | Clickable card lift with border and background change |
+| `--motion-cover-hover` / `--motion-cover-hover-scale` | 600ms / 1.035 | Clipped project cover zoom on hover |
+| `--motion-arrow` / `--motion-arrow-distance` | 250ms / 4px | Arrow travel on hover |
+| `--motion-button` | 250ms | Button background and border transitions |
 
 Rules:
 
-- Mark a meaningful content unit with `data-reveal` (`""` standard, `"media"` figures and covers, `"fade"` small labels). Reveal a heading with its prose, a card, a figure with its caption, or a metric row. Never animate single paragraphs, lines or icons, or wrap a whole long section.
+- Mark a meaningful content unit with `data-reveal` (`""` text and cards, `"media"` figures and covers, `"fade"` small labels). Reveal a heading with its prose, a card, a figure with its caption, or a metric row. Never animate single paragraphs, lines or icons, or wrap a whole long section.
+- Units entering together stagger in reading order: heading, then intro, then cards. Media wrap their image in `.media-settle` so it eases from 1.05 to 1 within the clipped frame; captions follow 240ms later.
 - Units reveal once per page visit and never fade out. Content already on screen at load is never hidden; units skipped by fast scrolling appear instantly.
-- Only the page introduction uses `data-intro` with `data-intro-step` 1–3 (60ms apart, settled within ~750ms). Persistent controls are never part of it.
-- Hover feedback only on interactive elements and only for fine pointers: color/border changes on links, buttons and clickable cards (`.card-hover`), a 2px `.arrow-nudge`, and the clipped `.cover-zoom`. Static cards, testimonials and metrics get entrance motion only.
+- Only the page introduction uses `data-intro` with `data-intro-step` 1–4 (name, statement, role, tools; 110ms apart, settled in about 1.5s). Persistent controls are never part of it.
+- Hover feedback only on interactive elements and only for fine pointers: clickable cards (`.card-hover`) lift 4px using `transform` so they compose with the entrance `translate`; `.arrow-nudge` and `.arrow-nudge-diagonal` travel 4px; `.cover-zoom` uses `scale` so it composes with the entrance settle. Static cards, testimonials and metrics get entrance motion only.
 - No bounce, overshoot, blur, rotation, parallax, animated gradients, floating or looping decoration, typewriter or word-by-word effects, or count-up numbers. Reduced-motion users get no movement.
 
 ## Reuse in Vercel v0

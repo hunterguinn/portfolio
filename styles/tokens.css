@@ -104,19 +104,29 @@
 
 /*
  * Motion. One language for every reveal and interaction; components/site/motion-reveal.tsx mirrors
- * the trigger offset and stagger values. No bounce, blur, rotation, parallax, count-ups or loops.
+ * the trigger offset and stagger values. Long, smooth settles; no bounce, blur, rotation, parallax,
+ * count-ups or loops.
  */
 :root {
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-reveal: 480ms;
-  --motion-intro: 560ms;
-  --motion-feedback: 180ms;
-  --motion-cover: 400ms;
-  --motion-distance: 8px;
-  --motion-distance-media: 12px;
-  --motion-stagger: 60ms;
-  --motion-stagger-cap: 180ms;
-  --motion-trigger-offset: 32px;
+  --motion-intro: 1100ms;
+  --motion-intro-step: 110ms;
+  --motion-reveal: 900ms;
+  --motion-media: 1200ms;
+  --motion-caption-delay: 240ms;
+  --motion-distance: 24px;
+  --motion-distance-media: 32px;
+  --motion-media-scale: 1.05;
+  --motion-stagger: 120ms;
+  --motion-stagger-cap: 360ms;
+  --motion-trigger-offset: 48px;
+  --motion-card: 300ms;
+  --motion-card-lift: -4px;
+  --motion-cover-hover: 600ms;
+  --motion-cover-hover-scale: 1.035;
+  --motion-arrow: 250ms;
+  --motion-arrow-distance: 4px;
+  --motion-button: 250ms;
 }
 
 @utility text-strong {

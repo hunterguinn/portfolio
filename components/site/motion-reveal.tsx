@@ -4,14 +4,15 @@ import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
 /** Keep in sync with --motion-trigger-offset, --motion-stagger and --motion-stagger-cap in styles/tokens.css. */
-const TRIGGER_OFFSET = 32
-const STAGGER_MS = 60
-const STAGGER_CAP_MS = 180
+const TRIGGER_OFFSET = 48
+const STAGGER_MS = 120
+const STAGGER_CAP_MS = 360
 
 /**
- * Reveals every [data-reveal] content unit once, as its leading edge passes 32px above the viewport bottom.
+ * Reveals every [data-reveal] content unit once, as its leading edge passes 48px inside the viewport.
  * Units already on screen at load are never hidden. Units skipped by a fast scroll or anchor jump appear
- * instantly so no backlog of delayed reveals builds up. Siblings entering in the same frame stagger by 60ms.
+ * instantly so no backlog of delayed reveals builds up. Units entering in the same frame stagger in
+ * reading order (heading, then intro, then cards) by 120ms, capped at 360ms.
  */
 export function MotionReveal() {
   const pathname = usePathname()
@@ -38,17 +39,11 @@ export function MotionReveal() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const groups = new Map<Element | null, HTMLElement[]>()
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue
-          const element = entry.target as HTMLElement
-          const siblings = groups.get(element.parentElement) ?? []
-          siblings.push(element)
-          groups.set(element.parentElement, siblings)
-        }
-        for (const siblings of groups.values()) {
-          siblings.forEach((element, index) => reveal(element, Math.min(index * STAGGER_MS, STAGGER_CAP_MS)))
-        }
+        const entering = entries
+          .filter((entry) => entry.isIntersecting && pending.has(entry.target as HTMLElement))
+          .map((entry) => entry.target as HTMLElement)
+          .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+        entering.forEach((element, index) => reveal(element, Math.min(index * STAGGER_MS, STAGGER_CAP_MS)))
       },
       { rootMargin: `0px 0px -${TRIGGER_OFFSET}px 0px` },
     )

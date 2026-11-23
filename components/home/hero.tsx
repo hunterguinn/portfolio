@@ -13,14 +13,16 @@ export function Hero() {
               <p data-intro="fade" className="text-eyebrow text-muted">
                 Portfolio / 2027
               </p>
-              <div data-intro="" data-intro-step="1" className="flex flex-col gap-4">
-                <h1 id="intro-title" className="text-hero whitespace-nowrap">
+              <div className="flex flex-col gap-4">
+                <h1 id="intro-title" data-intro="" data-intro-step="1" className="text-hero whitespace-nowrap">
                   {site.name}
                 </h1>
-                <p className="text-body text-muted">{home.headline}</p>
+                <p data-intro="" data-intro-step="2" className="text-body text-muted">
+                  {home.headline}
+                </p>
               </div>
             </div>
-            <dl data-intro="" data-intro-step="2" className="flex flex-col gap-2">
+            <dl data-intro="" data-intro-step="3" className="flex flex-col gap-2">
               <dt className="text-eyebrow text-muted">Currently</dt>
               <dd className="flex flex-col gap-1">
                 <span className="text-body">{home.current.role}</span>
@@ -30,7 +32,7 @@ export function Hero() {
             </dl>
           </div>
 
-          <dl data-intro="" data-intro-step="3" className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
+          <dl data-intro="" data-intro-step="4" className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
             <dt className="text-eyebrow text-muted">Tools</dt>
             <dd>
               <ul className="flex flex-wrap gap-2">

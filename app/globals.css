@@ -81,19 +81,21 @@
   background-color: var(--surface);
 }
 /*
- * Clickable cards (articles, contact links, project covers) get a restrained border change.
- * Static cards (.card-surface) never react to hover; they only use the entrance reveal.
+ * Clickable cards (articles, contact links, project covers) lift 4px with a restrained border and
+ * background change. The lift uses `transform`, so it composes with the entrance `translate`
+ * instead of overriding it. Static cards (.card-surface) never react to hover.
  */
 .card-hover {
   transition:
-    background-color var(--motion-feedback) ease,
-    border-color var(--motion-feedback) ease,
-    opacity var(--motion-reveal) var(--motion-ease),
-    translate var(--motion-reveal) var(--motion-ease);
+    background-color var(--motion-card) var(--motion-ease),
+    border-color var(--motion-card) var(--motion-ease),
+    transform var(--motion-card) var(--motion-ease);
 }
 @media (hover: hover) and (pointer: fine) {
   .card-hover:hover {
-    border-color: color-mix(in srgb, var(--muted) 40%, transparent);
+    transform: translateY(var(--motion-card-lift));
+    border-color: color-mix(in srgb, var(--muted) 45%, transparent);
+    background-color: color-mix(in srgb, var(--surface) 70%, var(--surface-strong));
   }
 }
 .card-hover:focus-visible {
@@ -113,7 +115,9 @@
 .btn-primary {
   background-color: var(--foreground);
   color: var(--background);
-  transition: background-color 200ms ease;
+  transition:
+    background-color var(--motion-button) var(--motion-ease),
+    border-color var(--motion-button) var(--motion-ease);
 }
 .btn-primary:hover,
 .btn-primary-group:hover .btn-primary,
@@ -123,7 +127,9 @@
 .btn-secondary {
   background-color: var(--surface);
   color: var(--foreground);
-  transition: background-color 200ms ease;
+  transition:
+    background-color var(--motion-button) var(--motion-ease),
+    border-color var(--motion-button) var(--motion-ease);
 }
 .btn-secondary:hover {
   background-color: var(--surface-strong);
@@ -201,9 +207,11 @@
 /*
  * In-view reveal. MotionReveal marks off-screen [data-reveal] units as [data-pending]; removing it
  * plays the reveal once. Content is never hidden without JS or when already on screen.
- * data-reveal=""      → standard: fade + 8px rise
- * data-reveal="media" → figures and covers: fade + 12px rise
+ * data-reveal=""      → text and cards: fade + 24px rise over 900ms
+ * data-reveal="media" → figures and covers: fade + 32px rise over 1,200ms; inner .media-settle
+ *                       layers ease from 1.05 to 1 in step, and the caption follows 240ms later
  * data-reveal="fade"  → small labels: opacity only
+ * Hover lifts on clickable cards use `transform`, separate from this `translate`, so they compose.
  */
 [data-reveal] {
   transition:
@@ -214,27 +222,39 @@
   opacity: 0;
   translate: 0 var(--motion-distance);
 }
+[data-reveal="media"] {
+  transition-duration: var(--motion-media);
+}
 [data-reveal="media"][data-pending] {
   translate: 0 var(--motion-distance-media);
 }
 [data-reveal="fade"][data-pending] {
   translate: none;
 }
-[data-reveal][data-instant] {
-  transition: none;
+
+/* Image layer inside the clipped frame: settles from 1.05 to 1 with the wrapper entrance. */
+.media-settle {
+  transition: transform var(--motion-media) var(--motion-ease) var(--reveal-delay, 0ms);
 }
-/* Clickable cards that also reveal keep their own hover transitions alongside the reveal. */
-.card-hover[data-reveal] {
-  transition:
-    background-color var(--motion-feedback) ease,
-    border-color var(--motion-feedback) ease,
-    opacity var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms),
-    translate var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms);
+[data-reveal][data-pending] .media-settle {
+  transform: scale(var(--motion-media-scale));
+}
+[data-reveal="media"] > figcaption {
+  transition: opacity var(--motion-reveal) var(--motion-ease)
+    calc(var(--reveal-delay, 0ms) + var(--motion-caption-delay));
+}
+[data-reveal="media"][data-pending] > figcaption {
+  opacity: 0;
+}
+
+[data-reveal][data-instant],
+[data-reveal][data-instant] :is(.media-settle, figcaption) {
+  transition: none;
 }
 
 /*
- * Page introduction: a compact sequence that starts on first render. Steps are 60ms apart and the
- * whole intro settles within ~750ms. Persistent controls are not part of it.
+ * Page introduction: a choreographed sequence that starts on first render. Groups enter 110ms apart
+ * over 1,100ms each, so a five-step intro settles in about 1.5s. Persistent controls are not part of it.
  */
 @keyframes intro-rise {
   from {
@@ -249,7 +269,7 @@
 }
 [data-intro] {
   animation: intro-rise var(--motion-intro) var(--motion-ease) both;
-  animation-delay: calc(var(--intro-step, 0) * var(--motion-stagger));
+  animation-delay: calc(var(--intro-step, 0) * var(--motion-intro-step));
 }
 [data-intro="fade"] {
   animation-name: intro-fade;
@@ -263,46 +283,68 @@
 [data-intro-step="3"] {
   --intro-step: 3;
 }
+[data-intro-step="4"] {
+  --intro-step: 4;
+}
 
-/* Link arrows nudge 2px in the direction of travel. */
-.arrow-nudge {
-  transition: translate var(--motion-feedback) var(--motion-ease);
+/* Link arrows travel 4px in their direction over 250ms. */
+.arrow-nudge,
+.arrow-nudge-diagonal {
+  transition: translate var(--motion-arrow) var(--motion-ease);
 }
 @media (hover: hover) and (pointer: fine) {
   .group:hover .arrow-nudge {
-    translate: 2px 0;
+    translate: var(--motion-arrow-distance) 0;
+  }
+  .group:hover .arrow-nudge-diagonal {
+    translate: calc(var(--motion-arrow-distance) * 0.75) calc(var(--motion-arrow-distance) * -0.75);
   }
 }
 
-/* Clickable project covers: a 1.01 clipped scale inside the existing frame. */
-.cover-zoom {
-  transition: scale var(--motion-cover) var(--motion-ease);
+/*
+ * Clickable project covers ease toward 1.035 over 600ms inside the clipped frame. Hover uses `scale`
+ * and the entrance settle uses `transform`, so the two never override each other.
+ */
+.cover-zoom.media-settle {
+  transition:
+    scale var(--motion-cover-hover) var(--motion-ease),
+    transform var(--motion-media) var(--motion-ease) var(--reveal-delay, 0ms);
 }
 @media (hover: hover) and (pointer: fine) {
   .group:hover .cover-zoom {
-    scale: 1.01;
+    scale: var(--motion-cover-hover-scale);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
-  .card-hover[data-reveal] {
-    transition:
-      background-color var(--motion-feedback) ease,
-      border-color var(--motion-feedback) ease;
+  [data-reveal] :is(.media-settle, figcaption),
+  .cover-zoom.media-settle {
+    transition: none;
   }
-  [data-reveal][data-pending] {
+  .card-hover {
+    transition:
+      background-color var(--motion-card) ease,
+      border-color var(--motion-card) ease;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+  [data-reveal][data-pending],
+  [data-reveal][data-pending] :is(.media-settle, figcaption) {
     opacity: 1;
     translate: none;
+    transform: none;
   }
   [data-intro] {
     animation: none;
   }
   .arrow-nudge,
+  .arrow-nudge-diagonal,
   .cover-zoom {
     transition: none;
   }
-  .group:hover :is(.arrow-nudge, .cover-zoom) {
+  .group:hover :is(.arrow-nudge, .arrow-nudge-diagonal, .cover-zoom) {
     translate: none;
     scale: none;
   }

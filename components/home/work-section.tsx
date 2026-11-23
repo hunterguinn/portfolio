@@ -14,7 +14,7 @@ function ProjectCover({ project }: { project: ProjectSummary }) {
       className="card-hover group relative block overflow-hidden rounded-lg border"
       style={{ aspectRatio: project.cover.aspect }}
     >
-      <div className="cover-zoom absolute inset-0">
+      <div className="media-settle cover-zoom absolute inset-0">
         <Image
           src={project.background}
           alt=""
