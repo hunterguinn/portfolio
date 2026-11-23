@@ -21,13 +21,12 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 
 ### Colors
 
-The palette has **13 color tokens**, down from 25. Each is used by a component or the global stylesheet.
+The palette has **12 color tokens**, down from 25. Each is used by a component or the global stylesheet.
 
 | Utility / variable | Dark | Light |
 | --- | --- | --- |
 | `bg-background` / `--background` | #0a0a0a | #f5f5f7 |
-| `bg-surface` / `--surface` | #121212 | #ffffff |
-| `bg-surface-strong` / `--surface-strong` | #1a1a1a | #ebebef |
+| `bg-surface` / `--surface` | #1a1a1a | #ebebef |
 | `text-foreground` / `--foreground` | #f0f0f0 | #1d1d1f |
 | `text-muted` / `--muted` | #808080 | #515154 |
 | `border-border` / `--border` | #202020 | #d2d2d7 |

@@ -14,9 +14,9 @@
   --background: #0a0a0a;
   --foreground: #f0f0f0;
   --muted: #808080;
-  --surface: #121212;
-  --surface-strong: #1a1a1a;
+  --surface: #1a1a1a;
   --border: #202020;
+  --border-hover: color-mix(in srgb, var(--muted) 35%, transparent);
   --blue: #66b3ff;
   --red: #ff6961;
   --yellow: #ffd60a;
@@ -28,9 +28,9 @@
   --background: #f5f5f7;
   --foreground: #1d1d1f;
   --muted: #515154;
-  --surface: var(--overlay-white);
-  --surface-strong: #ebebef;
+  --surface: #ebebef;
   --border: #e0e0e5;
+  --border-hover: color-mix(in srgb, var(--muted) 35%, transparent);
   --blue: #0066cc;
   --red: #c22b32;
   --yellow: #805b00;
@@ -79,7 +79,6 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
-  --color-surface-strong: var(--surface-strong);
   --color-border: var(--border);
   --color-blue: var(--blue);
   --color-red: var(--red);

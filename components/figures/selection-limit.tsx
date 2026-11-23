@@ -59,7 +59,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
       </div>
 
       <div
-        className="relative h-2 overflow-hidden rounded-full bg-surface-strong"
+        className="relative h-2 overflow-hidden rounded-full bg-surface ring-1 ring-border"
         role="img"
         aria-label={`${clampedSelected} of ${limit} selection limit used`}
       >

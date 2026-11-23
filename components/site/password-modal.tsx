@@ -125,7 +125,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
                 type="button"
                 onClick={onClose}
                 disabled={pending}
-                className="bg-surface text-body min-h-11 rounded-full px-6 py-2.5 font-medium text-foreground transition-colors hover:bg-surface-strong disabled:opacity-60"
+                className="bg-surface text-body min-h-11 rounded-full px-6 py-2.5 font-medium text-foreground transition-colors hover:bg-foreground/10 disabled:opacity-60"
               >
                 Back
               </button>

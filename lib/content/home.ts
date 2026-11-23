@@ -143,7 +143,7 @@ export const home = {
     cards: [
       {
         body: "Supporting designers as they strengthen their Figma skills, adopt more consistent practices, and discover opportunities to improve their workflows.",
-        articleTitle: "Making AI practical for everyday design",
+        articleTitle: "Helping designers adopt AI",
         articleContent: [
           { body: "I've been leading Figma AI enablement and learning sessions across our design organization, helping designers explore emerging capabilities through practical examples." },
           { body: "Rather than focusing on AI features in isolation, I've approached these sessions around everyday design challenges: reducing repetitive work, accelerating early exploration, working more effectively with components, and finding opportunities to simplify existing processes." },
@@ -153,8 +153,8 @@ export const home = {
         ],
       },
       {
-        body: "Helping designers strengthen their skills, workflow, and technique.",
-        articleTitle: "Designer mentorship",
+        body: "Strengthening Figma skills, component practices, and shared workflows to help designers work more consistently and effectively across teams.",
+        articleTitle: "Building a stronger design team",
         articleContent: [
           { body: "Design tools are becoming increasingly capable. Tasks that once required substantial manual effort can now be completed faster through automation, reusable components, and AI-assisted workflows. But greater capability also creates a new challenge: knowing how to use these tools thoughtfully." },
           { body: "I've been helping designers strengthen the fundamentals behind their work, particularly in Figma: component structure, reusable patterns, consistent design practices, and more efficient ways to organize and maintain files." },
@@ -164,8 +164,8 @@ export const home = {
         ],
       },
       {
-        body: "Building interactive, AI-assisted prototypes that demonstrate product logic, design states, and reusable components beyond static mockups.",
-        articleTitle: "Concept to Code",
+        body: "Building interactive prototypes that bring complex workflows, application states, and design decisions to life beyond static mockups.",
+        articleTitle: "Prototyping beyond Figma",
         articleContent: [
           { body: "Static designs are effective at communicating visual direction, but they can leave some of the most important product questions unanswered. What happens when an API fails? How does an experience respond to different account types? What changes between loading, success, and error states? These details often require extensive annotations, additional frames, or conversations to fully explain. In complex products, the behavior behind the interface can be just as important as the interface itself. Recently, I've been exploring how AI-assisted development can help communicate that complexity more effectively." },
           { heading: "Moving from mockups to working experiences", body: "Using tools such as Codex and Vercel, I've been building interactive JavaScript prototypes that go beyond individual screens. These projects can demonstrate conditional workflows, responsive behavior, component variations, and application states within a single working experience. What interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore and communicate product behavior in ways that previously required more technical support. Instead of describing how an experience should respond to a particular scenario, I can build a working representation of it. That changes the nature of the conversation. Stakeholders can interact with an idea rather than relying entirely on static representations or explanations." },
@@ -175,8 +175,8 @@ export const home = {
         ],
       },
       {
-        body: "Exploring how shared design tokens, components, and documentation can create greater consistency between design and implementation.",
-        articleTitle: "System to delivery",
+        body: "Exploring how shared tokens, reusable components, and AI-assisted tooling can connect design decisions with implementation.",
+        articleTitle: "Building systems that scale",
         articleContent: [
           { body: "Design systems have traditionally helped teams create more consistent experiences through shared foundations, components, and interaction patterns. But consistency in a design file doesn't always translate into consistency in a working product. Design decisions still need to be interpreted, implemented, and maintained across different tools and environments. Each handoff introduces opportunities for variation, duplicated work, or unnecessary complexity. I've been exploring how design systems can play a more active role in connecting design to development." },
           { heading: "Building a shared foundation", body: "My recent work has focused on structuring design foundations around reusable tokens for typography, color, spacing, and corner radius. The principle is straightforward: values that appear repeatedly throughout an interface should be defined once and reused consistently. A change to a spacing token, for example, should be intentional and traceable rather than requiring multiple individual adjustments. The same thinking applies to components. Reusable elements are most effective when their structure, variations, and expected behavior are clearly defined." },
@@ -189,7 +189,7 @@ export const home = {
   },
   testimonials: {
     label: "Testimonials",
-    title: "What others say",
+    title: "Hear it from others",
     items: [
       {
         quote:

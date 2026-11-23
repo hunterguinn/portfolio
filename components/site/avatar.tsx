@@ -22,7 +22,7 @@ export function Avatar({
         width={size * 2}
         height={size * 2}
         style={dimension}
-        className="shrink-0 rounded-full bg-surface-strong object-cover"
+        className="shrink-0 rounded-full bg-surface object-cover"
       />
     )
   }
@@ -37,7 +37,7 @@ export function Avatar({
     <span
       aria-hidden="true"
       style={dimension}
-      className="inline-flex shrink-0 items-center justify-center rounded-full bg-surface-strong text-eyebrow text-muted"
+      className="inline-flex shrink-0 items-center justify-center rounded-full bg-surface text-eyebrow text-muted"
     >
       {initials}
     </span>

@@ -10,7 +10,7 @@ const rail = [
   { id: "intro", name: "Intro" },
   { id: "work", name: "Selected Work" },
   { id: "ai", name: "Scaling design through AI" },
-  { id: "testimonials", name: "What others say" },
+  { id: "testimonials", name: "Hear it from others" },
   { id: "contact", name: "Let's connect" },
 ]
 

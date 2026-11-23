@@ -239,7 +239,7 @@ function MobileSectionMenu({ sections, active }: { sections: RailSection[]; acti
         aria-expanded={open}
         aria-controls={menuId}
         onClick={() => setOpen((value) => !value)}
-        className="flex h-9 max-w-full items-center gap-2 rounded-full px-3 text-caption text-muted transition-colors hover:text-foreground"
+        className="flex h-9 max-w-full items-center gap-2 rounded-full px-2 text-caption text-muted transition-colors hover:text-foreground"
       >
         <span className="sr-only">Current section: </span>
         <span className="truncate">{current.name}</span>
@@ -262,7 +262,7 @@ function MobileSectionMenu({ sections, active }: { sections: RailSection[]; acti
                 href={`#${section.id}`}
                 aria-current={section.id === active ? "location" : undefined}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 rounded-md px-3 py-2 text-caption transition-colors hover:bg-surface-strong ${
+                className={`flex items-center gap-3 rounded-md px-3 py-2 text-caption transition-colors hover:bg-foreground/10 ${
                   section.id === active ? "text-foreground" : "text-muted"
                 }`}
               >

@@ -13,22 +13,20 @@ export function Hero() {
               <p data-intro="fade" className="text-eyebrow text-muted">
                 Portfolio / 2027
               </p>
-              <div className="flex flex-col gap-4">
-                <h1 id="intro-title" data-intro="" data-intro-step="1" className="text-hero whitespace-nowrap">
-                  {site.name}
-                </h1>
-                <p data-intro="" data-intro-step="2" className="text-body text-muted">
-                  {home.headline}
-                </p>
-              </div>
+              <h1 id="intro-title" data-intro="" data-intro-step="1" className="text-hero whitespace-nowrap">
+                {site.name}
+              </h1>
+              <p data-intro="" data-intro-step="2" className="text-body text-muted">
+                {home.headline}
+              </p>
             </div>
             <dl data-intro="" data-intro-step="3" className="flex flex-col gap-2">
               <dt className="text-eyebrow text-muted">Currently</dt>
               <dd className="flex flex-col gap-1">
                 <span className="text-body">{home.current.role}</span>
                 <span className="text-body text-muted">{home.current.company}</span>
-                <span className="text-eyebrow font-sans normal-case text-muted">{home.current.period}</span>
               </dd>
+              <span className="text-eyebrow font-sans normal-case text-muted">{home.current.period}</span>
             </dl>
           </div>
 

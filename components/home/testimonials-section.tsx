@@ -13,14 +13,13 @@ export function TestimonialsSection() {
       <ul className="grid gap-3 md:grid-cols-2">
         {testimonials.items.map((item, index) => (
           <li key={`${item.name}-${index}`} data-reveal="">
-            <figure className="card-static flex h-full flex-col gap-16 rounded-lg border p-6 lg:p-6">
-              <div className="flex items-center justify-between text-eyebrow text-muted">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <span>Testimonial</span>
+            <figure className="card-static flex h-full flex-col justify-between gap-16 rounded-lg border p-6 lg:p-6">
+              <div className="flex flex-col gap-6">
+                <span className="text-eyebrow text-muted">{String(index + 1).padStart(2, "0")}</span>
+                <blockquote>
+                  <p className="text-body text-muted">{`“${item.quote}”`}</p>
+                </blockquote>
               </div>
-              <blockquote>
-                <p className="text-body text-muted">{`“${item.quote}”`}</p>
-              </blockquote>
               <figcaption className="flex items-center gap-3">
                 <Avatar name={item.name} size={36} />
                 <span className="flex flex-col gap-0">
