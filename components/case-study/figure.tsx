@@ -4,28 +4,41 @@ import { Image as ImageIcon } from "@phosphor-icons/react/dist/ssr/Image"
 import type { FigureData, FigureMeta, MediaSlot as MediaSlotData } from "@/lib/content/types"
 import { OrderScreen } from "@/components/figures/order-screen"
 
+export type FigureKind = "image" | "video" | "visual" | "prototype" | "media"
+
+/** One caption treatment for grouped visuals and individually numbered media slots. */
+function CaptionContent({ number, caption }: { number?: string; caption: string }) {
+  return (
+    <>
+      <span className="pill-hover min-w-0 rounded-full border px-3 py-1 text-eyebrow text-muted">
+        {caption}
+      </span>
+      {number ? <span className="ml-auto shrink-0 text-eyebrow text-muted">{number}</span> : null}
+    </>
+  )
+}
+
 /** Frame shared by image, video, and coded figures, with a figcaption below. */
 export function FigureFrame({
   meta,
+  kind = "visual",
   hasSlotLabels = false,
   children,
 }: {
   meta: FigureMeta
+  kind?: FigureKind
   hasSlotLabels?: boolean
   children: React.ReactNode
 }) {
   const captionText = meta.caption ?? meta.title
-  const showPending = !captionText && !hasSlotLabels
-  const showCaption = meta.number || captionText || showPending
+  const showCaption = meta.number || captionText || !hasSlotLabels
 
   return (
     <figure data-reveal="media" className="flex flex-col gap-4">
       {children}
       {showCaption ? (
-        <figcaption className="text-caption flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          {meta.number ? <span className="text-eyebrow text-muted">{meta.number}</span> : null}
-          {captionText ? <span className="text-foreground">{captionText}</span> : null}
-          {showPending ? <span className="text-muted italic">Caption pending</span> : null}
+        <figcaption className="flex items-center justify-between gap-3">
+          <CaptionContent number={meta.number} caption={captionText || kind} />
         </figcaption>
       ) : null}
     </figure>
@@ -92,20 +105,29 @@ export function MediaSlot({ slot }: { slot: MediaSlotData }) {
 }
 
 export function Figure({ figure }: { figure: FigureData }) {
-  const hasSlotLabels = figure.slots.some((slot) => slot.label)
+  const hasSlotLabels = figure.slots.length > 0 && figure.slots.every((slot) => /^Figure\s+\d/i.test(slot.label ?? ""))
+  const kinds = new Set(figure.slots.map((slot) => slot.fallback ? "visual" : slot.kind))
+  const kind: FigureKind = kinds.size > 1 ? "media" : kinds.values().next().value ?? "image"
   const grid = (
     <div className="flex flex-col gap-4">
       {figure.slots.map((slot) => (
         <div key={slot.placeholder} className="flex w-full flex-col gap-3">
           <MediaSlot slot={slot} />
-          {slot.label ? <p className="text-eyebrow text-muted">{slot.label}</p> : null}
+          {slot.label ? (
+            <div className="flex items-center justify-between gap-3">
+              <CaptionContent
+                number={slot.label.match(/^(Figure\s+\d+(?:\.\d+)*)/i)?.[1]}
+                caption={slot.label.replace(/^Figure\s+\d+(?:\.\d+)*\s*[·–—:-]?\s*/i, "") || (slot.fallback ? "visual" : slot.kind)}
+              />
+            </div>
+          ) : null}
         </div>
       ))}
     </div>
   )
 
   return (
-    <FigureFrame meta={figure} hasSlotLabels={hasSlotLabels}>
+    <FigureFrame meta={figure} kind={kind} hasSlotLabels={hasSlotLabels}>
       {figure.title ? <h3 className="text-body text-strong">{figure.title}</h3> : null}
       {grid}
     </FigureFrame>

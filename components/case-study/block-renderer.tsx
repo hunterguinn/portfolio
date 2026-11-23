@@ -95,37 +95,37 @@ function BlockView({ block }: { block: Block }) {
       )
     case "transfer-steps":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <TransferSteps steps={block.steps} />
         </FigureFrame>
       )
     case "transfer-demo":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <TransferDemo mode={block.mode} rows={block.rows} initialStatus={block.initialStatus} rules={block.rules} />
         </FigureFrame>
       )
     case "selection-limit":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <SelectionLimit limit={block.limit} />
         </FigureFrame>
       )
     case "application-flow":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <ApplicationFlow {...block} />
         </FigureFrame>
       )
     case "decision-matrix":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <DecisionMatrix rows={block.rows} />
         </FigureFrame>
       )
     case "delivery-timeline":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <DeliveryTimeline periods={block.periods} lanes={block.lanes} />
         </FigureFrame>
       )
@@ -133,13 +133,13 @@ function BlockView({ block }: { block: Block }) {
       return <ResearchSummary questions={block.questions} findings={block.findings} />
     case "citizenship-form":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <CitizenshipForm copy={block.copy} />
         </FigureFrame>
       )
     case "prototype":
       return (
-        <FigureFrame meta={block.figure} hasSlotLabels>
+        <FigureFrame meta={block.figure} kind="prototype">
           <PrototypeSlots title={block.title} slots={block.slots} status={block.status} />
         </FigureFrame>
       )
