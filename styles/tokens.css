@@ -25,10 +25,10 @@
 }
 
 .light {
-  --background: #f5f5f7;
+  --background: #ebebef;
   --foreground: #1d1d1f;
   --muted: #515154;
-  --surface: #ebebef;
+  --surface: #f5f5f7;
   --border: #e0e0e5;
   --border-hover: color-mix(in srgb, var(--muted) 35%, transparent);
   --blue: #0066cc;

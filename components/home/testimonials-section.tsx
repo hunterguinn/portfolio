@@ -14,7 +14,7 @@ export function TestimonialsSection() {
         {testimonials.items.map((item, index) => (
           <li key={`${item.name}-${index}`} data-reveal="">
             <figure className="card-static flex h-full flex-col justify-between gap-16 rounded-lg border p-6 lg:p-6">
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-3">
                 <span className="text-eyebrow text-muted">{String(index + 1).padStart(2, "0")}</span>
                 <blockquote>
                   <p className="text-body text-muted">{`“${item.quote}”`}</p>

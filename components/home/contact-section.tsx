@@ -1,4 +1,3 @@
-import { CaretRight } from "@phosphor-icons/react/dist/ssr/CaretRight"
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight"
 import { site } from "@/lib/content/site"
 import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
@@ -19,7 +18,7 @@ export function ContactSection() {
           >
             {"Let's connect"}
             <span className="arrow-nudge-diagonal inline-flex">
-              <CaretRight weight="regular" className="size-6 shrink-0 -rotate-45" aria-hidden="true" />
+              <ArrowUpRight weight="regular" className="size-6 shrink-0" aria-hidden="true" />
             </span>
           </a>
         </SectionTitle>
