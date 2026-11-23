@@ -137,46 +137,204 @@ export const home = {
   },
   ai: {
     title: "Scaling design through AI",
-    label: "AI",
+    label: "Recently",
     intro:
       "At Bank of America, I'm leading Figma AI enablement through hands-on learning sessions, designer mentorship, and practical tooling. Alongside this work, I'm exploring how AI-assisted prototyping, reusable components, and automation can improve the way teams design, communicate, and build products.",
     cards: [
       {
         body: "Supporting designers as they strengthen their Figma skills, adopt more consistent practices, and discover opportunities to improve their workflows.",
-        articleTitle: "Helping designers adopt AI",
+        articleTitle: "Leading Figma AI adoption through hands-on learning",
+        modalTitle: "Making AI practical for everyday design",
         articleContent: [
-          { body: "I've been leading Figma AI enablement and learning sessions across our design organization, helping designers explore emerging capabilities through practical examples." },
-          { body: "Rather than focusing on AI features in isolation, I've approached these sessions around everyday design challenges: reducing repetitive work, accelerating early exploration, working more effectively with components, and finding opportunities to simplify existing processes." },
-          { body: "My goal has been to make the learning immediately relevant. A new capability becomes more useful when designers understand not just how it works, but where it belongs in their process." },
-          { heading: "Creating space for experimentation", body: "One thing I've been thinking about is how differently designers approach emerging technology. Some are eager to experiment, while others want a clear use case before changing a workflow they already trust. Both perspectives are valuable. That's influenced how I think about enablement. Effective learning requires more than demonstrating what's new. It means connecting capabilities to familiar problems, encouraging questions, and giving designers room to form their own judgment about what works. It also means being realistic about limitations. Not every task benefits from AI, and faster output isn't necessarily better output." },
-          { heading: "What I'm learning", body: "The more I work with these tools, the more I see AI enablement as a design challenge itself. It requires understanding the audience, identifying barriers to adoption, simplifying complex information, and creating repeatable ways for people to learn. The opportunity isn't simply to help designers use AI. It's to help teams become more deliberate about where technology can improve the way they work, while keeping design judgment at the center of the process." },
+          {
+            body: "Since adopting Figma AI at Bank of America, I've led multi-day learning sessions for designers, researchers, and content strategists, focusing on how AI can reduce repetitive work, accelerate exploration, and support product delivery.",
+          },
+          {
+            heading: "Integrating AI into the design lifecycle",
+            body: "I structured the sessions around three stages—discovery, design, and delivery—to demonstrate where AI could provide meaningful value throughout our existing processes.\n\nUsing Figma's canvas agent, I demonstrated how written requirements and our internal design system could inform early design concepts, how simple wireframes could accelerate high-fidelity exploration, and how existing designs could be extended into interactive prototypes, edge cases, and error states.",
+          },
+          {
+            heading: "Establishing repeatable practices",
+            body: "The quality of AI-generated output depends heavily on the context and guidance it receives. I demonstrated several techniques that designers could incorporate into their workflows:",
+            items: [
+              "Attach written requirements and reference existing designs.",
+              "Define which frames to use, what to change, and what must remain unchanged.",
+              "Establish layout direction through simple wireframes.",
+              "Reference existing design system components rather than generating new ones.",
+            ],
+            conclusion: "To make these practices reusable, I distributed shared instructions, prepared examples, and prompt templates tailored to the work our organization does.",
+            demonstration: "contextual-prompt",
+          },
+          {
+            heading: "Designing for different levels of adoption",
+            body: "Not everyone approaches emerging technology with the same level of confidence or curiosity.\n\nI created a shared Figma playground with prepared screens where designers could experiment with prompts, explore different techniques, and learn alongside one another. This created a low-risk environment for experimentation while encouraging questions and knowledge sharing.",
+          },
+          {
+            heading: "Efficiency meets design judgment",
+            body: "The most valuable application of AI isn't automating every design task. It's recognizing which tasks can be accelerated and which decisions still require human judgment.\n\nI see AI as a way to spend less time producing design artifacts and more time evaluating solutions, challenging requirements, and making informed product decisions.\n\nThe opportunity is to reach meaningful design milestones sooner without compromising the quality of the thinking behind them.",
+          },
         ],
       },
       {
         body: "Strengthening Figma skills, component practices, and shared workflows to help designers work more consistently and effectively across teams.",
-        articleTitle: "Building a stronger design team",
+        articleTitle: "Helping designers build stronger Figma practices",
+        modalTitle: "Building a stronger design team",
         articleContent: [
-          { body: "Design tools are becoming increasingly capable. Tasks that once required substantial manual effort can now be completed faster through automation, reusable components, and AI-assisted workflows. But greater capability also creates a new challenge: knowing how to use these tools thoughtfully." },
-          { body: "I've been helping designers strengthen the fundamentals behind their work, particularly in Figma: component structure, reusable patterns, consistent design practices, and more efficient ways to organize and maintain files." },
-          { heading: "Improving the way we work", body: "Small workflow decisions can have consequences beyond the individual designer. Component structure affects whether others can reuse it; file organization affects how easily teammates can understand it; and consistent patterns influence the effort required to maintain an experience. My approach is to help designers understand the reasoning behind these practices rather than simply introducing another set of rules." },
-          { heading: "Teaching principles, not shortcuts", body: "A tool might generate a component quickly, but that component still needs appropriate structure, naming, behavior, and alignment with an existing design system. Strong fundamentals help designers evaluate and improve outputs, whether they are working on components, prototypes, documentation, or emerging workflows." },
-          { heading: "The broader opportunity", body: "Shared knowledge creates opportunities for teams to work more consistently. A technique learned by one designer can become a repeatable practice adopted by others. The goal isn't to make every designer work identically; it's to create a stronger foundation that gives people more time to focus on the decisions that require design thinking." },
+          {
+            body: "Modern design tools are increasingly informed by the principles of frontend development. Designers have greater control over how interfaces are structured, how they respond to different conditions, and how design decisions translate into implementation.\n\nTaking advantage of these capabilities requires more than learning new features. It requires a deeper understanding of the technical principles behind them.",
+          },
+          {
+            heading: "Establishing a culture of continuous learning",
+            body: "Recognizing an opportunity to strengthen our organization's proficiency in Figma, I lead Figma Office Hours and learning and development initiatives.",
+            blocks: [
+              {
+                type: "metrics",
+                metrics: [
+                  {
+                    value: "7",
+                    label: "Learning and development sessions",
+                  },
+                  {
+                    value: "20–50",
+                    label: "Attendees per session",
+                  },
+                ],
+                note: "These figures represent participation and program activity at the time of recognition, not measured improvements in designer performance.",
+              },
+              {
+                type: "p",
+                text: "Tools like Figma, Framer, and Webflow have helped narrow the gap between design and development by introducing shared methodologies and technical concepts.",
+              },
+              {
+                type: "p",
+                text: "Frames behave similarly to HTML containers, nested layers reflect the hierarchical structure of the DOM, and auto layout shares principles with CSS flexbox. Components and their properties encourage the same patterns of reusability and configurability found in frontend frameworks, while variables provide a foundation for connecting design tokens to their implementation in code.",
+              },
+              {
+                type: "p",
+                text: "I incorporate these parallels into my learning sessions to help designers understand not only how to construct interfaces, but how those interfaces are ultimately built.",
+              },
+            ],
+          },
+          {
+            heading: "Developing technical proficiency",
+            body: "I structure my learning sessions around introductory and advanced topics to accommodate different levels of experience across the organization.",
+            blocks: [
+              {
+                type: "p",
+                text: "Introductory sessions focus on establishing strong technical foundations:",
+              },
+              {
+                type: "list",
+                items: [
+                  "Frame structure, nesting, and layer hierarchy.",
+                  "Auto layout, alignment, padding, and spacing.",
+                  "Responsive behavior, resizing, and layout constraints.",
+                  "Components, instances, and design system adoption.",
+                  "File organization and efficient working practices.",
+                ],
+              },
+              {
+                type: "p",
+                text: "Advanced sessions build upon these fundamentals:",
+              },
+              {
+                type: "list",
+                items: [
+                  "Nested components, component properties, and variants.",
+                  "More complex auto layout and responsive interface patterns.",
+                  "Variables, modes, and their relationship to design tokens.",
+                  "Advanced prototyping and interaction logic.",
+                  "Workflow optimization and reducing unnecessary manual effort.",
+                ],
+              },
+              {
+                type: "p",
+                text: "Rather than teaching these capabilities in isolation, I connect them to practical design problems and the decisions designers encounter throughout their work.",
+              },
+            ],
+          },
+          {
+            heading: "Developing independent problem-solvers",
+            body: "My approach to teaching emphasizes the reasoning behind a technique rather than simply demonstrating how to execute it.\n\nFor example, understanding the relationship between fixed, hug, and fill sizing gives designers a foundation for constructing responsive interfaces without manually adjusting layouts. Understanding the value behind component properties and variants, and when an interface requires a new configuration rather than an entirely new component.\n\nThese concepts become increasingly valuable as junior designers take on more complex projects. The objective is to develop the technical knowledge and judgment to solve unfamiliar problems independently.",
+            blocks: [
+              {
+                type: "callout",
+                text: "Leadership testimonial pending: insert the original approved quote about assessing the team's needs and transitioning from Office Hours to Lunch & Learn.",
+                attribution: "Original author and title pending.",
+              },
+            ],
+          },
+          {
+            heading: "Investing in collective capability",
+            body: "As design tools become more sophisticated, technical literacy becomes an increasingly important part of design craft.\n\nThrough learning and development, I aim to establish a shared understanding of how interfaces are structured, how design decisions translate into development, and how designers can work more efficiently without compromising quality.\n\nThe goal isn't to turn designers into developers. It's to equip them with the knowledge, confidence, and technical judgment to become more effective product designers.",
+          },
         ],
       },
       {
         body: "Building interactive prototypes that bring complex workflows, application states, and design decisions to life beyond static mockups.",
-        articleTitle: "Prototyping beyond Figma",
+        articleTitle: "Prototyping complex workflows beyond Figma",
+        modalTitle: "Prototyping beyond Figma",
         articleContent: [
-          { body: "Static designs are effective at communicating visual direction, but they can leave some of the most important product questions unanswered. What happens when an API fails? How does an experience respond to different account types? What changes between loading, success, and error states? These details often require extensive annotations, additional frames, or conversations to fully explain. In complex products, the behavior behind the interface can be just as important as the interface itself. Recently, I've been exploring how AI-assisted development can help communicate that complexity more effectively." },
-          { heading: "Moving from mockups to working experiences", body: "Using tools such as Codex and Vercel, I've been building interactive JavaScript prototypes that go beyond individual screens. These projects can demonstrate conditional workflows, responsive behavior, component variations, and application states within a single working experience. What interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore and communicate product behavior in ways that previously required more technical support. Instead of describing how an experience should respond to a particular scenario, I can build a working representation of it. That changes the nature of the conversation. Stakeholders can interact with an idea rather than relying entirely on static representations or explanations." },
-          { heading: "Making prototypes useful beyond the presentation", body: "I've also been creating documentation sites alongside these projects. The documentation explains how components are structured, how interaction patterns work, and how someone else could build or adapt the experience. I see this as an important distinction between a prototype created for a single review and one designed to become a reusable resource. Where appropriate, I'm making these projects open source so others can examine the implementation, learn from the approach, and build on the work. The documentation is part of the design, not something added after development is complete." },
-          { heading: "Designing with a better understanding of implementation", body: "Working more directly with code has also changed how I approach design decisions. It encourages me to think earlier about component architecture, application states, responsive behavior, and the relationship between individual interactions and the larger system. At the same time, AI-generated code isn't automatically good code. It still requires evaluation for quality, accessibility, maintainability, and consistency with established patterns. That's an important part of the experimentation." },
-          { heading: "What I'm exploring next", body: "I'm interested in how working prototypes can become a more useful bridge between design, product, and engineering. The opportunity isn't to turn every designer into a full-time developer. It's to reduce the distance between an idea and a testable experience, making requirements more concrete and implementation questions easier to identify. For complex products, that could change how teams explore solutions, communicate decisions, and prepare experiences for development." },
+          {
+            body: "Static mockups are effective at communicating visual direction, supporting initial development estimates, and facilitating stakeholder conversations. But they often leave important product questions unanswered.\n\nWhat happens when an API fails? How does the experience differ for an existing client? What happens when someone enters an unexpected value? How does a workflow adapt to different account types?\n\nThese scenarios often require extensive annotations, additional design artifacts, or conversations to fully explain. In complex financial products, the behavior behind the interface can be just as important as the interface itself.",
+          },
+          {
+            heading: "Moving from mockups to working experiences",
+            body: "I've been exploring how AI-assisted development can help communicate that complexity more effectively.\n\nUsing Codex, Claude Code, and Vercel, I've built interactive JavaScript prototypes that extend beyond individual screens. These projects bring conditional workflows, responsive layouts, component variations, application states, and product documentation into a single working experience.\n\nRather than creating separate designs for every possible scenario, I can construct a prototype that responds dynamically to user inputs, business rules, and simulated system responses.",
+            blocks: [
+              {
+                type: "figure",
+                figure: {
+                  caption: "An interactive JavaScript prototype bringing product workflows, application states, and design documentation into a single working experience.",
+                  showCaptionText: true,
+                  slots: [
+                    {
+                      kind: "image",
+                      // Add src: "/images/prototype.webp" when the screenshot is available.
+                      alt: "Landscape screenshot of an interactive JavaScript prototype or documentation site showing connected product workflows and application states.",
+                      placeholder: "JavaScript prototype screenshot",
+                      aspect: "16 / 9",
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            heading: "Translating requirements into behavior",
+            body: "Building a working prototype requires a different way of thinking about design. Written requirements need to become conditional logic, user interactions need to trigger state changes, and individual screens need to function as part of a connected experience.\n\nThis involves exploring technical concepts such as:",
+            items: [
+              "Conditional rendering based on client eligibility, account types, and business rules.",
+              "State management to maintain user selections, input values, and workflow progress.",
+              "Form validation, error handling, and recovery paths.",
+              "Simulated API responses to demonstrate successful, incomplete, and failed system interactions.",
+              "Responsive layouts and reusable interface components.",
+            ],
+            conclusion: "Translating requirements into working behavior encourages me to evaluate those requirements more critically, identify overlooked scenarios, and explore functional questions earlier in the design process.",
+            blocks: [
+              {
+                type: "callout",
+                text: "Instead of designing every possible screen, I can design the conditions that determine which screen a client experiences.",
+              },
+            ],
+          },
+          {
+            heading: "Connecting prototypes and documentation",
+            body: "Beyond the experience itself, I've been building documentation sites that bring interactive prototypes, product requirements, component references, and application states together.\n\nRather than distributing information across design files, presentations, and written specifications, these sites provide a centralized resource where teams can explore an experience, understand its underlying logic, and reference the design system components used throughout it.\n\nI've used these materials to communicate design concepts and product complexity to stakeholders, product managers, and digital leadership, giving them an opportunity to interact with an experience rather than relying entirely on static representations or explanations.",
+          },
+          {
+            heading: "Making the approach reproducible",
+            body: "An important part of this exploration is making the process accessible to other designers.\n\nAlongside these prototypes, I've been documenting the tools, project structure, development workflows, and instructions needed to build similar experiences using AI-assisted development.\n\nBy sharing reusable resources and open-source approaches, I aim to make this methodology something other designers can independently adopt, experiment with, and build upon.",
+          },
+          {
+            heading: "Choosing the right medium",
+            body: "Not every design problem requires a working prototype. Figma remains an effective environment for visual exploration, rapid iteration, and design collaboration.\n\nI turn to code when the behavior of an experience becomes difficult to communicate through individual screens alone—particularly when multiple business rules, system responses, or user inputs influence what happens next.\n\nThese prototypes aren't intended to replace production engineering or formal design deliverables. They're another medium for exploring ideas, evaluating assumptions, and establishing a shared understanding of how a product should work.\n\nWhat interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore, build, and communicate ideas through mediums that previously required considerably more technical support.",
+          },
         ],
       },
       {
         body: "Exploring how shared tokens, reusable components, and AI-assisted tooling can connect design decisions with implementation.",
-        articleTitle: "Building systems that scale",
+        articleTitle: "Connecting design systems to code with AI",
         articleContent: [
           { body: "Design systems have traditionally helped teams create more consistent experiences through shared foundations, components, and interaction patterns. But consistency in a design file doesn't always translate into consistency in a working product. Design decisions still need to be interpreted, implemented, and maintained across different tools and environments. Each handoff introduces opportunities for variation, duplicated work, or unnecessary complexity. I've been exploring how design systems can play a more active role in connecting design to development." },
           { heading: "Building a shared foundation", body: "My recent work has focused on structuring design foundations around reusable tokens for typography, color, spacing, and corner radius. The principle is straightforward: values that appear repeatedly throughout an interface should be defined once and reused consistently. A change to a spacing token, for example, should be intentional and traceable rather than requiring multiple individual adjustments. The same thinking applies to components. Reusable elements are most effective when their structure, variations, and expected behavior are clearly defined." },
@@ -199,13 +357,13 @@ export const home = {
       },
       {
         quote:
-          "Hunter demonstrates leadership with a diverse range of stakeholders. He is the most sought-after and productive member of the team.",
-        name: "Hunter Priester",
-        role: "Design Director, Wells Fargo",
+          "Hunter took the lead the Figma routine, identifying the needs of the team and creating opportunities for designers to continuously learn, collaborate, and deepen their expertise.",
+        name: "Elsy Lao",
+        role: "Design Leadership, Bank of America",
       },
       {
         quote:
-          "Hunter serves as a model of what a great designer on our team is able to achieve. He worked smart and efficiently to deliver months ahead of schedule.",
+          "The direction Hunter gave helped all associated teams get to final requirements, make decisions, and deliver so much faster than they possibly could have in any other circumstance.",
         name: "Nate Ernst",
         role: "Senior Design Principal, Bank of America",
       },

@@ -56,34 +56,32 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] max-w-lg flex-col gap-7 overflow-y-auto p-7!"
+        className="modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] max-w-lg flex-col gap-4 overflow-y-auto p-7!"
       >
-        <div className="flex flex-col gap-3">
-          <div className="flex items-start justify-between gap-4">
-            <h2 id={titleId} className="text-heading text-strong">Protected Page</h2>
-            <button
-              type="button"
-              onClick={onClose}
-              disabled={pending}
-              aria-label="Close password dialog"
-              className="modal-close disabled:opacity-60"
-            >
-              <X weight="regular" className="size-4" aria-hidden="true" />
-            </button>
-          </div>
-          <p id={descriptionId} className="text-body text-pretty text-muted">
-            This project is password protected. Enter the password below or{" "}
-            <a
-              href="mailto:hunterg26@icloud.com"
-              className="underline underline-offset-4 transition-colors hover:text-foreground"
-            >
-              contact me
-            </a>
-          </p>
+        <div className="flex items-start justify-between gap-4">
+          <h2 id={titleId} className="text-heading">Protected Page</h2>
+          <button
+            type="button"
+            onClick={onClose}
+            disabled={pending}
+            aria-label="Close password dialog"
+            className="modal-close disabled:opacity-60"
+          >
+            <X weight="regular" className="size-4" aria-hidden="true" />
+          </button>
         </div>
+        <p id={descriptionId} className="text-body text-pretty text-muted">
+          This project is password protected. Enter the password below or{" "}
+          <a
+            href="mailto:hunterg26@icloud.com"
+            className="underline underline-offset-4 transition-colors hover:text-foreground"
+          >
+            contact me
+          </a>
+        </p>
 
         <input type="hidden" name="next" value={next} />
-        <div className="flex flex-col gap-2">
+        <div className="mt-4 flex flex-col gap-2">
           <label htmlFor={inputId} className="sr-only">
             Password
           </label>
@@ -100,7 +98,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             placeholder="Enter password"
             aria-invalid={message ? true : undefined}
             aria-describedby={message ? errorId : undefined}
-            className="text-caption w-full rounded-md border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
+            className="text-caption w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
           />
           <div aria-live="polite" className="min-h-6">
             {message ? (
@@ -118,7 +116,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="mt-4 grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={onClose}

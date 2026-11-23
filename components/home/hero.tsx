@@ -6,8 +6,8 @@ import { site } from "@/lib/content/site"
 export function Hero() {
   return (
     <section id="intro" aria-labelledby="intro-title" className="page-band min-h-[90svh]">
-      <div className="page-container relative flex min-h-[90svh] flex-col justify-center py-section-xl">
-        <div className="mx-auto grid w-full max-w-[740px] gap-10 md:grid-cols-[minmax(0,1fr)_150px] md:gap-20">
+      <div className="page-container relative flex min-h-[90svh] flex-col justify-center">
+        <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_150px] md:gap-20">
           <div className="flex min-w-0 flex-col gap-12">
             <div className="flex flex-col gap-4">
               <p data-intro="fade" className="text-eyebrow text-muted">

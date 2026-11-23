@@ -23,6 +23,10 @@ import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
 import type { Card, CardIcon, CardTone, Metric, Testimonial } from "@/lib/content/types"
 import { Avatar } from "@/components/site/avatar"
+import { MetricValue } from "@/components/site/project-metrics"
+
+export { Callout } from "@/components/site/callout"
+export { MetricValue } from "@/components/site/project-metrics"
 
 const cardIcons: Record<CardIcon, Icon> = {
   "shield-check": ShieldCheck,
@@ -90,14 +94,6 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
   )
 }
 
-export function Callout({ text }: { text: string }) {
-  return (
-    <blockquote data-reveal="" className="text-heading border-l-2 border-foreground py-1 pl-5">
-      <p>{text}</p>
-    </blockquote>
-  )
-}
-
 export function TestimonialQuote({
   testimonial,
   compact = false,
@@ -150,22 +146,6 @@ export function TestimonialQuote({
       </figcaption>
     </figure>
   )
-}
-
-export function MetricValue({ metric }: { metric: Metric }) {
-  if (metric.value === null) {
-    return (
-        <span className="text-heading text-muted/50">
-        <span aria-hidden="true">—</span>
-        <span className="sr-only">Metric pending</span>
-      </span>
-    )
-  }
-  if (metric.counter) {
-    const { prefix = "", suffix = "", decimals = 0, to } = metric.counter
-    return <span className="text-heading tabular-nums">{`${prefix}${to.toFixed(decimals)}${suffix}`}</span>
-  }
-  return <span className="text-heading tabular-nums">{metric.value}</span>
 }
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {

@@ -41,32 +41,16 @@
   }
 }
 
-/*
- * Page container: content is capped at 740px wide; gutters sit outside it.
- * No margins anywhere: a .page-band parent centres the capped container.
- */
-.page-band {
-  display: grid;
-  justify-items: center;
-}
+/* One centered reading column; its responsive width creates the horizontal gutters. */
 .page-band[class*="border-t-"] {
   border-top-color: var(--surface);
 }
 .page-container {
-  width: 100%;
-  padding-inline: var(--spacing-gutter);
-  max-width: calc(740px + 2 * var(--spacing-gutter));
-}
-@media (min-width: 48rem) {
-  .page-container {
-    padding-inline: var(--spacing-gutter-desktop);
-    max-width: calc(740px + 2 * var(--spacing-gutter-desktop));
-  }
-}
-@media (min-width: 64rem) {
-  .page-container {
-    width: 90%;
-  }
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 740px;
+  margin-inline: auto;
+  padding: 0;
 }
 
 /* Apple-style continuous corners (squircles), where the browser supports them. */
@@ -87,13 +71,15 @@
     background-color var(--motion-card) var(--motion-ease),
     border-color var(--motion-card) var(--motion-ease);
 }
-/*
- * Clickable cards (articles, contact links) lift 4px with a restrained border and background
- * change. The lift uses `transform`, so it composes with the entrance `translate` instead of
- * overriding it. Static cards (.card-surface) get the same background and border change on hover
- * but never lift. Project covers (.card-hover-flat) stay put and rely on the clipped image zoom.
- */
+/* Cards lift on hover; pills keep their restrained color-only feedback. */
+.card-surface,
 .card-static,
+.card-hover {
+  transition:
+    background-color var(--motion-card) var(--motion-ease),
+    border-color var(--motion-card) var(--motion-ease),
+    transform var(--motion-card-lift-duration) var(--motion-ease);
+}
 .pill-hover {
   transition:
     background-color var(--motion-card) var(--motion-ease),
@@ -105,28 +91,17 @@
 @media (hover: hover) and (pointer: fine) {
   .card-surface:hover,
   .card-static:hover,
-  .pill-hover:hover {
-    border-color: var(--border-hover);
-    background-color: var(--surface);
-  }
-}
-.card-hover {
-  transition:
-    background-color var(--motion-card) var(--motion-ease),
-    border-color var(--motion-card) var(--motion-ease),
-    transform var(--motion-card) var(--motion-ease);
-}
-@media (hover: hover) and (pointer: fine) {
   .card-hover:hover {
     transform: translateY(var(--motion-card-lift));
     border-color: var(--border-hover);
     background-color: var(--surface);
   }
-}
-@media (hover: hover) and (pointer: fine) {
-  .card-hover-flat:hover {
-    transform: none;
-    background-color: transparent;
+  .pill-hover:hover {
+    border-color: var(--border-hover);
+    background-color: var(--surface);
+  }
+  #testimonials .card-static:hover blockquote p {
+    color: var(--foreground);
   }
 }
 .card-hover:focus-visible {
@@ -360,12 +335,18 @@
   .cover-zoom.media-settle {
     transition: none;
   }
-  .card-hover {
+  .card-surface,
+  .card-static,
+  .card-hover,
+  .pill-hover {
     transition:
       background-color var(--motion-card) ease,
       border-color var(--motion-card) ease;
   }
-  .card-hover:hover {
+  .card-surface:hover,
+  .card-static:hover,
+  .card-hover:hover,
+  .pill-hover:hover {
     transform: none;
   }
   [data-reveal][data-pending],
@@ -674,4 +655,41 @@
 /* Reuse muted at 25% for slightly darker inactive light-mode rail lines. */
 .light a:not(:hover):not(:focus-visible) .rail-line[data-active="false"] {
   background-color: color-mix(in srgb, var(--muted) 25%, transparent);
+}
+
+/* Native range semantics with one shared 16px thumb geometry for ticks and labels. */
+.transfer-range {
+  appearance: none;
+  height: calc(var(--spacing) * 6);
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.transfer-range::-webkit-slider-runnable-track {
+  height: var(--spacing);
+  border-radius: var(--radius-full);
+  background: linear-gradient(to right, var(--foreground) var(--range-progress), color-mix(in srgb, var(--muted) 20%, transparent) var(--range-progress));
+}
+.transfer-range::-webkit-slider-thumb {
+  appearance: none;
+  box-sizing: border-box;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * -1.5);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+}
+.transfer-range::-moz-range-track {
+  height: var(--spacing);
+  border-radius: var(--radius-full);
+  background: linear-gradient(to right, var(--foreground) var(--range-progress), color-mix(in srgb, var(--muted) 20%, transparent) var(--range-progress));
+}
+.transfer-range::-moz-range-thumb {
+  box-sizing: border-box;
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius-full);
+  background: var(--surface);
 }

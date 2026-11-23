@@ -54,17 +54,17 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
   return (
     <>
       <SiteChrome sections={rail} back />
-      <article className="case-study">
+      <article className="case-study flex flex-col gap-28 md:gap-40 lg:gap-48">
         <SectionShell
           id="overview"
           bordered={false}
-          className={study.slug === "merrill" ? "flex min-h-svh flex-col justify-center" : "pt-28 md:pt-36"}
+          className={study.slug === "merrill" ? "flex min-h-svh flex-col justify-center" : undefined}
         >
           <div className="flex flex-col gap-4 md:gap-6">
             <p data-intro="fade" className="text-eyebrow text-muted">
               {study.eyebrow}
             </p>
-            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-display">
+            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-hero">
               {study.title}
             </h1>
             <p data-intro="" data-intro-step="2" className="text-body text-muted">
@@ -74,7 +74,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
           <dl
             data-intro=""
             data-intro-step="3"
-            className={`grid gap-6 sm:grid-cols-2 ${study.slug === "merrill" ? "" : "border-t pt-6"}`}
+            className={`grid gap-6 sm:grid-cols-2 ${study.slug === "merrill" ? "" : "border-t"}`}
           >
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />

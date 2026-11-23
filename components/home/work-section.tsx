@@ -3,7 +3,8 @@ import Link from "next/link"
 import { home } from "@/lib/content/home"
 import type { ProjectSummary } from "@/lib/content/types"
 import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { MetricValue } from "@/components/case-study/content-primitives"
+import { ProjectMetrics } from "@/components/site/project-metrics"
+import { SectionEyebrow } from "@/components/site/section-eyebrow"
 
 function ProjectCover({ project }: { project: ProjectSummary }) {
   return (
@@ -60,22 +61,13 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
       <div className="flex flex-col gap-4">
         <div data-reveal="" className="flex flex-col gap-4">
           <div className="flex flex-col gap-3">
-            <h3 id={titleId} className="text-heading">
+            <h3 id={titleId} className="text-[36px] leading-[1.2] font-light">
               {project.title}
             </h3>
             <p className="text-body text-muted">{project.description}</p>
           </div>
         </div>
-        <dl className="grid gap-3 sm:grid-cols-2">
-          {project.metrics.map((metric) => (
-            <div key={metric.label} data-reveal="" className="card-static flex flex-col-reverse gap-1 rounded-md border p-4 lg:p-6">
-              <dt className="text-caption text-muted">{metric.label}</dt>
-              <dd>
-                <MetricValue metric={metric} />
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <ProjectMetrics metrics={project.metrics} spaciousBottom={project.slug === "pos"} />
       </div>
     </article>
   )
@@ -85,6 +77,7 @@ export function WorkSection() {
   return (
     <SectionShell id="work">
       <SectionHeader>
+        <SectionEyebrow>{home.work.label}</SectionEyebrow>
         <SectionTitle id="work">{home.work.title}</SectionTitle>
       </SectionHeader>
       <div className="flex flex-col gap-16 md:gap-24">

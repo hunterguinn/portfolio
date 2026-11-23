@@ -6,12 +6,26 @@ import { Clock } from "@phosphor-icons/react/dist/csr/Clock"
 import { home } from "@/lib/content/home"
 import type { AiCard } from "@/lib/content/types"
 import { SectionHeader, SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
+import { SectionEyebrow } from "@/components/site/section-eyebrow"
 import { ArticleModal } from "./article-modal"
 
 const WORDS_PER_MINUTE = 200
 
 function readMinutes(card: AiCard) {
-  const words = card.articleContent.map((section) => `${section.heading ?? ""} ${section.body}`).join(" ").split(/\s+/).filter(Boolean).length
+  const words = card.articleContent
+    .flatMap((section) => [
+      section.heading, section.body, ...(section.items ?? []), section.conclusion,
+      ...(section.blocks ?? []).flatMap((block) => {
+        switch (block.type) {
+          case "p": return [block.text]
+          case "list": return block.items
+          case "callout": return [block.text, block.attribution]
+          case "metrics": return [block.note, ...block.metrics.map((metric) => `${metric.value ?? ""} ${metric.label}`)]
+          case "figure": return [block.figure.title, block.figure.caption]
+        }
+      }),
+    ])
+    .filter(Boolean).join(" ").split(/\s+/).length
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))
 }
 
@@ -22,20 +36,17 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="card-hover group flex w-full flex-col gap-7 overflow-hidden rounded-lg border pl-7 pt-7 text-left"
+        className="card-hover group flex min-w-0 w-full flex-col justify-between gap-7 rounded-lg border p-7 text-left"
       >
-        <span className="text-body pr-7">{card.articleTitle}</span>
-        <span className="ai-card-panel flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface p-6">
-          <span className="text-caption text-muted">{card.body}</span>
-          <span className="flex w-full items-center justify-between gap-4 text-caption">
-            <span className="inline-flex items-center gap-2 text-muted">
-              <Clock weight="regular" className="size-4 shrink-0" aria-hidden="true" />
-              {readMinutes(card)} min read
-            </span>
-            <span className="inline-flex items-center gap-2 text-foreground">
-              Read more
-              <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
-            </span>
+        <span className="text-body font-medium">{card.articleTitle}</span>
+        <span className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 text-caption">
+          <span className="inline-flex items-center gap-2 whitespace-nowrap text-muted">
+            <Clock weight="regular" className="size-4 shrink-0" aria-hidden="true" />
+            {readMinutes(card)} min read
+          </span>
+          <span className="inline-flex items-center gap-2 whitespace-nowrap text-foreground">
+            Read more
+            <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
           </span>
         </span>
       </button>
@@ -50,6 +61,7 @@ export function AiSection() {
   return (
     <SectionShell id="ai">
       <SectionHeader>
+        <SectionEyebrow>{ai.label}</SectionEyebrow>
         <SectionTitle id="ai">{ai.title}</SectionTitle>
         <SectionIntro>{ai.intro}</SectionIntro>
       </SectionHeader>
@@ -58,7 +70,7 @@ export function AiSection() {
           <AiCardView key={card.articleTitle} card={card} onOpen={(_, trigger) => setOpen({ card, trigger })} />
         ))}
       </ul>
-      {open ? <ArticleModal title={open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
+      {open ? <ArticleModal title={open.card.modalTitle ?? open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
     </SectionShell>
   )
 }

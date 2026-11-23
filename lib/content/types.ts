@@ -30,6 +30,8 @@ export type FigureData = {
   title?: string
   /** Source caption. When both title and caption are missing, "Caption pending" renders. */
   caption?: string
+  /** Show editorial caption text in addition to the existing media-type pill. */
+  showCaptionText?: boolean
   slots: MediaSlot[]
   reveal?: boolean
 }
@@ -77,11 +79,30 @@ export type Testimonial = { quote: string; name: string; role: string }
 
 export type StackTool = { name: string; src: string }
 
+export type ArticleBlock =
+  | { type: "p"; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "metrics"; metrics: Metric[]; note?: string }
+  | { type: "callout"; text: string; attribution?: string }
+  | { type: "figure"; figure: FigureData }
+
+export type ArticleSection = {
+  heading?: string
+  /** Separate paragraphs with a blank line. */
+  body: string
+  items?: string[]
+  conclusion?: string
+  demonstration?: "contextual-prompt"
+  blocks?: ArticleBlock[]
+}
+
 export type AiCard = {
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
   articleTitle: string
-  articleContent: { heading?: string; body: string }[]
+  /** Optional editorial title, independent of the homepage card. */
+  modalTitle?: string
+  articleContent: ArticleSection[]
 }
 
 export type TransferRow = { symbol: string; name: string; shares: number; amount: number }

@@ -1,10 +1,11 @@
 "use client"
 
-import { useId, useState } from "react"
+import { useId, useState, type CSSProperties } from "react"
+import { CheckCircle } from "@phosphor-icons/react/dist/csr/CheckCircle"
 import { Warning } from "@phosphor-icons/react/dist/csr/Warning"
 
 const TOTAL_ASSETS = 100
-const ASSET_TYPES = ["Stocks", "ETFs", "Bonds", "Crypto", "Prop Funds"] as const
+const ASSET_TYPES = ["Equities", "Bonds", "Crypto", "Prop Funds"] as const
 type AssetType = (typeof ASSET_TYPES)[number]
 type TransferType = "full" | "partial"
 
@@ -12,12 +13,13 @@ const hasRestrictedAssets = (assets: AssetType[]) => assets.includes("Crypto") |
 
 export function SelectionLimit({ limit }: { limit: number }) {
   const baseId = useId()
-  const [assets, setAssets] = useState<AssetType[]>(["Stocks", "ETFs"])
+  const [assets, setAssets] = useState<AssetType[]>(["Equities"])
   const [transfer, setTransfer] = useState<TransferType>("full")
   const [selected, setSelected] = useState(30)
   const restricted = hasRestrictedAssets(assets)
   const isFull = transfer === "full"
-  const overLimit = !isFull && restricted && selected > limit
+  const sliderValue = isFull ? TOTAL_ASSETS : selected
+  const overLimit = !isFull && selected > limit
   const errorId = `${baseId}-error`
   const hintId = `${baseId}-hint`
 
@@ -29,8 +31,11 @@ export function SelectionLimit({ limit }: { limit: number }) {
   }
 
   return (
-    <div className="card-static flex min-w-0 flex-col gap-6 rounded-lg border p-4 md:p-6">
-      <p className="text-body text-foreground">100 assets in this transfer</p>
+    <div className="card-static flex min-w-0 flex-col gap-8 font-normal rounded-lg border p-4 md:p-6">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-body font-medium text-foreground">Transfer Eligibility Logic</h3>
+        <p className="text-caption text-muted">100 assets in this transfer</p>
+      </div>
 
       <fieldset className="flex min-w-0 flex-col gap-3">
         <legend className="mb-3 text-caption text-foreground">What types of assets do you have?</legend>
@@ -77,36 +82,51 @@ export function SelectionLimit({ limit }: { limit: number }) {
             )
           })}
         </div>
-        <p id={hintId} className="text-caption text-muted">
-          {restricted ? `Crypto and Prop Funds require a partial transfer of ${limit} assets or fewer.` : "Full Transfer includes all 100 assets. Partial Transfer lets you choose how many to move."}
-        </p>
+        <div id={hintId} aria-live="polite" className="min-h-6">
+          {restricted ? (
+            <p className="text-caption flex items-center justify-start gap-1.5 text-left text-yellow">
+              <Warning size={16} weight="regular" className="shrink-0" aria-hidden="true" />
+              Full transfer is not possible due to ineligible assets.
+            </p>
+          ) : null}
+        </div>
       </fieldset>
 
       <fieldset disabled={isFull} className={`flex min-w-0 flex-col gap-3 transition-opacity duration-300 motion-reduce:transition-none ${isFull ? "opacity-50" : "opacity-100"}`}>
-        <legend className="mb-3 text-caption text-foreground">Assets in this partial transfer</legend>
-        <label htmlFor={`${baseId}-selected`} className="flex flex-wrap items-baseline justify-between gap-2 text-caption text-muted">
-          Select assets
-          <span className="text-body text-foreground tabular-nums">{selected} / {TOTAL_ASSETS}</span>
+        <legend className="sr-only">Partial transfer asset count</legend>
+        <label htmlFor={`${baseId}-selected`} className="flex flex-wrap items-baseline justify-between gap-2 text-caption text-foreground">
+          Assets in this partial transfer
+          <span className="font-mono text-caption font-normal text-muted tabular-nums">{sliderValue} / {TOTAL_ASSETS}</span>
         </label>
-        <input
-          id={`${baseId}-selected`}
-          type="range"
-          min={0}
-          max={TOTAL_ASSETS}
-          step={1}
-          value={selected}
-          list={`${baseId}-ticks`}
-          onChange={(event) => setSelected(Number(event.target.value))}
-          aria-valuetext={`${selected} of ${TOTAL_ASSETS} assets`}
-          aria-invalid={overLimit || undefined}
-          aria-describedby={overLimit ? `${hintId} ${errorId}` : hintId}
-          className="w-full accent-foreground disabled:cursor-not-allowed"
-        />
-        <datalist id={`${baseId}-ticks`}>
-          {[0, 25, 50, 75, 100].map((value) => <option key={value} value={value} />)}
-        </datalist>
-        <div aria-hidden="true" className="flex justify-between text-eyebrow text-muted tabular-nums">
-          {[0, 25, 50, 75, 100].map((value) => <span key={value}>{value}</span>)}
+        <div className="relative min-w-0 pt-3">
+          <span className="sr-only" id={`${baseId}-threshold`}>{`Partial transfer limit: ${limit} assets.`}</span>
+          <span
+            aria-hidden="true"
+            className="absolute top-3 h-2 w-px -translate-x-1/2 bg-muted"
+            style={{ left: `calc(var(--spacing) * 2 + (100% - var(--spacing) * 4) * ${limit / TOTAL_ASSETS})` }}
+          />
+          <input
+            id={`${baseId}-selected`}
+            type="range"
+            min={0}
+            max={TOTAL_ASSETS}
+            step={1}
+            value={sliderValue}
+            onChange={(event) => setSelected(Number(event.target.value))}
+            aria-valuetext={`${sliderValue} of ${TOTAL_ASSETS} assets`}
+            aria-invalid={overLimit || undefined}
+            aria-describedby={`${hintId} ${baseId}-threshold${overLimit ? ` ${errorId}` : ""}`}
+            className="transfer-range block w-full disabled:cursor-not-allowed"
+            style={{ "--range-progress": `${sliderValue}%` } as CSSProperties}
+          />
+          <div aria-hidden="true" className="relative mx-2 h-8 font-mono text-caption font-normal text-muted tabular-nums">
+            {[0, 25, 50, 75, 100].map((value) => (
+              <span key={value} className="absolute top-0 flex -translate-x-1/2 flex-col items-center gap-1" style={{ left: `${value}%` }}>
+                <span className="h-1.5 w-px bg-muted/50" />
+                <span>{value}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </fieldset>
 
@@ -114,9 +134,14 @@ export function SelectionLimit({ limit }: { limit: number }) {
         {overLimit ? (
           <p id={errorId} className="text-caption flex items-center justify-start gap-1.5 text-left text-red">
             <Warning size={16} weight="regular" className="shrink-0" aria-hidden="true" />
-            {`Transfers containing Crypto or Prop Funds are limited to ${limit} assets. Select ${limit} or fewer.`}
+            {`Partial transfers are limited to ${limit} assets.`}
           </p>
-        ) : null}
+        ) : (
+          <p className="text-caption flex items-center justify-start gap-1.5 text-left text-green">
+            <CheckCircle size={16} weight="regular" className="shrink-0" aria-hidden="true" />
+            {isFull ? "This full transfer of 100 assets is eligible." : "This partial transfer is eligible."}
+          </p>
+        )}
       </div>
     </div>
   )
