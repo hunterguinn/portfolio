@@ -23,7 +23,6 @@ import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
 import type { Card, CardIcon, CardTone, Metric, Testimonial } from "@/lib/content/types"
 import { Avatar } from "@/components/site/avatar"
-import { CountUp } from "@/components/site/count-up"
 
 const cardIcons: Record<CardIcon, Icon> = {
   "shield-check": ShieldCheck,
@@ -72,10 +71,11 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
           <li
             key={`${card.title}-${index}`}
             style={{ "--tone": tone } as React.CSSProperties}
+            data-reveal=""
             className="card-surface flex flex-col justify-between gap-3 rounded-lg p-5 md:gap-7 lg:p-6"
           >
             {Icon ? (
-              <span className="inline-flex size-8 items-center justify-center self-start rounded-sm bg-tone/16 text-tone">
+              <span className="inline-flex size-8 items-center justify-center self-start rounded-md bg-tone/16 text-tone">
                 <Icon weight="regular" className="size-4" aria-hidden="true" />
               </span>
             ) : null}
@@ -92,7 +92,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
 
 export function Callout({ text }: { text: string }) {
   return (
-    <blockquote className="text-heading border-l-2 border-foreground py-1 pl-5">
+    <blockquote data-reveal="" className="text-heading border-l-2 border-foreground py-1 pl-5">
       <p>{text}</p>
     </blockquote>
   )
@@ -109,11 +109,11 @@ export function TestimonialQuote({
 }) {
   if (compact) {
     return (
-      <figure className="group flex h-full w-full flex-col justify-between gap-8 card-surface rounded-3xl p-8 lg:p-6">
+      <figure data-reveal="" className="flex h-full w-full flex-col justify-between gap-8 card-surface rounded-lg p-8 lg:p-6">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
             <p
-              className="text-heading text-muted transition-colors duration-300 group-hover:text-foreground"
+              className="text-heading text-muted"
               style={{ fontWeight: quoteWeight === "light" ? 300 : 400 }}
             >
               {testimonial.quote}
@@ -132,13 +132,11 @@ export function TestimonialQuote({
   }
 
   return (
-    <figure
-      className={`group flex h-full flex-col justify-between gap-8 card-surface ${compact ? "rounded-3xl p-8 lg:p-6" : "rounded-lg p-8 lg:p-6"}`}
-    >
+    <figure data-reveal="" className="flex h-full flex-col justify-between gap-8 card-surface rounded-lg p-8 lg:p-6">
       <div className="flex flex-col gap-5">
         {compact ? <Quotes weight="regular" className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>
-          <p className="text-body text-muted transition-colors duration-300 group-hover:text-foreground">
+          <p className="text-body text-muted">
             {compact ? testimonial.quote : `“${testimonial.quote}”`}
           </p>
         </blockquote>
@@ -164,18 +162,15 @@ export function MetricValue({ metric }: { metric: Metric }) {
     )
   }
   if (metric.counter) {
-    return (
-      <span className="text-heading tabular-nums">
-        <CountUp {...metric.counter} />
-      </span>
-    )
+    const { prefix = "", suffix = "", decimals = 0, to } = metric.counter
+    return <span className="text-heading tabular-nums">{`${prefix}${to.toFixed(decimals)}${suffix}`}</span>
   }
   return <span className="text-heading tabular-nums">{metric.value}</span>
 }
 
 export function Metrics({ metrics }: { metrics: Metric[] }) {
   return (
-    <dl className="grid gap-3 md:grid-cols-3">
+    <dl data-reveal="" className="grid gap-3 md:grid-cols-3">
       {metrics.map((metric, index) => (
         <div key={`${metric.label}-${index}`} className="card-surface flex flex-col-reverse gap-3 rounded-lg p-5 md:p-6">
           <dt className="flex flex-wrap items-center gap-2 text-caption text-muted">

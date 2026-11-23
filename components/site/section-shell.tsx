@@ -31,9 +31,18 @@ export function SectionTitle({ id, children }: { id?: string; children: React.Re
   )
 }
 
-/** Intro copy under a section title, filling the reading column. */
+/** Section title and its intro copy, revealed together as one unit. */
+export function SectionHeader({ children }: { children: React.ReactNode }) {
+  return (
+    <div data-reveal="" className="flex flex-col gap-6">
+      {children}
+    </div>
+  )
+}
+
+/** Intro copy under a section title, filling the reading column. Place inside SectionHeader. */
 export function SectionIntro({ children }: { children: React.ReactNode }) {
-  return <p className="-mt-4 text-body text-muted md:-mt-6">{children}</p>
+  return <p className="text-body text-muted">{children}</p>
 }
 
 /** Numbered row: a narrow index column (number or label) beside content that fills the remaining column. */

@@ -12,7 +12,7 @@ type Step = {
 }
 
 type Scenario = "success" | "partial" | "failure"
-type Resolved = "api" | "you" | "requested" | "skipped"
+type Resolved = "api" | "you" | "requested"
 
 const scenarios: { id: Scenario; label: string }[] = [
   { id: "success", label: "API Success" },
@@ -20,17 +20,18 @@ const scenarios: { id: Scenario; label: string }[] = [
   { id: "failure", label: "API Failure" },
 ]
 
-function resolve(source: Source, scenario: Scenario): Resolved {
+function resolve(item: Step["items"][number], scenario: Scenario): Resolved {
+  const { source } = item
+  if (scenario === "success" && item.label === "Full or partial transfer") return "api"
   if (source === "you") return "you"
-  if (source === "conditional") return scenario === "success" ? "skipped" : "requested"
+  if (source === "conditional") return scenario === "success" ? "api" : "requested"
   return scenario === "failure" ? "you" : "api"
 }
 
 const badge: Record<Resolved, { text: string; className: string }> = {
   api: { text: "API", className: "bg-green/10 text-green" },
-  you: { text: "Required", className: "bg-red/10 text-red" },
-  requested: { text: "Requested", className: "bg-yellow/10 text-yellow" },
-  skipped: { text: "Not needed", className: "bg-muted/10 text-muted" },
+  you: { text: "Req", className: "bg-red/10 text-red" },
+  requested: { text: "Cond", className: "bg-muted/10 text-muted" },
 }
 
 export function TransferSteps({ steps }: { steps: Step[] }) {
@@ -41,7 +42,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
   const selectedIndex = scenarios.findIndex((option) => option.id === scenario)
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4">
       <div
         role="radiogroup"
         aria-labelledby={`${groupId}-label`}
@@ -84,9 +85,9 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
         })}
       </div>
 
-      <ol className="grid gap-3 lg:grid-cols-3">
+      <ol className="grid gap-4 lg:grid-cols-3">
         {availableSteps.map((step) => {
-          const resolved = step.items.map((item) => resolve(item.source, scenario))
+          const resolved = step.items.map((item) => resolve(item, scenario))
           const inactive = scenario === "success" && step.requirement === "Conditional"
 
           return (
@@ -96,14 +97,14 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                 inactive ? "opacity-60" : "opacity-100"
               }`}
             >
-              <span className="text-caption text-muted tabular-nums">{step.step}</span>
+              <span className="text-eyebrow text-muted tabular-nums">{`Step ${step.step}`}</span>
               <h3 className="text-body text-strong">{step.title}</h3>
               <ul className="flex flex-col divide-y">
                 {step.items.map((item, index) => {
                   const state = badge[resolved[index]]
                   return (
-                    <li key={item.label} className="flex min-w-0 items-start gap-2 py-3 text-caption text-muted lg:flex-col">
-                      <span className={`min-w-0 flex-1 lg:flex-none ${resolved[index] === "api" ? "line-through opacity-60" : resolved[index] === "skipped" ? "line-through" : ""}`}>
+                    <li key={item.label} className="flex min-w-0 flex-col items-start gap-0.5 py-2 text-caption text-foreground">
+                      <span className={`min-w-0 flex-1 lg:flex-none ${resolved[index] === "api" ? "opacity-40" : ""}`}>
                         {item.label}
                       </span>
                       <span
@@ -120,7 +121,6 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
         })}
       </ol>
 
-      <p className="text-eyebrow text-muted">Illustrative scenarios · no live API connection</p>
     </div>
   )
 }

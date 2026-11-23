@@ -78,11 +78,6 @@ export type Testimonial = { quote: string; name: string; role: string }
 export type StackTool = { name: string; src: string }
 
 export type AiCard = {
-  /** Verified count shown before the topic, e.g. 92 with suffix "+". */
-  count?: number
-  suffix?: string
-  topic: string
-  sublabel?: string
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
   articleTitle: string
@@ -209,7 +204,7 @@ export type ProjectSummary = {
   slug: CaseStudy["slug"]
   href: string
   title: string
-  meta: string
+  category: string
   description: string
   team: string[]
   metrics: Metric[]
@@ -217,4 +212,6 @@ export type ProjectSummary = {
   insight: { icon: ProjectIcon; title: string; body: string }
   cover: MediaSlot
   background: string
+  /** Device mockup size (px) and its placement inside the surface panel, as percentages of the panel. */
+  mockup: { width: number; height: number; left: string; top: string; size: string }
 }

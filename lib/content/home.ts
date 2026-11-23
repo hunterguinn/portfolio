@@ -1,11 +1,12 @@
 import type { AiCard, ProjectSummary, StackTool, Testimonial } from "./types"
 
 export const home = {
-  headline: "Designing financial experiences that create clarity, build trust, and scale",
+  headline:
+    "I design financial experiences by connecting customer needs, business priorities, and technical realities, turning complex requirements into interfaces that are easier to use and build.",
   greeting: "Hey, I'm Hunter 👋",
   current: {
     role: "Vice President, Product Designer",
-    company: "@ Bank of America",
+    company: "Bank of America",
     period: "2022 - Present",
   },
   stack: [
@@ -25,11 +26,12 @@ export const home = {
         slug: "merrill",
         href: "/merrill",
         title: "Merrill Edge Asset Transfer",
-        meta: "Native app · 2027",
+        category: "Native app",
         description:
           "I helped redesign how clients move investments into Merrill, simplifying external account connections, asset selection, and complex transfer requirements into a more manageable digital experience.",
         team: ["Product Design (Lead) • Digital Product • Investment Operations • Engineers • API Tech Team"],
-        background: "/images/home/project-bg-1.webp",
+        background: "/images/home/merrill-bg.webp",
+        mockup: { width: 1800, height: 2176, left: "27%", top: "14%", size: "46%" },
         metricIcons: ["landmark", "wallet"],
         insight: {
           icon: "database",
@@ -54,18 +56,19 @@ export const home = {
           fit: "contain",
           alt: "Three phone screens from the Merrill Edge asset transfer flow: choosing a financial institution, selecting assets, and reviewing the transfer",
           placeholder: "Merrill · Project cover",
-          aspect: "16 / 10",
+          aspect: "3 / 2",
         },
       },
       {
         slug: "pos",
         href: "/pos",
         title: "Point-of-Sale Software",
-        meta: "Android responsive · 2026",
+        category: "Responsive web",
         description:
           "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing reusable design patterns across payment devices while supporting business continuity for merchants.",
         team: ["Product Design (Lead) • Merchant Services • Product Management • Engineers • Platform Architecture"],
-        background: "/images/home/project-bg-2.webp",
+        background: "/images/home/pos-bg.webp",
+        mockup: { width: 1800, height: 1049, left: "14%", top: "22%", size: "72%" },
         metricIcons: ["credit-card", "store"],
         insight: {
           icon: "blocks",
@@ -90,18 +93,19 @@ export const home = {
           fit: "contain",
           alt: "Three PAX point-of-sale terminals running the Bank of America payment software",
           placeholder: "POS · Project cover",
-          aspect: "16 / 10",
+          aspect: "3 / 2",
         },
       },
       {
         slug: "unified",
         href: "/unified",
         title: "Unified Client Application",
-        meta: "Web responsive · 2025",
+        category: "Responsive web",
         description:
           "I helped consolidate applications for business checking, credit cards, and payment services into a single experience, balancing simpler onboarding with complex eligibility, risk, and compliance requirements.",
         team: ["Product Design (Lead) · Product Management · Small Business CXO · Risk & KYC • Sales"],
-        background: "/images/home/project-bg-3.webp",
+        background: "/images/home/unified-bg.webp",
+        mockup: { width: 1800, height: 2760, left: "19.5%", top: "20%", size: "61%" },
         metricIcons: ["layers", "briefcase"],
         insight: {
           icon: "workflow",
@@ -126,7 +130,7 @@ export const home = {
           fit: "contain",
           alt: "Business Advantage application flow showing the select products step with credit card options",
           placeholder: "Unified · Project cover",
-          aspect: "16 / 10",
+          aspect: "3 / 2",
         },
       },
     ] satisfies ProjectSummary[],
@@ -138,10 +142,8 @@ export const home = {
       "At Bank of America, I'm leading Figma AI enablement through hands-on learning sessions, designer mentorship, and practical tooling. Alongside this work, I'm exploring how AI-assisted prototyping, reusable components, and automation can improve the way teams design, communicate, and build products.",
     cards: [
       {
-        count: 10,
-        topic: "Learning sessions hosted",
         body: "Supporting designers as they strengthen their Figma skills, adopt more consistent practices, and discover opportunities to improve their workflows.",
-        articleTitle: "Learning sessions hosted",
+        articleTitle: "Helping designers adopt AI",
         articleContent: [
           { body: "I've been leading Figma AI enablement and learning sessions across our design organization, helping designers explore emerging capabilities through practical examples." },
           { body: "Rather than focusing on AI features in isolation, I've approached these sessions around everyday design challenges: reducing repetitive work, accelerating early exploration, working more effectively with components, and finding opportunities to simplify existing processes." },
@@ -151,11 +153,8 @@ export const home = {
         ],
       },
       {
-        count: 92,
-        suffix: "+",
-        topic: "Designers supported",
-        body: "Helping designers strengthen their skills, workflow, and technique.",
-        articleTitle: "Designer mentorship",
+        body: "Strengthening Figma skills, component practices, and shared workflows to help designers work more consistently and effectively across teams.",
+        articleTitle: "Building a stronger design team",
         articleContent: [
           { body: "Design tools are becoming increasingly capable. Tasks that once required substantial manual effort can now be completed faster through automation, reusable components, and AI-assisted workflows. But greater capability also creates a new challenge: knowing how to use these tools thoughtfully." },
           { body: "I've been helping designers strengthen the fundamentals behind their work, particularly in Figma: component structure, reusable patterns, consistent design practices, and more efficient ways to organize and maintain files." },
@@ -165,10 +164,8 @@ export const home = {
         ],
       },
       {
-        topic: "Concept to Code",
-        sublabel: "Exploration · Prototyping · Open source",
-        body: "Building interactive, AI-assisted prototypes that demonstrate product logic, design states, and reusable components beyond static mockups.",
-        articleTitle: "Concept to Code",
+        body: "Building interactive prototypes that bring complex workflows, application states, and design decisions to life beyond static mockups.",
+        articleTitle: "Prototyping beyond Figma",
         articleContent: [
           { body: "Static designs are effective at communicating visual direction, but they can leave some of the most important product questions unanswered. What happens when an API fails? How does an experience respond to different account types? What changes between loading, success, and error states? These details often require extensive annotations, additional frames, or conversations to fully explain. In complex products, the behavior behind the interface can be just as important as the interface itself. Recently, I've been exploring how AI-assisted development can help communicate that complexity more effectively." },
           { heading: "Moving from mockups to working experiences", body: "Using tools such as Codex and Vercel, I've been building interactive JavaScript prototypes that go beyond individual screens. These projects can demonstrate conditional workflows, responsive behavior, component variations, and application states within a single working experience. What interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore and communicate product behavior in ways that previously required more technical support. Instead of describing how an experience should respond to a particular scenario, I can build a working representation of it. That changes the nature of the conversation. Stakeholders can interact with an idea rather than relying entirely on static representations or explanations." },
@@ -178,10 +175,8 @@ export const home = {
         ],
       },
       {
-        topic: "System to delivery",
-        sublabel: "Systems · Tooling · Automation",
-        body: "Exploring how shared design tokens, components, and documentation can create greater consistency between design and implementation.",
-        articleTitle: "System to delivery",
+        body: "Exploring how shared tokens, reusable components, and AI-assisted tooling can connect design decisions with implementation.",
+        articleTitle: "Building systems that scale",
         articleContent: [
           { body: "Design systems have traditionally helped teams create more consistent experiences through shared foundations, components, and interaction patterns. But consistency in a design file doesn't always translate into consistency in a working product. Design decisions still need to be interpreted, implemented, and maintained across different tools and environments. Each handoff introduces opportunities for variation, duplicated work, or unnecessary complexity. I've been exploring how design systems can play a more active role in connecting design to development." },
           { heading: "Building a shared foundation", body: "My recent work has focused on structuring design foundations around reusable tokens for typography, color, spacing, and corner radius. The principle is straightforward: values that appear repeatedly throughout an interface should be defined once and reused consistently. A change to a spacing token, for example, should be intentional and traceable rather than requiring multiple individual adjustments. The same thinking applies to components. Reusable elements are most effective when their structure, variations, and expected behavior are clearly defined." },
@@ -194,7 +189,7 @@ export const home = {
   },
   testimonials: {
     label: "Testimonials",
-    title: "What others say",
+    title: "Hear it from others",
     items: [
       {
         quote:

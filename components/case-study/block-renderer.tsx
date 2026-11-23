@@ -12,12 +12,58 @@ import { CitizenshipForm } from "@/components/figures/citizenship-form"
 import { PrototypeSlots } from "@/components/figures/prototype-slots"
 import { SelectionLimit } from "@/components/figures/selection-limit"
 
-export function Blocks({ blocks }: { blocks: Block[] }) {
+const isProse = (block: Block) => block.type === "p" || block.type === "pending"
+
+const blockStack = "flex min-w-0 flex-col gap-8 md:gap-10"
+
+/** Consecutive paragraphs reveal as one readable group; every other block is its own reveal unit. */
+function groupBlocks(blocks: Block[]) {
+  const groups: { prose: boolean; blocks: Block[] }[] = []
+  for (const block of blocks) {
+    const last = groups.at(-1)
+    if (isProse(block) && last?.prose) last.blocks.push(block)
+    else groups.push({ prose: isProse(block), blocks: [block] })
+  }
+  return groups
+}
+
+/** Renders a section's blocks. An optional heading reveals together with the prose that follows it. */
+export function Blocks({ blocks, heading }: { blocks: Block[]; heading?: React.ReactNode }) {
+  const groups = groupBlocks(blocks)
+  const leadsWithProse = Boolean(heading) && groups[0]?.prose
+  const rest = leadsWithProse ? groups.slice(1) : groups
+
+  const body = (
+    <div className={blockStack}>
+      {leadsWithProse ? (
+        <div data-reveal="" className="flex min-w-0 flex-col gap-6">
+          {heading}
+          <div className={blockStack}>
+            {groups[0].blocks.map((block, index) => (
+              <BlockView key={index} block={block} />
+            ))}
+          </div>
+        </div>
+      ) : null}
+      {rest.map((group, groupIndex) =>
+        group.prose ? (
+          <div key={groupIndex} data-reveal="" className={blockStack}>
+            {group.blocks.map((block, index) => (
+              <BlockView key={index} block={block} />
+            ))}
+          </div>
+        ) : (
+          <BlockView key={groupIndex} block={group.blocks[0]} />
+        ),
+      )}
+    </div>
+  )
+
+  if (!heading || leadsWithProse) return body
   return (
-    <div className="flex min-w-0 flex-col gap-8 md:gap-10">
-      {blocks.map((block, index) => (
-        <BlockView key={index} block={block} />
-      ))}
+    <div className="flex min-w-0 flex-col gap-6">
+      <div data-reveal="">{heading}</div>
+      {body}
     </div>
   )
 }
@@ -49,37 +95,37 @@ function BlockView({ block }: { block: Block }) {
       )
     case "transfer-steps":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <TransferSteps steps={block.steps} />
         </FigureFrame>
       )
     case "transfer-demo":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <TransferDemo mode={block.mode} rows={block.rows} initialStatus={block.initialStatus} rules={block.rules} />
         </FigureFrame>
       )
     case "selection-limit":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <SelectionLimit limit={block.limit} />
         </FigureFrame>
       )
     case "application-flow":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <ApplicationFlow {...block} />
         </FigureFrame>
       )
     case "decision-matrix":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <DecisionMatrix rows={block.rows} />
         </FigureFrame>
       )
     case "delivery-timeline":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <DeliveryTimeline periods={block.periods} lanes={block.lanes} />
         </FigureFrame>
       )
@@ -87,13 +133,13 @@ function BlockView({ block }: { block: Block }) {
       return <ResearchSummary questions={block.questions} findings={block.findings} />
     case "citizenship-form":
       return (
-        <FigureFrame meta={block.figure}>
+        <FigureFrame meta={block.figure} kind="visual">
           <CitizenshipForm copy={block.copy} />
         </FigureFrame>
       )
     case "prototype":
       return (
-        <FigureFrame meta={block.figure} hasSlotLabels>
+        <FigureFrame meta={block.figure} kind="prototype">
           <PrototypeSlots title={block.title} slots={block.slots} status={block.status} />
         </FigureFrame>
       )

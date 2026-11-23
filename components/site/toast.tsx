@@ -47,7 +47,7 @@ export function ToastHost() {
         <div
           key={toast.id}
           data-visible={visible}
-          className="toast flex items-center gap-3 rounded-full bg-surface-strong py-3 pl-3 pr-5 shadow-lg shadow-overlay-black/20 ring-1 ring-border"
+          className="toast flex items-center gap-3 rounded-full bg-surface py-3 pl-3 pr-5 shadow-lg shadow-overlay-black/20 ring-1 ring-border"
         >
           <span className="flex size-5 items-center justify-center rounded-full bg-green text-background" aria-hidden="true">
             <Check weight="regular" className="size-3" />

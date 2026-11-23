@@ -21,13 +21,12 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 
 ### Colors
 
-The palette has **13 color tokens**, down from 25. Each is used by a component or the global stylesheet.
+The palette has **12 color tokens**, down from 25. Each is used by a component or the global stylesheet.
 
 | Utility / variable | Dark | Light |
 | --- | --- | --- |
-| `bg-background` / `--background` | #0a0a0a | #f5f5f7 |
-| `bg-surface` / `--surface` | #121212 | #ffffff |
-| `bg-surface-strong` / `--surface-strong` | #1a1a1a | #ebebef |
+| `bg-background` / `--background` | #0a0a0a | #ebebef |
+| `bg-surface` / `--surface` | #1a1a1a | #f5f5f7 |
 | `text-foreground` / `--foreground` | #f0f0f0 | #1d1d1f |
 | `text-muted` / `--muted` | #808080 | #515154 |
 | `border-border` / `--border` | #202020 | #d2d2d7 |
@@ -61,20 +60,49 @@ Layout spacing formerly using 2px, 6px, and 10px now uses 4px, 8px, and 12px res
 
 ### Border radius
 
-| Token / Tailwind utility | Radius |
-| --- | --- |
-| `radius-xs` / `rounded-xs` | 6px |
-| `radius-icon` / `rounded-icon` | 8px |
-| `radius-sm` / `rounded-sm` | 10px |
-| `radius-md` / `rounded-md` | 16px |
-| `radius-lg` / `rounded-lg` | 28px |
-| `radius-xl` / `rounded-xl` | 36px |
-| `radius-2xl` / `rounded-2xl` | 40px |
-| `radius-3xl` / `rounded-3xl` | 44px |
-| `radius-4xl` / `rounded-4xl` | 48px |
-| `radius-full` / `rounded-full` | fully rounded |
+The site uses exactly two radius values. No other border radius values are allowed.
 
-Existing radii are retained exactly, including the 8px tool-logo radius and 10px icon badges. Continuous corners and pill behavior remain in the site stylesheet. The animated page curtain retains its original percentage / viewport-based keyframe geometry.
+| Token / Tailwind utility | Radius | Use for |
+| --- | --- | --- |
+| `radius-md` / `rounded-md` | 16px | Small cards, inputs, metric tiles, menu items, icon buttons and badges |
+| `radius-lg` / `rounded-lg` | 24px | Larger cards, modals, figures, and image-level containers (project covers, media frames) |
+| `radius-full` / `rounded-full` | fully rounded | Only for circles and pills that must stay round: avatars, status dots, buttons, tags, toasts |
+
+Rules:
+
+- Pick the radius by size: 16px for small cards, 24px for larger cards and image-level containers. Never add arbitrary values such as `rounded-[20px]`, and do not reintroduce `xs`, `sm`, `xl`, `2xl`, `3xl`, `4xl`, or `icon` tokens; they are removed from `styles/tokens.css`.
+- A corner-specific radius (for example `rounded-tl-lg`) must still use one of the two values.
+- Nested rounded elements use the same token as their parent, or `rounded-md` inside a `rounded-lg` parent.
+- Continuous corners (squircles) and pill behavior are applied by the site stylesheet.
+
+### Motion
+
+All motion uses the shared tokens in `styles/tokens.css`; `components/site/motion-reveal.tsx` mirrors the trigger offset and stagger values.
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--motion-ease` | cubic-bezier(0.22, 1, 0.36, 1) | Every reveal and movement |
+| `--motion-intro` / `--motion-intro-step` | 1,100ms / 110ms | Page introduction groups and the gap between them |
+| `--motion-reveal` | 900ms | In-view text and card reveals |
+| `--motion-media` | 1,200ms | Figure and cover reveals, including the inner image settle |
+| `--motion-caption-delay` | 240ms | Caption follows its image |
+| `--motion-distance` / `--motion-distance-media` | 24px / 32px | Text and card rise / media rise |
+| `--motion-media-scale` | 1.05 | Image starts slightly enlarged inside its clipped frame and settles to 1 |
+| `--motion-stagger` / `--motion-stagger-cap` | 120ms / 360ms | Reading-order stagger and its maximum delay |
+| `--motion-trigger-offset` | 48px | Reveal when the leading edge passes 48px inside the viewport |
+| `--motion-card` / `--motion-card-lift` | 300ms / -4px | Clickable card lift with border and background change |
+| `--motion-cover-hover` / `--motion-cover-hover-scale` | 600ms / 1.035 | Clipped project cover zoom on hover |
+| `--motion-arrow` / `--motion-arrow-distance` | 250ms / 4px | Arrow travel on hover |
+| `--motion-button` | 250ms | Button background and border transitions |
+
+Rules:
+
+- Mark a meaningful content unit with `data-reveal` (`""` text and cards, `"media"` figures and covers, `"fade"` small labels). Reveal a heading with its prose, a card, a figure with its caption, or a metric row. Never animate single paragraphs, lines or icons, or wrap a whole long section.
+- Units entering together stagger in reading order: heading, then intro, then cards. Media wrap their image in `.media-settle` so it eases from 1.05 to 1 within the clipped frame; captions follow 240ms later.
+- Units reveal once per page visit and never fade out. Content already on screen at load is never hidden; units skipped by fast scrolling appear instantly.
+- Only the page introduction uses `data-intro` with `data-intro-step` 1–4 (name, statement, role, tools; 110ms apart, settled in about 1.5s). Persistent controls are never part of it.
+- Hover feedback only on interactive elements and only for fine pointers: clickable cards (`.card-hover`) lift 4px using `transform` so they compose with the entrance `translate`; `.arrow-nudge` and `.arrow-nudge-diagonal` travel 4px; `.cover-zoom` uses `scale` so it composes with the entrance settle. Static cards, testimonials and metrics get entrance motion only.
+- No bounce, overshoot, blur, rotation, parallax, animated gradients, floating or looping decoration, typewriter or word-by-word effects, or count-up numbers. Reduced-motion users get no movement.
 
 ## Reuse in Vercel v0
 

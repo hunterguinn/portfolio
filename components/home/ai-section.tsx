@@ -2,39 +2,40 @@
 
 import { useState } from "react"
 import { ArrowRight } from "@phosphor-icons/react/dist/csr/ArrowRight"
+import { Clock } from "@phosphor-icons/react/dist/csr/Clock"
 import { home } from "@/lib/content/home"
 import type { AiCard } from "@/lib/content/types"
-import { SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
-import { CountUp } from "@/components/site/count-up"
+import { SectionHeader, SectionIntro, SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { ArticleModal } from "./article-modal"
 
-function AiCardView({ card, index, onOpen }: { card: AiCard; index: number; onOpen: (title: string, trigger: HTMLElement) => void }) {
+const WORDS_PER_MINUTE = 200
+
+function readMinutes(card: AiCard) {
+  const words = card.articleContent.map((section) => `${section.heading ?? ""} ${section.body}`).join(" ").split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))
+}
+
+function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, trigger: HTMLElement) => void }) {
   return (
-    <li className="flex">
+    <li data-reveal="" className="flex">
       <button
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="card-hover group flex w-full flex-col gap-5 overflow-hidden rounded-lg border pl-6 pt-6 text-left md:gap-6"
+        className="card-hover group flex w-full flex-col gap-7 overflow-hidden rounded-lg border pl-7 pt-7 text-left"
       >
-        <span className="flex w-full flex-col gap-0 pr-6">
-          <span className="flex items-center justify-between text-eyebrow text-muted">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <span>Article</span>
-          </span>
-          {card.count !== undefined ? (
-            <span className="text-heading tabular-nums">
-              <CountUp to={card.count} suffix={card.suffix ?? ""} />
-            </span>
-          ) : null}
-          <span className="text-body">{card.topic}</span>
-          {card.sublabel ? <span className="text-eyebrow text-muted">{card.sublabel}</span> : null}
-        </span>
+        <span className="text-body pr-7">{card.articleTitle}</span>
         <span className="ai-card-panel flex flex-1 flex-col justify-between gap-6 rounded-tl-lg bg-surface p-6">
-          <span className="text-body text-muted">{card.body}</span>
-          <span className="inline-flex items-center gap-2 self-end text-caption text-foreground">
-            Read more
-            <ArrowRight weight="regular" className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+          <span className="text-caption text-muted">{card.body}</span>
+          <span className="flex w-full items-center justify-between gap-4 text-caption">
+            <span className="inline-flex items-center gap-2 text-muted">
+              <Clock weight="regular" className="size-4 shrink-0" aria-hidden="true" />
+              {readMinutes(card)} min read
+            </span>
+            <span className="inline-flex items-center gap-2 text-foreground">
+              Read more
+              <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
+            </span>
           </span>
         </span>
       </button>
@@ -48,11 +49,13 @@ export function AiSection() {
 
   return (
     <SectionShell id="ai">
-      <SectionTitle id="ai">{ai.title}</SectionTitle>
-      <SectionIntro>{ai.intro}</SectionIntro>
+      <SectionHeader>
+        <SectionTitle id="ai">{ai.title}</SectionTitle>
+        <SectionIntro>{ai.intro}</SectionIntro>
+      </SectionHeader>
       <ul className="grid gap-3 sm:grid-cols-2">
-        {ai.cards.map((card, index) => (
-          <AiCardView key={card.topic} card={card} index={index} onOpen={(_, trigger) => setOpen({ card, trigger })} />
+        {ai.cards.map((card) => (
+          <AiCardView key={card.articleTitle} card={card} onOpen={(_, trigger) => setOpen({ card, trigger })} />
         ))}
       </ul>
       {open ? <ArticleModal title={open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}

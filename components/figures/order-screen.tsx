@@ -43,7 +43,7 @@ export function OrderScreen({ aspect }: { aspect: string }) {
           </li>
         ))}
       </ul>
-      <div className="flex flex-col gap-3 border-t bg-surface-strong px-4 py-4">
+      <div className="flex flex-col gap-3 border-t bg-surface px-4 py-4">
         <div className="flex items-baseline justify-between">
           <span className="text-caption text-muted">Subtotal</span>
           <span className="text-body text-strong tabular-nums">{money.format(subtotal)}</span>
