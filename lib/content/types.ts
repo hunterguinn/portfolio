@@ -77,11 +77,22 @@ export type Testimonial = { quote: string; name: string; role: string }
 
 export type StackTool = { name: string; src: string }
 
+export type ArticleSection = {
+  heading?: string
+  /** Separate paragraphs with a blank line. */
+  body: string
+  items?: string[]
+  conclusion?: string
+  demonstration?: "contextual-prompt"
+}
+
 export type AiCard = {
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
   articleTitle: string
-  articleContent: { heading?: string; body: string }[]
+  /** Optional editorial title, independent of the homepage card. */
+  modalTitle?: string
+  articleContent: ArticleSection[]
 }
 
 export type TransferRow = { symbol: string; name: string; shares: number; amount: number }

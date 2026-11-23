@@ -12,7 +12,9 @@ import { ArticleModal } from "./article-modal"
 const WORDS_PER_MINUTE = 200
 
 function readMinutes(card: AiCard) {
-  const words = card.articleContent.map((section) => `${section.heading ?? ""} ${section.body}`).join(" ").split(/\s+/).filter(Boolean).length
+  const words = card.articleContent
+    .flatMap((section) => [section.heading, section.body, ...(section.items ?? []), section.conclusion])
+    .filter(Boolean).join(" ").split(/\s+/).length
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE))
 }
 
@@ -57,7 +59,7 @@ export function AiSection() {
           <AiCardView key={card.articleTitle} card={card} onOpen={(_, trigger) => setOpen({ card, trigger })} />
         ))}
       </ul>
-      {open ? <ArticleModal title={open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
+      {open ? <ArticleModal title={open.card.modalTitle ?? open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
     </SectionShell>
   )
 }

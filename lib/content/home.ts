@@ -144,12 +144,35 @@ export const home = {
       {
         body: "Supporting designers as they strengthen their Figma skills, adopt more consistent practices, and discover opportunities to improve their workflows.",
         articleTitle: "Leading Figma AI adoption through hands-on learning",
+        modalTitle: "Making AI practical for everyday design",
         articleContent: [
-          { body: "I've been leading Figma AI enablement and learning sessions across our design organization, helping designers explore emerging capabilities through practical examples." },
-          { body: "Rather than focusing on AI features in isolation, I've approached these sessions around everyday design challenges: reducing repetitive work, accelerating early exploration, working more effectively with components, and finding opportunities to simplify existing processes." },
-          { body: "My goal has been to make the learning immediately relevant. A new capability becomes more useful when designers understand not just how it works, but where it belongs in their process." },
-          { heading: "Creating space for experimentation", body: "One thing I've been thinking about is how differently designers approach emerging technology. Some are eager to experiment, while others want a clear use case before changing a workflow they already trust. Both perspectives are valuable. That's influenced how I think about enablement. Effective learning requires more than demonstrating what's new. It means connecting capabilities to familiar problems, encouraging questions, and giving designers room to form their own judgment about what works. It also means being realistic about limitations. Not every task benefits from AI, and faster output isn't necessarily better output." },
-          { heading: "What I'm learning", body: "The more I work with these tools, the more I see AI enablement as a design challenge itself. It requires understanding the audience, identifying barriers to adoption, simplifying complex information, and creating repeatable ways for people to learn. The opportunity isn't simply to help designers use AI. It's to help teams become more deliberate about where technology can improve the way they work, while keeping design judgment at the center of the process." },
+          {
+            body: "Since adopting Figma AI at Bank of America, I've led multi-day learning sessions for designers, researchers, and content strategists, focusing on how AI can reduce repetitive work, accelerate exploration, and support product delivery.",
+          },
+          {
+            heading: "Integrating AI into the design lifecycle",
+            body: "I structured the sessions around three stages—discovery, design, and delivery—to demonstrate where AI could provide meaningful value throughout our existing processes.\n\nUsing Figma's canvas agent, I demonstrated how written requirements and our internal design system could inform early design concepts, how simple wireframes could accelerate high-fidelity exploration, and how existing designs could be extended into interactive prototypes, edge cases, and error states.",
+          },
+          {
+            heading: "Establishing repeatable practices",
+            body: "The quality of AI-generated output depends heavily on the context and guidance it receives. I demonstrated several techniques that designers could incorporate into their workflows:",
+            items: [
+              "Attach written requirements and reference existing designs.",
+              "Define which frames to use, what to change, and what must remain unchanged.",
+              "Establish layout direction through simple wireframes.",
+              "Reference existing design system components rather than generating new ones.",
+            ],
+            conclusion: "To make these practices reusable, I distributed shared instructions, prepared examples, and prompt templates tailored to the work our organization does.",
+            demonstration: "contextual-prompt",
+          },
+          {
+            heading: "Designing for different levels of adoption",
+            body: "Not everyone approaches emerging technology with the same level of confidence or curiosity.\n\nI created a shared Figma playground with prepared screens where designers could experiment with prompts, explore different techniques, and learn alongside one another. This created a low-risk environment for experimentation while encouraging questions and knowledge sharing.",
+          },
+          {
+            heading: "Efficiency meets design judgment",
+            body: "The most valuable application of AI isn't automating every design task. It's recognizing which tasks can be accelerated and which decisions still require human judgment.\n\nI see AI as a way to spend less time producing design artifacts and more time evaluating solutions, challenging requirements, and making informed product decisions.\n\nThe opportunity is to reach meaningful design milestones sooner without compromising the quality of the thinking behind them.",
+          },
         ],
       },
       {
