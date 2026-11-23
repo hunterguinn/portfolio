@@ -35,7 +35,7 @@ export function Hero() {
             <dd>
               <ul className="flex flex-wrap gap-2">
                 {home.stack.map((tool) => (
-                  <li key={tool.name} className="rounded-full border px-3 py-1 text-caption text-muted">
+                  <li key={tool.name} className="pill-hover rounded-full border px-3 py-1 text-caption text-muted">
                     {tool.name}
                   </li>
                 ))}

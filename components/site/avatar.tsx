@@ -37,7 +37,7 @@ export function Avatar({
     <span
       aria-hidden="true"
       style={dimension}
-      className="inline-flex shrink-0 items-center justify-center rounded-full bg-surface text-eyebrow text-muted"
+      className="avatar-initials inline-flex shrink-0 items-center justify-center rounded-full bg-surface text-eyebrow text-muted"
     >
       {initials}
     </span>

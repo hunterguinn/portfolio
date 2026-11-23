@@ -3,11 +3,8 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* The article sheet stays dark in either site theme. */
 :root,
-.dark,
-.sheet-panel,
-.modal-panel {
+.dark {
   --overlay-white: #ffffff;
   --overlay-black: #000000;
   --media-canvas: #ecebe7;

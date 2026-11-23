@@ -89,14 +89,19 @@
  * overriding it. Static cards (.card-surface) get the same background and border change on hover
  * but never lift. Project covers (.card-hover-flat) stay put and rely on the clipped image zoom.
  */
-.card-static {
+.card-static,
+.pill-hover {
   transition:
     background-color var(--motion-card) var(--motion-ease),
     border-color var(--motion-card) var(--motion-ease);
 }
+.light .avatar-initials {
+  background-color: var(--background);
+}
 @media (hover: hover) and (pointer: fine) {
   .card-surface:hover,
-  .card-static:hover {
+  .card-static:hover,
+  .pill-hover:hover {
     border-color: var(--border-hover);
     background-color: var(--surface);
   }
@@ -624,7 +629,7 @@
   }
 }
 
-/* Shared modal appearance; the palette stays dark in either site theme. */
+/* Shared modal appearance; colors come from the active site theme. */
 .modal-panel {
   @apply rounded-lg border p-6 text-left;
   background-color: var(--background);

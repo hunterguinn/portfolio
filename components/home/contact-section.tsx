@@ -3,7 +3,7 @@ import { site } from "@/lib/content/site"
 import { SectionHeader, SectionShell, SectionTitle } from "@/components/site/section-shell"
 
 const links = [
-  { label: "LinkedIn", handle: "/hunterguinn", href: site.linkedin },
+  { label: "LinkedIn", handle: "/in/hunterguinn", href: site.linkedin },
   { label: "GitHub", handle: "@hunterguinn", href: site.github },
 ]
 
@@ -39,10 +39,12 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="card-hover group flex w-full flex-col justify-between gap-6 rounded-lg border p-5 text-left"
               >
-                <span className="text-body">{link.label}</span>
-                <span className="inline-flex items-center gap-1 font-mono text-mono text-muted transition-colors group-hover:text-foreground">
+                <span className="flex items-center justify-between gap-4">
+                  <span className="text-body">{link.label}</span>
+                  <ArrowUpRight weight="regular" className="arrow-nudge-diagonal size-4 shrink-0 text-foreground" aria-hidden="true" />
+                </span>
+                <span className="font-mono text-mono text-muted transition-colors group-hover:text-foreground">
                   {link.handle}
-                  <ArrowUpRight weight="regular" className="arrow-nudge-diagonal size-3.5" aria-hidden="true" />
                   <span className="sr-only">(opens in a new tab)</span>
                 </span>
               </a>
