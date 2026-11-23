@@ -41,32 +41,16 @@
   }
 }
 
-/*
- * Page container: content is capped at 740px wide; gutters sit outside it.
- * No margins anywhere: a .page-band parent centres the capped container.
- */
-.page-band {
-  display: grid;
-  justify-items: center;
-}
+/* One centered reading column; its responsive width creates the horizontal gutters. */
 .page-band[class*="border-t-"] {
   border-top-color: var(--surface);
 }
 .page-container {
-  width: 100%;
-  padding-inline: var(--spacing-gutter);
-  max-width: calc(740px + 2 * var(--spacing-gutter));
-}
-@media (min-width: 48rem) {
-  .page-container {
-    padding-inline: var(--spacing-gutter-desktop);
-    max-width: calc(740px + 2 * var(--spacing-gutter-desktop));
-  }
-}
-@media (min-width: 64rem) {
-  .page-container {
-    width: 90%;
-  }
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 740px;
+  margin-inline: auto;
+  padding: 0;
 }
 
 /* Apple-style continuous corners (squircles), where the browser supports them. */

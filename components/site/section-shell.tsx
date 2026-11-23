@@ -17,7 +17,7 @@ export function SectionShell({
       className={`page-band ${bordered ? "border-t" : ""}`}
     >
       <div
-        className={`page-container mx-auto flex w-full flex-col gap-10 py-section md:gap-12 md:py-section-lg lg:py-section-xl ${className}`}
+        className={`page-container mx-auto flex w-full flex-col gap-10 md:gap-12 ${className}`}
       >
         {children}
       </div>

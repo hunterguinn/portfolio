@@ -19,11 +19,13 @@ export default function HomePage() {
     <>
       <SiteChrome sections={rail} />
       <HomeScrollMemory />
-      <Hero />
-      <WorkSection />
-      <AiSection />
-      <TestimonialsSection />
-      <ContactSection />
+      <main className="flex flex-col gap-28 md:gap-40 lg:gap-48">
+        <Hero />
+        <WorkSection />
+        <AiSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
     </>
   )
 }
