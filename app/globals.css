@@ -317,25 +317,9 @@
   }
 }
 
-/*
- * Clickable project covers ease toward 1.035 over 600ms inside the clipped frame. Hover uses `scale`
- * and the entrance settle uses `transform`, so the two never override each other.
- */
-.cover-zoom.media-settle {
-  transition:
-    scale var(--motion-cover-hover) var(--motion-ease),
-    transform var(--motion-media) var(--motion-ease) var(--reveal-delay, 0ms);
-}
-@media (hover: hover) and (pointer: fine) {
-  .group:hover .cover-zoom {
-    scale: var(--motion-cover-hover-scale);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
-  [data-reveal] :is(.media-settle, figcaption),
-  .cover-zoom.media-settle {
+  [data-reveal] :is(.media-settle, figcaption) {
     transition: none;
   }
   .card-surface,
@@ -362,11 +346,10 @@
     animation: none;
   }
   .arrow-nudge,
-  .arrow-nudge-diagonal,
-  .cover-zoom {
+  .arrow-nudge-diagonal {
     transition: none;
   }
-  .group:hover :is(.arrow-nudge, .arrow-nudge-diagonal, .cover-zoom) {
+  .group:hover :is(.arrow-nudge, .arrow-nudge-diagonal) {
     translate: none;
     scale: none;
   }
@@ -493,15 +476,6 @@
   padding: var(--spacing) calc(var(--spacing) * 3);
   background: var(--foreground);
   color: var(--background);
-}
-.cover-pill {
-  z-index: 1;
-  width: max-content;
-  padding: var(--spacing) calc(var(--spacing) * 3);
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--overlay-white) 10%, transparent);
-  color: var(--overlay-black);
-  white-space: nowrap;
 }
 .cursor-pill-label {
   width: max-content;

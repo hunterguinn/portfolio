@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight"
 import { CaretDown } from "@phosphor-icons/react/dist/ssr/CaretDown"
 import type { CaseStudy, Section } from "@/lib/content/types"
 import { home } from "@/lib/content/home"
@@ -119,19 +118,10 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
           </SectionShell>
         ))}
 
-        <SectionShell id="next-project">
+        <SectionShell id="next-project" className="!max-w-none">
           <div data-reveal="" className="flex flex-col gap-4 md:gap-6">
             <SectionEyebrow>Next project</SectionEyebrow>
-            {nextSummary ? <ProjectPreview project={nextSummary} /> : null}
-            <Link href={next.href} className="group flex flex-col gap-3">
-              <span id="next-project-title" className="text-display transition-colors group-hover:text-muted">
-                {next.title}
-              </span>
-              <span className="inline-flex items-center gap-2 text-caption text-muted transition-colors group-hover:text-foreground">
-                View project
-                <ArrowRight weight="regular" className="arrow-nudge size-3.5" aria-hidden="true" />
-              </span>
-            </Link>
+            {nextSummary ? <ProjectPreview project={nextSummary} titleId="next-project-title" /> : null}
           </div>
         </SectionShell>
       </article>
