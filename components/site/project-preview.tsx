@@ -7,7 +7,6 @@ export function ProjectPreview({ project }: { project: ProjectSummary }) {
     <Link
       href={project.href}
       aria-label={`View project: ${project.title}`}
-      data-cursor="project"
       className="card-hover card-hover-flat group relative block overflow-hidden rounded-lg border"
       style={{ aspectRatio: project.cover.aspect }}
     >

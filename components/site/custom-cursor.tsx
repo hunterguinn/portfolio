@@ -1,9 +1,11 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { CaretRight } from "@phosphor-icons/react/dist/csr/CaretRight"
 
-const TEXT_ENTRY = 'input, textarea, select, [contenteditable="true"]'
+const TEXT_ENTRY =
+  'input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="image"]):not([type="hidden"]), textarea, [contenteditable="true"]'
+const INTERACTIVE =
+  'a[href], button:not(:disabled), [role="button"], [role="link"], summary, input:not(:disabled):not([type="hidden"]), select:not(:disabled), textarea:not(:disabled), [contenteditable="true"], [tabindex]:not([tabindex="-1"])'
 
 export function CustomCursor() {
   const ref = useRef<HTMLDivElement>(null)
@@ -23,7 +25,7 @@ export function CustomCursor() {
     const root = document.documentElement
     root.classList.add("has-custom-cursor")
 
-    const label = el.querySelector<HTMLElement>(".cursor-project-label")
+    const label = el.querySelector<HTMLElement>(".cursor-pill-label")
     const measure = () => {
       if (!label) return
       el.style.setProperty("--cursor-label-width", `${label.offsetWidth}px`)
@@ -41,8 +43,9 @@ export function CustomCursor() {
       frame = 0
     }
     const updateTarget = (target: Element | null) => {
-      el.dataset.hidden = target?.closest(TEXT_ENTRY) ? "true" : "false"
-      el.dataset.project = target?.closest('[data-cursor="project"]') ? "true" : "false"
+      const isTextEntry = Boolean(target?.closest(TEXT_ENTRY))
+      el.dataset.hidden = isTextEntry ? "true" : "false"
+      el.dataset.interactive = !isTextEntry && Boolean(target?.closest(INTERACTIVE)) ? "true" : "false"
     }
     const onScroll = () => updateTarget(document.elementFromPoint(x, y))
     const onMove = (event: PointerEvent) => {
@@ -83,10 +86,7 @@ export function CustomCursor() {
   return (
     <div ref={ref} className="cursor-root" data-hidden="true" aria-hidden="true">
       <span className="cursor-shape">
-        <span className="cursor-project-label text-caption">
-          View project
-          <CaretRight weight="regular" className="size-4 shrink-0" aria-hidden="true" />
-        </span>
+        <span className="cursor-pill-label text-caption">Read more</span>
       </span>
     </div>
   )
