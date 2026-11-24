@@ -56,7 +56,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] flex-col gap-4 overflow-y-auto p-7!"
+        className="modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-4 overflow-y-auto p-7!"
       >
         <div className="flex items-start justify-between gap-4">
           <h2 id={titleId} className="text-heading">Protected Page</h2>

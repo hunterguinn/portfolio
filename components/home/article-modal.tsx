@@ -90,7 +90,7 @@ export function ArticleModal({
         aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
-        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] w-[90vw] flex-col gap-6 outline-none"
+        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-6 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
           <h2 id={titleId} className="text-heading">
