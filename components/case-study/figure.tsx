@@ -8,11 +8,11 @@ export type FigureKind = "image" | "video" | "visual" | "prototype" | "media"
 
 /** One caption treatment for grouped visuals and individually numbered media slots. */
 function CaptionContent({ number, caption, kind }: { number?: string; caption?: string; kind: FigureKind }) {
-  const label = kind === "visual" ? "Illustrative" : kind
+  const label = kind === "visual" ? "Interactive" : kind
   return (
     <>
       {number ? <span className="shrink-0 text-eyebrow text-muted">{number}</span> : null}
-      <span title={caption} className="pill-hover shrink-0 rounded-full border px-2 py-1 text-eyebrow text-muted">
+      <span title={caption} className="pill-hover shrink-0 rounded-full border px-2 py-1 text-caption font-sans uppercase text-muted">
         {label}
       </span>
     </>

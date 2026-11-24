@@ -7,7 +7,7 @@ import { nextProject } from "@/lib/content/site"
 import { ProjectPreview } from "@/components/site/project-preview"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { SiteChrome, type RailSection } from "@/components/site/site-chrome"
-import { Blocks } from "./block-renderer"
+import { Blocks, numberFiguresInSection } from "./block-renderer"
 import { SectionEyebrow } from "@/components/site/section-eyebrow"
 
 function MetaList({ title, items }: { title: string; items: string[] }) {
@@ -102,7 +102,10 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
               {chapter.sections.map((section, sectionIndex) => (
                 <Blocks
                   key={section.id}
-                  blocks={section.blocks}
+                  blocks={numberFiguresInSection(
+                    section.blocks,
+                    study.sections.findIndex((studySection) => studySection.id === section.id) + 1,
+                  )}
                   heading={
                     section.title !== chapter.name ? (
                       <h3 id={sectionIndex === 0 ? undefined : section.id} className="text-heading">
