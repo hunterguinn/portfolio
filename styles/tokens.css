@@ -50,7 +50,7 @@
   --text-hero--font-weight: var(--font-weight-light);
   --text-hero--line-height: 1.1;
   --text-hero--letter-spacing: -0.02em;
-  --text-heading: 28px;
+  --text-heading: 24px;
   --text-heading--font-weight: var(--font-weight-light);
   --text-heading--line-height: 1.2;
   --text-heading--letter-spacing: normal;
@@ -117,7 +117,7 @@
   --motion-stagger-cap: 360ms;
   --motion-trigger-offset: 48px;
   --motion-card: 300ms;
-  --motion-card-lift-duration: 220ms;
+  --motion-card-lift-duration: 340ms;
   --motion-card-lift: -4px;
   --motion-cover-hover: 600ms;
   --motion-cover-hover-scale: 1.035;

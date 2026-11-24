@@ -15,7 +15,7 @@ export function TestimonialsSection() {
       <ul className="grid gap-3 md:grid-cols-2">
         {testimonials.items.map((item, index) => (
           <li key={`${item.name}-${index}`} data-reveal="">
-            <figure className="card-static flex h-full flex-col justify-between gap-16 rounded-lg border p-6 lg:p-6">
+            <figure className="card-static flex h-full flex-col justify-between gap-6 rounded-lg border p-6">
               <div className="flex flex-col gap-3">
                 <blockquote>
                   <p className="text-body font-medium text-muted transition-colors duration-200">{`“${item.quote}”`}</p>

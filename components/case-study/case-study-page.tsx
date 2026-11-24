@@ -1,7 +1,10 @@
 import Link from "next/link"
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight"
+import { CaretDown } from "@phosphor-icons/react/dist/ssr/CaretDown"
 import type { CaseStudy, Section } from "@/lib/content/types"
+import { home } from "@/lib/content/home"
 import { nextProject } from "@/lib/content/site"
+import { ProjectPreview } from "@/components/site/project-preview"
 import { SectionShell, SectionTitle } from "@/components/site/section-shell"
 import { SiteChrome, type RailSection } from "@/components/site/site-chrome"
 import { Blocks } from "./block-renderer"
@@ -44,6 +47,7 @@ function resolveChapters(study: CaseStudy): ResolvedChapter[] {
 
 export function CaseStudyPage({ study }: { study: CaseStudy }) {
   const next = nextProject[study.slug]
+  const nextSummary = home.work.projects.find((project) => project.href === next.href)
   const chapters = resolveChapters(study)
   const rail: RailSection[] = [
     { id: "overview", name: "Overview" },
@@ -58,13 +62,13 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <SectionShell
           id="overview"
           bordered={false}
-          className={study.slug === "merrill" ? "flex min-h-svh flex-col justify-center" : undefined}
+          className="relative flex h-[min(100svh,1000px)] max-h-[1000px] flex-col justify-center"
         >
           <div className="flex flex-col gap-4 md:gap-6">
             <p data-intro="fade" className="text-eyebrow text-muted">
               {study.eyebrow}
             </p>
-            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-hero">
+            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-[36px] leading-[1.1] font-light tracking-[-0.02em]">
               {study.title}
             </h1>
             <p data-intro="" data-intro-step="2" className="text-body text-muted">
@@ -79,6 +83,13 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <MetaList title="The Team" items={study.team} />
             <MetaList title="The Timeline" items={study.timeline} />
           </dl>
+          <Link
+            href={`#${chapters[0]?.id ?? "next-project"}`}
+            aria-label="Continue to case study"
+            className="absolute bottom-10 left-1/2 flex size-10 -translate-x-1/2 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          >
+            <CaretDown weight="regular" className="size-5" aria-hidden="true" />
+          </Link>
         </SectionShell>
 
         {chapters.map((chapter, chapterIndex) => (
@@ -108,6 +119,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <SectionShell id="next-project">
           <div data-reveal="" className="flex flex-col gap-4 md:gap-6">
             <SectionEyebrow>Next project</SectionEyebrow>
+            {nextSummary ? <ProjectPreview project={nextSummary} /> : null}
             <Link href={next.href} className="group flex flex-col gap-3">
               <span id="next-project-title" className="text-display transition-colors group-hover:text-muted">
                 {next.title}

@@ -192,7 +192,7 @@ function DesktopRail({ sections, active }: { sections: RailSection[]; active?: s
                   }}
                   aria-hidden="true"
                   data-active={current}
-                  className={`rail-line block h-0.5 w-4 rounded-full transition-colors duration-300 ${
+                  className={`rail-line block h-[3px] w-5 rounded-full transition-colors duration-300 ${
                     current ? "bg-foreground" : "bg-border group-hover:bg-muted group-focus-visible:bg-muted"
                   }`}
                 />
