@@ -148,7 +148,26 @@
     border-color var(--motion-button) var(--motion-ease);
 }
 .btn-secondary:hover {
-  background-color: color-mix(in srgb, var(--surface) 90%, var(--foreground));
+  background-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+/* Standard button size shared by every primary and secondary pill (set by the password modal). */
+.btn {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+/* Tints the project background image so the info text keeps contrast in both themes. */
+.project-preview-scrim {
+  background-color: color-mix(in srgb, var(--overlay-black) 50%, transparent);
+}
+.light .project-preview-scrim {
+  background-color: color-mix(in srgb, var(--overlay-white) 50%, transparent);
 }
 
 /* Arrow circle: a down caret cycles like a small lottery-machine reel on hover. */

@@ -362,7 +362,7 @@ export const home = {
       },
       {
         quote:
-          "The direction Hunter gave helped all associated teams get to final requirements, make decisions, and deliver so much faster than they possibly could have in any other circumstance.",
+          "Hunter's direction helped all associated teams get to final requirements, make decisions, and deliver so much faster than they possibly could have in any other circumstance.",
         name: "Nate Ernst",
         role: "Senior Design Principal, Bank of America",
       },

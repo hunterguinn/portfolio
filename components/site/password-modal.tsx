@@ -121,7 +121,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             type="button"
             onClick={onClose}
             disabled={pending}
-            className="bg-surface text-caption min-h-9 rounded-full px-4 py-2 font-medium text-foreground transition-colors hover:bg-foreground/10 disabled:opacity-60"
+            className="btn btn-secondary text-caption disabled:opacity-60"
           >
             Back
           </button>
@@ -129,7 +129,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             type="submit"
             disabled={pending}
             aria-busy={pending || undefined}
-            className="btn-primary text-caption min-h-9 rounded-full px-4 py-2 font-medium disabled:opacity-60"
+            className="btn btn-primary text-caption disabled:opacity-60"
           >
             {pending ? "Checking" : "Enter"}
           </button>
