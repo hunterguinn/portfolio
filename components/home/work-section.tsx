@@ -18,7 +18,7 @@ function ProjectEntry({ project }: { project: ProjectSummary }) {
 
 export function WorkSection() {
   return (
-    <SectionShell id="work" className="!max-w-none">
+    <SectionShell id="work">
       <SectionHeader>
         <SectionEyebrow>{home.work.label}</SectionEyebrow>
         <SectionTitle id="work">{home.work.title}</SectionTitle>
