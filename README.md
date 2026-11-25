@@ -38,8 +38,6 @@ The palette has **12 color tokens**, down from 25. Each is used by a component o
 | `text-yellow` / `--yellow` | #ffd60a | #805b00 |
 | `text-green` / `--green` | #5ddb7d | #1a7336 |
 
-Nine unused cover-gradient tokens and their unused CSS rules were removed: project covers use image assets. `--quote` and `--primary-hover` now use `--muted`; quote hover uses `--foreground`. The duplicate `page`, `primary`, `secondary`, and `subtle` utility aliases were removed; use `background`, `foreground`, `muted`, and `border` respectively. Tailwind opacity modifiers such as `text-muted/50` and `bg-background/85` still work. `bg-tone/16 text-tone` uses a component-local `--tone` chosen from the existing status colors rather than a separate palette color.
-
 The small intentional visual changes are unified muted text/button hover in light mode, quote hover using foreground in dark mode, and the article sheet using the shared dark grays (#808080 text and #121212 hover surface) instead of near-duplicates. Background, surface, raised surface, and border remain distinct to retain depth. Fixed white/black overlays and the warm media canvas retain their separate roles. The toast shadow uses the existing black overlay token rather than the disabled Tailwind default `black` color.
 
 `.dark` and `.light` select the palettes; the default is dark. `.sheet-panel` selects the same dark palette even inside a light page, with no separate hardcoded colors. The browser `themeColor` metadata in `app/layout.tsx` repeats the two background values because browser metadata cannot reference CSS custom properties.
@@ -56,11 +54,7 @@ The small intentional visual changes are unified muted text/button hover in ligh
 | `section-lg` | 80px | larger / desktop sections |
 | `section-xl` | 96px | desktop case-study intro |
 
-Layout spacing formerly using 2px, 6px, and 10px now uses 4px, 8px, and 12px respectively (a 2px increase per affected gap or padding side). All other layout spacing, content widths, breakpoints, and section rhythm are retained. Icon sizes, 6px status dots, the 14px cursor, image proportions, and animation geometry are preserved; those are dimensions rather than layout spacing.
-
 ### Border radius
-
-The site uses exactly two radius values. No other border radius values are allowed.
 
 | Token / Tailwind utility | Radius | Use for |
 | --- | --- | --- |
@@ -71,7 +65,6 @@ The site uses exactly two radius values. No other border radius values are allow
 Rules:
 
 - Pick the radius by size: 16px for small cards, 24px for larger cards and image-level containers. Never add arbitrary values such as `rounded-[20px]`, and do not reintroduce `xs`, `sm`, `xl`, `2xl`, `3xl`, `4xl`, or `icon` tokens; they are removed from `styles/tokens.css`.
-- A corner-specific radius (for example `rounded-tl-lg`) must still use one of the two values.
 - Nested rounded elements use the same token as their parent, or `rounded-md` inside a `rounded-lg` parent.
 - Continuous corners (squircles) and pill behavior are applied by the site stylesheet.
 
