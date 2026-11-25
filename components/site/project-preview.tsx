@@ -15,9 +15,11 @@ export function ProjectPreview({
     <Link
       href={project.href}
       aria-label={`View project: ${project.title}`}
+      data-cursor="View project"
       className="btn-primary-group grid gap-3 md:grid-cols-2"
     >
-      <div className="relative flex h-112 flex-col gap-3 overflow-hidden rounded-lg border border-border xl:h-140">
+      {/* The text column sets the row height; this card fills it and the cover scales to fit. */}
+      <div className="relative min-h-112 overflow-hidden rounded-lg border border-border md:min-h-96">
         <Image
           src={project.background}
           alt=""
@@ -26,37 +28,39 @@ export function ProjectPreview({
           className="object-cover"
         />
         <div className="project-preview-scrim absolute inset-0" aria-hidden="true" />
-        <div className="relative ml-6 flex min-h-0 flex-1 items-center justify-center rounded-bl-md bg-surface px-6 pb-6 pt-3">
-          {project.cover.src ? (
-            <Image
-              src={project.cover.src}
-              alt={project.cover.alt}
-              width={project.mockup.width}
-              height={project.mockup.height}
-              sizes="(min-width: 768px) 50vw, 80vw"
-              className="h-auto max-h-full w-auto max-w-full object-contain"
-            />
-          ) : (
-            <span className="text-caption text-muted">{project.cover.placeholder}</span>
-          )}
-        </div>
-        <div className="relative flex flex-col gap-2 px-6 pb-3 text-foreground">
-          <h3 id={titleId} className="text-heading">
-            {project.title}
-          </h3>
-          <div className="flex items-center justify-between text-caption">
-            <span>{project.category}</span>
-            <span>Delivered</span>
+        <div className="absolute inset-0 flex flex-col">
+          <div className="ml-6 flex min-h-0 flex-1 items-center justify-center rounded-bl-md bg-surface px-6 pb-6 pt-3">
+            {project.cover.src ? (
+              <Image
+                src={project.cover.src}
+                alt={project.cover.alt}
+                width={project.mockup.width}
+                height={project.mockup.height}
+                sizes="(min-width: 768px) 50vw, 80vw"
+                className="h-auto max-h-full w-auto max-w-full object-contain"
+              />
+            ) : (
+              <span className="text-caption text-muted">{project.cover.placeholder}</span>
+            )}
+          </div>
+          <div className="flex flex-col gap-2 p-6 text-foreground">
+            <h3 id={titleId} className="text-heading">
+              {project.title}
+            </h3>
+            <div className="flex items-center justify-between text-caption">
+              <span>{project.category}</span>
+              <span>Delivered</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="flex min-h-112 flex-col gap-3 xl:min-h-140">
-        <div className="flex flex-1 flex-col justify-center rounded-lg border border-border bg-surface p-6">
-          <p className="rounded-md bg-background px-6 py-12 text-body">{project.description}</p>
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-1 flex-col justify-center rounded-lg border border-border bg-surface p-5">
+          <p className="rounded-md bg-background px-6 py-15 text-body">{project.description}</p>
         </div>
 
-        <dl className="grid grid-cols-2 gap-3">
+        <dl className="hidden grid-cols-2 gap-3 lg:grid">
           {project.metrics.map((metric) => (
             <div
               key={metric.label}
@@ -70,7 +74,7 @@ export function ProjectPreview({
           ))}
         </dl>
 
-        <span className="btn btn-primary text-caption w-full">
+        <span className="btn btn-primary text-caption w-full lg:hidden">
           View project
           <CaretRight weight="regular" className="size-4" aria-hidden="true" />
         </span>

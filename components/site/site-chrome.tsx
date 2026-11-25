@@ -48,6 +48,7 @@ function BackButton({ className = "" }: { className?: string }) {
     <Link
       href="/"
       aria-label="Back to portfolio"
+      data-cursor="Go back"
       onClick={() => sessionStorage.setItem(RESTORE_HOME_KEY, "1")}
       className={`btn-secondary inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-transparent ${className}`}
     >

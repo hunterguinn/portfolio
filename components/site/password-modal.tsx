@@ -98,7 +98,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             placeholder="Enter password"
             aria-invalid={message ? true : undefined}
             aria-describedby={message ? errorId : undefined}
-            className="text-caption w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
+            className="text-body md:text-caption w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
           />
           <div aria-live="polite" className="min-h-6">
             {message ? (
