@@ -14,7 +14,7 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 | `text-display` | 2.25rem (36px) | 400 | 1.15 | normal |
 | `text-heading` | 28px | 400 | 1.2 | normal |
 | `text-body` | 16px | 400 | 1.5 | normal |
-| `text-caption` | 0.875rem (14px) | 400 | 1.5 | normal |
+| `text-caption` | 0.875rem (14px) | 400 | 1.35 | normal |
 | `text-eyebrow` | 0.75rem (12px) | 500 | 1.35 | normal |
 
 `text-eyebrow` retains uppercase text. `text-strong` applies 600 weight; `font-medium` applies 500 where the existing button requires it. Body defaults retain 16px / 1.55. The system font stack remains `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`; the existing mono alias uses the same stack. All former `type-*` roles now use these classes.

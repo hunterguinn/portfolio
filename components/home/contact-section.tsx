@@ -16,6 +16,7 @@ export function ContactSection() {
         <SectionTitle id="contact">
           <a
             href={`mailto:${site.email}`}
+            data-cursor="Go to link"
             className="group inline-flex items-center gap-3 transition-colors hover:text-muted"
           >
             {"Let's connect"}
@@ -39,6 +40,7 @@ export function ContactSection() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cursor="Go to link"
                 className="card-hover group flex w-full flex-col justify-between gap-6 rounded-lg border p-5 text-left"
               >
                 <span className="flex items-center justify-between gap-4">

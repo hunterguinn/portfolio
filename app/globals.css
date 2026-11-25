@@ -42,13 +42,16 @@
 }
 
 /* One centered reading column; its responsive width creates the horizontal gutters. */
+:root {
+  --content-max-width: 740px;
+}
 .page-band[class*="border-t-"] {
   border-top-color: var(--surface);
 }
 .page-container {
   box-sizing: border-box;
   width: 90%;
-  max-width: 740px;
+  max-width: var(--content-max-width);
   margin-inline: auto;
   padding: 0;
 }
@@ -145,7 +148,26 @@
     border-color var(--motion-button) var(--motion-ease);
 }
 .btn-secondary:hover {
-  background-color: color-mix(in srgb, var(--surface) 90%, var(--foreground));
+  background-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+/* Standard button size shared by every primary and secondary pill (set by the password modal). */
+.btn {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+}
+
+/* Tints the project background image so the info text keeps contrast in both themes. */
+.project-preview-scrim {
+  background-color: color-mix(in srgb, var(--overlay-black) 50%, transparent);
+}
+.light .project-preview-scrim {
+  background-color: color-mix(in srgb, var(--overlay-white) 80%, transparent);
 }
 
 /* Arrow circle: a down caret cycles like a small lottery-machine reel on hover. */
@@ -314,25 +336,9 @@
   }
 }
 
-/*
- * Clickable project covers ease toward 1.035 over 600ms inside the clipped frame. Hover uses `scale`
- * and the entrance settle uses `transform`, so the two never override each other.
- */
-.cover-zoom.media-settle {
-  transition:
-    scale var(--motion-cover-hover) var(--motion-ease),
-    transform var(--motion-media) var(--motion-ease) var(--reveal-delay, 0ms);
-}
-@media (hover: hover) and (pointer: fine) {
-  .group:hover .cover-zoom {
-    scale: var(--motion-cover-hover-scale);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
-  [data-reveal] :is(.media-settle, figcaption),
-  .cover-zoom.media-settle {
+  [data-reveal] :is(.media-settle, figcaption) {
     transition: none;
   }
   .card-surface,
@@ -359,11 +365,10 @@
     animation: none;
   }
   .arrow-nudge,
-  .arrow-nudge-diagonal,
-  .cover-zoom {
+  .arrow-nudge-diagonal {
     transition: none;
   }
-  .group:hover :is(.arrow-nudge, .arrow-nudge-diagonal, .cover-zoom) {
+  .group:hover :is(.arrow-nudge, .arrow-nudge-diagonal) {
     translate: none;
     scale: none;
   }
@@ -481,26 +486,17 @@
     opacity 150ms ease,
     transform 160ms ease;
 }
-.cursor-root[data-project="true"] {
+.cursor-root[data-interactive="true"] {
   mix-blend-mode: normal;
 }
-.cursor-root[data-project="true"] .cursor-shape {
+.cursor-root[data-interactive="true"] .cursor-shape {
   width: calc(var(--cursor-label-width) + var(--spacing) * 6);
   height: calc(var(--cursor-label-height) + var(--spacing) * 2);
   padding: var(--spacing) calc(var(--spacing) * 3);
   background: var(--foreground);
   color: var(--background);
 }
-.cover-pill {
-  z-index: 1;
-  width: max-content;
-  padding: var(--spacing) calc(var(--spacing) * 3);
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--overlay-white) 10%, transparent);
-  color: var(--overlay-black);
-  white-space: nowrap;
-}
-.cursor-project-label {
+.cursor-pill-label {
   width: max-content;
   display: inline-flex;
   align-items: center;
@@ -510,7 +506,13 @@
   transform: translateY(4px);
   transition: opacity 160ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
-.cursor-root[data-project="true"] .cursor-project-label {
+.cursor-pill-arrow {
+  flex-shrink: 0;
+}
+.cursor-root:not([data-arrow="true"]) .cursor-pill-arrow {
+  display: none;
+}
+.cursor-root[data-interactive="true"] .cursor-pill-label {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 100ms;
@@ -520,7 +522,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .cursor-shape,
-  .cursor-project-label {
+  .cursor-pill-label {
     transition: none;
   }
 }
@@ -617,6 +619,9 @@
 /* Shared modal appearance; colors come from the active site theme. */
 .modal-panel {
   @apply rounded-lg border p-6 text-left;
+  box-sizing: border-box;
+  width: 90%;
+  max-width: var(--content-max-width);
   background-color: var(--background);
   color: var(--foreground);
   border-color: var(--border);

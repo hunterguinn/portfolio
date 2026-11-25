@@ -14,6 +14,85 @@ import { SelectionLimit } from "@/components/figures/selection-limit"
 
 const isProse = (block: Block) => block.type === "p" || block.type === "pending"
 
+function collectFigureSuffixes(value: unknown, suffixes: Set<number>) {
+  if (typeof value === "string") {
+    for (const match of value.matchAll(/\bFigure\s+\d+\.(\d+)\b/gi)) {
+      suffixes.add(Number(match[1]))
+    }
+  } else if (Array.isArray(value)) {
+    value.forEach((item) => collectFigureSuffixes(item, suffixes))
+  } else if (value && typeof value === "object") {
+    Object.values(value).forEach((item) => collectFigureSuffixes(item, suffixes))
+  }
+}
+
+function rewriteFigureReferences<T>(value: T, sectionNumber: number, suffixes: Map<number, number>): T {
+  if (typeof value === "string") {
+    return value.replace(/(\bFigure\s+)\d+\.(\d+)\b/gi, (_, label: string, suffix: string) => {
+      const nextSuffix = suffixes.get(Number(suffix)) ?? Number(suffix)
+      return `${label}${sectionNumber}.${nextSuffix}`
+    }) as T
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => rewriteFigureReferences(item, sectionNumber, suffixes)) as T
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, rewriteFigureReferences(item, sectionNumber, suffixes)]),
+    ) as T
+  }
+  return value
+}
+
+/** Reassign figure captions and citations within one source section. */
+export function numberFiguresInSection(blocks: Block[], sectionNumber: number): Block[] {
+  const sourceSuffixes = new Set<number>()
+  collectFigureSuffixes(blocks, sourceSuffixes)
+  const sortedSuffixes = [...sourceSuffixes].sort((a, b) => a - b)
+  const suffixMap = new Map(sortedSuffixes.map((suffix, index) => [suffix, index]))
+  const rewrittenBlocks = rewriteFigureReferences(blocks, sectionNumber, suffixMap)
+  const counter = { value: 0 }
+  const nextNumber = () => `Figure ${sectionNumber}.${counter.value++}`
+
+  const assignNumbers = (items: Block[]): Block[] =>
+    items.map((block) => {
+      if (block.type === "pair") {
+        return { ...block, main: assignNumbers(block.main), aside: assignNumbers(block.aside) }
+      }
+
+      if (block.type === "figure") {
+        const hasNumberedSlots =
+          block.figure.slots.length > 0 && block.figure.slots.every((slot) => /^Figure\s+\d+\.\d+/i.test(slot.label ?? ""))
+
+        if (hasNumberedSlots) {
+          return {
+            ...block,
+            figure: {
+              ...block.figure,
+              number: undefined,
+              slots: block.figure.slots.map((slot) => ({
+                ...slot,
+                label: slot.label?.replace(/^Figure\s+\d+\.\d+(\s*[·–—:-]?\s*)/i, (_, separator: string) =>
+                  `${nextNumber()}${separator}`,
+                ),
+              })),
+            },
+          }
+        }
+
+        return { ...block, figure: { ...block.figure, number: nextNumber() } }
+      }
+
+      if ("figure" in block) {
+        return { ...block, figure: { ...block.figure, number: nextNumber() } }
+      }
+
+      return block
+    })
+
+  return assignNumbers(rewrittenBlocks)
+}
+
 const blockStack = "flex min-w-0 flex-col gap-8 md:gap-10"
 
 /** Consecutive paragraphs reveal as one readable group; every other block is its own reveal unit. */

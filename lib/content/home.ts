@@ -191,15 +191,14 @@ export const home = {
                 type: "metrics",
                 metrics: [
                   {
-                    value: "7",
-                    label: "Learning and development sessions",
+                    value: "12",
+                    label: "Learning sessions",
                   },
                   {
-                    value: "20–50",
+                    value: "50+",
                     label: "Attendees per session",
                   },
                 ],
-                note: "These figures represent participation and program activity at the time of recognition, not measured improvements in designer performance.",
               },
               {
                 type: "p",
@@ -286,7 +285,7 @@ export const home = {
                 type: "figure",
                 figure: {
                   caption: "An interactive JavaScript prototype bringing product workflows, application states, and design documentation into a single working experience.",
-                  showCaptionText: true,
+                  showCaptionText: false,
                   slots: [
                     {
                       kind: "image",
@@ -363,7 +362,7 @@ export const home = {
       },
       {
         quote:
-          "The direction Hunter gave helped all associated teams get to final requirements, make decisions, and deliver so much faster than they possibly could have in any other circumstance.",
+          "Hunter's direction helped all associated teams get to final requirements, make decisions, and deliver so much faster than they possibly could have in any other circumstance.",
         name: "Nate Ernst",
         role: "Senior Design Principal, Bank of America",
       },

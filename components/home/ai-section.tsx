@@ -36,7 +36,8 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         type="button"
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
-        className="card-hover group flex min-w-0 w-full flex-col justify-between gap-7 rounded-lg border p-7 text-left"
+        data-cursor="Read more"
+        className="card-hover group flex min-w-0 w-full flex-col justify-between gap-7 rounded-lg border p-6 text-left"
       >
         <span className="text-body font-medium">{card.articleTitle}</span>
         <span className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 text-caption">
