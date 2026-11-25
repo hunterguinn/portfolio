@@ -1,3 +1,8 @@
+import merrillCoverOne from "@/assets/homepage/merrillCover-1.png"
+import merrillCoverTwo from "@/assets/homepage/merrillCover-2.png"
+import posCoverOne from "@/assets/homepage/POScover-1.png"
+import posCoverTwo from "@/assets/homepage/POScover-2.png"
+import unifiedCover from "@/assets/homepage/unifiedCover-1.png"
 import type { AiCard, ProjectSummary, StackTool, Testimonial } from "./types"
 
 export const home = {
@@ -31,7 +36,13 @@ export const home = {
           "I helped redesign how clients move investments into Merrill, simplifying external account connections, asset selection, and complex transfer requirements into a more manageable digital experience.",
         team: ["Product Design (Lead) • Digital Product • Investment Operations • Engineers • API Tech Team"],
         background: "/images/home/merrill-bg.webp",
-        mockup: { width: 1800, height: 2176, left: "27%", top: "14%", size: "46%" },
+        mockups: {
+          layout: "phones",
+          images: [
+            { src: merrillCoverOne, alt: "Merrill Edge on a phone: finding a financial institution for an asset transfer" },
+            { src: merrillCoverTwo, alt: "Merrill Edge on a phone: selecting assets and transfer amounts" },
+          ],
+        },
         metricIcons: ["landmark", "wallet"],
         insight: {
           icon: "database",
@@ -50,14 +61,6 @@ export const home = {
             counter: { to: 4, suffix: "M+" },
           },
         ],
-        cover: {
-          kind: "image",
-          src: "/images/home/merrill-cover.webp",
-          fit: "contain",
-          alt: "Three phone screens from the Merrill Edge asset transfer flow: choosing a financial institution, selecting assets, and reviewing the transfer",
-          placeholder: "Merrill · Project cover",
-          aspect: "3 / 2",
-        },
       },
       {
         slug: "pos",
@@ -68,7 +71,13 @@ export const home = {
           "Following a vendor exit, I helped bring a critical point-of-sale platform in-house, establishing reusable design patterns across payment devices while supporting business continuity for merchants.",
         team: ["Product Design (Lead) • Merchant Services • Product Management • Engineers • Platform Architecture"],
         background: "/images/home/pos-bg.webp",
-        mockup: { width: 1800, height: 1049, left: "14%", top: "22%", size: "72%" },
+        mockups: {
+          layout: "terminals",
+          images: [
+            { src: posCoverOne, alt: "PAX payment terminal showing a $32.54 purchase and accepted payment methods" },
+            { src: posCoverTwo, alt: "PAX A800 handheld terminal showing a $200 pre-authorization and keypad" },
+          ],
+        },
         metricIcons: ["credit-card", "store"],
         insight: {
           icon: "blocks",
@@ -87,14 +96,6 @@ export const home = {
             counter: { to: 700, suffix: "K" },
           },
         ],
-        cover: {
-          kind: "image",
-          src: "/images/home/pos-cover.webp",
-          fit: "contain",
-          alt: "Three PAX point-of-sale terminals running the Bank of America payment software",
-          placeholder: "POS · Project cover",
-          aspect: "3 / 2",
-        },
       },
       {
         slug: "unified",
@@ -105,7 +106,12 @@ export const home = {
           "I helped consolidate applications for business checking, credit cards, and payment services into a single experience, balancing simpler onboarding with complex eligibility, risk, and compliance requirements.",
         team: ["Product Design (Lead) · Product Management · Small Business CXO · Risk & KYC • Sales"],
         background: "/images/home/unified-bg.webp",
-        mockup: { width: 1800, height: 2760, left: "19.5%", top: "20%", size: "61%" },
+        mockups: {
+          layout: "browser",
+          images: [
+            { src: unifiedCover, alt: "Business Advantage application in a browser: selecting business credit card products" },
+          ],
+        },
         metricIcons: ["layers", "briefcase"],
         insight: {
           icon: "workflow",
@@ -124,14 +130,6 @@ export const home = {
             counter: { to: 3.4, suffix: "M+", decimals: 1 },
           },
         ],
-        cover: {
-          kind: "image",
-          src: "/images/home/unified-cover.webp",
-          fit: "contain",
-          alt: "Business Advantage application flow showing the select products step with credit card options",
-          placeholder: "Unified · Project cover",
-          aspect: "3 / 2",
-        },
       },
     ] satisfies ProjectSummary[],
   },

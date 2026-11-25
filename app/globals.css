@@ -170,6 +170,41 @@
   background-color: color-mix(in srgb, var(--overlay-white) 80%, transparent);
 }
 
+/* Fit the individual uploads without offsets or stretching; the stage supplies padding. */
+.project-preview-mockups > img {
+  max-height: 100%;
+  max-width: calc((100% - var(--spacing) * 4) / 2);
+}
+.project-preview-mockups[data-layout="terminals"] > img:first-child {
+  max-width: calc((100% - var(--spacing) * 4) * 2 / 3);
+}
+.project-preview-mockups[data-layout="terminals"] > img:last-child {
+  max-width: calc((100% - var(--spacing) * 4) / 3);
+}
+.project-preview-mockups[data-layout="browser"] {
+  align-items: flex-end;
+  transform-origin: center bottom;
+}
+.project-preview-mockups[data-layout="browser"] > img {
+  max-width: 100%;
+  object-position: center bottom;
+}
+
+/* Zoom only the mockups, leaving their background, captions, and layout still. */
+@media (prefers-reduced-motion: no-preference) {
+  .project-preview-mockups {
+    transition: transform var(--motion-cover-hover) var(--motion-ease);
+  }
+  .project-preview:focus-visible .project-preview-mockups {
+    transform: scale(var(--motion-cover-hover-scale));
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-preview:hover .project-preview-mockups {
+    transform: scale(var(--motion-cover-hover-scale));
+  }
+}
+
 /* Arrow circle: a down caret cycles like a small lottery-machine reel on hover. */
 .arrow-flip-wrap {
   position: relative;

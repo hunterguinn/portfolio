@@ -16,10 +16,10 @@ export function ProjectPreview({
       href={project.href}
       aria-label={`View project: ${project.title}`}
       data-cursor="View project"
-      className="btn-primary-group grid gap-3 md:grid-cols-2"
+      className="project-preview btn-primary-group grid min-w-0 gap-3 md:grid-cols-2"
     >
-      {/* The text column sets the row height; this card fills it and the cover scales to fit. */}
-      <div className="relative min-h-112 overflow-hidden rounded-lg border border-border md:min-h-96">
+      {/* Keep a portrait stage for the device composition; longer text can still grow the row. */}
+      <div className="relative aspect-[4/5] min-h-112 w-full min-w-0 overflow-hidden rounded-lg border border-border md:min-h-128">
         <Image
           src={project.background}
           alt=""
@@ -29,21 +29,22 @@ export function ProjectPreview({
         />
         <div className="project-preview-scrim absolute inset-0" aria-hidden="true" />
         <div className="absolute inset-0 flex flex-col">
-          <div className="ml-6 flex min-h-0 flex-1 items-center justify-center rounded-bl-md bg-surface px-6 pb-6 pt-3">
-            {project.cover.src ? (
-              <Image
-                src={project.cover.src}
-                alt={project.cover.alt}
-                width={project.mockup.width}
-                height={project.mockup.height}
-                sizes="(min-width: 768px) 50vw, 80vw"
-                className="h-auto max-h-full w-auto max-w-full object-contain"
-              />
-            ) : (
-              <span className="text-caption text-muted">{project.cover.placeholder}</span>
-            )}
+          <div className="flex min-h-0 flex-1 pl-5 pt-5">
+            <div className={`flex min-h-0 w-full overflow-hidden rounded-lg bg-surface ${project.mockups.layout === "browser" ? "px-6 pt-12" : "p-5"}`}>
+              <div data-layout={project.mockups.layout} className="project-preview-mockups flex h-full w-full min-w-0 items-center justify-center gap-4">
+                {project.mockups.images.map((image) => (
+                  <Image
+                    key={image.src.src}
+                    src={image.src}
+                    alt={image.alt}
+                    sizes={project.mockups.layout === "browser" ? "(min-width: 768px) 40vw, 80vw" : "(min-width: 768px) 24vw, 48vw"}
+                    className="block h-full w-auto shrink-0 object-contain"
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col gap-2 p-6 text-foreground">
+          <div className="flex shrink-0 flex-col gap-2 p-6 text-foreground">
             <h3 id={titleId} className="text-heading">
               {project.title}
             </h3>

@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image"
+
 /**
  * Content model for the portfolio. Every figure slot keeps its expected asset
  * label in `placeholder`; set `src` (a path under /media, backed by /private/media) to replace a
@@ -221,6 +223,8 @@ export type CaseStudy = {
 
 export type ProjectIcon = "landmark" | "wallet" | "credit-card" | "store" | "layers" | "briefcase" | "database" | "blocks" | "workflow"
 
+type ProjectMockup = { src: StaticImageData; alt: string }
+
 export type ProjectSummary = {
   slug: CaseStudy["slug"]
   href: string
@@ -231,8 +235,9 @@ export type ProjectSummary = {
   metrics: Metric[]
   metricIcons: [ProjectIcon, ProjectIcon]
   insight: { icon: ProjectIcon; title: string; body: string }
-  cover: MediaSlot
   background: string
-  /** Device mockup size (px) and its placement inside the surface panel, as percentages of the panel. */
-  mockup: { width: number; height: number; left: string; top: string; size: string }
+  /** Uploaded device assets, composed by the shared homepage/next-project preview. */
+  mockups:
+    | { layout: "phones" | "terminals"; images: [ProjectMockup, ProjectMockup] }
+    | { layout: "browser"; images: [ProjectMockup] }
 }
