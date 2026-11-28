@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { X } from "@phosphor-icons/react/dist/csr/X"
 import { useModalBehavior } from "@/components/site/use-modal-behavior"
-import type { ArticleBlock, ArticleSection } from "@/lib/content/types"
+import type { ArticleBlock, ArticleMeta, ArticleSection } from "@/lib/content/types"
 import { ProjectMetrics } from "@/components/site/project-metrics"
 import { Callout } from "@/components/site/callout"
 import { Figure } from "@/components/case-study/figure"
@@ -31,7 +31,7 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
       return (
         <div className="space-y-2">
           <ProjectMetrics metrics={block.metrics} />
-          {block.note ? <p className="text-caption text-muted">{block.note}</p> : null}
+          {block.note ? <p className="text-body text-muted">{block.note}</p> : null}
         </div>
       )
     case "callout":
@@ -41,14 +41,50 @@ function ArticleBlockView({ block }: { block: ArticleBlock }) {
   }
 }
 
+const dateFormat = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeZone: "UTC" })
+
+function formatDate(iso: string) {
+  return dateFormat.format(new Date(`${iso}T00:00:00Z`))
+}
+
+function ArticleFooter({ meta }: { meta: ArticleMeta }) {
+  const details = [
+    { label: "Author", value: meta.author },
+    { label: "Published", value: <time dateTime={meta.published}>{formatDate(meta.published)}</time> },
+    { label: "Last updated", value: <time dateTime={meta.updated}>{formatDate(meta.updated)}</time> },
+  ]
+  return (
+    <footer className="flex flex-col gap-6 border-t pt-6">
+      <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {details.map((detail) => (
+          <div key={detail.label} className="flex flex-col gap-1">
+            <dt className="text-eyebrow text-muted">{detail.label}</dt>
+            <dd className="text-body text-foreground">{detail.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <div className="flex flex-col gap-2">
+        <p className="text-eyebrow text-muted">Tags</p>
+        <ul className="flex flex-wrap gap-2">
+          {meta.tags.map((tag) => (
+            <li key={tag} className="rounded-full border px-3 py-1 text-caption text-muted">{tag}</li>
+          ))}
+        </ul>
+      </div>
+    </footer>
+  )
+}
+
 export function ArticleModal({
   title,
   content,
+  meta,
   onClose,
   returnFocusTo,
 }: {
   title: string
   content: ArticleSection[]
+  meta: ArticleMeta
   onClose: () => void
   returnFocusTo: HTMLElement | null
 }) {
@@ -93,7 +129,7 @@ export function ArticleModal({
         className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-12 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
-          <h2 id={titleId} className="text-heading">
+          <h2 id={titleId} className="text-display">
             {title}
           </h2>
           <button
@@ -128,6 +164,7 @@ export function ArticleModal({
               {section.blocks?.map((block, blockIndex) => <ArticleBlockView key={blockIndex} block={block} />)}
             </section>
           ))}
+          <ArticleFooter meta={meta} />
         </div>
       </div>
     </div>,

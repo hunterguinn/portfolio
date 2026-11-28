@@ -71,7 +71,7 @@ export function AiSection() {
           <AiCardView key={card.articleTitle} card={card} onOpen={(_, trigger) => setOpen({ card, trigger })} />
         ))}
       </ul>
-      {open ? <ArticleModal title={open.card.modalTitle ?? open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
+      {open ? <ArticleModal title={open.card.modalTitle ?? open.card.articleTitle} content={open.card.articleContent} meta={open.card.meta} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
     </SectionShell>
   )
 }

@@ -32,13 +32,10 @@ export function SelectionLimit({ limit }: { limit: number }) {
 
   return (
     <div className="card-static flex min-w-0 flex-col gap-8 font-normal rounded-lg border p-4 md:p-6">
-      <div className="flex flex-col gap-2">
-        <h3 className="text-body font-medium text-foreground">Transfer Eligibility Logic</h3>
-        <p className="text-caption text-muted">100 assets in this transfer</p>
-      </div>
+      <h3 className="text-body font-medium text-foreground">Transfer Logic – 100 Assets in Transfer</h3>
 
       <fieldset className="flex min-w-0 flex-col gap-3">
-        <legend className="mb-3 text-caption text-foreground">What types of assets do you have?</legend>
+        <legend className="mb-3 text-body text-foreground">What types of assets do you have?</legend>
         <div className="flex flex-wrap gap-2">
           {ASSET_TYPES.map((asset) => (
             <button
@@ -46,7 +43,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
               type="button"
               aria-pressed={assets.includes(asset)}
               onClick={() => toggleAsset(asset)}
-              className={`rounded-full border px-3 py-1 text-caption transition-colors ${
+              className={`rounded-full border px-3 py-1 text-body transition-colors ${
                 assets.includes(asset) ? "border-foreground bg-foreground text-background" : "pill-hover text-muted"
               }`}
             >
@@ -57,7 +54,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
       </fieldset>
 
       <fieldset className="flex min-w-0 flex-col gap-3" aria-describedby={hintId}>
-        <legend className="mb-3 text-caption text-foreground">How would you like to transfer?</legend>
+        <legend className="mb-3 text-body text-foreground">How would you like to transfer?</legend>
         <div className="grid gap-3 sm:grid-cols-2">
           {(["full", "partial"] as const).map((value) => {
             const disabled = value === "full" && restricted
@@ -77,7 +74,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
                   onChange={() => setTransfer(value)}
                   className="size-4 shrink-0 accent-foreground"
                 />
-                <span className="text-caption text-foreground">{value === "full" ? "Full Transfer" : "Partial Transfer"}</span>
+                <span className="text-body text-foreground">{value === "full" ? "Full Transfer" : "Partial Transfer"}</span>
               </label>
             )
           })}
@@ -92,9 +89,9 @@ export function SelectionLimit({ limit }: { limit: number }) {
         </div>
       </fieldset>
 
-      <fieldset disabled={isFull} className={`flex min-w-0 flex-col gap-3 transition-opacity duration-300 motion-reduce:transition-none ${isFull ? "opacity-50" : "opacity-100"}`}>
+      <fieldset disabled={isFull} className={`flex min-w-0 flex-col gap-1 transition-opacity duration-300 motion-reduce:transition-none ${isFull ? "opacity-50" : "opacity-100"}`}>
         <legend className="sr-only">Partial transfer asset count</legend>
-        <label htmlFor={`${baseId}-selected`} className="flex flex-wrap items-baseline justify-between gap-2 text-caption text-foreground">
+        <label htmlFor={`${baseId}-selected`} className="flex flex-wrap items-baseline justify-between gap-2 text-body text-foreground">
           Assets in this partial transfer
           <span className="font-mono text-caption font-normal text-muted tabular-nums">{sliderValue} / {TOTAL_ASSETS}</span>
         </label>

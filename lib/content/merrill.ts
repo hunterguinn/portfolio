@@ -46,12 +46,11 @@ export const merrill: CaseStudy = {
               tone: "problem",
               body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
             },
-            // Temporary duplicate: replace with new copy.
             {
-              title: "Incomplete Data",
-              icon: "unplug",
+              title: "Transferring Assets",
+              icon: "transfer",
               tone: "problem",
-              body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
+              body: "Clients needed a quick, simple way to specify what and how much to transfer, which could vary from very small to very large transfers.",
             },
           ],
         },
@@ -215,9 +214,16 @@ export const merrill: CaseStudy = {
           type: "callout",
           text: "Clients entered $0 to not include a security, instead of deselecting a security. When the interface returned an error, they didn't know how to recover and abandoned the transfer.",
         },
+      ],
+    },
+    {
+      id: "exploring-two-solutions",
+      label: "06 – Exploring Two Solutions",
+      title: "Exploring two solutions",
+      blocks: [
         {
           type: "p",
-          text: "I explored two ways to address this. One was to synchronize the checkbox and amount input (Figure 5.0). Selecting or deselecting a security would update the textbox, and changing the textbox would update its selection state. However, this idea introduced accessibility and dev implementation concern.",
+          text: "One way was to sync-up the checkbox and amount input (Figure 5.0). Selecting a security would update the textbox, and changing the textbox would update its selection. However, this approach introduced accessibility and dev implementation concern.",
         },
         {
           type: "transfer-demo",
@@ -234,7 +240,7 @@ export const merrill: CaseStudy = {
         },
         {
           type: "p",
-          text: 'The second was *removing* the checkbox, using the amount field to determine which assets to transfer, which clients were already doing (Figure 5.1). Clients would enter the amount to transfer or enter "0" to exclude a security.',
+          text: 'The second way was *removing* the checkbox entirely, which many clients were already doing in the mobile test. We could lean into this mental model – just use the amount field to determine which assets to transfer or not. Clients would enter the amount to transfer or enter "0" to exclude a security.',
         },
         {
           type: "transfer-demo",
@@ -283,7 +289,7 @@ export const merrill: CaseStudy = {
     },
     {
       id: "high-fidelity-design",
-      label: "06 – High-Fidelity Design",
+      label: "07 – High-Fidelity Design",
       title: "Designing for every transfer scenario",
       blocks: [
         {
@@ -328,7 +334,7 @@ export const merrill: CaseStudy = {
     },
     {
       id: "the-result",
-      label: "07 – The Result",
+      label: "08 – The Result",
       title: "Designing within constraints, without compromising the experience",
       blocks: [
         {
@@ -354,7 +360,7 @@ export const merrill: CaseStudy = {
   chapters: [
     { name: "The Problem", sections: ["the-problem", "the-requirements"] },
     { name: "Design Exploration", sections: ["design-exploration", "the-constraint"] },
-    { name: "Usability Testing", sections: ["usability-testing"] },
+    { name: "Usability Testing", sections: ["usability-testing", "exploring-two-solutions"] },
     { name: "High-Fidelity Design", sections: ["high-fidelity-design"] },
     { name: "The Result", sections: ["the-result"] },
   ],

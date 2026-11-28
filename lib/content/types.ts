@@ -46,6 +46,7 @@ export type CardIcon =
   | "shield-check"
   | "shield-alert"
   | "unplug"
+  | "transfer"
   | "list-checks"
   | "split"
   | "sliders"
@@ -98,6 +99,15 @@ export type ArticleSection = {
   blocks?: ArticleBlock[]
 }
 
+export type ArticleMeta = {
+  author: string
+  /** ISO date (YYYY-MM-DD). */
+  published: string
+  /** ISO date (YYYY-MM-DD). */
+  updated: string
+  tags: string[]
+}
+
 export type AiCard = {
   /** Null marks unfinished copy, rendered as a labelled placeholder. */
   body: string | null
@@ -105,6 +115,7 @@ export type AiCard = {
   /** Optional editorial title, independent of the homepage card. */
   modalTitle?: string
   articleContent: ArticleSection[]
+  meta: ArticleMeta
 }
 
 export type TransferRow = { symbol: string; name: string; shares: number; amount: number }

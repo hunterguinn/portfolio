@@ -18,6 +18,7 @@ import { Timer } from "@phosphor-icons/react/dist/ssr/Timer"
 import { Quotes } from "@phosphor-icons/react/dist/ssr/Quotes"
 import { LinkBreak } from "@phosphor-icons/react/dist/ssr/LinkBreak"
 import { Plugs } from "@phosphor-icons/react/dist/ssr/Plugs"
+import { ArrowsLeftRight } from "@phosphor-icons/react/dist/ssr/ArrowsLeftRight"
 import { UserCheck } from "@phosphor-icons/react/dist/ssr/UserCheck"
 import { Users } from "@phosphor-icons/react/dist/ssr/Users"
 import type { Icon } from "@phosphor-icons/react"
@@ -32,6 +33,7 @@ const cardIcons: Record<CardIcon, Icon> = {
   "shield-check": ShieldCheck,
   "shield-alert": ShieldWarning,
   unplug: Plugs,
+  transfer: ArrowsLeftRight,
   "list-checks": ListChecks,
   split: GitFork,
   sliders: SlidersHorizontal,

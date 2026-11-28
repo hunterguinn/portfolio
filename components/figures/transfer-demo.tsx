@@ -5,8 +5,6 @@ import type { TransferRow, TransferRules } from "@/lib/content/types"
 
 type RowState = { checked: boolean; amount: string }
 
-const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" })
-
 function toNumber(value: string) {
   const parsed = Number.parseFloat(value)
   return Number.isFinite(parsed) ? parsed : 0
@@ -60,114 +58,89 @@ export function TransferDemo({
     status = synchronized
       ? `${entered} of ${rows.length} securities have an amount entered`
       : `${full} of ${rows.length} securities transferred in full`
-    if (synchronized && missing > 0) status += ` · ${missing} selected without an amount`
-    if (!synchronized && entered < rows.length) status += ` · ${rows.length - entered} excluded`
+    if (synchronized && missing > 0) status += `, ${missing} selected without an amount`
+    if (!synchronized && entered < rows.length) status += `, ${rows.length - entered} excluded`
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="card-static relative overflow-x-auto rounded-lg border">
-        <table className="text-caption w-full min-w-[34rem] text-left">
-          <caption className="sr-only">
-            {synchronized
-              ? "Securities with a selection checkbox synchronized to an amount field"
-              : "Securities where the amount field alone determines what transfers"}
-          </caption>
-          <thead className="border-b bg-surface text-eyebrow text-muted">
-            <tr>
-              {synchronized ? (
-                <th scope="col" className="w-12 px-4 py-3">
-                  <span className="sr-only">Select</span>
-                </th>
-              ) : null}
-              <th scope="col" className="px-4 py-3">
-                Security
+    <div className="card-static relative overflow-x-auto rounded-lg border">
+      <table className="text-caption w-full min-w-[34rem] text-left">
+        <caption className="sr-only">
+          {synchronized
+            ? "Securities with a selection checkbox synchronized to an amount field"
+            : "Securities where the amount field alone determines what transfers"}
+        </caption>
+        <thead className="border-b bg-surface text-muted">
+          <tr>
+            {synchronized ? (
+              <th scope="col" className="w-12 px-4 py-3 text-eyebrow">
+                <span className="sr-only">Select</span>
               </th>
-              <th scope="col" className="px-4 py-3 text-right">
-                Shares
-              </th>
-              <th scope="col" className="px-4 py-3 text-right">
-                Amount to transfer
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y">
-            {rows.map((row, index) => {
-              const current = state[index]
-              const needsAmount = synchronized && current.checked && toNumber(current.amount) === 0
-              const amountId = `${baseId}-amount-${index}`
-              return (
-                <tr key={row.symbol}>
-                  {synchronized ? (
-                    <td className="px-4 py-3">
-                      <input
-                        type="checkbox"
-                        checked={current.checked}
-                        onChange={(event) => onToggle(index, event.target.checked)}
-                        aria-label={`Select ${row.name}`}
-                        className="size-4 accent-foreground"
-                      />
-                    </td>
-                  ) : null}
-                  <th scope="row" className="px-4 py-3">
-                    <span className="block text-strong">{row.symbol}</span>
-                    <span className="block text-caption text-muted">{row.name}</span>
-                  </th>
-                  <td className="px-4 py-3 text-right tabular-nums text-muted">{row.shares}</td>
-                  <td className="px-4 py-3 text-right">
-                    <div className="flex flex-col items-end gap-1">
-                      <label htmlFor={amountId} className="sr-only">
-                        Amount to transfer for {row.name}
-                      </label>
-                      <div className="flex w-36 items-center rounded-md border bg-background focus-within:outline-2 focus-within:outline-foreground">
-                        <span aria-hidden="true" className="pl-3 text-muted">
-                          $
-                        </span>
-                        <input
-                          id={amountId}
-                          inputMode="decimal"
-                          value={current.amount}
-                          onChange={(event) => onAmountChange(index, event.target.value)}
-                          aria-invalid={needsAmount}
-                          placeholder="0"
-                          className="w-full bg-transparent px-2 py-2 text-right tabular-nums outline-none"
-                        />
-                      </div>
-                      <p className="text-caption text-muted">
-                        {needsAmount ? <span className="text-red">Enter an amount</span> : `Up to ${money.format(row.amount)}`}
-                      </p>
-                    </div>
+            ) : null}
+            <th scope="col" className="px-4 py-3 text-eyebrow">
+              Security
+            </th>
+            <th scope="col" className="px-4 py-3 text-right text-eyebrow">
+              Shares
+            </th>
+            <th scope="col" className="px-4 py-3 text-right text-eyebrow">
+              Amount to transfer
+            </th>
+          </tr>
+        </thead>
+        <tbody className="divide-y">
+          {rows.map((row, index) => {
+            const current = state[index]
+            const needsAmount = synchronized && current.checked && toNumber(current.amount) === 0
+            const excluded = synchronized ? !current.checked : toNumber(current.amount) === 0
+            const amountId = `${baseId}-amount-${index}`
+            return (
+              <tr key={row.symbol}>
+                {synchronized ? (
+                  <td className="px-4 py-3">
+                    <input
+                      type="checkbox"
+                      checked={current.checked}
+                      onChange={(event) => onToggle(index, event.target.checked)}
+                      aria-label={`Select ${row.name}`}
+                      className="size-4 accent-foreground"
+                    />
                   </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
-      <p
-        aria-live="polite"
-        className={`rounded-md border-l-2 px-3 py-2 text-caption transition-opacity duration-300 ${
-          appliedRule ? "border-foreground bg-surface text-foreground opacity-100" : "border-transparent opacity-0"
-        }`}
-      >
-        {appliedRule ? <><span className="text-muted">Rule applied: </span>{appliedRule}</> : "\u00a0"}
+                ) : null}
+                <th
+                  scope="row"
+                  className={`px-4 py-3 font-normal transition-opacity duration-300 motion-reduce:transition-none ${
+                    excluded ? "opacity-50" : "opacity-100"
+                  }`}
+                >
+                  <span className="block text-strong">{row.symbol}</span>
+                  <span className="block text-caption text-muted">{row.name}</span>
+                </th>
+                <td className="px-4 py-3 text-right tabular-nums text-muted">{row.shares}</td>
+                <td className="px-4 py-3">
+                  <label htmlFor={amountId} className="sr-only">
+                    Amount to transfer for {row.name}
+                  </label>
+                  <input
+                    id={amountId}
+                    inputMode="decimal"
+                    value={current.amount}
+                    onChange={(event) => onAmountChange(index, event.target.value)}
+                    aria-invalid={needsAmount}
+                    placeholder={needsAmount ? "Enter amount" : "0"}
+                    className={`ml-auto block w-36 rounded-md border bg-background px-4 py-2 text-right tabular-nums outline-none focus-visible:border-foreground ${
+                      needsAmount ? "placeholder:text-red" : "placeholder:text-muted"
+                    }`}
+                  />
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      <p role="status" aria-live="polite" className="sr-only">
+        {touched ? [appliedRule, status].filter(Boolean).join(". ") : ""}
       </p>
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p role="status" aria-live="polite" className="text-caption text-muted">
-          {status}
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setState(initialState(rows))
-            setTouched(false)
-            setAppliedRule(null)
-          }}
-          className="btn btn-secondary text-caption focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-        >
-          Reset
-        </button>
-      </div>
     </div>
   )
 }
