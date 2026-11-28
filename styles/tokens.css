@@ -10,7 +10,7 @@
   --media-canvas: #ecebe7;
   --background: #0a0a0a;
   --foreground: #f0f0f0;
-  --muted: #808080;
+  --muted: #6a6a6a;
   --surface: #1a1a1a;
   --border: #202020;
   --border-hover: color-mix(in srgb, var(--muted) 35%, transparent);
@@ -24,7 +24,7 @@
 .light {
   --background: #ebebef;
   --foreground: #1d1d1f;
-  --muted: #515154;
+  --muted: #606060;
   --surface: #f5f5f7;
   --border: #e0e0e5;
   --border-hover: color-mix(in srgb, var(--muted) 35%, transparent);

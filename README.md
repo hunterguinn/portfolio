@@ -28,7 +28,7 @@ The palette has **12 color tokens**, down from 25. Each is used by a component o
 | `bg-background` / `--background` | #0a0a0a | #ebebef |
 | `bg-surface` / `--surface` | #1a1a1a | #f5f5f7 |
 | `text-foreground` / `--foreground` | #f0f0f0 | #1d1d1f |
-| `text-muted` / `--muted` | #808080 | #515154 |
+| `text-muted` / `--muted` | #6a6a6a | #606060 |
 | `border-border` / `--border` | #202020 | #d2d2d7 |
 | `--overlay-white` | #ffffff | #ffffff |
 | `--overlay-black` | #000000 | #000000 |
@@ -38,7 +38,7 @@ The palette has **12 color tokens**, down from 25. Each is used by a component o
 | `text-yellow` / `--yellow` | #ffd60a | #805b00 |
 | `text-green` / `--green` | #5ddb7d | #1a7336 |
 
-The small intentional visual changes are unified muted text/button hover in light mode, quote hover using foreground in dark mode, and the article sheet using the shared dark grays (#808080 text and #121212 hover surface) instead of near-duplicates. Background, surface, raised surface, and border remain distinct to retain depth. Fixed white/black overlays and the warm media canvas retain their separate roles. The toast shadow uses the existing black overlay token rather than the disabled Tailwind default `black` color.
+The small intentional visual changes are unified muted text/button hover in light mode, quote hover using foreground in dark mode, and the article sheet using the shared dark grays (#6a6a6a text and #121212 hover surface) instead of near-duplicates. Background, surface, raised surface, and border remain distinct to retain depth. Fixed white/black overlays and the warm media canvas retain their separate roles. The toast shadow uses the existing black overlay token rather than the disabled Tailwind default `black` color.
 
 `.dark` and `.light` select the palettes; the default is dark. `.sheet-panel` selects the same dark palette even inside a light page, with no separate hardcoded colors. The browser `themeColor` metadata in `app/layout.tsx` repeats the two background values because browser metadata cannot reference CSS custom properties.
 
