@@ -60,12 +60,12 @@
   --text-body--letter-spacing: normal;
   --text-caption: 0.875rem;
   --text-caption--font-weight: var(--font-weight-normal);
-  --text-caption--line-height: 1.35;
+  --text-caption--line-height: 1.4;
   --text-caption--letter-spacing: normal;
   --text-mono: 0.75rem;
   --text-eyebrow: var(--text-mono);
   --text-eyebrow--font-weight: var(--font-weight-medium);
-  --text-eyebrow--line-height: 1.35;
+  --text-eyebrow--line-height: 1.4;
   --text-eyebrow--letter-spacing: normal;
   --color-*: initial;
   --color-tone: var(--tone);

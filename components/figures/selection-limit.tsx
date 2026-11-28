@@ -43,7 +43,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
               type="button"
               aria-pressed={assets.includes(asset)}
               onClick={() => toggleAsset(asset)}
-              className={`rounded-full border px-3 py-1 text-body transition-colors ${
+              className={`rounded-full border px-3 py-1 text-caption transition-colors ${
                 assets.includes(asset) ? "border-foreground bg-foreground text-background" : "pill-hover text-muted"
               }`}
             >
@@ -74,7 +74,7 @@ export function SelectionLimit({ limit }: { limit: number }) {
                   onChange={() => setTransfer(value)}
                   className="size-4 shrink-0 accent-foreground"
                 />
-                <span className="text-body text-foreground">{value === "full" ? "Full Transfer" : "Partial Transfer"}</span>
+                <span className="text-caption text-foreground">{value === "full" ? "Full Transfer" : "Partial Transfer"}</span>
               </label>
             )
           })}

@@ -3,6 +3,7 @@
 import { useId, useState } from "react"
 import { Link as LinkIcon } from "@phosphor-icons/react/dist/csr/Link"
 import { Question } from "@phosphor-icons/react/dist/csr/Question"
+import { User } from "@phosphor-icons/react/dist/csr/User"
 
 type Source = "api" | "you" | "conditional"
 
@@ -33,7 +34,7 @@ function resolve(item: Step["items"][number], scenario: Scenario): Resolved {
 const badge: Record<Resolved, { text: string; className: string; Icon?: typeof LinkIcon }> = {
   api: { text: "API", className: "bg-green/10 text-green", Icon: LinkIcon },
   you: { text: "Req", className: "bg-red/10 text-red", Icon: Question },
-  requested: { text: "Cond", className: "bg-muted/10 text-muted" },
+  requested: { text: "Cond", className: "bg-muted/10 text-muted", Icon: User },
 }
 
 export function TransferSteps({ steps }: { steps: Step[] }) {
@@ -112,8 +113,8 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                       <span
                         className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-eyebrow transition-colors duration-300 ${state.className}`}
                       >
-                        {state.Icon ? <state.Icon size={14} weight="regular" aria-hidden="true" /> : null}
                         {state.text}
+                        {state.Icon ? <state.Icon size={14} weight="regular" aria-hidden="true" /> : null}
                       </span>
                     </li>
                   )

@@ -345,15 +345,6 @@ export const merrill: CaseStudy = {
           type: "callout",
           text: "The challenge wasn't to replace a manual flow – it was adapting to real-world scenarios without passing any of that complexity on to clients.",
         },
-        {
-          type: "metrics",
-          metrics: [
-            { value: "$80 billion", label: "Net assets transferred annually" },
-            { value: "4+ million", label: "Merrill clients supported" },
-            // Temporary duplicate: replace with new copy.
-            { value: "4+ million", label: "Merrill clients supported" },
-          ],
-        },
       ],
     },
   ],
