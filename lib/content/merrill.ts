@@ -25,11 +25,11 @@ export const merrill: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Our current transfer experience is old, antiquated, and only on the web. I designed a faster, responsive solution that leveraged an Open Finance API where clients could connect with their external brokerage, instead of entering that information manually.",
+          text: "Our current transfer experience is old, *antiquated*, and only on the web. I designed a *faster*, responsive solution that leveraged an Open Finance API where clients could connect with their external brokerage, instead of entering that information manually.",
         },
         {
           type: "p",
-          text: "With the API, clients only have choose assets they want to transfer into Merrill, but it wasn't that simple. What if the API returns missing data? What if the data wasn't clean? What if we needed clients to verify information? This introduced a new set of issues.",
+          text: "With the API, clients only have choose assets they want to transfer into Merrill, but it wasn't that simple. What if the API returns *missing* data? What if the data wasn't clean? What if we needed clients to verify information? This introduced a new set of *issues*.",
         },
         {
           type: "cards",
@@ -46,12 +46,11 @@ export const merrill: CaseStudy = {
               tone: "problem",
               body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
             },
-            // Temporary duplicate: replace with new copy.
             {
-              title: "Incomplete Data",
-              icon: "unplug",
+              title: "Transferring Assets",
+              icon: "transfer",
               tone: "problem",
-              body: "The API could return missing or incorrect data that wouldn't line up with Merrill's requirements, which could make the entire transfer void.",
+              body: "Clients needed a quick, simple way to specify what and how much to transfer, which could vary from very small to very large transfers.",
             },
           ],
         },
@@ -64,7 +63,7 @@ export const merrill: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "I created a new asset transfer workflow with the open finance API, defining which information clients still needed to provide, what the API could capture, and when the experience needed to collect more details if the API failed (Figure 2.0).",
+          text: "I created a new asset transfer workflow with the open finance API, defining which information clients still needed to provide, what the API could capture, and when the experience needed to collect more details if the API *failed* (Figure 2.0).",
         },
         {
           type: "transfer-steps",
@@ -117,7 +116,7 @@ export const merrill: CaseStudy = {
           main: [
             {
               type: "p",
-              text: "I leveraged a data table to organize and support dense financial information – asset name, ticker, selection status, checkbox selector, and input transfer amount. This also worked well for screen reader accessibility and for large and small breakpoints (Figure 3.0). Lastly, full transfers were the most common type, so preselecting assets on page-load reduced the work required for a full transfer while preserving the flexibility to make a partial one.",
+              text: "I leveraged a data table to organize and support dense financial information – asset name, ticker, selection status, checkbox selector, and input transfer amount. This also worked well for screen reader *accessibility* and for large and small breakpoints (Figure 3.0). Lastly, full transfers were the most common type, so *preselecting* assets on page-load reduced the work required for a full transfer while preserving the flexibility to make a partial one.",
             },
           ],
           aside: [
@@ -147,11 +146,11 @@ export const merrill: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "The API backend imposed a limit on asset selection – clients exceeding 50 securities could only transfer their entire account or only up to 50 securities individually.",
+          text: "The API backend imposed a *limit* on asset selection – clients exceeding 50 securities could only transfer their *entire* account or only up to 50 securities individually.",
         },
         {
           type: "p",
-          text: "However, if a client's external account holds ineligible assets, such as cryptocurrency or proprietary funds, then clients with over 50 securities were forced to make a partial transfer. I created tailored experiences for both (Figure 4.0, 4.1).",
+          text: "However, if a client's external account holds *ineligible* assets, such as cryptocurrency or proprietary funds, then clients with over 50 securities were *forced* to make a partial transfer. I created tailored experiences for both (Figure 4.0, 4.1).",
         },
         { type: "selection-limit", figure: {}, limit: 50 },
         {
@@ -215,9 +214,16 @@ export const merrill: CaseStudy = {
           type: "callout",
           text: "Clients entered $0 to not include a security, instead of deselecting a security. When the interface returned an error, they didn't know how to recover and abandoned the transfer.",
         },
+      ],
+    },
+    {
+      id: "exploring-two-solutions",
+      label: "06 – Exploring Two Solutions",
+      title: "Exploring two solutions",
+      blocks: [
         {
           type: "p",
-          text: "I explored two ways to address this. One was to synchronize the checkbox and amount input (Figure 5.0). Selecting or deselecting a security would update the textbox, and changing the textbox would update its selection state. However, this idea introduced accessibility and dev implementation concern.",
+          text: "One way was to sync-up the checkbox and amount input (Figure 5.0). Selecting a security would update the textbox, and changing the textbox would update its selection. However, this approach introduced accessibility and dev implementation concern.",
         },
         {
           type: "transfer-demo",
@@ -234,7 +240,7 @@ export const merrill: CaseStudy = {
         },
         {
           type: "p",
-          text: 'The second was removing the checkbox, using the amount field to determine which assets to transfer, which clients were already doing (Figure 5.1). Clients would enter the amount to transfer or enter "0" to exclude a security.',
+          text: 'The second way was *removing* the checkbox entirely, which many clients were already doing in the mobile test. We could lean into this mental model – just use the amount field to determine which assets to transfer or not. Clients would enter the amount to transfer or enter "0" to exclude a security.',
         },
         {
           type: "transfer-demo",
@@ -251,11 +257,11 @@ export const merrill: CaseStudy = {
           main: [
             {
               type: "p",
-              text: "Keeping both controls gave clients more flexibility, it was just a matter of making them work together, so I prototyped the relationship between the checkbox and amount field (Figure 5.3).",
+              text: "Keeping both controls gave clients more *flexibility*, it was just a matter of making them work together, so I prototyped the relationship between the checkbox and amount field (Figure 5.3).",
             },
             {
               type: "p",
-              text: "Entering $0 deselects the asset, while deselecting an asset set its amount to $0. On the flip side, entering an amount greater than $0 reselects a deselected asset, while reselecting an asset requires users to enter a new amount. I created a prototype to walk accessibility and engineering teams through the behavior.",
+              text: "Entering $0 deselects the asset, while deselecting an asset set its amount to $0. On the flip side, entering an amount greater than $0 reselects a deselected asset, while reselecting an asset requires users to enter a new amount. I created a prototype to walk accessibility and engineering teams through the *behavior*.",
             },
             {
               type: "callout",
@@ -283,7 +289,7 @@ export const merrill: CaseStudy = {
     },
     {
       id: "high-fidelity-design",
-      label: "06 – High-Fidelity Design",
+      label: "07 – High-Fidelity Design",
       title: "Designing for every transfer scenario",
       blocks: [
         {
@@ -328,25 +334,16 @@ export const merrill: CaseStudy = {
     },
     {
       id: "the-result",
-      label: "07 – The Result",
+      label: "08 – The Result",
       title: "Designing within constraints, without compromising the experience",
       blocks: [
         {
           type: "p",
-          text: "This project reinforced the importance of designing within technical realities, not just the happy path. By translating backend rules and imperfect data into clear interactions, I created an experience that determined what was possible and asked for additional information only when needed.",
+          text: "This project reinforced the importance of designing within *technical* realities, not just the happy path. By translating backend rules and imperfect data into clear interactions, I created an experience that determined what was possible and asked for additional information *only* when needed.",
         },
         {
           type: "callout",
           text: "The challenge wasn't to replace a manual flow – it was adapting to real-world scenarios without passing any of that complexity on to clients.",
-        },
-        {
-          type: "metrics",
-          metrics: [
-            { value: "$80 billion", label: "Net assets transferred annually" },
-            { value: "4+ million", label: "Merrill clients supported" },
-            // Temporary duplicate: replace with new copy.
-            { value: "4+ million", label: "Merrill clients supported" },
-          ],
         },
       ],
     },
@@ -354,7 +351,7 @@ export const merrill: CaseStudy = {
   chapters: [
     { name: "The Problem", sections: ["the-problem", "the-requirements"] },
     { name: "Design Exploration", sections: ["design-exploration", "the-constraint"] },
-    { name: "Usability Testing", sections: ["usability-testing"] },
+    { name: "Usability Testing", sections: ["usability-testing", "exploring-two-solutions"] },
     { name: "High-Fidelity Design", sections: ["high-fidelity-design"] },
     { name: "The Result", sections: ["the-result"] },
   ],

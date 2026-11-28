@@ -18,7 +18,7 @@ export const unified: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Businesses often need several financial products, from checking accounts and credit cards to payment processing. Online applications for these products have many of the same questions. However, each application was built in its own space, with different business requirements and eligibility rules (Figure 1.0)",
+          text: "Businesses often need several financial products, from checking accounts and credit cards to payment processing. Online applications for these products have many of the same questions. However, each application was built in its *own* space, with different business requirements and *eligibility* rules (Figure 1.0)",
         },
         {
           type: "cards",
@@ -68,7 +68,7 @@ export const unified: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "The goal wasn't to combine separate applications into one interface, but instead to create shared foundation – one that could support multiple products in one experience, adapt to different business needs, and preserve the eligibility criteria each product required.",
+          text: "The goal wasn't to combine separate applications into one interface, but instead to create shared *foundation* – one that could support multiple products in one experience, adapt to different business needs, and *preserve* the eligibility criteria each product required.",
         },
         {
           type: "cards",
@@ -103,11 +103,11 @@ export const unified: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "I worked with product managers to compare the existing applications and identify which requirements could be shared vs product-specific (Figure 3.0).",
+          text: "I worked with product managers to compare the existing applications and identify which requirements could be *shared* vs product-specific (Figure 3.0).",
         },
         {
           type: "p",
-          text: "Applicant details, business information, business activities, and ownership formed the common foundation. From there, the application adapted to the products selected and the client's answers.",
+          text: "Applicant details, business information, business activities, and ownership formed the common *foundation*. From there, the application *adapted* to the products selected and the client's answers.",
         },
         {
           type: "application-flow",
@@ -159,11 +159,11 @@ export const unified: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Not every business qualified for the same digital application path. I worked with Risk and Compliance to define the conditions that determined whether a client could continue, needed specialist review, or fell outside the bank's supported criteria.",
+          text: "Not every business *qualified* for the same digital application path. I worked with Risk and Compliance to define the conditions that determined whether a client could continue, needed *specialist* review, or fell outside the bank's supported criteria.",
         },
         {
           type: "p",
-          text: "The shared application also created an opportunity to present instant counteroffers. When a client didn't qualify for their selected product, the bank could assess whether an alternative was appropriate and present it within the same journey, rather than requiring the client to start over.",
+          text: "The shared application also created an opportunity to present instant *counteroffers*. When a client didn't qualify for their selected product, the bank could assess whether an alternative was appropriate and present it within the same journey, rather than requiring the client to start *over*.",
         },
         {
           type: "decision-matrix",
@@ -225,7 +225,7 @@ export const unified: CaseStudy = {
           main: [
             {
               type: "p",
-              text: "The card component was highly critical from a content-organization and responsive perspective. At large breakpoints, I used a 12-column grid to constrain the card to roughly half the viewport. This reduced eye movement between labels and inputs, kept the form readable, and easily adaptable to smaller screens.",
+              text: "The card component was highly *critical* from a content-organization and responsive perspective. At large breakpoints, I used a 12-column grid to constrain the card to roughly half the viewport. This reduced eye movement between labels and inputs, kept the form *readable*, and easily adaptable to smaller screens.",
             },
           ],
           aside: [
@@ -313,11 +313,11 @@ export const unified: CaseStudy = {
           main: [
             {
               type: "p",
-              text: "Previously, submitting an application left clients with little visibility into what happened next. Their status remained “Application pending” while a sales associate reviewed the application, determined next steps, and contacted them, even when a client could be approved without review.",
+              text: "Previously, submitting an application left clients with little *visibility* into what happened next. Their status remained “Application pending” while a sales associate reviewed the application, determined next steps, and contacted them, even when a client could be *approved* without review.",
             },
             {
               type: "p",
-              text: "We created an Action Center to change that experience through a link emailed after application submission (Figure 5.0). I designed the dashboard where clients could track the status of each product they applied for, finish outstanding actions, and complete additional requirements without waiting for an associate.",
+              text: "We created an Action Center to change that experience through a link emailed after application submission (Figure 5.0). I designed the dashboard where clients could *track* the status of each product they applied for, finish outstanding actions, and complete additional requirements without *waiting* for an associate.",
             },
           ],
           aside: [
@@ -371,11 +371,11 @@ export const unified: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "I translated the shared application structure into high-fidelity screens, applying our internal design system components. I focused on consistent navigation and clear progress indicators, while showing additional questions only when they were relevant to the client's selections or answers.",
+          text: "I translated the shared application structure into high-fidelity screens, applying our internal design system components. I focused on *consistent* navigation and clear progress indicators, while showing additional questions *only* when they were relevant to the client's selections or answers.",
         },
         {
           type: "p",
-          text: "I reviewed the entire flow with product, technology, risk, and compliance partners. For each review, I walked through product combinations, ownership scenarios, unsupported business types, validation errors, and other cases that changed how the application should behave. These reviews helped us make small adjustments, uncover gaps and clarify requirements before implementation.",
+          text: "I reviewed the entire flow with product, technology, risk, and compliance partners. For each review, I walked through product combinations, ownership scenarios, unsupported business types, validation errors, and other cases that changed how the application should behave. These reviews helped us make small adjustments, uncover *gaps* and *clarify* requirements before implementation.",
         },
         ...(["7.0", "7.1", "7.2"] as const).map((n) => ({
           type: "figure" as const,
@@ -430,11 +430,11 @@ export const unified: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Bringing multiple products into one self-service application meant determining how the experience should respond to different products, applicant circumstances, and risk requirements. I translated those variables into which information could be collected once, where product-specific requirements needed to branch, and when an applicant could continue digitally or stop by eligibility rules.",
+          text: "Bringing multiple products into one self-service application meant determining how the experience should respond to different products, applicant circumstances, and risk requirements. I translated those variables into which information could be collected *once*, where product-specific requirements needed to *branch*, and when an applicant could continue digitally or stop by eligibility rules.",
         },
         {
           type: "p",
-          text: "For clients, the self-service journey saved time, reduced friction, and increased approval rates. For the bank, it boosted digital sales and allowed sales associates to support clients that need it most.",
+          text: "For clients, the self-service journey saved time, reduced friction, and increased *approval* rates. For the bank, it *boosted* digital sales and allowed sales associates to support clients that need it most.",
         },
         {
           type: "testimonial",

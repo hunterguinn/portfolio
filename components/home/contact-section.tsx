@@ -10,7 +10,7 @@ const links = [
 
 export function ContactSection() {
   return (
-    <SectionShell id="contact">
+    <SectionShell id="contact" className="pb-12 md:pb-14">
       <SectionHeader>
         <SectionEyebrow>Contact</SectionEyebrow>
         <SectionTitle id="contact">

@@ -37,7 +37,7 @@ function AiCardView({ card, onOpen }: { card: AiCard; onOpen: (title: string, tr
         onClick={(event) => onOpen(card.articleTitle, event.currentTarget)}
         aria-haspopup="dialog"
         data-cursor="Read more"
-        className="card-hover group flex min-w-0 w-full flex-col justify-between gap-7 rounded-lg border p-6 text-left"
+        className="card-hover group flex min-w-0 w-full flex-col justify-between gap-7 rounded-lg border p-5 text-left md:p-6"
       >
         <span className="text-body font-medium">{card.articleTitle}</span>
         <span className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 text-caption">
@@ -71,7 +71,7 @@ export function AiSection() {
           <AiCardView key={card.articleTitle} card={card} onOpen={(_, trigger) => setOpen({ card, trigger })} />
         ))}
       </ul>
-      {open ? <ArticleModal title={open.card.modalTitle ?? open.card.articleTitle} content={open.card.articleContent} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
+      {open ? <ArticleModal title={open.card.modalTitle ?? open.card.articleTitle} content={open.card.articleContent} meta={open.card.meta} returnFocusTo={open.trigger} onClose={() => setOpen(null)} /> : null}
     </SectionShell>
   )
 }

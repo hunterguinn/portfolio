@@ -61,13 +61,13 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         <SectionShell
           id="overview"
           bordered={false}
-          className="relative flex h-[min(100svh,1000px)] max-h-[1000px] flex-col justify-center"
+          className="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-center pb-24 lg:h-[min(100svh,62.5rem)] lg:max-h-[62.5rem] lg:min-h-0 lg:pb-0"
         >
           <div className="flex flex-col gap-4 md:gap-6">
             <p data-intro="fade" className="text-eyebrow text-muted">
               {study.eyebrow}
             </p>
-            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-[36px] leading-[1.1] font-light tracking-[-0.02em]">
+            <h1 id="overview-title" data-intro="" data-intro-step="1" className="text-[2.25rem] leading-[1.1] font-light tracking-[-0.02em]">
               {study.title}
             </h1>
             <p data-intro="" data-intro-step="2" className="text-body text-muted">

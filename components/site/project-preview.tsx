@@ -30,7 +30,7 @@ export function ProjectPreview({
         <div className="project-preview-scrim absolute inset-0" aria-hidden="true" />
         <div className="absolute inset-0 flex flex-col">
           <div className="flex min-h-0 flex-1 pl-5 pt-5">
-            <div className={`flex min-h-0 w-full overflow-hidden rounded-lg bg-surface ${project.mockups.layout === "browser" ? "px-6 pt-12" : "p-5"}`}>
+            <div className={`flex min-h-0 w-full overflow-hidden rounded-lg bg-surface ${project.mockups.layout === "browser" ? "px-5 pt-12 md:px-6" : "p-5"}`}>
               <div data-layout={project.mockups.layout} className="project-preview-mockups flex h-full w-full min-w-0 items-center justify-center gap-4">
                 {project.mockups.images.map((image) => (
                   <Image
@@ -44,7 +44,7 @@ export function ProjectPreview({
               </div>
             </div>
           </div>
-          <div className="flex shrink-0 flex-col gap-2 p-6 text-foreground">
+          <div className="flex shrink-0 flex-col gap-2 p-5 text-foreground md:p-6">
             <h3 id={titleId} className="text-heading">
               {project.title}
             </h3>
@@ -58,7 +58,7 @@ export function ProjectPreview({
 
       <div className="flex flex-col gap-3">
         <div className="flex flex-1 flex-col justify-center rounded-lg border border-border bg-surface p-5">
-          <p className="rounded-md bg-background px-6 py-15 text-body">{project.description}</p>
+          <p className="rounded-md bg-background px-5 py-15 text-body md:px-6">{project.description}</p>
         </div>
 
         <dl className="hidden grid-cols-2 gap-3 lg:grid">

@@ -1,6 +1,9 @@
 "use client"
 
 import { useId, useState } from "react"
+import { Link as LinkIcon } from "@phosphor-icons/react/dist/csr/Link"
+import { Question } from "@phosphor-icons/react/dist/csr/Question"
+import { User } from "@phosphor-icons/react/dist/csr/User"
 
 type Source = "api" | "you" | "conditional"
 
@@ -28,10 +31,10 @@ function resolve(item: Step["items"][number], scenario: Scenario): Resolved {
   return scenario === "failure" ? "you" : "api"
 }
 
-const badge: Record<Resolved, { text: string; className: string }> = {
-  api: { text: "API", className: "bg-green/10 text-green" },
-  you: { text: "Req", className: "bg-red/10 text-red" },
-  requested: { text: "Cond", className: "bg-muted/10 text-muted" },
+const badge: Record<Resolved, { text: string; className: string; Icon?: typeof LinkIcon }> = {
+  api: { text: "API", className: "bg-green/10 text-green", Icon: LinkIcon },
+  you: { text: "Req", className: "bg-red/10 text-red", Icon: Question },
+  requested: { text: "Cond", className: "bg-muted/10 text-muted", Icon: User },
 }
 
 export function TransferSteps({ steps }: { steps: Step[] }) {
@@ -93,7 +96,7 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
           return (
             <li
               key={step.step}
-              className={`card-hover min-w-0 flex flex-col gap-4 rounded-lg border p-4 transition-[opacity,background-color,border-color] duration-300 motion-reduce:transition-none ${
+              className={`card-hover min-w-0 flex flex-col gap-3 rounded-lg border p-4 md:p-5 transition-[opacity,background-color,border-color] duration-300 motion-reduce:transition-none ${
                 inactive ? "opacity-60" : "opacity-100"
               }`}
             >
@@ -108,9 +111,10 @@ export function TransferSteps({ steps }: { steps: Step[] }) {
                         {item.label}
                       </span>
                       <span
-                        className={`shrink-0 rounded-full px-2 py-0.5 text-eyebrow transition-colors duration-300 ${state.className}`}
+                        className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-eyebrow transition-colors duration-300 ${state.className}`}
                       >
                         {state.text}
+                        {state.Icon ? <state.Icon size={14} weight="regular" aria-hidden="true" /> : null}
                       </span>
                     </li>
                   )

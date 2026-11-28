@@ -172,6 +172,7 @@ export const home = {
             body: "The most valuable application of AI isn't automating every design task. It's recognizing which tasks can be accelerated and which decisions still require human judgment.\n\nI see AI as a way to spend less time producing design artifacts and more time evaluating solutions, challenging requirements, and making informed product decisions.\n\nThe opportunity is to reach meaningful design milestones sooner without compromising the quality of the thinking behind them.",
           },
         ],
+        meta: { author: "Hunter Guinn", published: "2026-10-06", updated: "2026-11-18", tags: ["Figma AI", "Learning", "Mentorship"] },
       },
       {
         body: "Strengthening Figma skills, component practices, and shared workflows to help designers work more consistently and effectively across teams.",
@@ -266,6 +267,7 @@ export const home = {
             body: "As design tools become more sophisticated, technical literacy becomes an increasingly important part of design craft.\n\nThrough learning and development, I aim to establish a shared understanding of how interfaces are structured, how design decisions translate into development, and how designers can work more efficiently without compromising quality.\n\nThe goal isn't to turn designers into developers. It's to equip them with the knowledge, confidence, and technical judgment to become more effective product designers.",
           },
         ],
+        meta: { author: "Hunter Guinn", published: "2026-09-15", updated: "2026-11-04", tags: ["Figma", "Design Systems", "Craft"] },
       },
       {
         body: "Building interactive prototypes that bring complex workflows, application states, and design decisions to life beyond static mockups.",
@@ -328,6 +330,7 @@ export const home = {
             body: "Not every design problem requires a working prototype. Figma remains an effective environment for visual exploration, rapid iteration, and design collaboration.\n\nI turn to code when the behavior of an experience becomes difficult to communicate through individual screens alone—particularly when multiple business rules, system responses, or user inputs influence what happens next.\n\nThese prototypes aren't intended to replace production engineering or formal design deliverables. They're another medium for exploring ideas, evaluating assumptions, and establishing a shared understanding of how a product should work.\n\nWhat interests me most isn't simply that AI makes it easier to produce code. It's that designers can explore, build, and communicate ideas through mediums that previously required considerably more technical support.",
           },
         ],
+        meta: { author: "Hunter Guinn", published: "2026-08-11", updated: "2026-10-27", tags: ["Prototyping", "Workflows", "Interaction"] },
       },
       {
         body: "Exploring how shared tokens, reusable components, and AI-assisted tooling can connect design decisions with implementation.",
@@ -339,6 +342,7 @@ export const home = {
           { heading: "Automation needs structure", body: "One observation from this work is that AI-assisted development becomes more useful when the underlying system is well defined. Without clear conventions, generated output can introduce one-off styles, inconsistent components, and patterns that are difficult to maintain. A structured design system provides constraints that can help guide those outputs. That changes how I think about automation. The value isn't just generating an interface faster; it's producing work that fits within an established product system." },
           { heading: "Where this could lead", body: "I'm continuing to explore how design tokens, documentation, component libraries, and AI-assisted tooling can work together as a more connected process. There are still important questions around governance, accessibility, code quality, and how changes should be managed across tools. But I see an opportunity to make design systems useful beyond the design environment itself. Rather than serving primarily as a reference for how products should look, they can become a more practical foundation for how products are built, maintained, and evolved." },
         ],
+        meta: { author: "Hunter Guinn", published: "2026-11-02", updated: "2026-11-24", tags: ["Design Systems", "Code", "AI"] },
       },
     ] satisfies AiCard[],
   },

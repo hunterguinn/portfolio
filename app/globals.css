@@ -31,8 +31,8 @@
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 3px;
+  outline: 0.125rem solid var(--blue);
+  outline-offset: 0.1875rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -43,7 +43,7 @@
 
 /* One centered reading column; its responsive width creates the horizontal gutters. */
 :root {
-  --content-max-width: 740px;
+  --content-max-width: 46.25rem;
 }
 .page-band[class*="border-t-"] {
   border-top-color: var(--surface);
@@ -53,7 +53,6 @@
   width: 90%;
   max-width: var(--content-max-width);
   margin-inline: auto;
-  padding: 0;
 }
 
 /* Apple-style continuous corners (squircles), where the browser supports them. */
@@ -157,7 +156,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: 9999px;
+  border-radius: 62.5rem;
   padding: 0.75rem 1.5rem;
   font-weight: 500;
 }
@@ -277,8 +276,8 @@
 /*
  * In-view reveal. MotionReveal marks off-screen [data-reveal] units as [data-pending]; removing it
  * plays the reveal once. Content is never hidden without JS or when already on screen.
- * data-reveal=""      → text and cards: fade + 24px rise over 900ms
- * data-reveal="media" → figures and covers: fade + 32px rise over 1,200ms; inner .media-settle
+ * data-reveal=""      → text and cards: fade + 1.5rem rise over 900ms
+ * data-reveal="media" → figures and covers: fade + 2rem rise over 1,200ms; inner .media-settle
  *                       layers ease from 1.05 to 1 in step, and the caption follows 240ms later
  * data-reveal="fade"  → small labels: opacity only
  * Hover lifts on clickable cards use `transform`, separate from this `translate`, so they compose.
@@ -357,7 +356,7 @@
   --intro-step: 4;
 }
 
-/* Link arrows travel 4px in their direction over 250ms. */
+/* Link arrows travel 0.25rem in their direction over 250ms. */
 .arrow-nudge,
 .arrow-nudge-diagonal {
   transition: translate var(--motion-arrow) var(--motion-ease);
@@ -426,7 +425,7 @@
   background-color: var(--foreground);
   box-shadow: 0 0 0.5rem color-mix(in srgb, var(--foreground) 70%, transparent);
 }
-/* Same 6px dot as the section eyebrows, in green with a static soft glow. */
+/* Same 0.375rem dot as the section eyebrows, in green with a static soft glow. */
 .profile-availability-dot {
   background-color: var(--green);
   box-shadow: 0 0 0.5rem color-mix(in srgb, var(--green) 60%, transparent);
@@ -434,7 +433,7 @@
 
 /* Copy-email confirmation flips vertically without changing the button's footprint. */
 .copy-email-button {
-  perspective: 600px;
+  perspective: 37.5rem;
 }
 .copy-email-flip {
   display: grid;
@@ -506,8 +505,8 @@
   left: 0;
   display: grid;
   place-items: center;
-  width: 14px;
-  height: 14px;
+  width: 0.875rem;
+  height: 0.875rem;
   overflow: hidden;
   border-radius: var(--radius-full);
   background: var(--overlay-white);
@@ -538,7 +537,7 @@
   gap: calc(var(--spacing) * 2);
   white-space: nowrap;
   opacity: 0;
-  transform: translateY(4px);
+  transform: translateY(0.25rem);
   transition: opacity 160ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .cursor-pill-arrow {
@@ -568,16 +567,16 @@
     transform: translateX(0);
   }
   20% {
-    transform: translateX(-6px);
+    transform: translateX(-0.375rem);
   }
   40% {
-    transform: translateX(6px);
+    transform: translateX(0.375rem);
   }
   60% {
-    transform: translateX(-4px);
+    transform: translateX(-0.25rem);
   }
   80% {
-    transform: translateX(4px);
+    transform: translateX(0.25rem);
   }
 }
 .gate-shake {
@@ -653,7 +652,7 @@
 
 /* Shared modal appearance; colors come from the active site theme. */
 .modal-panel {
-  @apply rounded-lg border p-6 text-left;
+  @apply rounded-lg border p-5 text-left md:p-6;
   box-sizing: border-box;
   width: 90%;
   max-width: var(--content-max-width);
@@ -697,7 +696,7 @@
   background-color: color-mix(in srgb, var(--muted) 25%, transparent);
 }
 
-/* Native range semantics with one shared 16px thumb geometry for ticks and labels. */
+/* Native range semantics with one shared 1rem thumb geometry for ticks and labels. */
 .transfer-range {
   appearance: none;
   height: calc(var(--spacing) * 6);
@@ -716,7 +715,7 @@
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
   margin-top: calc(var(--spacing) * -1.5);
-  border: 2px solid var(--foreground);
+  border: 0.125rem solid var(--foreground);
   border-radius: var(--radius-full);
   background: var(--surface);
 }
@@ -729,7 +728,7 @@
   box-sizing: border-box;
   width: calc(var(--spacing) * 4);
   height: calc(var(--spacing) * 4);
-  border: 2px solid var(--foreground);
+  border: 0.125rem solid var(--foreground);
   border-radius: var(--radius-full);
   background: var(--surface);
 }

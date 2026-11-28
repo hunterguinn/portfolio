@@ -6,8 +6,8 @@ import { site } from "@/lib/content/site"
 export function Hero() {
   return (
     <section id="intro" aria-labelledby="intro-title" className="page-band">
-      <div className="page-container relative flex h-[min(100svh,1000px)] flex-col justify-center">
-        <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_150px] md:gap-20">
+      <div className="page-container relative flex h-[min(100svh,62.5rem)] flex-col justify-center">
+        <div className="grid w-full gap-10 md:grid-cols-[minmax(0,1fr)_9.375rem] md:gap-20">
           <div className="flex min-w-0 flex-col gap-12">
             <div className="flex flex-col gap-4">
               <p data-intro="fade" className="text-eyebrow text-muted">
@@ -30,7 +30,7 @@ export function Hero() {
             </dl>
           </div>
 
-          <dl data-intro="" data-intro-step="4" className="flex flex-col gap-3 md:w-[150px] md:shrink-0 md:pt-16">
+          <dl data-intro="" data-intro-step="4" className="flex flex-col gap-3 md:w-[9.375rem] md:shrink-0 md:pt-16">
             <dt className="text-eyebrow text-muted">Tools</dt>
             <dd>
               <ul className="flex flex-wrap gap-2">
