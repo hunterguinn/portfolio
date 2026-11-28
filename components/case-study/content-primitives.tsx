@@ -58,8 +58,21 @@ const toneColors: Record<CardTone, string> = {
   solution: "var(--green)",
 }
 
+/** Words wrapped in single asterisks in case-study copy render in the primary foreground color. */
+function emphasize(text: string) {
+  return text.split(/\*([^*]+)\*/).map((part, index) =>
+    index % 2 === 1 ? (
+      <span key={index} className="text-foreground">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  )
+}
+
 export function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="text-body text-muted">{children}</p>
+  return <p className="text-body text-muted">{typeof children === "string" ? emphasize(children) : children}</p>
 }
 
 export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }) {
@@ -83,7 +96,7 @@ export function Cards({ cards, columns = 3 }: { cards: Card[]; columns?: 2 | 3 }
                 <Icon weight="regular" className="size-4" aria-hidden="true" />
               </span>
             ) : null}
-            <div className="flex flex-col gap-title-desc">
+            <div className="flex flex-col gap-title-desc md:gap-1">
               <h3 className="text-body text-strong">{card.title}</h3>
               <p className="text-caption text-muted">{card.body}</p>
             </div>
@@ -105,7 +118,7 @@ export function TestimonialQuote({
 }) {
   if (compact) {
     return (
-      <figure data-reveal="" className="flex h-full w-full flex-col justify-between gap-8 card-surface rounded-lg p-8 lg:p-6">
+      <figure data-reveal="" className="flex h-full w-full flex-col justify-between gap-8 card-surface rounded-lg p-5 md:p-8 lg:p-6">
         <div className="flex flex-col gap-3 md:gap-7">
           <blockquote>
             <p
@@ -128,7 +141,7 @@ export function TestimonialQuote({
   }
 
   return (
-    <figure data-reveal="" className="flex h-full flex-col justify-between gap-8 card-surface rounded-lg p-8 lg:p-6">
+    <figure data-reveal="" className="flex h-full flex-col justify-between gap-8 card-surface rounded-lg p-5 md:p-8 lg:p-6">
       <div className="flex flex-col gap-5">
         {compact ? <Quotes weight="regular" className="size-5 text-muted" aria-hidden="true" /> : null}
         <blockquote>

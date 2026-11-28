@@ -10,14 +10,14 @@ Next.js 16 / React 19 / Tailwind CSS 4. Install with `pnpm install --frozen-lock
 
 | Class | Size | Weight | Line height | Letter spacing |
 | --- | --- | --- | --- | --- |
-| `text-hero` | 52px | 300 | 1.1 | -0.02em |
-| `text-display` | 2.25rem (36px) | 400 | 1.15 | normal |
-| `text-heading` | 28px | 400 | 1.2 | normal |
-| `text-body` | 16px | 400 | 1.5 | normal |
+| `text-hero` | 3.25rem (52px); 2.75rem (44px) below `md` | 300 | 1.15 | -0.02em |
+| `text-display` | 2.25rem (36px); 2rem (32px) below `md` | 400 | 1.15 | normal |
+| `text-heading` | 1.5rem (24px) | 400 | 1.15 | normal |
+| `text-body` | 1rem (16px) | 400 | 1.5 | normal |
 | `text-caption` | 0.875rem (14px) | 400 | 1.35 | normal |
 | `text-eyebrow` | 0.75rem (12px) | 500 | 1.35 | normal |
 
-`text-eyebrow` retains uppercase text. `text-strong` applies 600 weight; `font-medium` applies 500 where the existing button requires it. Body defaults retain 16px / 1.55. The system font stack remains `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`; the existing mono alias uses the same stack. All former `type-*` roles now use these classes.
+`text-eyebrow` retains uppercase text. `text-strong` applies 600 weight; `font-medium` applies 500 where the existing button requires it. Body defaults retain 1rem / 1.55. The system font stack remains `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`; the existing mono alias uses the same stack. All former `type-*` roles now use these classes.
 
 ### Colors
 
@@ -48,18 +48,18 @@ The small intentional visual changes are unified muted text/button hover in ligh
 
 | Semantic spacing | Value | Usage |
 | --- | --- | --- |
-| `gutter` | 20px | mobile page padding |
-| `gutter-desktop` | 40px | desktop page padding |
-| `section` | 56px | section padding |
-| `section-lg` | 80px | larger / desktop sections |
-| `section-xl` | 96px | desktop case-study intro |
+| `gutter` | 1.25rem (20px) | mobile page padding |
+| `gutter-desktop` | 2.5rem (40px) | desktop page padding |
+| `section` | 3.5rem (56px) | section padding |
+| `section-lg` | 5rem (80px) | larger / desktop sections |
+| `section-xl` | 6rem (96px) | desktop case-study intro |
 
 ### Border radius
 
 | Token / Tailwind utility | Radius | Use for |
 | --- | --- | --- |
-| `radius-md` / `rounded-md` | 16px | Small cards, inputs, metric tiles, menu items, icon buttons and badges |
-| `radius-lg` / `rounded-lg` | 24px | Larger cards, modals, figures, and image-level containers (project covers, media frames) |
+| `radius-md` / `rounded-md` | 1.5rem (24px) | Small cards, inputs, metric tiles, menu items, icon buttons and badges |
+| `radius-lg` / `rounded-lg` | 1.5rem (24px) | Larger cards, modals, figures, and image-level containers (project covers, media frames) |
 | `radius-full` / `rounded-full` | fully rounded | Only for circles and pills that must stay round: avatars, status dots, buttons, tags, toasts |
 
 Rules:
@@ -79,13 +79,13 @@ All motion uses the shared tokens in `styles/tokens.css`; `components/site/motio
 | `--motion-reveal` | 900ms | In-view text and card reveals |
 | `--motion-media` | 1,200ms | Figure and cover reveals, including the inner image settle |
 | `--motion-caption-delay` | 240ms | Caption follows its image |
-| `--motion-distance` / `--motion-distance-media` | 24px / 32px | Text and card rise / media rise |
+| `--motion-distance` / `--motion-distance-media` | 1.5rem / 2rem | Text and card rise / media rise |
 | `--motion-media-scale` | 1.05 | Image starts slightly enlarged inside its clipped frame and settles to 1 |
 | `--motion-stagger` / `--motion-stagger-cap` | 120ms / 360ms | Reading-order stagger and its maximum delay |
 | `--motion-trigger-offset` | 48px | Reveal when the leading edge passes 48px inside the viewport |
-| `--motion-card` / `--motion-card-lift` | 300ms / -4px | Clickable card lift with border and background change |
+| `--motion-card` / `--motion-card-lift` | 300ms / -0.25rem | Clickable card lift with border and background change |
 | `--motion-cover-hover` / `--motion-cover-hover-scale` | 600ms / 1.035 | Clipped project cover zoom on hover |
-| `--motion-arrow` / `--motion-arrow-distance` | 250ms / 4px | Arrow travel on hover |
+| `--motion-arrow` / `--motion-arrow-distance` | 250ms / 0.25rem | Arrow travel on hover |
 | `--motion-button` | 250ms | Button background and border transitions |
 
 Rules:

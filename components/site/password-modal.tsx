@@ -56,7 +56,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-4 overflow-y-auto p-7!"
+        className="modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-4 overflow-y-auto p-5! md:p-7!"
       >
         <div className="flex items-start justify-between gap-4">
           <h2 id={titleId} className="text-heading">Protected Page</h2>
@@ -98,7 +98,7 @@ export function PasswordModal({ next, onClose, returnFocusTo, preview }: Passwor
             placeholder="Enter password"
             aria-invalid={message ? true : undefined}
             aria-describedby={message ? errorId : undefined}
-            className="text-body md:text-caption w-full rounded-[12px] border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
+            className="text-body md:text-caption w-full rounded-[0.75rem] border border-border bg-surface px-4 py-3 text-foreground transition-colors placeholder:text-muted focus-visible:border-foreground"
           />
           <div aria-live="polite" className="min-h-6">
             {message ? (

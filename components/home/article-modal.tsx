@@ -90,7 +90,7 @@ export function ArticleModal({
         aria-labelledby={titleId}
         tabIndex={-1}
         onClick={(event) => event.stopPropagation()}
-        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-6 outline-none"
+        className="sheet-panel modal-panel flex max-h-[calc(100dvh-2rem)] flex-col gap-12 outline-none"
       >
         <div className="flex shrink-0 items-start justify-between gap-4">
           <h2 id={titleId} className="text-heading">
@@ -105,17 +105,23 @@ export function ArticleModal({
             <X weight="regular" className="size-4" aria-hidden="true" />
           </button>
         </div>
-        <div ref={scrollRef} className="min-h-0 space-y-5 overflow-y-auto overscroll-contain">
+        <div ref={scrollRef} className="flex min-h-0 flex-col gap-12 overflow-y-auto overscroll-contain">
           {content.map((section, index) => (
-            <section key={`${section.heading ?? "intro"}-${index}`} className="space-y-2">
+            <section key={`${section.heading ?? "intro"}-${index}`} className="flex flex-col gap-6">
               {section.heading ? (
-                <h3 className={largerHeadings.has(section.heading) ? "text-body text-strong" : "text-caption text-strong"}>
-                  {section.heading}
-                </h3>
+                <div className="flex flex-col gap-2">
+                  <h3 className={largerHeadings.has(section.heading) ? "text-body text-strong" : "text-caption text-strong"}>
+                    {section.heading}
+                  </h3>
+                  <p className="text-body text-muted">{section.body.split("\n\n")[0]}</p>
+                </div>
               ) : null}
-              {section.body.split("\n\n").map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex} className="text-body text-muted">{paragraph}</p>
-              ))}
+              {section.body
+                .split("\n\n")
+                .slice(section.heading ? 1 : 0)
+                .map((paragraph, paragraphIndex) => (
+                  <p key={paragraphIndex} className="text-body text-muted">{paragraph}</p>
+                ))}
               {section.items ? <ArticleList items={section.items} /> : null}
               {section.conclusion ? <p className="text-body text-muted">{section.conclusion}</p> : null}
               {section.demonstration === "contextual-prompt" ? <ContextualPromptDemo scrollRootRef={scrollRef} /> : null}

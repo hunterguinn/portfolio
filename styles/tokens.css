@@ -42,19 +42,19 @@
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --leading-default: 1.55;
-  --text-display: 2.25rem;
+  --text-display: var(--font-size-display);
   --text-display--font-weight: var(--font-weight-light);
   --text-display--line-height: 1.15;
   --text-display--letter-spacing: normal;
-  --text-hero: 52px;
+  --text-hero: var(--font-size-hero);
   --text-hero--font-weight: var(--font-weight-light);
-  --text-hero--line-height: 1.1;
+  --text-hero--line-height: 1.15;
   --text-hero--letter-spacing: -0.02em;
-  --text-heading: 24px;
+  --text-heading: var(--font-size-heading);
   --text-heading--font-weight: var(--font-weight-light);
-  --text-heading--line-height: 1.2;
+  --text-heading--line-height: 1.15;
   --text-heading--letter-spacing: normal;
-  --text-body: 16px;
+  --text-body: 1rem;
   --text-body--font-weight: var(--font-weight-normal);
   --text-body--line-height: 1.5;
   --text-body--letter-spacing: normal;
@@ -89,13 +89,27 @@
   --spacing-section-xl: calc(var(--spacing) * 24);
   --spacing-gutter: calc(var(--spacing) * 5);
   --spacing-gutter-desktop: calc(var(--spacing) * 10);
-  --spacing-title-desc: 2px;
+  --spacing-title-desc: 0.125rem;
   --radius-*: initial;
-  --radius-none: 0px;
-  --radius-full: 100px;
-  /* Use a consistent 24px radius for cards and controls; pills use the 100px radius. */
-  --radius-md: 24px;
-  --radius-lg: 24px;
+  --radius-none: 0;
+  --radius-full: 6.25rem;
+  /* Use a consistent 1.5rem (24px) radius for cards and controls; pills use the 6.25rem (100px) radius. */
+  --radius-md: 1.5rem;
+  --radius-lg: 1.5rem;
+}
+
+/* Responsive display sizes: small values first, restored to full size from the md breakpoint (48rem). */
+:root {
+  --font-size-hero: 2.75rem;
+  --font-size-display: 2rem;
+  --font-size-heading: 1.5rem;
+}
+@media (min-width: 48rem) {
+  :root {
+    --font-size-hero: 3.25rem;
+    --font-size-display: 2.25rem;
+    --font-size-heading: 1.5rem;
+  }
 }
 
 /*
@@ -110,19 +124,19 @@
   --motion-reveal: 900ms;
   --motion-media: 1200ms;
   --motion-caption-delay: 240ms;
-  --motion-distance: 24px;
-  --motion-distance-media: 32px;
+  --motion-distance: 1.5rem;
+  --motion-distance-media: 2rem;
   --motion-media-scale: 1.05;
   --motion-stagger: 120ms;
   --motion-stagger-cap: 360ms;
   --motion-trigger-offset: 48px;
   --motion-card: 300ms;
   --motion-card-lift-duration: 340ms;
-  --motion-card-lift: -4px;
+  --motion-card-lift: -0.25rem;
   --motion-cover-hover: 600ms;
   --motion-cover-hover-scale: 1.035;
   --motion-arrow: 250ms;
-  --motion-arrow-distance: 4px;
+  --motion-arrow-distance: 0.25rem;
   --motion-button: 250ms;
 }
 

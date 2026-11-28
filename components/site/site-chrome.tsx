@@ -193,7 +193,7 @@ function DesktopRail({ sections, active }: { sections: RailSection[]; active?: s
                   }}
                   aria-hidden="true"
                   data-active={current}
-                  className={`rail-line block h-[3px] w-5 rounded-full transition-colors duration-300 ${
+                  className={`rail-line block h-[0.1875rem] w-5 rounded-full transition-colors duration-300 ${
                     current ? "bg-foreground" : "bg-border group-hover:bg-muted group-focus-visible:bg-muted"
                   }`}
                 />
@@ -304,7 +304,11 @@ export function SiteChrome({ sections, back = false }: { sections: RailSection[]
         </div>
       </div>
 
-      {back ? <BackButton className="fixed left-6 top-6 z-40 hidden lg:inline-flex" /> : null}
+      {back ? (
+        <div className="fixed left-6 top-6 z-40 hidden lg:block">
+          <BackButton />
+        </div>
+      ) : null}
       <div className="fixed right-6 top-6 z-40 hidden lg:block">
         <ThemeToggle />
       </div>

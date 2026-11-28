@@ -115,7 +115,7 @@ export function Blocks({ blocks, heading }: { blocks: Block[]; heading?: React.R
   const body = (
     <div className={blockStack}>
       {leadsWithProse ? (
-        <div data-reveal="" className="flex min-w-0 flex-col gap-6">
+        <div data-reveal="" className="flex min-w-0 flex-col gap-2 md:gap-3">
           {heading}
           <div className={blockStack}>
             {groups[0].blocks.map((block, index) => (
@@ -140,7 +140,7 @@ export function Blocks({ blocks, heading }: { blocks: Block[]; heading?: React.R
 
   if (!heading || leadsWithProse) return body
   return (
-    <div className="flex min-w-0 flex-col gap-6">
+    <div className="flex min-w-0 flex-col gap-2 md:gap-3">
       <div data-reveal="">{heading}</div>
       {body}
     </div>

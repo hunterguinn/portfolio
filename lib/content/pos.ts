@@ -32,11 +32,11 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "When NCR ended its point-of-sale contract with the bank, tens of thousands of small business clients risked losing access to payment processing. The bank quickly acquired third-party software to maintain service.",
+          text: "When NCR ended its point-of-sale contract with the bank, tens of thousands of small business clients risked *losing* access to payment processing. The bank quickly acquired third-party software to maintain service.",
         },
         {
           type: "p",
-          text: "What seemed to be a straightforward transition expanded into a much larger design effort – hundreds of screens across multiple point-of-sale different devices (Figure 1.0).",
+          text: "What seemed to be a straightforward transition expanded into a much *larger* design effort – *hundreds* of screens across multiple point-of-sale different devices (Figure 1.0).",
         },
         {
           type: "cards",
@@ -112,7 +112,7 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "We only had screenshots of the acquired software, so every screen came with open questions. I started with screenshots that affected the most amount screens and core merchant tasks (Figure 2.0, Figure 2.1).",
+          text: "We only had screenshots of the acquired software, so every screen came with open *questions*. I started with screenshots that affected the most amount screens and *core* merchant tasks (Figure 2.0, Figure 2.1).",
         },
         {
           type: "cards",
@@ -169,18 +169,18 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "I quickly realized that the acquired product had severe accessibility issues, difficult workflows, and inconsistent UI (Figure 2.0). One example was the Order screen, where merchants build a customer’s order (Figure 3.0).",
+          text: "I quickly realized that the acquired product had *severe* accessibility issues, difficult workflows, and *inconsistent* UI (Figure 2.0). One example was the Order screen, where merchants build a customer’s order (Figure 3.0).",
         },
         {
           type: "p",
-          text: 'Several buttons were unnecessary or duplicative, and overlapped with interactive item rows. Adding an item required opening a separate search screen, and the customer\'s order total remained hidden until the merchant selected "Pay".',
+          text: 'Several buttons were unnecessary or duplicative, and overlapped with interactive item rows. Adding an item required opening a separate search screen, and the customer\'s order total remained *hidden* until the merchant selected "Pay".',
         },
         {
           type: "pair",
           main: [
             {
               type: "p",
-              text: 'In my redesign (Figure 3.1), I leveraged row components for each item, adding a quantity counter to the row for the needs of this workflow. Now, merchants could add items and adjust quantities directly on the Order screen using a counter, making the "Save" button irrelevant. Additionally, I replaced the previous "Type" sorting button with a segmented control, making the Category view more clear.',
+              text: 'In my redesign (Figure 3.1), I leveraged row components for each item, adding a quantity counter to the row for the needs of this workflow. Now, merchants could add items and adjust quantities *directly* on the Order screen using a counter, making the "Save" button irrelevant. Additionally, I replaced the previous "Type" sorting button with a segmented control, making the Category view more *clear*.',
             },
             {
               type: "cards",
@@ -256,11 +256,11 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: 'Functionality was there, but the vendor interface made it harder to understand. Split Check on larger 14" and 15.6" tablet devices was another example.',
+          text: 'Functionality was there, but the vendor interface made it *harder* to understand. Split Check on larger 14" and 15.6" tablet devices was another example.',
         },
         {
           type: "p",
-          text: "Merchants can distribute an order across guests by creating new tickets for each guest, dividing items, and moving them between tickets. However, we only had this one screenshot to understand all that behavior (Figure 4.0).",
+          text: "Merchants can distribute an order across guests by creating new tickets for each guest, dividing items, and moving them between tickets. However, we only had this one screenshot to understand all that *behavior* (Figure 4.0).",
         },
         {
           type: "figure",
@@ -327,11 +327,11 @@ export const pos: CaseStudy = {
           main: [
             {
               type: "p",
-              text: "I focused on reducing visual complexity and making the core task easier. Action icons were in proximity with their item, while state changes made interactions more clear. Merchants can split an item, tap on it, and place it on another ticket (Figure 4.1).",
+              text: "I focused on reducing visual *complexity* and making the core task *easier*. Action icons were in proximity with their item, while state changes made interactions more clear. Merchants can split an item, tap on it, and place it on another ticket (Figure 4.1).",
             },
             {
               type: "p",
-              text: "I also reduced the amount of detail competing for attention, keeping item names, prices, color-coded quantities, and subtotals easy to scan (Figure 4.2).",
+              text: "I also reduced the amount of detail competing for *attention*, keeping item names, prices, color-coded quantities, and subtotals easy to scan (Figure 4.2).",
             },
           ],
           aside: [
@@ -375,11 +375,11 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "Throughout the design process, I built and maintained a component library (Figure 6.0) across the point-of-sale experience. Our internal design system provided a starting point, but its components didn’t account for point-of-sale experiences or devices. I also referenced Google’s Material 3 for Android-specific patterns.",
+          text: "Throughout the design process, I built and maintained a component *library* (Figure 6.0) across the point-of-sale experience. Our internal design system provided a starting point, but its components didn’t account for point-of-sale experiences or devices. I also referenced Google’s Material 3 for Android-specific patterns.",
         },
         {
           type: "p",
-          text: "This library helped established make the experience coherent across multiple screens and devices, and made large updates easier to implement.",
+          text: "This library helped established make the experience *coherent* across multiple screens and devices, and made large updates *easier* to implement.",
         },
         {
           type: "figure",
@@ -458,11 +458,11 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "I worked directly with external developers throughout the implementation. I walked developers through each device's screens, interaction behaviors, components, and design-to-dev discrepancies in their demo enviornment.",
+          text: "I worked *directly* with external developers throughout the implementation. I walked developers through each device's screens, interaction behaviors, components, and design-to-dev *discrepancies* in their demo enviornment.",
         },
         {
           type: "p",
-          text: "Because developers could reference the component library, they saw redesigned screens and went from asking “What is this? What does this do?” to “Should we use this component here too?” which accelerated development and handoff sessions.",
+          text: "Because developers could reference the component library, they saw redesigned screens and went from asking “What is this? What does this do?” to “Should we use this component here too?” which *accelerated* development and handoff sessions.",
         },
         {
           type: "figure",
@@ -534,11 +534,11 @@ export const pos: CaseStudy = {
       blocks: [
         {
           type: "p",
-          text: "The business need was to replace the point-of-sale software, but a replacement also meant making the inherited experience practical for customers and merchants using them.",
+          text: "The business need was to replace the point-of-sale software, but a replacement also meant making the inherited experience *practical* for customers and merchants using them.",
         },
         {
           type: "p",
-          text: "I approached the work by looking for improvements that could scale – clearer workflows, reusable patterns, and decisions that engineering could carry consistently across the product.",
+          text: "I approached the work by looking for improvements that could *scale* – clearer workflows, reusable patterns, and decisions that engineering could carry *consistently* across the product.",
         },
         {
           type: "testimonial",
